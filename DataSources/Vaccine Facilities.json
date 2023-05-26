@@ -1,0 +1,134 @@
+[
+  {
+    "CdsFCBContext": "{\"FileType\":true,\"ImageExternalStorage\":true}",
+    "EntitySetName": "smvs_vaccinefacilities",
+    "IsHidden": false,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "LogicalName": "smvs_vaccinefacility",
+    "MaxGetRowsCount": 500,
+    "Name": "Vaccine Facilities",
+    "NativeCDSDataSourceInfoNameMapping": {
+      "_ownerid_value": "Owner",
+      "createdby": "Created By",
+      "createdon": "Created On",
+      "createdonbehalfby": "Created By (Delegate)",
+      "importsequencenumber": "Import Sequence Number",
+      "modifiedby": "Modified By",
+      "modifiedon": "Modified On",
+      "modifiedonbehalfby": "Modified By (Delegate)",
+      "overriddencreatedon": "Record Created On",
+      "owningbusinessunit": "Owning Business Unit",
+      "owningteam": "Owning Team",
+      "owninguser": "Owning User",
+      "smvs_customercode": "Customer Code",
+      "smvs_facilityid": "Facility ID",
+      "smvs_facilityname": "Facility Name",
+      "smvs_host": "Host",
+      "smvs_iis_facility_id": "Facility ID(IIS Credentials)",
+      "smvs_iis_function_code": "IIS Function Code",
+      "smvs_iis_user_name": "User Name(IIS Credentials)",
+      "smvs_iisendpoint": "IIS Endpoint",
+      "smvs_msemr_codeableconcept_VaccineFacility_smv": "Codeable Concepts",
+      "smvs_name": "Name",
+      "smvs_password": "password(IIS Credentials)",
+      "smvs_path": "Path",
+      "smvs_patient_validation": "Patient Validation",
+      "smvs_port": "Port",
+      "smvs_sending_facility": "Sending Facility",
+      "smvs_smvs_appsetting_vaccine_facility_smvs_vac": "App Settings",
+      "smvs_state": "State Code",
+      "smvs_vaccinefacility_AsyncOperations": "System Jobs",
+      "smvs_vaccinefacility_BulkDeleteFailures": "Bulk Delete Failures",
+      "smvs_vaccinefacility_DuplicateBaseRecord": "Duplicate Records (smvs_vaccinefacility_DuplicateBaseRecord)",
+      "smvs_vaccinefacility_DuplicateMatchingRecord": "Duplicate Records (smvs_vaccinefacility_DuplicateMatchingRecord)",
+      "smvs_vaccinefacility_MailboxTrackingFolders": "Mailbox Auto Tracking Folders",
+      "smvs_vaccinefacility_PrincipalObjectAttributeAccesses": "Field Sharing",
+      "smvs_vaccinefacility_ProcessSession": "Process Sessions",
+      "smvs_vaccinefacility_SyncErrors": "Sync Errors",
+      "smvs_vaccinefacilityid": "Vaccine Facility",
+      "statecode": "Status",
+      "statuscode": "Status Reason",
+      "timezoneruleversionnumber": "Time Zone Rule Version Number",
+      "utcconversiontimezonecode": "UTC Conversion Time Zone Code",
+      "versionnumber": "Version Number"
+    },
+    "PreferredName": "Vaccine Facilities",
+    "Type": "NativeCDSDataSourceInfo"
+  },
+  {
+    "DisplayName": "Vaccine Facilities (Views)",
+    "Name": "_smvs_vaccinefacility_views",
+    "RelatedEntityName": "Vaccine Facilities",
+    "TrimmedViewName": true,
+    "Type": "ViewInfo",
+    "ViewInfoNameMapping": {
+      "0c9d961b-1ea6-458c-bae5-b2580c0de124": "Active Vaccine Facilities",
+      "5ae149ff-49b0-4ff9-8c38-f7d877eec211": "Vaccine Facility Advanced Find View",
+      "5b100716-5111-ec11-b6e6-000d3a57036a": "All Vaccine Facilities",
+      "856b2bba-e4b3-48ac-bbda-fc8bf7bc18c1": "Vaccine Facility Associated View",
+      "922f77ec-f8e9-462c-bed7-d3767fae7414": "Vaccine Facility Lookup View",
+      "dc45ef6e-a5c0-4b18-a82f-83edb3fcec6f": "Inactive Vaccine Facilities"
+    }
+  },
+  {
+    "DisplayName": "Patient Validation (Vaccine Facilities)",
+    "Name": "smvs_smvs_vaccinefacility_patient_validation",
+    "OptionSetInfoNameMapping": {
+      "0": "No",
+      "1": "Yes"
+    },
+    "OptionSetIsBooleanValued": true,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "smvs_patient_validation",
+        "OptionSetReferenceEntityName": "Vaccine Facilities"
+      }
+    },
+    "OptionSetTypeKey": "BooleanType",
+    "RelatedColumnInvariantName": "smvs_patient_validation",
+    "RelatedEntityName": "Vaccine Facilities",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status (Vaccine Facilities)",
+    "Name": "smvs_vaccinefacility_statecode",
+    "OptionSetInfoNameMapping": {
+      "0": "Active",
+      "1": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statecode",
+        "OptionSetReferenceEntityName": "Vaccine Facilities"
+      }
+    },
+    "OptionSetTypeKey": "StateType",
+    "RelatedColumnInvariantName": "statecode",
+    "RelatedEntityName": "Vaccine Facilities",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status Reason (Vaccine Facilities)",
+    "Name": "smvs_vaccinefacility_statuscode",
+    "OptionSetInfoNameMapping": {
+      "1": "Active",
+      "2": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statuscode",
+        "OptionSetReferenceEntityName": "Vaccine Facilities"
+      }
+    },
+    "OptionSetTypeKey": "StatusType",
+    "RelatedColumnInvariantName": "statuscode",
+    "RelatedEntityName": "Vaccine Facilities",
+    "Type": "OptionSetInfo"
+  }
+]

@@ -1,0 +1,108 @@
+[
+  {
+    "CdsFCBContext": "{\"FileType\":true,\"ImageExternalStorage\":true}",
+    "EntitySetName": "smvs_language_codes",
+    "IsHidden": false,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "LogicalName": "smvs_language_code",
+    "MaxGetRowsCount": 500,
+    "Name": "Language Codes",
+    "NativeCDSDataSourceInfoNameMapping": {
+      "_ownerid_value": "Owner",
+      "createdby": "Created By",
+      "createdon": "Created On",
+      "createdonbehalfby": "Created By (Delegate)",
+      "importsequencenumber": "Import Sequence Number",
+      "modifiedby": "Modified By",
+      "modifiedon": "Modified On",
+      "modifiedonbehalfby": "Modified By (Delegate)",
+      "overriddencreatedon": "Record Created On",
+      "owningbusinessunit": "Owning Business Unit",
+      "owningteam": "Owning Team",
+      "owninguser": "Owning User",
+      "smvs_code": "Code",
+      "smvs_EligibilityQuestion_language_code_sm": "Eligibility Questions",
+      "smvs_language_code_AsyncOperations": "System Jobs",
+      "smvs_language_code_BulkDeleteFailures": "Bulk Delete Failures",
+      "smvs_language_code_DuplicateBaseRecord": "Duplicate Records (smvs_language_code_DuplicateBaseRecord)",
+      "smvs_language_code_DuplicateMatchingRecord": "Duplicate Records (smvs_language_code_DuplicateMatchingRecord)",
+      "smvs_language_code_MailboxTrackingFolders": "Mailbox Auto Tracking Folders",
+      "smvs_language_code_PrincipalObjectAttributeAccesses": "Field Sharing",
+      "smvs_language_code_ProcessSession": "Process Sessions",
+      "smvs_language_code_SyncErrors": "Sync Errors",
+      "smvs_language_codeid": "Language Code",
+      "smvs_localise_website_ontent_language_cod": "Localize Website Contents",
+      "smvs_msemr_appointmentemr_language_code_smvs_l": "Appointments (EMR)",
+      "smvs_msemr_healthcareservice_language_smvs_lan": "Sub Services (smvs_msemr_healthcareservice_language_smvs_lan)",
+      "smvs_msemr_healthcareservice_smvs_language_cod": "Sub Services (smvs_msemr_healthcareservice_smvs_language_cod)",
+      "smvs_msemr_healthcareservicecategory_language_": "Services",
+      "smvs_name": "Name",
+      "smvs_PatientScreeningQuestion_language_co": "Patient Screening Questions",
+      "smvs_smvs_service_type_language_smvs_language_": "Service Types",
+      "smvs_template_language_smvs_language_code": "Templates",
+      "statecode": "Status",
+      "statuscode": "Status Reason",
+      "timezoneruleversionnumber": "Time Zone Rule Version Number",
+      "utcconversiontimezonecode": "UTC Conversion Time Zone Code",
+      "versionnumber": "Version Number"
+    },
+    "PreferredName": "Language Codes",
+    "Type": "NativeCDSDataSourceInfo"
+  },
+  {
+    "DisplayName": "Language Codes (Views)",
+    "Name": "_smvs_language_code_views",
+    "RelatedEntityName": "Language Codes",
+    "TrimmedViewName": true,
+    "Type": "ViewInfo",
+    "ViewInfoNameMapping": {
+      "30873d67-9ab4-4001-abbd-7ad9c9b30f02": "Language Code Associated View",
+      "4e4158c7-065e-43f7-848d-c24de83d9f77": "Inactive Language Codes",
+      "60878534-5311-ec11-b6e6-000d3a570f02": "All Language Codes",
+      "65f3e0a4-9e8e-4bd5-af38-92db98db8e19": "Active Language Codes",
+      "bd1338c2-5aac-4e93-b5e9-5ef5f4d82c2e": "Language Code Lookup View",
+      "e4252e07-6e5d-463b-9b10-aa211da634d7": "Language Code Advanced Find View"
+    }
+  },
+  {
+    "DisplayName": "Status (Language Codes)",
+    "Name": "smvs_language_code_statecode",
+    "OptionSetInfoNameMapping": {
+      "0": "Active",
+      "1": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statecode",
+        "OptionSetReferenceEntityName": "Language Codes"
+      }
+    },
+    "OptionSetTypeKey": "StateType",
+    "RelatedColumnInvariantName": "statecode",
+    "RelatedEntityName": "Language Codes",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status Reason (Language Codes)",
+    "Name": "smvs_language_code_statuscode",
+    "OptionSetInfoNameMapping": {
+      "1": "Active",
+      "2": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statuscode",
+        "OptionSetReferenceEntityName": "Language Codes"
+      }
+    },
+    "OptionSetTypeKey": "StatusType",
+    "RelatedColumnInvariantName": "statuscode",
+    "RelatedEntityName": "Language Codes",
+    "Type": "OptionSetInfo"
+  }
+]

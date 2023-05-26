@@ -1,0 +1,101 @@
+[
+  {
+    "CdsFCBContext": "{\"FileType\":true,\"ImageExternalStorage\":true}",
+    "EntitySetName": "smvs_specimen_source_types",
+    "IsHidden": false,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "LogicalName": "smvs_specimen_source_type",
+    "MaxGetRowsCount": 500,
+    "Name": "Specimen Source Types",
+    "NativeCDSDataSourceInfoNameMapping": {
+      "_ownerid_value": "Owner",
+      "createdby": "Created By",
+      "createdon": "Created On",
+      "createdonbehalfby": "Created By (Delegate)",
+      "importsequencenumber": "Import Sequence Number",
+      "modifiedby": "Modified By",
+      "modifiedon": "Modified On",
+      "modifiedonbehalfby": "Modified By (Delegate)",
+      "overriddencreatedon": "Record Created On",
+      "owningbusinessunit": "Owning Business Unit",
+      "owningteam": "Owning Team",
+      "owninguser": "Owning User",
+      "smvs_device_setup_smvs_specimen_source_type": "Device Setups",
+      "smvs_msemr_appointmentemr_specimen_source_type": "Appointments (EMR)",
+      "smvs_name": "Name",
+      "smvs_specimen_source_id": "Specimen Source ID",
+      "smvs_specimen_source_name": "Not Used",
+      "smvs_specimen_source_type_AsyncOperations": "System Jobs",
+      "smvs_specimen_source_type_BulkDeleteFailures": "Bulk Delete Failures",
+      "smvs_specimen_source_type_DuplicateBaseRecord": "Duplicate Records (smvs_specimen_source_type_DuplicateBaseRecord)",
+      "smvs_specimen_source_type_DuplicateMatchingRecord": "Duplicate Records (smvs_specimen_source_type_DuplicateMatchingRecord)",
+      "smvs_specimen_source_type_MailboxTrackingFolders": "Mailbox Auto Tracking Folders",
+      "smvs_specimen_source_type_PrincipalObjectAttributeAccesses": "Field Sharing",
+      "smvs_specimen_source_type_ProcessSession": "Process Sessions",
+      "smvs_specimen_source_type_SyncErrors": "Sync Errors",
+      "smvs_specimen_source_typeid": "Specimen Source Type",
+      "statecode": "Status",
+      "statuscode": "Status Reason",
+      "timezoneruleversionnumber": "Time Zone Rule Version Number",
+      "utcconversiontimezonecode": "UTC Conversion Time Zone Code",
+      "versionnumber": "Version Number"
+    },
+    "PreferredName": "Specimen Source Types",
+    "Type": "NativeCDSDataSourceInfo"
+  },
+  {
+    "DisplayName": "Specimen Source Types (Views)",
+    "Name": "_smvs_specimen_source_type_views",
+    "RelatedEntityName": "Specimen Source Types",
+    "TrimmedViewName": true,
+    "Type": "ViewInfo",
+    "ViewInfoNameMapping": {
+      "3de5a8c5-6941-4df5-bf49-e84e974aa023": "Inactive Specimen Source Types",
+      "484c198b-2ab7-4d69-98c0-92d93166d0c9": "Active Specimen Source Types",
+      "56af7411-67ca-47d3-891a-1a92d2483692": "Specimen Source Type Associated View",
+      "7b2559ed-cf12-4787-a587-9afa95a8d863": "Specimen Source Type Advanced Find View",
+      "8628f76c-96a3-4d0f-bab1-7fd42e8b4c2a": "Specimen Source Type Lookup View"
+    }
+  },
+  {
+    "DisplayName": "Status (Specimen Source Types)",
+    "Name": "smvs_specimen_source_type_statecode",
+    "OptionSetInfoNameMapping": {
+      "0": "Active",
+      "1": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statecode",
+        "OptionSetReferenceEntityName": "Specimen Source Types"
+      }
+    },
+    "OptionSetTypeKey": "StateType",
+    "RelatedColumnInvariantName": "statecode",
+    "RelatedEntityName": "Specimen Source Types",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status Reason (Specimen Source Types)",
+    "Name": "smvs_specimen_source_type_statuscode",
+    "OptionSetInfoNameMapping": {
+      "1": "Active",
+      "2": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statuscode",
+        "OptionSetReferenceEntityName": "Specimen Source Types"
+      }
+    },
+    "OptionSetTypeKey": "StatusType",
+    "RelatedColumnInvariantName": "statuscode",
+    "RelatedEntityName": "Specimen Source Types",
+    "Type": "OptionSetInfo"
+  }
+]

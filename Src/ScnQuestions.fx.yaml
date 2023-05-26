@@ -1,0 +1,1110 @@
+"ScnQuestions As screen.'tabletAutoLayout_HeaderMainFooter_ver1.0'":
+    OnVisible: |-
+        =Set(
+            VarResetEligibility,
+            true
+        );
+        Set(
+            VarResetEligibility,
+            false
+        );
+        Set(
+            VarResetEligibility,
+            true
+        );
+
+    CnvQuestions As fluidGrid.fluidGridWithBlankCard:
+        BorderThickness: =0
+        Height: =Parent.Height - Self.Y
+        Width: =Parent.Width
+        Y: =MultiserviceViewComponentScreening.Y+MultiserviceViewComponentScreening.Height
+        ZIndex: =1
+
+        DcGalleryErrorQuestions As dataCard:
+            BorderColor: =RGBA(0, 0, 0, 1)
+            BorderStyle: =BorderStyle.Solid
+            BorderThickness: =0
+            DisplayMode: =DisplayMode.Edit
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =GalErrorQuestions.TemplateHeight * CountRows(GalErrorQuestions.AllItems) + 50
+            Width: =Parent.Width
+            X: =0
+            Y: =4
+            ZIndex: =1
+
+            "GalErrorQuestions As gallery.'BrowseLayout_Vertical_TwoTextOneImageVariant_ver4.0'":
+                Height: =Parent.Height
+                Items: =Filter(GalScreeningMain.AllItems, LblEligible.Text = "true")
+                Layout: =Layout.Vertical
+                TemplatePadding: =0
+                TemplateSize: =100
+                Visible: =CountRows(GalErrorQuestions.AllItems)>0
+                Width: =Parent.Width-50
+                Y: =50
+                ZIndex: =1
+
+                Separator1 As rectangle:
+                    Fill: =RGBA(148, 148, 148, 1)
+                    Height: =1
+                    OnSelect: =Select(Parent)
+                    Width: =Parent.TemplateWidth
+                    Y: =Parent.TemplateHeight - 1
+                    ZIndex: =5
+
+                LblWarningMessage As label:
+                    Color: =If('Error Type'.Error = ThisItem.Type, VarTheme.Error, RGBA(0, 0, 150, 1))
+                    Height: =84
+                    OnSelect: =Select(Parent)
+                    Text: =ThisItem.'Eligibility Fail Message'
+                    Width: =Parent.Width-100
+                    X: =82
+                    Y: =16
+                    ZIndex: =6
+
+                Icon2 As icon.Warning:
+                    Color: =If('Error Type'.Error = ThisItem.Type, VarTheme.Error, RGBA(0, 0, 150, 1))
+                    Height: =40
+                    Icon: =Icon.Warning
+                    Width: =40
+                    X: =22
+                    Y: =38
+                    ZIndex: =7
+
+        DcScreeningGallery As dataCard.blankCard:
+            BorderColor: =RGBA(0, 0, 0, 1)
+            BorderStyle: =BorderStyle.Solid
+            DisplayMode: =DisplayMode.Edit
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: |-
+                =Sum(
+                    GalScreeningMain.AllItems,
+                    IcnSeperatorScreeningMain.Tooltip + 20
+                )
+            Visible: =CountRows(GalScreeningMain.AllItems)>0 
+            Width: =Parent.Width
+            X: =26
+            Y: =3
+            ZIndex: =2
+
+            "GalScreeningMain As gallery.'BrowseLayout_Flexible_SocialFeed_ver4.0'":
+                Fill: =VarTheme.InputBackground
+                Height: |-
+                    =Sum(
+                        Sum(
+                            GalScreeningMain.AllItems,
+                            IcnSeperatorScreeningMain.Tooltip + 25
+                        ),
+                        TxtAdditionalInput.Height + 10
+                    )
+                Items: |-
+                    =/*SortByColumns(
+                    Filter(CmbSubService.Selected.'Patient Screening Questions',  Status='Status (Patient Screening Questions)'.Active && 'Language '.Code="en"),"smvs_questionorder",
+                            SortOrder.Ascending
+                        )*/
+                    SortByColumns(
+                        Filter(
+                            'Patient Screening Questions',
+                            ('Patient Screening Question' in ColPrimaryServiceScreeningList || 'Patient Screening Question' in ColSecondaryServiceScreeningList) && Status = 'Status (Patient Screening Questions)'.Active && 'Language '.Code = "en"
+                        ),
+                        "smvs_questionorder",
+                        SortOrder.Ascending
+                    )
+                Layout: =Layout.Vertical
+                TemplatePadding: =4
+                TemplateSize: =70
+                Visible: =CountRows(GalScreeningMain.AllItems)>0
+                Width: =Parent.Width-52
+                X: =26
+                ZIndex: =1
+
+                IcnSeperatorScreeningMain As rectangle:
+                    Fill: =RGBA(230, 230, 230, 1)
+                    Height: =1
+                    OnSelect: =Select(Parent)
+                    Tooltip: =Self.Y+Self.Height
+                    Width: =964
+                    Y: |-
+                        =Max(
+                            30 + LblScreeningQuestionMain.Height + If(
+                                Text(ThisItem.'Enable Additional Question') = "Yes",
+                                TxtAdditionalInput.Height + DateEditAdditionalInput.Height + LblQuestionText.Height,
+                                0
+                            )
+                        )
+                    ZIndex: =1
+
+                LblEligible As label:
+                    Text: =Text(ThisItem.'Pass Criteria') = Text(RadioScreening.Selected.Value)    
+                    Visible: =false
+                    X: =475
+                    ZIndex: =2
+
+                LblAdditionalQuestionExist As label:
+                    Height: =1
+                    OnSelect: =Select(Parent)
+                    Text: |-
+                        =If(
+                            Text(ThisItem.'Enable Additional Question') = "Yes" && Text(RadioScreening.Selected.Value) = Text(
+                                LookUp(
+                                    'Patient Screening Questions',
+                                    'Patient Screening Question' = ThisItem.'Patient Screening Question'
+                                ).'Additional Information Criteria'
+                            ) && ThisItem.'Input Type' = 'Control Type'.Text,
+                            true,
+                            If(
+                                Text(ThisItem.'Enable Additional Question') = "Yes" && Text(RadioScreening.Selected.Value) = Text(
+                                    LookUp(
+                                        'Patient Screening Questions',
+                                        'Patient Screening Question' = ThisItem.'Patient Screening Question'
+                                    ).'Additional Information Criteria'
+                                ) && ThisItem.'Input Type' = 'Control Type'.Date,
+                                true
+                            )
+                        )
+                    Visible: =false
+                    X: =456
+                    ZIndex: =3
+
+                LblErrorType As label:
+                    OnSelect: =Select(Parent)
+                    Text: =ThisItem.Type
+                    Visible: =false
+                    X: =482
+                    ZIndex: =4
+
+                LblQuestionResponse As label:
+                    OnSelect: =Select(Parent)
+                    Text: |-
+                        =If(
+                            ThisItem.'Input Type' = 'Control Type'.Text && !IsBlank(TxtAdditionalInput),
+                            true,
+                            If(
+                                ThisItem.'Input Type' = 'Control Type'.Date && !IsBlank(DateEditAdditionalInput.SelectedDate),
+                                true
+                            )
+                        )
+                    Visible: =false
+                    X: =432
+                    ZIndex: =5
+
+                RadioScreening As radio:
+                    BorderColor: =RGBA(0, 0, 0, 0)
+                    Color: =VarTheme.InputText
+                    Default: |-
+                        =If(!IsBlank(gblSelectedAppointmentPatient),
+                            LookUp(
+                                'Patient Screening Responses',
+                                Appointment.Activity = gblSelectedAppointmentPatient.Activity && Question.'Patient Screening Question' = ThisItem.'Patient Screening Question'
+                            ).Response,Blank())
+                    Font: =VarTheme.Font
+                    Height: =60
+                    Items: =Choices('Response (Patient Screening Responses)')
+                    Layout: =Layout.Horizontal
+                    OnSelect: |-
+                        =Select(Parent);
+                        Set(VarPatientScreeningCount,VarPatientScreeningCount+1);
+                        Reset(TxtAdditionalInput);
+                    PressedColor: =
+                    RadioSelectionFill: =VarTheme.PrimaryColor
+                    RadioSize: =35
+                    Reset: =VarResetEligibility
+                    Size: =14
+                    Width: =205
+                    X: =759
+                    Y: =10
+                    ZIndex: =6
+
+                CircleScreening As circle:
+                    Fill: =RGBA(0, 0, 0, 1)
+                    Height: =5
+                    OnSelect: =Select(GalScreeningMain)
+                    Width: =5
+                    X: =18
+                    Y: =(LblScreeningQuestionMain.Y+LblScreeningQuestionMain.Height)/2
+                    ZIndex: =7
+
+                DateEditAdditionalInput As datepicker:
+                    BorderColor: =Color.Black
+                    BorderThickness: =1
+                    DefaultDate: |-
+                        =LookUp(
+                                'Patient Screening Responses',
+                                Appointment.Activity = gblSelectedAppointmentPatient.Activity && Question.'Patient Screening Question' = ThisItem.'Patient Screening Question'
+                            ).'Additional Info' 
+                    Fill: =VarTheme.InputBackground
+                    Font: =VarTheme.Font
+                    Height: |-
+                        =If(
+                            Text(ThisItem.'Enable Additional Question') = "Yes" && !IsBlank(RadioScreening.Selected.Value) && Text(RadioScreening.Selected.Value) = Text(
+                                LookUp(
+                                    'Patient Screening Questions',
+                                    'Patient Screening Question' = ThisItem.'Patient Screening Question' && 'Input Type' = 'Control Type'.Date
+                                ).'Additional Information Criteria'
+                            ),
+                            45,
+                            0
+                        )
+                    IconBackground: =VarTheme.InputBackground
+                    IconFill: =Color.Black
+                    IsEditable: =true
+                    OnSelect: =Select(GalScreeningMain)
+                    Visible: =Text(ThisItem.smvs_enable_additional_question)="Yes" && !IsBlank(RadioScreening.Selected.Value) && Text(RadioScreening.Selected.Value)=Text(LookUp('Patient Screening Questions',smvs_patientscreeningquestionid = ThisItem.smvs_patientscreeningquestionid && smvs_control_type='Control Type'.'153940001').smvs_additional_information_criteria)
+                    Width: =300
+                    X: =40
+                    Y: =LblQuestionText.Y+LblQuestionText.Height
+                    ZIndex: =8
+
+                TxtAdditionalInput As text:
+                    BorderColor: =Color.Black
+                    BorderThickness: =1
+                    Default: =""
+                    Fill: =VarTheme.InputBackground
+                    Font: =VarTheme.Font
+                    Height: |-
+                        =If(
+                            Text(ThisItem.'Enable Additional Question') = "Yes" && !IsBlank(RadioScreening.Selected.Value) && Text(RadioScreening.Selected.Value) = Text(
+                                LookUp(
+                                    'Patient Screening Questions',
+                                    'Patient Screening Question' = ThisItem.'Patient Screening Question' && 'Input Type' = 'Control Type'.Text
+                                ).'Additional Information Criteria'
+                            ),
+                            45,
+                            0
+                        )
+                    HintText: ="Enter response"
+                    RadiusBottomLeft: =0
+                    RadiusBottomRight: =0
+                    RadiusTopLeft: =0
+                    RadiusTopRight: =0
+                    Size: =14
+                    Tooltip: ="Search appointments by Name, phone number, confirmation number"
+                    Visible: =Text(ThisItem.'Enable Additional Question')="Yes" && !IsBlank(RadioScreening.Selected.Value) && Text(RadioScreening.Selected.Value)=Text(LookUp('Patient Screening Questions','Patient Screening Question' = ThisItem.'Patient Screening Question' && 'Input Type'='Control Type'.Text).'Additional Information Criteria')
+                    Width: =550
+                    X: =40
+                    Y: =LblQuestionText.Y+LblQuestionText.Height
+                    ZIndex: =9
+
+                LblQuestionText As label:
+                    AutoHeight: =true
+                    Font: =Font.Lato
+                    Height: =50
+                    OnSelect: =
+                    Size: =14
+                    Text: =ThisItem.'Question Label'
+                    Visible: =Text(ThisItem.smvs_enable_additional_question)="Yes" && !IsBlank(RadioScreening.Selected.Value) && Text(RadioScreening.Selected.Value)=Text(LookUp('Patient Screening Questions',smvs_patientscreeningquestionid = ThisItem.smvs_patientscreeningquestionid).smvs_additional_information_criteria)
+                    Width: =719
+                    X: =40
+                    Y: =LblScreeningQuestionMain.Y+LblScreeningQuestionMain.Height
+                    ZIndex: =10
+
+                LblScreeningQuestionMain As label:
+                    AutoHeight: =true
+                    Color: =VarTheme.InputText
+                    Font: =VarTheme.Font
+                    Height: =70
+                    Size: =14
+                    Text: =ThisItem.'Question Text'
+                    Width: =719
+                    X: =40
+                    ZIndex: =11
+
+                LblScreeningID As label:
+                    OnSelect: =Select(Parent)
+                    Text: =ThisItem.'Patient Screening Question'
+                    Visible: =false
+                    Width: =108
+                    X: =620
+                    Y: =30
+                    ZIndex: =12
+
+        DcScreeningHeader As dataCard.blankCard:
+            BorderColor: =RGBA(0, 0, 0, 1)
+            BorderStyle: =BorderStyle.Solid
+            DisplayMode: =DisplayMode.Edit
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =50
+            Visible: =CountRows(GalScreeningMain.AllItems)>0
+            Width: =1024
+            X: =0
+            Y: =2
+            ZIndex: =3
+
+            LblScreeningHeader As label:
+                Color: =VarTheme.InputText
+                Font: =VarTheme.Font
+                FontWeight: =FontWeight.Bold
+                Height: =50
+                Size: =16
+                Text: ="Patient Screening"
+                Visible: =CountRows(GalScreeningMain.AllItems)>0
+                Width: =800
+                X: =26
+                ZIndex: =1
+
+        DcEligibilityScreening As dataCard.blankCard:
+            BorderColor: =RGBA(0, 0, 0, 1)
+            BorderStyle: =BorderStyle.Solid
+            DisplayMode: =DisplayMode.Edit
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =GalEligibilityMain.TemplateHeight * CountRows(GalEligibilityMain.AllItems)+40
+            Visible: =CountRows(GalEligibilityMain.AllItems)>0 
+            Width: =1024
+            X: =0
+            Y: =1
+            ZIndex: =4
+
+            "GalEligibilityMain As gallery.'BrowseLayout_Flexible_SocialFeed_ver4.0'":
+                Fill: =VarTheme.InputBackground
+                Height: =GalEligibilityMain.TemplateHeight * CountRows(GalEligibilityMain.AllItems)+40
+                Items: |-
+                    =/*SortByColumns(
+                    Filter(CmbSubService.Selected.'Eligibility Questions', Status='Status (Eligibility Questions)'.Active && Language.Code="en"), "smvs_questionorder",
+                            SortOrder.Ascending 
+                        )*/
+                    SortByColumns(
+                        Filter(
+                            'Eligibility Questions',
+                            ('Eligibility Question' in ColPrimaryServiceEligibilityList || 'Eligibility Question' in ColSecondaryServiceEligibilityList) && Status = 'Status (Eligibility Questions)'.Active && Language.Code = "en"
+                        ),
+                        "smvs_questionorder",
+                        SortOrder.Ascending
+                    )
+                Layout: =Layout.Vertical
+                ShowScrollbar: =false
+                TemplatePadding: =4
+                TemplateSize: =70
+                Width: =Parent.Width-52
+                X: =26
+                ZIndex: =1
+
+                CircleEligibilityQuestion As circle:
+                    Fill: =RGBA(0, 0, 0, 1)
+                    Height: =5
+                    OnSelect: =
+                    Width: =5
+                    X: =34
+                    Y: =35
+                    ZIndex: =1
+
+                LblEligibilityQuestion As label:
+                    Color: =VarTheme.InputText
+                    Font: =VarTheme.Font
+                    Height: =60
+                    Size: =14
+                    Text: =ThisItem.'Question Title'
+                    Width: =870
+                    X: =49
+                    Y: =10
+                    ZIndex: =2
+
+                ChkEligibilityQuestion As checkbox:
+                    BorderStyle: =BorderStyle.None
+                    CheckboxBackgroundFill: |-
+                        =//If(ChkEligibilityQuestion.Value = true,VarTheme.PrimaryColor,White)
+                        Color.White
+                    Default: |-
+                        =If(!IsBlank(gblSelectedAppointmentPatient),
+                        If(LookUp(
+                            'Eligibility Responses',
+                            Appointment.Activity = gblSelectedAppointmentPatient.Activity && 'Eligibility Question'.'Eligibility Question' = ThisItem.'Eligibility Question',
+                            Response
+                        ) = 'Response (Eligibility Responses)'.Yes, true),false)
+                    OnSelect: =Select(GalEligibilityMain)
+                    Reset: =VarResetEligibility
+                    Text: =
+                    Width: =45
+                    X: =919
+                    Y: =10
+                    ZIndex: =3
+
+                LblEligibilityID As label:
+                    OnSelect: =Select(Parent)
+                    Text: =ThisItem.'Eligibility Question'
+                    Visible: =false
+                    X: =646
+                    Y: =30
+                    ZIndex: =4
+
+        DcEligibilityHeader As dataCard.blankCard:
+            BorderColor: =RGBA(0, 0, 0, 1)
+            BorderStyle: =BorderStyle.Solid
+            DisplayMode: =DisplayMode.Edit
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =50
+            Visible: =CountRows(GalEligibilityMain.AllItems)>0 
+            Width: =1024
+            X: =0
+            Y: =0
+            ZIndex: =5
+
+            LblEligibility As label:
+                Color: =VarTheme.InputTextDark
+                Font: =VarTheme.Font
+                FontWeight: =FontWeight.Bold
+                Height: =50
+                Size: =16
+                Text: ="Eligibility Screening"
+                Width: =800
+                X: =26
+                ZIndex: =1
+
+        DcContinueQuestions As dataCard.blankCard:
+            BorderColor: =RGBA(0, 0, 0, 1)
+            BorderStyle: =BorderStyle.Solid
+            DisplayMode: =DisplayMode.Edit
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =100
+            Width: =1024
+            X: =0
+            Y: =5
+            ZIndex: =6
+
+            BtnContinueQuestions As button:
+                BorderStyle: =BorderStyle.None
+                BorderThickness: =0
+                DisplayMode: |-
+                    =If(
+                        (CountIf(
+                            GalEligibilityMain.AllItems,
+                            ChkEligibilityQuestion.Value = true
+                        ) > 0 && CountIf(
+                            GalScreeningMain.AllItems,
+                            Text(RadioScreening.Selected.Value) = "Yes" || Text(RadioScreening.Selected.Value) = "No"
+                        ) > 0 && (CountRows(GalScreeningMain.AllItems) = CountIf(
+                            GalScreeningMain.AllItems,
+                            Text(RadioScreening.Selected.Value) = "Yes"
+                        ) + CountIf(
+                            GalScreeningMain.AllItems,
+                            Text(RadioScreening.Selected.Value) = "No"
+                        )) && (CountRows(
+                            Filter(
+                                GalScreeningMain.AllItems,
+                                LblErrorType.Text = "Error" && LblEligible.Text = "true"
+                            )
+                        )) = 0 && (CountRows(
+                            Filter(
+                                GalScreeningMain.AllItems,
+                                LblQuestionResponse.Text = "true"
+                            )
+                        ) = CountRows(
+                            Filter(
+                                GalScreeningMain.AllItems,
+                                LblAdditionalQuestionExist.Text = "true"
+                            )
+                        ))) ||
+                        //Eligibility and Screening zero
+                     (CountRows(GalScreeningMain.AllItems) = 0 && CountRows(GalEligibilityMain.AllItems) = 0) ||
+                        //Eligibility zero
+                     ((CountIf(
+                            GalScreeningMain.AllItems,
+                            Text(RadioScreening.Selected.Value) = "Yes" || Text(RadioScreening.Selected.Value) = "No"
+                        ) > 0 && (CountRows(GalScreeningMain.AllItems) = CountIf(
+                            GalScreeningMain.AllItems,
+                            Text(RadioScreening.Selected.Value) = "Yes"
+                        ) + CountIf(
+                            GalScreeningMain.AllItems,
+                            Text(RadioScreening.Selected.Value) = "No"
+                        )) && (CountRows(
+                            Filter(
+                                GalScreeningMain.AllItems,
+                                LblErrorType.Text = "Error" && LblEligible.Text = "true"
+                            )
+                        )) = 0) && CountRows(GalEligibilityMain.AllItems) = 0 && (CountRows(
+                            Filter(
+                                GalScreeningMain.AllItems,
+                                LblQuestionResponse.Text = "true"
+                            )
+                        ) = CountRows(
+                            Filter(
+                                GalScreeningMain.AllItems,
+                                LblAdditionalQuestionExist.Text = "true"
+                            )
+                        ))) ||
+                        //Screening Zero
+                     ((CountIf(
+                            GalEligibilityMain.AllItems,
+                            ChkEligibilityQuestion.Value = true
+                        ) && (CountRows(GalScreeningMain.AllItems) = CountIf(
+                            GalScreeningMain.AllItems,
+                            Text(RadioScreening.Selected.Value) = "Yes"
+                        ) + CountIf(
+                            GalScreeningMain.AllItems,
+                            Text(RadioScreening.Selected.Value) = "No"
+                        )) && (CountRows(
+                            Filter(
+                                GalScreeningMain.AllItems,
+                                LblErrorType.Text = "Error" && LblEligible.Text = "true"
+                            )
+                        )) = 0) && CountRows(GalScreeningMain.AllItems) = 0),
+                        DisplayMode.Edit,
+                        DisplayMode.Disabled
+                    )
+                Fill: =VarTheme.PrimaryColor
+                Font: =VarTheme.Font
+                Height: =50
+                HoverFill: =VarTheme.PrimaryColorDark
+                OnSelect: |
+                    =//Primary appointment screening question
+                    Clear(colScreeningPrimary);
+                    
+                    ForAll(
+                        Filter(
+                            GalScreeningMain.AllItems,
+                            Text(LblScreeningID) in ColPrimaryServiceScreeningList
+                        ),
+                        Collect(
+                            colScreeningPrimary,
+                            {
+                                id: ThisRecord.'Patient Screening Question',
+                                additionalInfo: If(
+                                    ThisRecord.'Input Type' = 'Control Type'.Text,
+                                    ThisRecord.TxtAdditionalInput.Text,
+                                    If(
+                                        ThisRecord.'Input Type' = 'Control Type'.Date,
+                                        Text(
+                                            ThisRecord.DateEditAdditionalInput.SelectedDate,
+                                            "mm/dd/yyyy"
+                                        )
+                                    )
+                                ),
+                                value: If(
+                                    ThisRecord.RadioScreening.Selected.Value,
+                                    "Yes",
+                                    "No"
+                                )
+                            }
+                        )
+                    );
+                    Set(
+                        VarPrimaryScreeningJson,
+                        JSON(colScreeningPrimary)
+                    );
+                    
+                    //Secondary appointment screening question
+                    Clear(colScreeningSecondary);
+                    
+                    ForAll(
+                        Filter(
+                            GalScreeningMain.AllItems,
+                            Text(LblScreeningID) in ColSecondaryServiceScreeningList
+                        ),
+                        Collect(
+                            colScreeningSecondary,
+                            {
+                                id: ThisRecord.'Patient Screening Question',
+                                additionalInfo: If(
+                                    ThisRecord.'Input Type' = 'Control Type'.Text,
+                                    ThisRecord.TxtAdditionalInput.Text,
+                                    If(
+                                        ThisRecord.'Input Type' = 'Control Type'.Date,
+                                        Text(
+                                            ThisRecord.DateEditAdditionalInput.SelectedDate,
+                                            "mm/dd/yyyy"
+                                        )
+                                    )
+                                ),
+                                value: If(
+                                    ThisRecord.RadioScreening.Selected.Value,
+                                    "Yes",
+                                    "No"
+                                )
+                            }
+                        )
+                    );
+                    Set(
+                        VarSecondaryScreeningJson,
+                        JSON(colScreeningSecondary)
+                    );
+                    
+                    //Primary appointment eligibility question
+                    Clear(colEligbilityPrimary);
+                    ForAll(
+                        Filter(
+                            GalEligibilityMain.AllItems,
+                            Text(LblEligibilityID) in ColPrimaryServiceScreeningList
+                        ),
+                        Collect(
+                            colEligbilityPrimary,
+                            {
+                                id: ThisRecord.'Eligibility Question',
+                                value: If(
+                                    IsBlank(ThisRecord.ChkEligibilityQuestion.Value),
+                                    false,
+                                    ThisRecord.ChkEligibilityQuestion.Value
+                                )
+                            }
+                        )
+                    );
+                    Set(
+                        VarPrimaryEligibilityJson,
+                        JSON(colEligbilityPrimary)
+                    );
+                    //Secondary appointment eligibility question
+                    Clear(colEligbilitySecondary);
+                    ForAll(
+                       Filter(
+                            GalEligibilityMain.AllItems,
+                            Text(LblEligibilityID) in ColSecondaryServiceScreeningList
+                        ),
+                        Collect(
+                            colEligbilitySecondary,
+                            {
+                                id: ThisRecord.'Eligibility Question',
+                                value: If(
+                                    IsBlank(ThisRecord.ChkEligibilityQuestion.Value),
+                                    false,
+                                    ThisRecord.ChkEligibilityQuestion.Value
+                                )
+                            }
+                        )
+                    );
+                    Set(
+                        VarSecondaryEligibilityJson,
+                        JSON(colEligbilitySecondary)
+                    );
+                    Set(
+                        VarEditInsuranceValidationChk,
+                        false
+                    );
+                    Navigate(ScnPatientProfile);
+                PaddingBottom: =14
+                PaddingTop: =14
+                RadiusBottomLeft: =0
+                RadiusBottomRight: =0
+                RadiusTopLeft: =0
+                RadiusTopRight: =0
+                Size: =16
+                Text: ="Continue"
+                Width: =625
+                X: =200
+                Y: =25
+                ZIndex: =1
+
+    MultiserviceViewComponentScreening As MultiserviceViewComponent:
+        ClearAdditionalService: |-
+            =UpdateContext({locCloseAlert:true});
+            UpdateContext({locadditionalservicetype:2})
+        EditAdditionalService: |-
+            =UpdateContext({locCloseAlert: true});
+            //type 1 = edit, type 2 = remove
+            UpdateContext({locadditionalservicetype: 1});
+        FirstService: =CmbSubService.Selected.Name
+        Height: =If(varAdditionalService,145,0)
+        SecondService: =CmbAdditionalSubService.Selected.Name
+        Visible: =true
+        Width: =Parent.Width-52
+        X: =26
+        Y: =NavigationScreening.Y+NavigationScreening.Height
+        ZIndex: =2
+
+    NavigationScreening As BreadCrumbNavigationComponent:
+        ActiveStageNumber: |-
+            =If(
+                ((VarWalkIn && VarRegimenDose = 'Regimen Dose Options'.'Both Doses') || VarForLater) && VarScreeningQuestionCheck && LblPaymentCheck.Text = "true",
+                2,
+                VarWalkIn && LblPaymentCheck.Text = "true" && VarRegimenDose <> 'Regimen Dose Options'.'Both Doses' && VarScreeningQuestionCheck && varAdditionalService = false,
+                2,
+                VarWalkIn && LblPaymentCheckCombined.Text = "true" && VarRegimenDose <> 'Regimen Dose Options'.'Both Doses' && (VarScreeningQuestionCheck || VarScreeningQuestionCheckSecondary) && varAdditionalService,
+                2,
+                VarWalkIn && LblPaymentCheckCombined.Text = "true" && VarRegimenDose <> 'Regimen Dose Options'.'Both Doses' && (VarScreeningQuestionCheck || VarScreeningQuestionCheckSecondary) && varAdditionalService,
+                2,
+                ((VarWalkIn && VarRegimenDose = 'Regimen Dose Options'.'Both Doses') || VarForLater) && LblPaymentCheck.Text = "false" && VarScreeningQuestionCheck,
+                2,
+                2,
+                VarWalkIn && LblPaymentCheckCombined.Text = "false" && (VarRegimenDose = 'Regimen Dose Options'.'1st Dose only' || VarRegimenDose = 'Regimen Dose Options'.'2nd Dose only') && (VarScreeningQuestionCheck || VarScreeningQuestionCheckSecondary) && varAdditionalService,
+                2,
+                2
+            )
+        Items: |-
+            =If(
+                ((VarWalkIn && VarRegimenDose = 'Regimen Dose Options'.'Both Doses') || VarForLater) && VarScreeningQuestionCheck && LblPaymentCheck.Text = "true",
+                Table(
+                    {
+                        StageNumber: 1,
+                        Label: "Location & Services"
+                    },
+                    {
+                        StageNumber: 2,
+                        Label: "Screening Questions"
+                    },
+                    {
+                        StageNumber: 3,
+                        Label: "Patient Information"
+                    },
+                    {
+                        StageNumber: 4,
+                        Label: "Payment Information"
+                    },
+                    {
+                        StageNumber: 5,
+                        Label: "Schedule Appointment"
+                    },
+                    {
+                        StageNumber: 6,
+                        Label: "Confirmation"
+                    }
+                ),
+                VarWalkIn && LblPaymentCheck.Text = "true" && VarRegimenDose <> 'Regimen Dose Options'.'Both Doses' && VarScreeningQuestionCheck && varAdditionalService=false,
+                Table(
+                    {
+                        StageNumber: 1,
+                        Label: "Location & Services"
+                    },
+                    {
+                        StageNumber: 2,
+                        Label: "Screening Questions"
+                    },
+                    {
+                        StageNumber: 3,
+                        Label: "Patient Information"
+                    },
+                    {
+                        StageNumber: 4,
+                        Label: "Payment Information"
+                    },
+                    {
+                        StageNumber: 5,
+                        Label: "Confirmation"
+                    }
+                ),
+                    VarWalkIn && LblPaymentCheckCombined.Text="true" && VarRegimenDose <> 'Regimen Dose Options'.'Both Doses' && (VarScreeningQuestionCheck || VarScreeningQuestionCheckSecondary) && varAdditionalService,
+                Table(
+                    {
+                        StageNumber: 1,
+                        Label: "Location & Services"
+                    },
+                    {
+                        StageNumber: 2,
+                        Label: "Screening Questions"
+                    },
+                    {
+                        StageNumber: 3,
+                        Label: "Patient Information"
+                    },
+                    {
+                        StageNumber: 4,
+                        Label: "Payment Information"
+                    },
+                    {
+                        StageNumber: 5,
+                        Label: "Confirmation"
+                    }
+                ),
+                        VarWalkIn && LblPaymentCheckCombined.Text="true" && VarRegimenDose <> 'Regimen Dose Options'.'Both Doses' && (VarScreeningQuestionCheck || VarScreeningQuestionCheckSecondary) && varAdditionalService,
+                Table(
+                    {
+                        StageNumber: 1,
+                        Label: "Location & Services"
+                    },
+                    {
+                        StageNumber: 2,
+                        Label: "Screening Questions"
+                    },
+                    {
+                        StageNumber: 3,
+                        Label: "Patient Information"
+                    },
+                    {
+                        StageNumber: 4,
+                        Label: "Payment Information"
+                    },
+                    {
+                        StageNumber: 5,
+                        Label: "Confirmation"
+                    }
+                ),
+                ((VarWalkIn  && VarRegimenDose = 'Regimen Dose Options'.'Both Doses') || VarForLater) && LblPaymentCheck.Text = "false" && VarScreeningQuestionCheck,
+                Table(
+                    {
+                        StageNumber: 1,
+                        Label: "Location & Services"
+                    },
+                    {
+                        StageNumber: 2,
+                        Label: "Screening Questions"
+                    },
+                    {
+                        StageNumber: 3,
+                        Label: "Patient Information"
+                    },
+                    {
+                        StageNumber: 4,
+                        Label: "Schedule Appointment"
+                    },
+                    {
+                        StageNumber: 5,
+                        Label: "Confirmation"
+                    }
+                ),
+                VarWalkIn && LblPaymentCheck.Text = "false" && (VarRegimenDose = 'Regimen Dose Options'.'1st Dose only' || VarRegimenDose = 'Regimen Dose Options'.'2nd Dose only') && VarScreeningQuestionCheck && varAdditionalService=false,
+                Table(
+                    {
+                        StageNumber: 1,
+                        Label: "Location & Services"
+                    },
+                    {
+                        StageNumber: 2,
+                        Label: "Screening Questions"
+                    },
+                    {
+                        StageNumber: 3,
+                        Label: "Patient Information"
+                    },
+                    {
+                        StageNumber: 4,
+                        Label: "Confirmation"
+                    }
+                ),
+                 VarWalkIn && LblPaymentCheckCombined.Text="false" && (VarRegimenDose = 'Regimen Dose Options'.'1st Dose only' || VarRegimenDose = 'Regimen Dose Options'.'2nd Dose only') &&(VarScreeningQuestionCheck || VarScreeningQuestionCheckSecondary) && varAdditionalService,
+                Table(
+                    {
+                        StageNumber: 1,
+                        Label: "Location & Services"
+                    },
+                    {
+                        StageNumber: 2,
+                        Label: "Screening Questions"
+                    },
+                    {
+                        StageNumber: 3,
+                        Label: "Patient Information"
+                    },
+                    {
+                        StageNumber: 4,
+                        Label: "Confirmation"
+                    }
+                ),
+                ((VarWalkIn && VarRegimenDose = 'Regimen Dose Options'.'Both Doses') || VarForLater) && VarScreeningQuestionCheck = false && LblPaymentCheck.Text = "true",
+                Table(
+                    {
+                        StageNumber: 1,
+                        Label: "Location & Services"
+                    },
+            
+                    {
+                        StageNumber: 2,
+                        Label: "Patient Information"
+                    },
+                    {
+                        StageNumber: 3,
+                        Label: "Payment Information"
+                    },
+                    {
+                        StageNumber: 4,
+                        Label: "Schedule Appointment"
+                    },
+                    {
+                        StageNumber: 5,
+                        Label: "Confirmation"
+                    }
+                ),
+                VarWalkIn && LblPaymentCheck.Text = "true" && VarRegimenDose <> 'Regimen Dose Options'.'Both Doses' && VarScreeningQuestionCheck = false && varAdditionalService=false,
+                Table(
+                    {
+                        StageNumber: 1,
+                        Label: "Location & Services"
+                    },
+                    {
+                        StageNumber: 2,
+                        Label: "Patient Information"
+                    },
+                    {
+                        StageNumber: 3,
+                        Label: "Payment Information"
+                    },
+                    {
+                        StageNumber: 4,
+                        Label: "Confirmation"
+                    }
+                ),
+                    VarWalkIn && LblPaymentCheckCombined.Text="true" && VarRegimenDose <> 'Regimen Dose Options'.'Both Doses' && VarScreeningQuestionCheck = false &&VarScreeningQuestionCheckSecondary=false && varAdditionalService,
+                Table(
+                    {
+                        StageNumber: 1,
+                        Label: "Location & Services"
+                    },
+                    {
+                        StageNumber: 2,
+                        Label: "Patient Information"
+                    },
+                    {
+                        StageNumber: 3,
+                        Label: "Payment Information"
+                    },
+                    {
+                        StageNumber: 4,
+                        Label: "Confirmation"
+                    }
+                ),
+                ((VarWalkIn && VarRegimenDose = 'Regimen Dose Options'.'Both Doses') || VarForLater) && VarScreeningQuestionCheck = false && LblPaymentCheck.Text = "false",
+                Table(
+                    {
+                        StageNumber: 1,
+                        Label: "Location & Services"
+                    },
+                    {
+                        StageNumber: 2,
+                        Label: "Patient Information"
+                    },
+                    {
+                        StageNumber: 3,
+                        Label: "Schedule Appointment"
+                    },
+                    {
+                        StageNumber: 4,
+                        Label: "Confirmation"
+                    }
+                ),
+                VarWalkIn && LblPaymentCheckCombined.Text="false" && (VarRegimenDose = 'Regimen Dose Options'.'1st Dose only' || VarRegimenDose = 'Regimen Dose Options'.'2nd Dose only') && VarScreeningQuestionCheck = false && VarScreeningQuestionCheckSecondary=false && varAdditionalService,
+                Table(
+                    {
+                        StageNumber: 1,
+                        Label: "Location & Services"
+                    },
+                    {
+                        StageNumber: 2,
+                        Label: "Patient Information"
+                    },
+                    {
+                        StageNumber: 3,
+                        Label: "Confirmation"
+                    }
+                ), 
+                VarWalkIn && LblPaymentCheck.Text = "false" && (VarRegimenDose = 'Regimen Dose Options'.'1st Dose only' || VarRegimenDose = 'Regimen Dose Options'.'2nd Dose only') && VarScreeningQuestionCheck = false && varAdditionalService=false,
+                Table(
+                    {
+                        StageNumber: 1,
+                        Label: "Location & Services"
+                    },
+                    {
+                        StageNumber: 2,
+                        Label: "Patient Information"
+                    },
+                    {
+                        StageNumber: 3,
+                        Label: "Confirmation"
+                    }
+                ),
+                Table(
+                    {
+                        StageNumber: 1,
+                        Label: "Location & Services"
+                    },
+                    {
+                        StageNumber: 2,
+                        Label: "Screening Questions"
+                    },
+                    {
+                        StageNumber: 3,
+                        Label: "Patient Information"
+                    },
+                    {
+                        StageNumber: 4,
+                        Label: "Payment Information"
+                    },
+                    {
+                        StageNumber: 5,
+                        Label: "Schedule Appointment"
+                    },
+                    {
+                        StageNumber: 6,
+                        Label: "Confirmation"
+                    }
+                )
+            )
+        Visible: =VarForLater || VarWalkIn
+        Width: =Parent.Width
+        Y: =ConQuestionHeader.Y+ConQuestionHeader.Height
+        ZIndex: =3
+
+    ConQuestionHeader As groupContainer.manualLayoutContainer:
+        Height: =VarTheme.HeaderSize
+        Width: =Parent.Width
+        ZIndex: =4
+
+        ImgQuestionsBack As image:
+            Height: =40
+            Image: |-
+                ="data:image/svg+xml;utf8, "&EncodeUrl("<svg width='28' height='28' viewBox='0 0 28 28' fill='none' xmlns='http://www.w3.org/2000/svg'> <path d='M14 28C10.287 28 6.72602 26.525 4.10051 23.8995C1.475 21.274 3.04044e-06 17.713 3.20274e-06 14C3.36504e-06 10.287 1.475 6.72601 4.10051 4.1005C6.72602 1.475 10.287 -7.74261e-07 14 -6.11959e-07C17.713 -4.49658e-07 21.274 1.475 23.8995 4.10051C26.525 6.72601 28 10.287 28 14C28 17.713 26.525 21.274 23.8995 23.8995C21.274 26.525 17.713 28 14 28ZM20.125 14.875C20.3571 14.875 20.5796 14.7828 20.7437 14.6187C20.9078 14.4546 21 14.2321 21 14C21 13.7679 20.9078 13.5454 20.7437 13.3813C20.5796 13.2172 20.3571 13.125 20.125 13.125L9.98725 13.125L13.7445 9.3695C13.9088 9.2052 14.0011 8.98236 14.0011 8.75C14.0011 8.51764 13.9088 8.2948 13.7445 8.1305C13.5802 7.9662 13.3574 7.87389 13.125 7.87389C12.8926 7.87389 12.6698 7.9662 12.5055 8.1305L7.2555 13.3805C7.17402 13.4618 7.10937 13.5583 7.06526 13.6646C7.02114 13.7709 6.99844 13.8849 6.99844 14C6.99844 14.1151 7.02114 14.2291 7.06526 14.3354C7.10937 14.4417 7.17402 14.5382 7.2555 14.6195L12.5055 19.8695C12.6698 20.0338 12.8926 20.1261 13.125 20.1261C13.3574 20.1261 13.5802 20.0338 13.7445 19.8695C13.9088 19.7052 14.0011 19.4824 14.0011 19.25C14.0011 19.0176 13.9088 18.7948 13.7445 18.6305L9.98725 14.875L20.125 14.875Z' fill='#0052CC'/> </svg> ")
+            OnSelect: =Navigate(ScnLocation);
+            Width: =40
+            X: =40
+            Y: =40
+            ZIndex: =1
+
+        LblScreeningTitle As label:
+            Font: =VarTheme.Font
+            FontWeight: =FontWeight.Bold
+            PaddingLeft: =30
+            Size: =24
+            Text: ="Screening Questions"
+            Width: =500
+            X: =86
+            Y: =40
+            ZIndex: =2
+
+        IcnSeperatorQuestions As icon.HorizontalLine:
+            Color: =RGBA(148, 148, 148, 1)
+            Fill: =RGBA(148, 148, 148, 1)
+            FocusedBorderThickness: =0
+            Height: =1
+            Icon: =Icon.HorizontalLine
+            Width: =Parent.Width
+            Y: =Parent.Height-Self.Height
+            ZIndex: =3
+
+    ConMultiServiceAlertScreening As groupContainer.manualLayoutContainer:
+        Fill: =RGBA(0, 0, 0, 0.8)
+        Height: =Parent.Height
+        Visible: =locCloseAlert
+        Width: =Parent.Width
+        ZIndex: =5
+
+        MultiserviceAlertComponentScreening As MultiserviceAlertBoxComponent:
+            ActionButtonText: |-
+                =If(locadditionalservicetype=1,
+                "Yes, edit",
+                locadditionalservicetype=2,
+                "Yes, remove"
+                )
+            CloseAlert: |-
+                =UpdateContext({locCloseAlert: false});
+            EditOrRemove: |
+                =If(
+                    locadditionalservicetype = 1,
+                    Navigate(ScnLocation),
+                    locadditionalservicetype = 2,
+                    Set(
+                        varAdditionalService,
+                        false
+                    );
+                    Reset(CmbAdditionalServiceType);
+                    Reset(CmbAdditionalService);
+                    Reset(CmbAdditionalSubService);
+                    Clear(ColSecondaryServiceScreening);
+                    Clear(ColSecondaryServiceScreeningList);
+                    Clear(ColSecondaryServiceEligibility);
+                    Clear(ColSecondaryServiceEligibilityList);
+                    Clear(ColSecondaryInsuracnceData);
+                    Clear(ColSecondaryInsuranceValue);
+                    Navigate(ScnLocation);
+                    
+                );
+                UpdateContext({locCloseAlert: false});
+            TitleDescription: |-
+                =
+                
+                If(locadditionalservicetype=1,
+                "Are you sure want to edit the selected service(s).",
+                locadditionalservicetype=2,
+                "Are you sure want to remove the additional service."
+                )
+            TitleHeader: |-
+                =If(locadditionalservicetype=1,
+                "Edit Service?",
+                locadditionalservicetype=2,
+                "Remove Service?"
+                )
+            X: =247
+            Y: =545
+

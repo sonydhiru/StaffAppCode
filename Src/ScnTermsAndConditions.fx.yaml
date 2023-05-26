@@ -1,0 +1,77 @@
+"ScnTermsAndConditions As screen.'tabletAutoLayout_HeaderMainFooter_ver1.0'":
+    OnVisible: =
+
+    ConTermsAndConditions As groupContainer.manualLayoutContainer:
+        Height: =Parent.Height-Self.Y
+        Width: =Parent.Width
+        Y: =ConTnSHeader.Y+ConTnSHeader.Height
+        ZIndex: =2
+
+        HtmlTermsnConditionsSecondary As htmlViewer:
+            AutoHeight: =true
+            Font: =VarTheme.Font
+            Height: =Parent.Height
+            HtmlText: =First(Filter(CmbAdditionalService.Selected.'Localize Website Contents',Language.Code = "en")).'Terms and Condition'
+            Size: =20
+            Width: =Parent.Width-52
+            X: =40
+            Y: =LblSecondaryTnS.Y+LblSecondaryTnS.Height
+            ZIndex: =1
+
+        LblSecondaryTnS As label:
+            Font: =VarTheme.Font
+            FontWeight: =FontWeight.Bold
+            Height: =52
+            Size: =20
+            Text: =CmbAdditionalService.Selected.Name
+            Width: =500
+            X: =40
+            Y: =HtmlTermsnConditions.Y+HtmlTermsnConditions.Height
+            ZIndex: =2
+
+        HtmlTermsnConditions As htmlViewer:
+            AutoHeight: =true
+            Font: =VarTheme.Font
+            Height: =Parent.Height
+            HtmlText: =First(Filter(CmbService.Selected.'Localize Website Contents',Language.Code = "en")).'Terms and Condition'
+            Size: =20
+            Width: =Parent.Width-52
+            X: =40
+            Y: =LblPrimaryTnS.Y+LblPrimaryTnS.Height
+            ZIndex: =3
+
+        LblPrimaryTnS As label:
+            Font: =VarTheme.Font
+            FontWeight: =FontWeight.Bold
+            Height: =52
+            Size: =20
+            Text: =CmbService.Selected.Name
+            Width: =700
+            X: =40
+            ZIndex: =4
+
+    ConTnSHeader As groupContainer.manualLayoutContainer:
+        Height: =VarTheme.HeaderSize
+        Width: =Parent.Width
+        ZIndex: =3
+
+        "'ImgT&SBack' As image":
+            Height: =40
+            Image: |-
+                ="data:image/svg+xml;utf8, "&EncodeUrl("<svg width='28' height='28' viewBox='0 0 28 28' fill='none' xmlns='http://www.w3.org/2000/svg'> <path d='M14 28C10.287 28 6.72602 26.525 4.10051 23.8995C1.475 21.274 3.04044e-06 17.713 3.20274e-06 14C3.36504e-06 10.287 1.475 6.72601 4.10051 4.1005C6.72602 1.475 10.287 -7.74261e-07 14 -6.11959e-07C17.713 -4.49658e-07 21.274 1.475 23.8995 4.10051C26.525 6.72601 28 10.287 28 14C28 17.713 26.525 21.274 23.8995 23.8995C21.274 26.525 17.713 28 14 28ZM20.125 14.875C20.3571 14.875 20.5796 14.7828 20.7437 14.6187C20.9078 14.4546 21 14.2321 21 14C21 13.7679 20.9078 13.5454 20.7437 13.3813C20.5796 13.2172 20.3571 13.125 20.125 13.125L9.98725 13.125L13.7445 9.3695C13.9088 9.2052 14.0011 8.98236 14.0011 8.75C14.0011 8.51764 13.9088 8.2948 13.7445 8.1305C13.5802 7.9662 13.3574 7.87389 13.125 7.87389C12.8926 7.87389 12.6698 7.9662 12.5055 8.1305L7.2555 13.3805C7.17402 13.4618 7.10937 13.5583 7.06526 13.6646C7.02114 13.7709 6.99844 13.8849 6.99844 14C6.99844 14.1151 7.02114 14.2291 7.06526 14.3354C7.10937 14.4417 7.17402 14.5382 7.2555 14.6195L12.5055 19.8695C12.6698 20.0338 12.8926 20.1261 13.125 20.1261C13.3574 20.1261 13.5802 20.0338 13.7445 19.8695C13.9088 19.7052 14.0011 19.4824 14.0011 19.25C14.0011 19.0176 13.9088 18.7948 13.7445 18.6305L9.98725 14.875L20.125 14.875Z' fill='#0052CC'/> </svg> ")
+            OnSelect: =Navigate(ScnPatientProfile);
+            Width: =40
+            X: =40
+            Y: =40
+            ZIndex: =1
+
+        "'LblT&SHeader' As label":
+            Font: =VarTheme.Font
+            FontWeight: =FontWeight.Bold
+            Size: =24
+            Text: ="Terms & Conditions"
+            Width: =500
+            X: =86
+            Y: =40
+            ZIndex: =2
+

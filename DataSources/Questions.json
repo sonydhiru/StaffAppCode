@@ -1,0 +1,105 @@
+[
+  {
+    "CdsFCBContext": "{\"FileType\":true,\"ImageExternalStorage\":true}",
+    "EntitySetName": "rsp_questions",
+    "IsHidden": false,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "LogicalName": "rsp_question",
+    "MaxGetRowsCount": 500,
+    "Name": "Questions",
+    "NativeCDSDataSourceInfoNameMapping": {
+      "_ownerid_value": "Owner",
+      "createdby": "Created By",
+      "createdon": "Created On",
+      "createdonbehalfby": "Created By (Delegate)",
+      "importsequencenumber": "Import Sequence Number",
+      "modifiedby": "Modified By",
+      "modifiedon": "Modified On",
+      "modifiedonbehalfby": "Modified By (Delegate)",
+      "overriddencreatedon": "Record Created On",
+      "owningbusinessunit": "Owning Business Unit",
+      "owningteam": "Owning Team",
+      "owninguser": "Owning User",
+      "rsp_attendeeanswer": "Attendee Answer",
+      "rsp_correctanswer": "Correct Answer",
+      "rsp_option1": "Option 1",
+      "rsp_option2": "Option 2",
+      "rsp_option3": "Option 3",
+      "rsp_option4": "Option 4",
+      "rsp_question_AsyncOperations": "System Jobs",
+      "rsp_question_BulkDeleteFailures": "Bulk Delete Failures",
+      "rsp_question_DuplicateBaseRecord": "Duplicate Records (rsp_question_DuplicateBaseRecord)",
+      "rsp_question_DuplicateMatchingRecord": "Duplicate Records (rsp_question_DuplicateMatchingRecord)",
+      "rsp_question_MailboxTrackingFolders": "Mailbox Auto Tracking Folders",
+      "rsp_question_PrincipalObjectAttributeAccesses": "Field Sharing",
+      "rsp_question_ProcessSession": "Process Sessions",
+      "rsp_question_SyncErrors": "Sync Errors",
+      "rsp_questionid": "Question",
+      "rsp_questionstring": "Question string",
+      "rsp_rsp_attendeeanswer_Question_rsp_question": "Answers",
+      "rsp_rsp_questionresponses_Question_rsp_questi": "Question Responses",
+      "statecode": "Status",
+      "statuscode": "Status Reason",
+      "timezoneruleversionnumber": "Time Zone Rule Version Number",
+      "utcconversiontimezonecode": "UTC Conversion Time Zone Code",
+      "versionnumber": "Version Number"
+    },
+    "PreferredName": "Questions",
+    "Type": "NativeCDSDataSourceInfo"
+  },
+  {
+    "DisplayName": "Questions (Views)",
+    "Name": "_rsp_question_views",
+    "RelatedEntityName": "Questions",
+    "TrimmedViewName": true,
+    "Type": "ViewInfo",
+    "ViewInfoNameMapping": {
+      "0c3e874d-d5d4-421d-857e-38539924d1fe": "Inactive Questions",
+      "172ec073-0765-46c4-8358-14fa35f6abfc": "Active Questions",
+      "1d0880c1-a720-451a-9b0b-4983555fa28b": "Question Associated View",
+      "858330a5-fc5c-48ca-b540-6426d38e70e6": "Question Lookup View",
+      "96bd52b0-32e3-4ba1-9f80-cdbff46353c9": "Question Advanced Find View"
+    }
+  },
+  {
+    "DisplayName": "Status (Questions)",
+    "Name": "rsp_question_statecode",
+    "OptionSetInfoNameMapping": {
+      "0": "Active",
+      "1": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statecode",
+        "OptionSetReferenceEntityName": "Questions"
+      }
+    },
+    "OptionSetTypeKey": "StateType",
+    "RelatedColumnInvariantName": "statecode",
+    "RelatedEntityName": "Questions",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status Reason (Questions)",
+    "Name": "rsp_question_statuscode",
+    "OptionSetInfoNameMapping": {
+      "1": "Active",
+      "2": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statuscode",
+        "OptionSetReferenceEntityName": "Questions"
+      }
+    },
+    "OptionSetTypeKey": "StatusType",
+    "RelatedColumnInvariantName": "statuscode",
+    "RelatedEntityName": "Questions",
+    "Type": "OptionSetInfo"
+  }
+]

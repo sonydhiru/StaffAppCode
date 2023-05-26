@@ -1,0 +1,156 @@
+[
+  {
+    "CdsFCBContext": "{\"FileType\":true,\"ImageExternalStorage\":true}",
+    "EntitySetName": "smvs_service_types",
+    "IsHidden": false,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "LogicalName": "smvs_service_type",
+    "MaxGetRowsCount": 500,
+    "Name": "Service Types",
+    "NativeCDSDataSourceInfoNameMapping": {
+      "_ownerid_value": "Owner",
+      "createdby": "Created By",
+      "createdon": "Created On",
+      "createdonbehalfby": "Created By (Delegate)",
+      "crf7e_vaccinegroup": "Service Group",
+      "importsequencenumber": "Import Sequence Number",
+      "modifiedby": "Modified By",
+      "modifiedon": "Modified On",
+      "modifiedonbehalfby": "Modified By (Delegate)",
+      "overriddencreatedon": "Record Created On",
+      "owningbusinessunit": "Owning Business Unit",
+      "owningteam": "Owning Team",
+      "owninguser": "Owning User",
+      "smvs_EligibilityQuestion_smvs_service_typ": "Eligibility Questions",
+      "smvs_language": "Language",
+      "smvs_msemr_healthcareservicecategory_service_t": "Services",
+      "smvs_name": "Name",
+      "smvs_PatientScreeningQuestion_smvs_servic": "Patient Screening Questions",
+      "smvs_service_type_AsyncOperations": "System Jobs",
+      "smvs_service_type_BulkDeleteFailures": "Bulk Delete Failures",
+      "smvs_service_type_DuplicateBaseRecord": "Duplicate Records (smvs_service_type_DuplicateBaseRecord)",
+      "smvs_service_type_DuplicateMatchingRecord": "Duplicate Records (smvs_service_type_DuplicateMatchingRecord)",
+      "smvs_service_type_MailboxTrackingFolders": "Mailbox Auto Tracking Folders",
+      "smvs_service_type_PrincipalObjectAttributeAccesses": "Field Sharing",
+      "smvs_service_type_ProcessSession": "Process Sessions",
+      "smvs_service_type_status": "Service Type Status",
+      "smvs_service_type_SyncErrors": "Sync Errors",
+      "smvs_service_typeid": "Service Type",
+      "smvs_smvs_service_type_compatibility_primary_s": "Service Type Compatibilities (smvs_smvs_service_type_compatibility_primary_s)",
+      "smvs_smvs_service_type_compatibility_secondary": "Service Type Compatibilities (smvs_smvs_service_type_compatibility_secondary)",
+      "smvs_subgrid_control": "Subgrid Control",
+      "smvs_subgrid_control_screening": "Subgrid Control Screening",
+      "statecode": "Status",
+      "statuscode": "Status Reason",
+      "timezoneruleversionnumber": "Time Zone Rule Version Number",
+      "utcconversiontimezonecode": "UTC Conversion Time Zone Code",
+      "versionnumber": "Version Number"
+    },
+    "PreferredName": "Service Types",
+    "Type": "NativeCDSDataSourceInfo"
+  },
+  {
+    "DisplayName": "Service Types (Views)",
+    "Name": "_smvs_service_type_views",
+    "RelatedEntityName": "Service Types",
+    "TrimmedViewName": true,
+    "Type": "ViewInfo",
+    "ViewInfoNameMapping": {
+      "09aeccc9-de8d-4479-9260-35c428e4bda1": "Service Type Advanced Find View",
+      "13760f7b-9f88-42ea-83ae-e77e44ad1209": "Service Type Lookup View (13760f7b-9f88-42ea-83ae-e77e44ad1209)",
+      "2c9e8777-4a11-ec11-b6e6-000d3a57036a": "All Service Types",
+      "5dda3161-c067-4fb0-b8b1-149c5d1e6240": "Inactive Service Types",
+      "a83bb4b5-2c86-4b18-a2cb-c4d7bbee40f7": "Active Service Types",
+      "b4de507c-cf82-491f-9577-d394c7aaf028": "Service Type Lookup View (b4de507c-cf82-491f-9577-d394c7aaf028)",
+      "b82242d3-9a1f-48ac-be26-6e7a170dee1f": "Service Type Associated View"
+    }
+  },
+  {
+    "DisplayName": "Service Group",
+    "Name": "crf7e_vaccinegroup",
+    "OptionSetInfoNameMapping": {
+      "153940001": "Assessment and Intervention",
+      "249790001": "Covid 19 Vaccine",
+      "249790003": "Point of Care Testing",
+      "276880002": "Common Disease Vaccine",
+      "276880003": "Travel Vaccine"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": true,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "crf7e_vaccinegroup",
+        "OptionSetReferenceEntityName": "Service Types"
+      },
+      "OptionSetReferenceItem1": {
+        "OptionSetReferenceColumnName": "smvs_appointment_test_type",
+        "OptionSetReferenceEntityName": "Appointments (EMR)"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "crf7e_vaccinegroup",
+    "RelatedEntityName": "Service Types",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status (Service Types)",
+    "Name": "smvs_service_type_statecode",
+    "OptionSetInfoNameMapping": {
+      "0": "Active",
+      "1": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statecode",
+        "OptionSetReferenceEntityName": "Service Types"
+      }
+    },
+    "OptionSetTypeKey": "StateType",
+    "RelatedColumnInvariantName": "statecode",
+    "RelatedEntityName": "Service Types",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Service Type Status Code",
+    "Name": "smvs_service_type_status",
+    "OptionSetInfoNameMapping": {
+      "153940000": "Live",
+      "153940001": "Not Live"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": true,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "smvs_service_type_status",
+        "OptionSetReferenceEntityName": "Service Types"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "smvs_service_type_status",
+    "RelatedEntityName": "Service Types",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status Reason (Service Types)",
+    "Name": "smvs_service_type_statuscode",
+    "OptionSetInfoNameMapping": {
+      "1": "Active",
+      "2": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statuscode",
+        "OptionSetReferenceEntityName": "Service Types"
+      }
+    },
+    "OptionSetTypeKey": "StatusType",
+    "RelatedColumnInvariantName": "statuscode",
+    "RelatedEntityName": "Service Types",
+    "Type": "OptionSetInfo"
+  }
+]

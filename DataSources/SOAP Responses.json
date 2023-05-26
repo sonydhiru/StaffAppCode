@@ -1,0 +1,99 @@
+[
+  {
+    "CdsFCBContext": "{\"FileType\":true,\"ImageExternalStorage\":true}",
+    "EntitySetName": "smvs_soapresponses",
+    "IsHidden": false,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "LogicalName": "smvs_soapresponse",
+    "MaxGetRowsCount": 500,
+    "Name": "SOAP Responses",
+    "NativeCDSDataSourceInfoNameMapping": {
+      "_ownerid_value": "Owner",
+      "createdby": "Created By",
+      "createdon": "Created On",
+      "createdonbehalfby": "Created By (Delegate)",
+      "importsequencenumber": "Import Sequence Number",
+      "modifiedby": "Modified By",
+      "modifiedon": "Modified On",
+      "modifiedonbehalfby": "Modified By (Delegate)",
+      "overriddencreatedon": "Record Created On",
+      "owningbusinessunit": "Owning Business Unit",
+      "owningteam": "Owning Team",
+      "owninguser": "Owning User",
+      "smvs_name": "Name",
+      "smvs_SOAPNote": "SOAP Note",
+      "smvs_SOAPQuestion": "SOAP Question",
+      "smvs_soapresponse_AsyncOperations": "System Jobs",
+      "smvs_soapresponse_BulkDeleteFailures": "Bulk Delete Failures",
+      "smvs_soapresponse_DuplicateBaseRecord": "Duplicate Records (smvs_soapresponse_DuplicateBaseRecord)",
+      "smvs_soapresponse_DuplicateMatchingRecord": "Duplicate Records (smvs_soapresponse_DuplicateMatchingRecord)",
+      "smvs_soapresponse_MailboxTrackingFolders": "Mailbox Auto Tracking Folders",
+      "smvs_soapresponse_PrincipalObjectAttributeAccesses": "Field Sharing",
+      "smvs_soapresponse_ProcessSession": "Process Sessions",
+      "smvs_soapresponse_SyncErrors": "Sync Errors",
+      "smvs_soapresponseid": "SOAP Response",
+      "statecode": "Status",
+      "statuscode": "Status Reason",
+      "timezoneruleversionnumber": "Time Zone Rule Version Number",
+      "utcconversiontimezonecode": "UTC Conversion Time Zone Code",
+      "versionnumber": "Version Number"
+    },
+    "PreferredName": "SOAP Responses",
+    "Type": "NativeCDSDataSourceInfo"
+  },
+  {
+    "DisplayName": "SOAP Responses (Views)",
+    "Name": "_smvs_soapresponse_views",
+    "RelatedEntityName": "SOAP Responses",
+    "TrimmedViewName": true,
+    "Type": "ViewInfo",
+    "ViewInfoNameMapping": {
+      "272ef994-cf21-4d97-88a1-23d8efd50873": "SOAP Response Advanced Find View",
+      "411c3e75-a551-4bd6-8202-b44426c62e63": "Active SOAP Responses",
+      "48c0abfa-8da8-454f-8912-59d74dd6fc34": "SOAP Response Associated View",
+      "b42a23f4-b468-491c-a743-a2359cad18ca": "Inactive SOAP Responses",
+      "ccfb0fe0-576c-4986-9341-a152827791c5": "SOAP Response Lookup View"
+    }
+  },
+  {
+    "DisplayName": "Status (SOAP Responses)",
+    "Name": "smvs_soapresponse_statecode",
+    "OptionSetInfoNameMapping": {
+      "0": "Active",
+      "1": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statecode",
+        "OptionSetReferenceEntityName": "SOAP Responses"
+      }
+    },
+    "OptionSetTypeKey": "StateType",
+    "RelatedColumnInvariantName": "statecode",
+    "RelatedEntityName": "SOAP Responses",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status Reason (SOAP Responses)",
+    "Name": "smvs_soapresponse_statuscode",
+    "OptionSetInfoNameMapping": {
+      "1": "Active",
+      "2": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statuscode",
+        "OptionSetReferenceEntityName": "SOAP Responses"
+      }
+    },
+    "OptionSetTypeKey": "StatusType",
+    "RelatedColumnInvariantName": "statuscode",
+    "RelatedEntityName": "SOAP Responses",
+    "Type": "OptionSetInfo"
+  }
+]

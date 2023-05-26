@@ -1,0 +1,1631 @@
+[
+  {
+    "CdsFCBContext": "{\"FileType\":true,\"ImageExternalStorage\":true}",
+    "EntitySetName": "msemr_appointmentemrs",
+    "IsHidden": false,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "LogicalName": "msemr_appointmentemr",
+    "MaxGetRowsCount": 500,
+    "Name": "Appointments (EMR)",
+    "NativeCDSDataSourceInfoNameMapping": {
+      "_ownerid_value": "Owner",
+      "_regardingobjectid_value": "Regarding",
+      "{Attachments}": "Attachments",
+      "activityadditionalparams": "Activity Additional Parameters",
+      "activityid": "Activity",
+      "activitytypecode": "Activity Type",
+      "actualdurationminutes": "Actual Duration",
+      "actualend": "Actual End",
+      "actualstart": "Actual Start",
+      "community": "Social Channel",
+      "createdby_msemr_appointmentemr": "Created By",
+      "createdon": "Date Created",
+      "createdonbehalfby_msemr_appointmentemr": "Created By (Delegate)",
+      "deliverylastattemptedon": "Date Delivery Last Attempted",
+      "deliveryprioritycode": "Delivery Priority",
+      "description": "Description (description)",
+      "exchangeitemid": "Exchange Item ID",
+      "exchangerate": "Exchange Rate",
+      "exchangeweblink": "Exchange WebLink",
+      "importsequencenumber": "Import Sequence Number",
+      "instancetypecode": "Recurring Instance Type",
+      "isbilled": "Is Billed",
+      "ismapiprivate": "Is Private",
+      "isregularactivity": "Is Regular Activity",
+      "isworkflowcreated": "Is Workflow Created",
+      "lastonholdtime": "Last On Hold Time",
+      "leftvoicemail": "Left Voice Mail",
+      "modifiedby_msemr_appointmentemr": "Modified By",
+      "modifiedon": "Last Updated",
+      "modifiedonbehalfby_msemr_appointmentemr": "Modified By (Delegate)",
+      "msemr_ActorDevice_msemr_appointmentemr": "Actor (Device)",
+      "msemr_ActorLocation_msemr_appointmentemr": "Actor (Location)",
+      "msemr_ActorPatient_msemr_appointmentemr": "Patient",
+      "msemr_ActorPractitioner_msemr_appointmentemr": "Actor (Practitioner)",
+      "msemr_ActorRelatedPerson_msemr_appointmentemr": "Actor (Related Person)",
+      "msemr_appointmentcreationdate": "Appointment Creation Date",
+      "msemr_appointmentemr_ActionCards": "Action Cards",
+      "msemr_appointmentemr_Annotations": "Notes (msemr_appointmentemr_Annotations)",
+      "msemr_appointmentemr_AsyncOperations": "System Jobs",
+      "msemr_appointmentemr_BulkDeleteFailures": "Bulk Delete Failures",
+      "msemr_appointmentemr_connections1": "Connections (msemr_appointmentemr_connections1)",
+      "msemr_appointmentemr_connections2": "Connections (msemr_appointmentemr_connections2)",
+      "msemr_appointmentemr_DuplicateBaseRecord": "Duplicate Records (msemr_appointmentemr_DuplicateBaseRecord)",
+      "msemr_appointmentemr_DuplicateMatchingRecord": "Duplicate Records (msemr_appointmentemr_DuplicateMatchingRecord)",
+      "msemr_appointmentemr_Feedback": "Feedback",
+      "msemr_appointmentemr_FileAttachments": "FileAttachments",
+      "msemr_appointmentemr_MailboxTrackingFolders": "Mailbox Auto Tracking Folders",
+      "msemr_appointmentemr_PrincipalObjectAttributeAccesses": "Field Sharing",
+      "msemr_appointmentemr_ProcessSession": "Process Sessions",
+      "msemr_appointmentemr_QueueItems": "Queue Items",
+      "msemr_appointmentemr_SharePointDocumentLocations": "Document Locations",
+      "msemr_appointmentemr_SyncErrors": "Sync Errors",
+      "msemr_appointmentstatus": "Appointment Status",
+      "msemr_AppointmentType_msemr_appointmentemr": "Vaccine Code",
+      "msemr_comment": "Comment",
+      "msemr_description": "Description (msemr_description)",
+      "msemr_endtime": "End time",
+      "msemr_minutesduration": "Minutes Duration",
+      "msemr_msemr_appointmentemr_msemr_appointmentemrindication_appointmentemr": "Appointment (EMR) Indications",
+      "msemr_msemr_appointmentemr_msemr_appointmentemrparticipant_AppointmentEMR": "Appointment (EMR) Participants",
+      "msemr_msemr_appointmentemr_msemr_appointmentemrreason_AppointmentEMR": "Appointment (EMR) Reasons",
+      "msemr_msemr_appointmentemr_msemr_appointmentemrreferralrequest_AppointmentEMR": "Appointment (EMR) Referral Requests",
+      "msemr_msemr_appointmentemr_msemr_appointmentemrservicetype_AppointmentEMR": "Appointment (EMR) Service Types",
+      "msemr_msemr_appointmentemr_msemr_appointmentemrslot_AppointmentEMR": "Appointment (EMR) Slots",
+      "msemr_msemr_appointmentemr_msemr_appointmentemrspecialty_AppointmentEMR": "Appointment (EMR) Specialties",
+      "msemr_msemr_appointmentemr_msemr_appointmentservicecategory_AppointmentEMR": "Appointment Service Categories",
+      "msemr_msemr_appointmentemr_msemr_careplanactivity_ReferenceAppointmentIdentifier": "Care Plan Activities",
+      "msemr_msemr_appointmentemr_msemr_clinicalimpressionaction_Appointment": "Clinical Impression Actions",
+      "msemr_msemr_appointmentemr_msemr_condition_Appointment": "Conditions",
+      "msemr_msemr_appointmentemr_msemr_encounter_AppointmentEMR": "Encounters",
+      "msemr_msemr_appointmentemr_msemr_referralrequest_AppointmentEMR": "Referral Requests",
+      "msemr_msemr_appointmentemr_msemr_slot_appointmentemrId": "Slots",
+      "msemr_participantactortype": "Participant Actor Type",
+      "msemr_participantstatus": "Participant Status",
+      "msemr_ParticpantType_msemr_appointmentemr": "Participant Type",
+      "msemr_patientinstruction": "Patient Instruction",
+      "msemr_priority": "Priority (msemr_priority)",
+      "msemr_required": "Required",
+      "msemr_ServiceCategory_msemr_appointmentemr": "Service Category",
+      "msemr_starttime": "Start time",
+      "msemr_supportinginformation": "Supporting Information",
+      "onholdtime": "On Hold Time (Minutes)",
+      "overriddencreatedon": "Record Created On",
+      "owningbusinessunit_msemr_appointmentemr": "Owning Business Unit",
+      "owningteam_msemr_appointmentemr": "Owning Team",
+      "owninguser_msemr_appointmentemr": "Owning User",
+      "postponeactivityprocessinguntil": "Delay activity processing until",
+      "prioritycode": "Priority (prioritycode)",
+      "processid": "Process",
+      "scheduleddurationminutes": "Scheduled Duration",
+      "scheduledend": "Due Date",
+      "scheduledstart": "Appointment (EMR) Start",
+      "sendermailboxid_msemr_appointmentemr": "Sender's Mailbox",
+      "senton": "Date Sent",
+      "seriesid": "Series Id",
+      "smvs_action_on_submission": "Action on Submission",
+      "smvs_address_line_field_name": "Address Line Field Name",
+      "smvs_allergic_to_egg_chicken": "allergic to eggs, chicken proteins, vaccine compon",
+      "smvs_allergic_to_something_other_than_vaccine": "Allergic to something other than vaccine?",
+      "smvs_allergicreactiontosomethingotherthanvacci": "allergic reaction to something other than vaccine?",
+      "smvs_altstaffname": "Alt Staff Name",
+      "smvs_appintmentdate": "Appointment Date",
+      "smvs_appointment_booking_type": "Appointment Booking Type Options",
+      "smvs_appointment_dose_number": "Appointment Dose Number",
+      "smvs_appointment_duration": "Appointment Duration",
+      "smvs_appointment_icd_10_code_appointment": "Appointment ICD-10 Codes",
+      "smvs_appointment_test_type": "Appointment Test Type",
+      "smvs_appointmentdatetime": "Appointment Date Time",
+      "smvs_appointmenttime": "Appointment Time",
+      "smvs_are_you_pregnant_or_breastfeeding": "Are you pregnant or breastfeeding? (smvs_are_you_pregnant_or_breastfeeding)",
+      "smvs_are_you_pregnant_or_breastfeeding_questio": "Are you pregnant or breastfeeding? (smvs_are_you_pregnant_or_breastfeeding_questio)",
+      "smvs_are_you_sick_with_a_fever_100": "Are you sick with a fever (>100)?'",
+      "smvs_areyoupregnantifyespleaseinquireaboutthi": "Are you pregnant?",
+      "smvs_associated_insurance_organization": "Associated Insurace Organization",
+      "smvs_associated_language_code": "Associated Language Code",
+      "smvs_associated_parent_appointment_id": "Associated Parent Appointment Id",
+      "smvs_associatedclinicday": "Associated Clinic Day",
+      "smvs_associatedpatientid": "Associated Patient Id",
+      "smvs_associatedserviceid": "AssociatedServiceId",
+      "smvs_associatelclinicid": "AssociatelClinicId",
+      "smvs_attemptedtogetdocumentation": "Attempted to get documentation, no ID available",
+      "smvs_batch_unique_identifier": "Batch Unique Identifier",
+      "smvs_billable_status": "Billable",
+      "smvs_billing": "Billing Status",
+      "smvs_cardholder_first_name": "Card Holder First Name",
+      "smvs_cardholder_last_name": "Card Holder Last Name",
+      "smvs_cardholder_middle_name": "Card Holder Middle Name",
+      "smvs_city": "City",
+      "smvs_claim_generated": "Claim Generated",
+      "smvs_Claim_msemr_appointmentemr": "Claim",
+      "smvs_claimprogress": "Claim Progress",
+      "smvs_clientsignature": "Patient’s Signature",
+      "smvs_ClinicDayId_msemr_appointmentemr": "Clinic Day",
+      "smvs_Clinician_msemr_appointmentemr": "Clinician",
+      "smvs_cliniciansignature": "Clinician Signature",
+      "smvs_ClinicId_msemr_appointmentemr": "Clinic",
+      "smvs_consented_by": "Consented By",
+      "smvs_county": "county",
+      "smvs_covid_test_url": "Covid Test Url",
+      "smvs_date_slot_to_update": "Date Slot to Update",
+      "smvs_discovered_plan_coinsurance_family": "Discovered plan coinsurance family",
+      "smvs_discovered_plan_coinsurance_individual": "Discovered plan coinsurance individual",
+      "smvs_discovered_plan_copay_family": "Discovered plan copay family",
+      "smvs_discovered_plan_copay_individual": "Discovered plan copay individual",
+      "smvs_discovered_plan_deductable_family": "Discovered plan deductable family",
+      "smvs_discovered_plan_deductable_individual": "Discovered plan deductable individual",
+      "smvs_discovered_plan_outofpocket_family": "Discovered plan outofpocket family",
+      "smvs_discovered_plan_outofpocket_individual": "Discovered plan outofpocket individual ",
+      "smvs_do_you_have_a_bleeding_disorder": "Do you have a bleeding disorder?",
+      "smvs_do_you_have_a_weakened_immune_system": "Do you have a weakened immune system?",
+      "smvs_doyouhaveahistoryofguillainbarresynd": "Do you have a history of Guillain-Barre syndrome?",
+      "smvs_duplicate_appointment": "Duplicate Appointment",
+      "smvs_eligibilityresponse": "Eligibility Response",
+      "smvs_EligibilityResponse_Appointment_msem": "Eligibility Responses",
+      "smvs_eligibilitystatus": "Eligibility Status",
+      "smvs_emailstate": "Email State",
+      "smvs_experiencing_symptoms_of_covid19": "experiencing symptoms of COVID-19?",
+      "smvs_formatted_address_field_name": "Formatted Address Field name",
+      "smvs_fulfilleddate": "Fulfilled Date",
+      "smvs_group_number": "Group Number",
+      "smvs_guardian_first_name": "Guardian First Name",
+      "smvs_guardian_last_name": "Guardian Last Name",
+      "smvs_guardian_middle_name": "Guardian Middle Name",
+      "smvs_have_you_ever_had_flu_shot_before_today": "Have you ever had a flu shot before today?",
+      "smvs_haveyoueverhadasevereallergicreactiontop": "severe allergic reaction to previous vaccine?",
+      "smvs_health_insurance_company": "Other Insurance Company",
+      "smvs_identificationexpiration": "Identification Expiration",
+      "smvs_identificationimage": "Identification Image",
+      "smvs_identificationimageid": "smvs_IdentificationImageId",
+      "smvs_identificationnumber": "Identification Number",
+      "smvs_idstate": "ID State",
+      "smvs_idtype": "ID Type",
+      "smvs_iis_env": "IIS env",
+      "smvs_IISSubmissions_Appointment_msemr_app": "IIS Submissions",
+      "smvs_iissubmissionstatus": "IIS Submission Status",
+      "smvs_immunized_by": "Users",
+      "smvs_insurance_backside_card": "Insurance Backside Card",
+      "smvs_insurance_image": "Insurance Image",
+      "smvs_insurance_image_file": "Insurance Image File",
+      "smvs_insurance_imageid": "smvs_Insurance_imageId",
+      "smvs_insurance_is_verified": "Insurance is Verified",
+      "smvs_insurance_photo": "insurance photo",
+      "smvs_insurance_plan_type": "Insurance Plan Type",
+      "smvs_insurance_type": "Insurance Type",
+      "smvs_insuranceorganizationid_msemr_appointmentemr": "Insurance Organization",
+      "smvs_isprimary": "isPrimary",
+      "smvs_issuenote": "Issue Note",
+      "smvs_language_code_msemr_appointmentemr": "Language",
+      "smvs_latitude": "Latitude",
+      "smvs_Location_msemr_appointmentemr": "Location",
+      "smvs_log_response_appointment": "Log Responses",
+      "smvs_longitude": "Longitude",
+      "smvs_medicare_id": "Medicare ID",
+      "smvs_medicare_issuer": "Medicare Issuer",
+      "smvs_member_id": "Member ID#",
+      "smvs_member_id_prefix": "Member ID Prefix",
+      "smvs_member_id_suffix": "Member ID Suffix",
+      "smvs_migrationid": "Migration ID",
+      "smvs_msemr_appointmentemr_msemr_appointmentemr": "Appointments (EMR) (smvs_msemr_appointmentemr_msemr_appointmentemr)",
+      "smvs_msemr_appointmentemr_primary_appointment_": "Appointments (EMR) (smvs_msemr_appointmentemr_primary_appointment_)",
+      "smvs_msemr_appointmentemr_PrimaryAppointment_m": "Appointments (EMR) (smvs_msemr_appointmentemr_PrimaryAppointment_m)",
+      "smvs_msemr_appointmentemr_smvs_claim": "Claims (smvs_msemr_appointmentemr_smvs_claim)",
+      "smvs_notes": "Notes (smvs_notes)",
+      "smvs_organizationid": "OrganizationId",
+      "smvs_other_relationship": "Other Relationship",
+      "smvs_parent_appointment_id_msemr_appointmentemr": "Parent Appointment",
+      "smvs_partial_mobile_number": "Partial Mobile Number",
+      "smvs_PatientScreeningAnswers_Appointment_": "Patient Screening Responses",
+      "smvs_payment_type": "Payment Type",
+      "smvs_pcf_pharmacist_signature": "PCF Pharmacist Signature",
+      "smvs_pcf_signature_image": "PCF Signature Image",
+      "smvs_performed_test_name_appointment_msemr_appointmentemr": "Performed Test Name",
+      "smvs_pharmacist_signature": "Pharmacist Signature",
+      "smvs_phone_number": "Mobile Number",
+      "smvs_positive_test_for_covid": "Positive test for Covid?",
+      "smvs_practitionername": "Practitioner Name",
+      "smvs_primary_appointment_msemr_appointmentemr": "Primary Appointment (smvs_primary_appointment_msemr_appointmentemr)",
+      "smvs_primary_care_physician_name": "Primary Care Physician Name",
+      "smvs_primary_care_physician_phone_number": "Primary Care Physician Phone Number",
+      "smvs_PrimaryAppointment_msemr_appointmentemr": "Primary Appointment (smvs_PrimaryAppointment_msemr_appointmentemr)",
+      "smvs_reaction_to_previous_flu_shot": "Have you ever had a reaction to a previous shot?",
+      "smvs_reaons_for_failed_eligibility": "Reason for Rejection",
+      "smvs_reason_for_not_billable": "Reason for Not Billable",
+      "smvs_reason_for_unlock_test_result": "Reason for Unlock Test Result",
+      "smvs_receivedanothervaccineintheprevious14days": "Had Another vaccine in the previous 14 days?",
+      "smvs_recheckeligibility": "Re-Check Eligibility",
+      "smvs_referredby": "Referred By",
+      "smvs_RegistrationBlock_msemr_appointmentemr": "Registration Block",
+      "smvs_relationship_subscriber": "Relationship  Subscriber",
+      "smvs_relationship_with_guardian": "Relationship with guardian",
+      "smvs_reschedule_url": "Reschedule Url",
+      "smvs_route_of_administration": "Route Of Administration",
+      "smvs_rx_bin": "Rx Bin",
+      "smvs_rx_group": "Rx Group",
+      "smvs_rx_identification": "Rx Identification",
+      "smvs_rx_pcn": "Rx PCN",
+      "smvs_sanitizedfullname": "Sanitized Full Name",
+      "smvs_scheduling_id": "scheduling Id",
+      "smvs_screeningresponse": "Screening Response",
+      "smvs_send_to_iis": "Patient consent to send data to IIS",
+      "smvs_Service_msemr_appointmentemr": "Healthcare Service",
+      "smvs_shotadministered": "Shot administered",
+      "smvs_skipbilling": "Skip Billing",
+      "smvs_smvs_appointmentcpthcpcscode_Appointment_": "Appointment CPT/HCPCS Codes",
+      "smvs_smvs_claim_Appointment_msemr_appointmente": "Claims (smvs_smvs_claim_Appointment_msemr_appointmente)",
+      "smvs_smvs_soapnote_Encounter_msemr_appointment": "SOAP Notes",
+      "smvs_soap_pdf": "SOAP PDF",
+      "smvs_source_of_creation": "Source of Creation",
+      "smvs_source_of_creation_text": "Source of Creation Text",
+      "smvs_specimen_collected_on": "Specimen Collected On",
+      "smvs_specimen_id": "Specimen ID",
+      "smvs_specimen_source_type_msemr_appointmentemr": "Specimen Source ",
+      "smvs_Staff_msemr_appointmentemr": "Staff",
+      "smvs_stafffullname": "Staff Full Name",
+      "smvs_state": "State",
+      "smvs_sufffix": "Sufffix",
+      "smvs_test_conducted_at": "Test Conducted At",
+      "smvs_test_device_msemr_appointmentemr": "Test Device",
+      "smvs_test_report_file": "Test Report File",
+      "smvs_test_report_status": "Test Report Status",
+      "smvs_test_reported_on": "Test Reported On",
+      "smvs_test_result": "Test Result",
+      "smvs_test_result_date": "Test Result Date",
+      "smvs_testing_facility_msemr_appointmentemr": "Testing Facility",
+      "smvs_total_days": "TotalDays",
+      "smvs_update_in": "Update In",
+      "smvs_VaccineTypeId_msemr_appointmentemr": "Vaccine Type",
+      "smvs_VisitType_msemr_appointmentemr": "Visit Type",
+      "smvs_zip_code": "Zip code",
+      "sortdate": "Sort Date",
+      "stageid": "Process Stage",
+      "statecode": "Activity Status",
+      "statuscode": "Status Reason",
+      "subject": "Subject",
+      "timezoneruleversionnumber": "Time Zone Rule Version Number",
+      "transactioncurrencyid_msemr_appointmentemr": "Currency",
+      "traversedpath": "Traversed Path",
+      "utcconversiontimezonecode": "UTC Conversion Time Zone Code",
+      "versionnumber": "Version Number"
+    },
+    "PreferredName": "Appointments (EMR)",
+    "Type": "NativeCDSDataSourceInfo"
+  },
+  {
+    "DisplayName": "Appointments (EMR) (Views)",
+    "Name": "_msemr_appointmentemr_views",
+    "RelatedEntityName": "Appointments (EMR)",
+    "TrimmedViewName": true,
+    "Type": "ViewInfo",
+    "ViewInfoNameMapping": {
+      "08a8d25a-f479-ed11-81ac-000d3a3221b5": "Today's Total PoC Test",
+      "08e028d5-69e5-42f3-83be-32e7c618f930": "Appointment (EMR) Advanced Find View",
+      "0a290c64-3849-49d0-805c-471438e29df2": "My Open Appointments (EMR)",
+      "13d2b881-1a5d-eb11-a812-000d3a148581": "All Fulfilled Appointments (IIS)",
+      "186d2c3a-fedb-ec11-a7b6-0022480b0645": "All Test Appointments (186d2c3a-fedb-ec11-a7b6-0022480b0645)",
+      "191787db-61da-eb11-bacb-000d3a98986a": "All Appointment Payer View",
+      "1f8e7c0f-4707-ed11-82e4-00224809a354": "All Test Appointments (1f8e7c0f-4707-ed11-82e4-00224809a354)",
+      "226d210b-73e9-ea11-a817-000d3a31a6ee": "All Fulfilled Appointments",
+      "23d377b2-f96f-eb11-a812-000d3a1ab1f9": "IIS Resubmissions Queue",
+      "2f4f3830-6fe9-ea11-a817-000d3a31a6ee": "All Booked Appointments",
+      "369085f5-4992-4b25-9812-501563087b77": "Appointment (EMR) Associated View",
+      "3af7b5b4-0e83-eb11-a812-000d3a9c269e": "Today's Fulfilled Appointments",
+      "4604a662-98d6-ec11-a7b5-000d3a3add22": "Test Result Not Reported Yet",
+      "46becd2e-70d1-ea11-a812-000d3a3b3f7c": "All Appointments portal (EMR)",
+      "4a60add7-3c72-eb11-a812-000d3a1bb004": "All Appointments (Today)",
+      "51c4e713-c6d2-ed11-a7c7-6045bd03848f": "Today's Total MTM",
+      "52af17b8-363c-46df-9af6-09c4b8c4c2fa": "My Closed Appointments (EMR)",
+      "55e3ac41-dfc4-ea11-a812-000d3a3b3f7c": "Clinic's Open Appointments (EMR)",
+      "5b3f8346-d0d2-43ae-a07a-ab54854b1c46": "Appointment (EMR) Lookup View",
+      "69a66940-89e1-ec11-bb3d-000d3a33db15": "All Inconclusive Test Results",
+      "6a79f0de-f679-ed11-81ac-000d3a3221b5": "Total Flu Vaccine",
+      "7a521120-b4cc-ea11-a812-000d3a59f9a5": "All Open Appointments",
+      "914bc39a-fa79-ed11-81ac-000d3a322ac0": "Total Covid-19 Vaccine",
+      "9751096b-0971-eb11-a812-000d3a1bb004": "Canceled Appointments",
+      "a37bba2e-b4cc-ea11-a812-000d3a59f9a5": "All Closed Appointments",
+      "b56c7ecf-4607-ed11-82e4-00224809a354": "All Test Appointments (b56c7ecf-4607-ed11-82e4-00224809a354)",
+      "c4537ed8-fb79-ed11-81ac-000d3a322ac0": "Total Other Vaccine",
+      "e37acfba-f322-eb11-a813-00224803f71b": "All Uninsured Appointments",
+      "f16dc992-4c5a-4dbb-8df8-da87e26554fb": "All Appointments (EMR)",
+      "f34144e9-0e83-eb11-a812-000d3a9c24b3": "Yesterday's Fulfilled Appointments"
+    }
+  },
+  {
+    "DisplayName": "Activity Type",
+    "Name": "activitypointer_activitytypecode",
+    "OptionSetInfoNameMapping": {
+      "10160": "Appointment (EMR)",
+      "11153": "Activity record for the Teams chat",
+      "11475": "Customer Voice alert",
+      "11476": "Customer Voice survey invite",
+      "11477": "Customer Voice survey response",
+      "4201": "Appointment",
+      "4202": "Email",
+      "4204": "Fax",
+      "4207": "Letter",
+      "4210": "Phone Call",
+      "4212": "Task",
+      "4251": "Recurring Appointment"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": true,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "activitytypecode",
+        "OptionSetReferenceEntityName": "Appointments (EMR)"
+      }
+    },
+    "OptionSetTypeKey": "EntityNameType",
+    "RelatedColumnInvariantName": "activitytypecode",
+    "RelatedEntityName": "Appointments (EMR)",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Delivery Priority",
+    "Name": "activitypointer_deliveryprioritycode",
+    "OptionSetInfoNameMapping": {
+      "0": "Low",
+      "1": "Normal",
+      "2": "High"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": true,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "deliveryprioritycode",
+        "OptionSetReferenceEntityName": "Appointments (EMR)"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "deliveryprioritycode",
+    "RelatedEntityName": "Appointments (EMR)",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Is Regular Activity",
+    "Name": "activitypointer_isregularactivity",
+    "OptionSetInfoNameMapping": {
+      "0": "No",
+      "1": "Yes"
+    },
+    "OptionSetIsBooleanValued": true,
+    "OptionSetIsGlobal": true,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "isregularactivity",
+        "OptionSetReferenceEntityName": "Appointments (EMR)"
+      }
+    },
+    "OptionSetTypeKey": "BooleanType",
+    "RelatedColumnInvariantName": "isregularactivity",
+    "RelatedEntityName": "Appointments (EMR)",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Recurring Instance Type (Appointments (EMR))",
+    "Name": "msemr_appointmentemr_instancetypecode",
+    "OptionSetInfoNameMapping": {
+      "0": "Not Recurring",
+      "1": "Recurring Master",
+      "2": "Recurring Instance",
+      "3": "Recurring Exception",
+      "4": "Recurring Future Exception"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "instancetypecode",
+        "OptionSetReferenceEntityName": "Appointments (EMR)"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "instancetypecode",
+    "RelatedEntityName": "Appointments (EMR)",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Is Billed (Appointments (EMR))",
+    "Name": "msemr_appointmentemr_isbilled",
+    "OptionSetInfoNameMapping": {
+      "0": "No",
+      "1": "Yes"
+    },
+    "OptionSetIsBooleanValued": true,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "isbilled",
+        "OptionSetReferenceEntityName": "Appointments (EMR)"
+      }
+    },
+    "OptionSetTypeKey": "BooleanType",
+    "RelatedColumnInvariantName": "isbilled",
+    "RelatedEntityName": "Appointments (EMR)",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Is Private (Appointments (EMR))",
+    "Name": "msemr_appointmentemr_ismapiprivate",
+    "OptionSetInfoNameMapping": {
+      "0": "No",
+      "1": "Yes"
+    },
+    "OptionSetIsBooleanValued": true,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "ismapiprivate",
+        "OptionSetReferenceEntityName": "Appointments (EMR)"
+      }
+    },
+    "OptionSetTypeKey": "BooleanType",
+    "RelatedColumnInvariantName": "ismapiprivate",
+    "RelatedEntityName": "Appointments (EMR)",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Is Workflow Created (Appointments (EMR))",
+    "Name": "msemr_appointmentemr_isworkflowcreated",
+    "OptionSetInfoNameMapping": {
+      "0": "No",
+      "1": "Yes"
+    },
+    "OptionSetIsBooleanValued": true,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "isworkflowcreated",
+        "OptionSetReferenceEntityName": "Appointments (EMR)"
+      }
+    },
+    "OptionSetTypeKey": "BooleanType",
+    "RelatedColumnInvariantName": "isworkflowcreated",
+    "RelatedEntityName": "Appointments (EMR)",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Left Voice Mail (Appointments (EMR))",
+    "Name": "msemr_appointmentemr_leftvoicemail",
+    "OptionSetInfoNameMapping": {
+      "0": "No",
+      "1": "Yes"
+    },
+    "OptionSetIsBooleanValued": true,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "leftvoicemail",
+        "OptionSetReferenceEntityName": "Appointments (EMR)"
+      }
+    },
+    "OptionSetTypeKey": "BooleanType",
+    "RelatedColumnInvariantName": "leftvoicemail",
+    "RelatedEntityName": "Appointments (EMR)",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Priority (Appointments (EMR))",
+    "Name": "msemr_appointmentemr_prioritycode",
+    "OptionSetInfoNameMapping": {
+      "0": "Low",
+      "1": "Normal",
+      "2": "High"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "prioritycode",
+        "OptionSetReferenceEntityName": "Appointments (EMR)"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "prioritycode",
+    "RelatedEntityName": "Appointments (EMR)",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Activity Status (Appointments (EMR))",
+    "Name": "msemr_appointmentemr_statecode",
+    "OptionSetInfoNameMapping": {
+      "0": "Open",
+      "1": "Completed",
+      "2": "Canceled",
+      "3": "Scheduled"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statecode",
+        "OptionSetReferenceEntityName": "Appointments (EMR)"
+      }
+    },
+    "OptionSetTypeKey": "StateType",
+    "RelatedColumnInvariantName": "statecode",
+    "RelatedEntityName": "Appointments (EMR)",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status Reason (Appointments (EMR))",
+    "Name": "msemr_appointmentemr_statuscode",
+    "OptionSetInfoNameMapping": {
+      "1": "Pending",
+      "2": "Fulfilled",
+      "3": "Cancelled",
+      "4": "Scheduled",
+      "935000000": "Proposed",
+      "935000001": "Booked (935000001)",
+      "935000002": "Arrived",
+      "935000003": "Booked (935000003)",
+      "935000004": "No Show",
+      "935000005": "Entered in error"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statuscode",
+        "OptionSetReferenceEntityName": "Appointments (EMR)"
+      }
+    },
+    "OptionSetTypeKey": "StatusType",
+    "RelatedColumnInvariantName": "statuscode",
+    "RelatedEntityName": "Appointments (EMR)",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Appointment Status",
+    "Name": "msemr_appointmentstatus",
+    "OptionSetInfoNameMapping": {
+      "935000000": "Proposed",
+      "935000001": "Pending",
+      "935000002": "Booked",
+      "935000003": "Arrived",
+      "935000004": "Fulfilled",
+      "935000005": "Cancelled",
+      "935000006": "No Show",
+      "935000007": "Entered In Error",
+      "935000008": "Checked-In",
+      "935000009": "Waitlist"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": true,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "msemr_appointmentstatus",
+        "OptionSetReferenceEntityName": "Appointments (EMR)"
+      },
+      "OptionSetReferenceItem1": {
+        "OptionSetReferenceColumnName": "smvs_default_status_for_first_appt",
+        "OptionSetReferenceEntityName": "Sub Services"
+      },
+      "OptionSetReferenceItem2": {
+        "OptionSetReferenceColumnName": "smvs_default_status_for_second_appt",
+        "OptionSetReferenceEntityName": "Sub Services"
+      },
+      "OptionSetReferenceItem3": {
+        "OptionSetReferenceColumnName": "smvs_defaultstatusforsecondappt",
+        "OptionSetReferenceEntityName": "App Settings"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "msemr_appointmentstatus",
+    "RelatedEntityName": "Appointments (EMR)",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Participant Actor Type",
+    "Name": "msemr_participantactortype",
+    "OptionSetInfoNameMapping": {
+      "935000000": "Patient",
+      "935000001": "Practitioner",
+      "935000002": "RelatedPerson",
+      "935000003": "Device",
+      "935000004": "HealthcareService",
+      "935000005": "Location"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": true,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "msemr_participantactortype",
+        "OptionSetReferenceEntityName": "Appointments (EMR)"
+      },
+      "OptionSetReferenceItem1": {
+        "OptionSetReferenceColumnName": "msemr_participantactortype",
+        "OptionSetReferenceEntityName": "Appointment (EMR) Participants"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "msemr_participantactortype",
+    "RelatedEntityName": "Appointments (EMR)",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Participant Required",
+    "Name": "msemr_participantrequired",
+    "OptionSetInfoNameMapping": {
+      "935000000": "Required",
+      "935000001": "Optional",
+      "935000002": "Information Only"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": true,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "msemr_required",
+        "OptionSetReferenceEntityName": "Appointments (EMR)"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "msemr_required",
+    "RelatedEntityName": "Appointments (EMR)",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Participant Status",
+    "Name": "msemr_participantstatus",
+    "OptionSetInfoNameMapping": {
+      "935000000": "Accepted",
+      "935000001": "Declined",
+      "935000002": "Tentative",
+      "935000003": "Needs Action"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": true,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "msemr_participantstatus",
+        "OptionSetReferenceEntityName": "Appointments (EMR)"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "msemr_participantstatus",
+    "RelatedEntityName": "Appointments (EMR)",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Action on Submission",
+    "Name": "smvs_action_on_submission",
+    "OptionSetInfoNameMapping": {
+      "153940002": "Submit-New",
+      "153940006": "Submit-Update",
+      "249790000": "Submit-Delete"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": true,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "smvs_action_on_submission",
+        "OptionSetReferenceEntityName": "Appointments (EMR)"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "smvs_action_on_submission",
+    "RelatedEntityName": "Appointments (EMR)",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Appointment Duration Period",
+    "Name": "smvs_appointment_duration_period",
+    "OptionSetInfoNameMapping": {
+      "153940000": "15",
+      "153940001": "30",
+      "153940002": "45",
+      "153940003": "60",
+      "153940004": "75"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": true,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "smvs_appointment_duration",
+        "OptionSetReferenceEntityName": "Appointments (EMR)"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "smvs_appointment_duration",
+    "RelatedEntityName": "Appointments (EMR)",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Appointment Booking Type",
+    "Name": "smvs_appointmentbookingtype",
+    "OptionSetInfoNameMapping": {
+      "153940000": "Regular",
+      "153940001": "Multiservice"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": true,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "smvs_appointment_booking_type",
+        "OptionSetReferenceEntityName": "Appointments (EMR)"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "smvs_appointment_booking_type",
+    "RelatedEntityName": "Appointments (EMR)",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Billable",
+    "Name": "smvs_billable_status",
+    "OptionSetInfoNameMapping": {
+      "153940000": "Not Assessed ",
+      "153940001": "Billable",
+      "153940002": "Not Billable"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": true,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "smvs_billable_status",
+        "OptionSetReferenceEntityName": "Appointments (EMR)"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "smvs_billable_status",
+    "RelatedEntityName": "Appointments (EMR)",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Billing",
+    "Name": "smvs_billing",
+    "OptionSetInfoNameMapping": {
+      "153940000": "Unbilled",
+      "153940001": "Billed",
+      "153940002": "Paid"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": true,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "smvs_billing",
+        "OptionSetReferenceEntityName": "Appointments (EMR)"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "smvs_billing",
+    "RelatedEntityName": "Appointments (EMR)",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Claim Generated",
+    "Name": "smvs_claim_generated",
+    "OptionSetInfoNameMapping": {
+      "153940000": "Yes",
+      "153940001": "No",
+      "153940002": "Error"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": true,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "smvs_claim_generated",
+        "OptionSetReferenceEntityName": "Appointments (EMR)"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "smvs_claim_generated",
+    "RelatedEntityName": "Appointments (EMR)",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Claim Progress",
+    "Name": "smvs_claimprogress",
+    "OptionSetInfoNameMapping": {
+      "153940000": "Not Started",
+      "153940001": "Started",
+      "153940002": "Rejected",
+      "153940003": "Approved"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": true,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "smvs_claimprogress",
+        "OptionSetReferenceEntityName": "Appointments (EMR)"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "smvs_claimprogress",
+    "RelatedEntityName": "Appointments (EMR)",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Consented By ",
+    "Name": "smvs_consentedby",
+    "OptionSetInfoNameMapping": {
+      "153940000": "Patient",
+      "153940001": "Guardian"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": true,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "smvs_consented_by",
+        "OptionSetReferenceEntityName": "Appointments (EMR)"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "smvs_consented_by",
+    "RelatedEntityName": "Appointments (EMR)",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Eligibility Status",
+    "Name": "smvs_eligibilitystatus",
+    "OptionSetInfoNameMapping": {
+      "153940000": "Eligible ",
+      "153940001": "No Eligible ",
+      "153940002": "Corrected"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": true,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "smvs_eligibilitystatus",
+        "OptionSetReferenceEntityName": "Appointments (EMR)"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "smvs_eligibilitystatus",
+    "RelatedEntityName": "Appointments (EMR)",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Email State",
+    "Name": "smvs_emailstate",
+    "OptionSetInfoNameMapping": {
+      "153940000": "Sent",
+      "153940001": "Failed",
+      "153940002": "Attempted",
+      "153940003": "Missed Sent",
+      "276880000": "Result Updated",
+      "276880001": "Service Group Updated",
+      "276880002": "PDF Generated"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": true,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "smvs_emailstate",
+        "OptionSetReferenceEntityName": "Appointments (EMR)"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "smvs_emailstate",
+    "RelatedEntityName": "Appointments (EMR)",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "ID Type",
+    "Name": "smvs_idtype",
+    "OptionSetInfoNameMapping": {
+      "153940000": "Drivers License",
+      "153940001": "Other State ID"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": true,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "smvs_idtype",
+        "OptionSetReferenceEntityName": "Appointments (EMR)"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "smvs_idtype",
+    "RelatedEntityName": "Appointments (EMR)",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "IIS Submission Status",
+    "Name": "smvs_iisregistrationstatus",
+    "OptionSetInfoNameMapping": {
+      "153940000": "Not started",
+      "153940001": "In process",
+      "153940003": "Manually submitted",
+      "153940004": "Failed",
+      "153940005": "Succeeded"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": true,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "smvs_iissubmissionstatus",
+        "OptionSetReferenceEntityName": "Appointments (EMR)"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "smvs_iissubmissionstatus",
+    "RelatedEntityName": "Appointments (EMR)",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Insurance Plan Type",
+    "Name": "smvs_insurance_plan_type",
+    "OptionSetInfoNameMapping": {
+      "153940000": "PPO",
+      "153940001": "HMO",
+      "153940002": "Others",
+      "153940003": "I don't know "
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": true,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "smvs_insurance_plan_type",
+        "OptionSetReferenceEntityName": "Appointments (EMR)"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "smvs_insurance_plan_type",
+    "RelatedEntityName": "Appointments (EMR)",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Insurance Type",
+    "Name": "smvs_insurance_type",
+    "OptionSetInfoNameMapping": {
+      "153940000": "Medicare",
+      "153940001": "Medicare Advantage",
+      "153940002": "Commercial",
+      "153940003": "Medicaid"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": true,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "smvs_insurance_type",
+        "OptionSetReferenceEntityName": "Appointments (EMR)"
+      },
+      "OptionSetReferenceItem1": {
+        "OptionSetReferenceColumnName": "smvs_insurance_type",
+        "OptionSetReferenceEntityName": "Insurance Organizations"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "smvs_insurance_type",
+    "RelatedEntityName": "Appointments (EMR)",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Attempted to get documentation, no ID available (Appointments (EMR))",
+    "Name": "smvs_msemr_appointmentemr_attemptedtogetdocumentationnoidavailable",
+    "OptionSetInfoNameMapping": {
+      "0": "No",
+      "1": "Yes"
+    },
+    "OptionSetIsBooleanValued": true,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "smvs_attemptedtogetdocumentation",
+        "OptionSetReferenceEntityName": "Appointments (EMR)"
+      }
+    },
+    "OptionSetTypeKey": "BooleanType",
+    "RelatedColumnInvariantName": "smvs_attemptedtogetdocumentation",
+    "RelatedEntityName": "Appointments (EMR)",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Duplicate Appointment (Appointments (EMR))",
+    "Name": "smvs_msemr_appointmentemr_duplicate",
+    "OptionSetInfoNameMapping": {
+      "0": "No",
+      "1": "Yes"
+    },
+    "OptionSetIsBooleanValued": true,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "smvs_duplicate_appointment",
+        "OptionSetReferenceEntityName": "Appointments (EMR)"
+      }
+    },
+    "OptionSetTypeKey": "BooleanType",
+    "RelatedColumnInvariantName": "smvs_duplicate_appointment",
+    "RelatedEntityName": "Appointments (EMR)",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Have you ever had a reaction to a previous shot? (Appointments (EMR))",
+    "Name": "smvs_msemr_appointmentemr_reaction_to_previous_flu_shot",
+    "OptionSetInfoNameMapping": {
+      "0": "No",
+      "1": "Yes"
+    },
+    "OptionSetIsBooleanValued": true,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "smvs_reaction_to_previous_flu_shot",
+        "OptionSetReferenceEntityName": "Appointments (EMR)"
+      }
+    },
+    "OptionSetTypeKey": "BooleanType",
+    "RelatedColumnInvariantName": "smvs_reaction_to_previous_flu_shot",
+    "RelatedEntityName": "Appointments (EMR)",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Re-Check Eligibility (Appointments (EMR))",
+    "Name": "smvs_msemr_appointmentemr_recheckeligibility",
+    "OptionSetInfoNameMapping": {
+      "0": "No",
+      "1": "Yes"
+    },
+    "OptionSetIsBooleanValued": true,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "smvs_recheckeligibility",
+        "OptionSetReferenceEntityName": "Appointments (EMR)"
+      }
+    },
+    "OptionSetTypeKey": "BooleanType",
+    "RelatedColumnInvariantName": "smvs_recheckeligibility",
+    "RelatedEntityName": "Appointments (EMR)",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "allergic to eggs, chicken proteins, vaccine compon (Appointments (EMR))",
+    "Name": "smvs_msemr_appointmentemr_smvs_allergic_to_egg_chicken",
+    "OptionSetInfoNameMapping": {
+      "0": "No",
+      "1": "Yes"
+    },
+    "OptionSetIsBooleanValued": true,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "smvs_allergic_to_egg_chicken",
+        "OptionSetReferenceEntityName": "Appointments (EMR)"
+      }
+    },
+    "OptionSetTypeKey": "BooleanType",
+    "RelatedColumnInvariantName": "smvs_allergic_to_egg_chicken",
+    "RelatedEntityName": "Appointments (EMR)",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Allergic to something other than vaccine? (Appointments (EMR))",
+    "Name": "smvs_msemr_appointmentemr_smvs_allergic_to_something_other_than_vaccine",
+    "OptionSetInfoNameMapping": {
+      "0": "No",
+      "1": "Yes"
+    },
+    "OptionSetIsBooleanValued": true,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "smvs_allergic_to_something_other_than_vaccine",
+        "OptionSetReferenceEntityName": "Appointments (EMR)"
+      }
+    },
+    "OptionSetTypeKey": "BooleanType",
+    "RelatedColumnInvariantName": "smvs_allergic_to_something_other_than_vaccine",
+    "RelatedEntityName": "Appointments (EMR)",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Appointment Dose Number (Appointments (EMR))",
+    "Name": "smvs_msemr_appointmentemr_smvs_appointment_dose_number",
+    "OptionSetInfoNameMapping": {
+      "153940000": "First Dose",
+      "153940001": "Second Dose"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "smvs_appointment_dose_number",
+        "OptionSetReferenceEntityName": "Appointments (EMR)"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "smvs_appointment_dose_number",
+    "RelatedEntityName": "Appointments (EMR)",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Are you pregnant or breastfeeding? (Appointments (EMR))",
+    "Name": "smvs_msemr_appointmentemr_smvs_are_you_pregnant_or_breastfeeding_questio",
+    "OptionSetInfoNameMapping": {
+      "0": "No",
+      "1": "Yes"
+    },
+    "OptionSetIsBooleanValued": true,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "smvs_are_you_pregnant_or_breastfeeding_questio",
+        "OptionSetReferenceEntityName": "Appointments (EMR)"
+      }
+    },
+    "OptionSetTypeKey": "BooleanType",
+    "RelatedColumnInvariantName": "smvs_are_you_pregnant_or_breastfeeding_questio",
+    "RelatedEntityName": "Appointments (EMR)",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Are you sick with a fever (>100)?' (Appointments (EMR))",
+    "Name": "smvs_msemr_appointmentemr_smvs_are_you_sick_with_a_fever_100",
+    "OptionSetInfoNameMapping": {
+      "0": "No",
+      "1": "Yes"
+    },
+    "OptionSetIsBooleanValued": true,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "smvs_are_you_sick_with_a_fever_100",
+        "OptionSetReferenceEntityName": "Appointments (EMR)"
+      }
+    },
+    "OptionSetTypeKey": "BooleanType",
+    "RelatedColumnInvariantName": "smvs_are_you_sick_with_a_fever_100",
+    "RelatedEntityName": "Appointments (EMR)",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Are you pregnant? (Appointments (EMR))",
+    "Name": "smvs_msemr_appointmentemr_smvs_areyoupregnantifyespleaseinquireaboutthi",
+    "OptionSetInfoNameMapping": {
+      "0": "No",
+      "1": "Yes"
+    },
+    "OptionSetIsBooleanValued": true,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "smvs_areyoupregnantifyespleaseinquireaboutthi",
+        "OptionSetReferenceEntityName": "Appointments (EMR)"
+      }
+    },
+    "OptionSetTypeKey": "BooleanType",
+    "RelatedColumnInvariantName": "smvs_areyoupregnantifyespleaseinquireaboutthi",
+    "RelatedEntityName": "Appointments (EMR)",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Do you have a bleeding disorder? (Appointments (EMR))",
+    "Name": "smvs_msemr_appointmentemr_smvs_do_you_have_a_bleeding_disorder",
+    "OptionSetInfoNameMapping": {
+      "0": "No",
+      "1": "Yes"
+    },
+    "OptionSetIsBooleanValued": true,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "smvs_do_you_have_a_bleeding_disorder",
+        "OptionSetReferenceEntityName": "Appointments (EMR)"
+      }
+    },
+    "OptionSetTypeKey": "BooleanType",
+    "RelatedColumnInvariantName": "smvs_do_you_have_a_bleeding_disorder",
+    "RelatedEntityName": "Appointments (EMR)",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Do you have a weakened immune system? (Appointments (EMR))",
+    "Name": "smvs_msemr_appointmentemr_smvs_do_you_have_a_weakened_immune_system",
+    "OptionSetInfoNameMapping": {
+      "0": "No",
+      "1": "Yes"
+    },
+    "OptionSetIsBooleanValued": true,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "smvs_do_you_have_a_weakened_immune_system",
+        "OptionSetReferenceEntityName": "Appointments (EMR)"
+      }
+    },
+    "OptionSetTypeKey": "BooleanType",
+    "RelatedColumnInvariantName": "smvs_do_you_have_a_weakened_immune_system",
+    "RelatedEntityName": "Appointments (EMR)",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Do you have a history of Guillain-Barre syndrome? (Appointments (EMR))",
+    "Name": "smvs_msemr_appointmentemr_smvs_doyouhaveahistoryofguillainbarresynd",
+    "OptionSetInfoNameMapping": {
+      "0": "No",
+      "1": "Yes"
+    },
+    "OptionSetIsBooleanValued": true,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "smvs_doyouhaveahistoryofguillainbarresynd",
+        "OptionSetReferenceEntityName": "Appointments (EMR)"
+      }
+    },
+    "OptionSetTypeKey": "BooleanType",
+    "RelatedColumnInvariantName": "smvs_doyouhaveahistoryofguillainbarresynd",
+    "RelatedEntityName": "Appointments (EMR)",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "experiencing symptoms of COVID-19? (Appointments (EMR))",
+    "Name": "smvs_msemr_appointmentemr_smvs_experiencing_symptoms_of_covid19",
+    "OptionSetInfoNameMapping": {
+      "0": "No",
+      "1": "Yes"
+    },
+    "OptionSetIsBooleanValued": true,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "smvs_experiencing_symptoms_of_covid19",
+        "OptionSetReferenceEntityName": "Appointments (EMR)"
+      }
+    },
+    "OptionSetTypeKey": "BooleanType",
+    "RelatedColumnInvariantName": "smvs_experiencing_symptoms_of_covid19",
+    "RelatedEntityName": "Appointments (EMR)",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Have you ever had a flu shot before today? (Appointments (EMR))",
+    "Name": "smvs_msemr_appointmentemr_smvs_have_you_ever_had_flu_shot_before_today",
+    "OptionSetInfoNameMapping": {
+      "0": "No",
+      "1": "Yes"
+    },
+    "OptionSetIsBooleanValued": true,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "smvs_have_you_ever_had_flu_shot_before_today",
+        "OptionSetReferenceEntityName": "Appointments (EMR)"
+      }
+    },
+    "OptionSetTypeKey": "BooleanType",
+    "RelatedColumnInvariantName": "smvs_have_you_ever_had_flu_shot_before_today",
+    "RelatedEntityName": "Appointments (EMR)",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "severe allergic reaction to previous vaccine? (Appointments (EMR))",
+    "Name": "smvs_msemr_appointmentemr_smvs_haveyoueverhadasevereallergicreactiontop",
+    "OptionSetInfoNameMapping": {
+      "0": "No",
+      "1": "Yes"
+    },
+    "OptionSetIsBooleanValued": true,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "smvs_haveyoueverhadasevereallergicreactiontop",
+        "OptionSetReferenceEntityName": "Appointments (EMR)"
+      }
+    },
+    "OptionSetTypeKey": "BooleanType",
+    "RelatedColumnInvariantName": "smvs_haveyoueverhadasevereallergicreactiontop",
+    "RelatedEntityName": "Appointments (EMR)",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Insurance is Verified (Appointments (EMR))",
+    "Name": "smvs_msemr_appointmentemr_smvs_insurance_is_verified",
+    "OptionSetInfoNameMapping": {
+      "0": "No",
+      "1": "Yes"
+    },
+    "OptionSetIsBooleanValued": true,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "smvs_insurance_is_verified",
+        "OptionSetReferenceEntityName": "Appointments (EMR)"
+      }
+    },
+    "OptionSetTypeKey": "BooleanType",
+    "RelatedColumnInvariantName": "smvs_insurance_is_verified",
+    "RelatedEntityName": "Appointments (EMR)",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "isPrimary (Appointments (EMR))",
+    "Name": "smvs_msemr_appointmentemr_smvs_isprimary",
+    "OptionSetInfoNameMapping": {
+      "0": "No",
+      "1": "Yes"
+    },
+    "OptionSetIsBooleanValued": true,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "smvs_isprimary",
+        "OptionSetReferenceEntityName": "Appointments (EMR)"
+      }
+    },
+    "OptionSetTypeKey": "BooleanType",
+    "RelatedColumnInvariantName": "smvs_isprimary",
+    "RelatedEntityName": "Appointments (EMR)",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Payment Type (Appointments (EMR))",
+    "Name": "smvs_msemr_appointmentemr_smvs_payment_type",
+    "OptionSetInfoNameMapping": {
+      "153940000": "Insurance",
+      "153940002": "No Insurance",
+      "153940003": "Out of Pocket"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "smvs_payment_type",
+        "OptionSetReferenceEntityName": "Appointments (EMR)"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "smvs_payment_type",
+    "RelatedEntityName": "Appointments (EMR)",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Positive test for Covid? (Appointments (EMR))",
+    "Name": "smvs_msemr_appointmentemr_smvs_positive_test_for_covid",
+    "OptionSetInfoNameMapping": {
+      "0": "No",
+      "1": "Yes"
+    },
+    "OptionSetIsBooleanValued": true,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "smvs_positive_test_for_covid",
+        "OptionSetReferenceEntityName": "Appointments (EMR)"
+      }
+    },
+    "OptionSetTypeKey": "BooleanType",
+    "RelatedColumnInvariantName": "smvs_positive_test_for_covid",
+    "RelatedEntityName": "Appointments (EMR)",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Had Another vaccine in the previous 14 days? (Appointments (EMR))",
+    "Name": "smvs_msemr_appointmentemr_smvs_receivedanothervaccineintheprevious14days",
+    "OptionSetInfoNameMapping": {
+      "0": "No",
+      "1": "Yes"
+    },
+    "OptionSetIsBooleanValued": true,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "smvs_receivedanothervaccineintheprevious14days",
+        "OptionSetReferenceEntityName": "Appointments (EMR)"
+      }
+    },
+    "OptionSetTypeKey": "BooleanType",
+    "RelatedColumnInvariantName": "smvs_receivedanothervaccineintheprevious14days",
+    "RelatedEntityName": "Appointments (EMR)",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Patient consent to send data to IIS (Appointments (EMR))",
+    "Name": "smvs_msemr_appointmentemr_smvs_send_to_iis",
+    "OptionSetInfoNameMapping": {
+      "0": "No",
+      "1": "Yes"
+    },
+    "OptionSetIsBooleanValued": true,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "smvs_send_to_iis",
+        "OptionSetReferenceEntityName": "Appointments (EMR)"
+      }
+    },
+    "OptionSetTypeKey": "BooleanType",
+    "RelatedColumnInvariantName": "smvs_send_to_iis",
+    "RelatedEntityName": "Appointments (EMR)",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Skip Billing (Appointments (EMR))",
+    "Name": "smvs_msemr_appointmentemr_smvs_skipbilling",
+    "OptionSetInfoNameMapping": {
+      "0": "No",
+      "1": "Yes"
+    },
+    "OptionSetIsBooleanValued": true,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "smvs_skipbilling",
+        "OptionSetReferenceEntityName": "Appointments (EMR)"
+      }
+    },
+    "OptionSetTypeKey": "BooleanType",
+    "RelatedColumnInvariantName": "smvs_skipbilling",
+    "RelatedEntityName": "Appointments (EMR)",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Source of Creation (Appointments (EMR))",
+    "Name": "smvs_msemr_appointmentemr_smvs_source_of_creation",
+    "OptionSetInfoNameMapping": {
+      "153940000": "Patient Website",
+      "153940001": "Adhoc",
+      "153940002": "Migration",
+      "153940003": "Walk-In"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "smvs_source_of_creation",
+        "OptionSetReferenceEntityName": "Appointments (EMR)"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "smvs_source_of_creation",
+    "RelatedEntityName": "Appointments (EMR)",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Relationship Subscriber",
+    "Name": "smvs_relationshipsubscriber",
+    "OptionSetInfoNameMapping": {
+      "153940000": "Self",
+      "153940001": "Spouse",
+      "153940002": "Child/Dependent",
+      "153940003": "Other"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": true,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "smvs_relationship_subscriber",
+        "OptionSetReferenceEntityName": "Appointments (EMR)"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "smvs_relationship_subscriber",
+    "RelatedEntityName": "Appointments (EMR)",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Route of Administration",
+    "Name": "smvs_route_of_administration",
+    "OptionSetInfoNameMapping": {
+      "153940000": "Oral",
+      "153940001": "Rectal",
+      "153940002": "Inhalation",
+      "153940003": "Nebulization",
+      "153940004": "Transdermal",
+      "153940005": "Injection "
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": true,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "smvs_route_of_administration",
+        "OptionSetReferenceEntityName": "Appointments (EMR)"
+      },
+      "OptionSetReferenceItem1": {
+        "OptionSetReferenceColumnName": "smvs_route",
+        "OptionSetReferenceEntityName": "Medication Histories"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "smvs_route_of_administration",
+    "RelatedEntityName": "Appointments (EMR)",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Shot administered",
+    "Name": "smvs_shotadministered",
+    "OptionSetInfoNameMapping": {
+      "153940000": "Left Arm",
+      "153940001": "Right Arm"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": true,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "smvs_shotadministered",
+        "OptionSetReferenceEntityName": "Appointments (EMR)"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "smvs_shotadministered",
+    "RelatedEntityName": "Appointments (EMR)",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Test Conducted At",
+    "Name": "smvs_test_conducted",
+    "OptionSetInfoNameMapping": {
+      "153940000": "In-house",
+      "153940001": "External Lab"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": true,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "smvs_test_conducted_at",
+        "OptionSetReferenceEntityName": "Appointments (EMR)"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "smvs_test_conducted_at",
+    "RelatedEntityName": "Appointments (EMR)",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Test Report Status",
+    "Name": "smvs_test_report_status",
+    "OptionSetInfoNameMapping": {
+      "153940000": "Report Send To Patient",
+      "153940001": "Pending"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": true,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "smvs_test_report_status",
+        "OptionSetReferenceEntityName": "Appointments (EMR)"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "smvs_test_report_status",
+    "RelatedEntityName": "Appointments (EMR)",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Test Result",
+    "Name": "smvs_test_result",
+    "OptionSetInfoNameMapping": {
+      "153940000": "Positive",
+      "153940001": "Negative",
+      "276880000": "Inconclusive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": true,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "smvs_test_result",
+        "OptionSetReferenceEntityName": "Appointments (EMR)"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "smvs_test_result",
+    "RelatedEntityName": "Appointments (EMR)",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Social Channel",
+    "Name": "socialprofile_community",
+    "OptionSetInfoNameMapping": {
+      "0": "Other",
+      "1": "Facebook",
+      "2": "Twitter"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": true,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "community",
+        "OptionSetReferenceEntityName": "Appointments (EMR)"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "community",
+    "RelatedEntityName": "Appointments (EMR)",
+    "Type": "OptionSetInfo"
+  }
+]

@@ -1,0 +1,151 @@
+[
+  {
+    "CdsFCBContext": "{\"FileType\":true,\"ImageExternalStorage\":true}",
+    "EntitySetName": "msemr_appointmentemrparticipants",
+    "IsHidden": false,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "LogicalName": "msemr_appointmentemrparticipant",
+    "MaxGetRowsCount": 500,
+    "Name": "Appointment (EMR) Participants",
+    "NativeCDSDataSourceInfoNameMapping": {
+      "_ownerid_value": "Owner",
+      "createdby": "Created By",
+      "createdon": "Created On",
+      "createdonbehalfby": "Created By (Delegate)",
+      "importsequencenumber": "Import Sequence Number",
+      "modifiedby": "Modified By",
+      "modifiedon": "Modified On",
+      "modifiedonbehalfby": "Modified By (Delegate)",
+      "msemr_ActorDevice": "Actor (Device)",
+      "msemr_ActorHealthCareService": "Actor (Health Care Service)",
+      "msemr_ActorLocation": "Actor (Location)",
+      "msemr_ActorPatient": "Actor (Patient)",
+      "msemr_ActorPhysician": "Actor (Physician)",
+      "msemr_ActorRelatedPerson": "Actor (Related Person)",
+      "msemr_AppointmentEMR": "Appointment (EMR)",
+      "msemr_appointmentemrparticipant_AsyncOperations": "System Jobs",
+      "msemr_appointmentemrparticipant_BulkDeleteFailures": "Bulk Delete Failures",
+      "msemr_appointmentemrparticipant_DuplicateBaseRecord": "Duplicate Records (msemr_appointmentemrparticipant_DuplicateBaseRecord)",
+      "msemr_appointmentemrparticipant_DuplicateMatchingRecord": "Duplicate Records (msemr_appointmentemrparticipant_DuplicateMatchingRecord)",
+      "msemr_appointmentemrparticipant_MailboxTrackingFolders": "Mailbox Auto Tracking Folders",
+      "msemr_appointmentemrparticipant_PrincipalObjectAttributeAccesses": "Field Sharing",
+      "msemr_appointmentemrparticipant_ProcessSession": "Process Sessions",
+      "msemr_appointmentemrparticipant_SyncErrors": "Sync Errors",
+      "msemr_appointmentemrparticipantid": "Appointment (EMR) Participant",
+      "msemr_name": "Name",
+      "msemr_participantactortype": "Participant Actor Type",
+      "msemr_participationstatus": "Participation Status",
+      "msemr_ParticpantType": "Participant Type",
+      "msemr_required": "Required",
+      "overriddencreatedon": "Record Created On",
+      "owningbusinessunit": "Owning Business Unit",
+      "owningteam": "Owning Team",
+      "owninguser": "Owning User",
+      "statecode": "Status",
+      "statuscode": "Status Reason",
+      "timezoneruleversionnumber": "Time Zone Rule Version Number",
+      "utcconversiontimezonecode": "UTC Conversion Time Zone Code",
+      "versionnumber": "Version Number"
+    },
+    "PreferredName": "Appointment (EMR) Participants",
+    "Type": "NativeCDSDataSourceInfo"
+  },
+  {
+    "DisplayName": "Appointment (EMR) Participants (Views)",
+    "Name": "_msemr_appointmentemrparticipant_views",
+    "RelatedEntityName": "Appointment (EMR) Participants",
+    "TrimmedViewName": true,
+    "Type": "ViewInfo",
+    "ViewInfoNameMapping": {
+      "52195f55-3aac-4c0b-b1b4-ece83ca63c69": "Appointment (EMR) Participant Advanced Find View",
+      "528c9057-c7ca-4bb1-b9e3-e204323aed3e": "Inactive Appointment (EMR) Participants",
+      "69ff88bf-2edf-4c54-b8b1-18166c82418b": "Appointment (EMR) Participant Associated View",
+      "9ebd3841-952a-491f-819d-7fc376b3123e": "Appointment (EMR) Participant Lookup View",
+      "b30c1cfc-d29c-412f-b66b-ac405f642216": "Active Appointment (EMR) Participants"
+    }
+  },
+  {
+    "DisplayName": "Participation Status (Appointment (EMR) Participants)",
+    "Name": "msemr_appointmentemrparticipant_msemr_participationstatus",
+    "OptionSetInfoNameMapping": {
+      "935000000": "Accepted",
+      "935000001": "Declined",
+      "935000002": "Tentative",
+      "935000003": "Needs Action"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "msemr_participationstatus",
+        "OptionSetReferenceEntityName": "Appointment (EMR) Participants"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "msemr_participationstatus",
+    "RelatedEntityName": "Appointment (EMR) Participants",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Required (Appointment (EMR) Participants)",
+    "Name": "msemr_appointmentemrparticipant_msemr_required",
+    "OptionSetInfoNameMapping": {
+      "935000000": "Required",
+      "935000001": "Optional",
+      "935000002": "Information Only"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "msemr_required",
+        "OptionSetReferenceEntityName": "Appointment (EMR) Participants"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "msemr_required",
+    "RelatedEntityName": "Appointment (EMR) Participants",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status (Appointment (EMR) Participants)",
+    "Name": "msemr_appointmentemrparticipant_statecode",
+    "OptionSetInfoNameMapping": {
+      "0": "Active",
+      "1": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statecode",
+        "OptionSetReferenceEntityName": "Appointment (EMR) Participants"
+      }
+    },
+    "OptionSetTypeKey": "StateType",
+    "RelatedColumnInvariantName": "statecode",
+    "RelatedEntityName": "Appointment (EMR) Participants",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status Reason (Appointment (EMR) Participants)",
+    "Name": "msemr_appointmentemrparticipant_statuscode",
+    "OptionSetInfoNameMapping": {
+      "1": "Active",
+      "2": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statuscode",
+        "OptionSetReferenceEntityName": "Appointment (EMR) Participants"
+      }
+    },
+    "OptionSetTypeKey": "StatusType",
+    "RelatedColumnInvariantName": "statuscode",
+    "RelatedEntityName": "Appointment (EMR) Participants",
+    "Type": "OptionSetInfo"
+  }
+]

@@ -1,0 +1,155 @@
+[
+  {
+    "CdsFCBContext": "{\"FileType\":true,\"ImageExternalStorage\":true}",
+    "EntitySetName": "smvs_facilities",
+    "IsHidden": false,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "LogicalName": "smvs_facility",
+    "MaxGetRowsCount": 500,
+    "Name": "Facilities",
+    "NativeCDSDataSourceInfoNameMapping": {
+      "_ownerid_value": "Owner",
+      "createdby": "Created By",
+      "createdon": "Created On",
+      "createdonbehalfby": "Created By (Delegate)",
+      "crf7e_clia": "CLIA#",
+      "importsequencenumber": "Import Sequence Number",
+      "modifiedby": "Modified By",
+      "modifiedon": "Modified On",
+      "modifiedonbehalfby": "Modified By (Delegate)",
+      "overriddencreatedon": "Record Created On",
+      "owningbusinessunit": "Owning Business Unit",
+      "owningteam": "Owning Team",
+      "owninguser": "Owning User",
+      "smvs_address": "Address",
+      "smvs_city": "City",
+      "smvs_facility_AsyncOperations": "System Jobs",
+      "smvs_facility_BulkDeleteFailures": "Bulk Delete Failures",
+      "smvs_facility_DuplicateBaseRecord": "Duplicate Records (smvs_facility_DuplicateBaseRecord)",
+      "smvs_facility_DuplicateMatchingRecord": "Duplicate Records (smvs_facility_DuplicateMatchingRecord)",
+      "smvs_facility_MailboxTrackingFolders": "Mailbox Auto Tracking Folders",
+      "smvs_facility_ordering_facility_smvs_faci": "Facilities",
+      "smvs_facility_PrincipalObjectAttributeAccesses": "Field Sharing",
+      "smvs_facility_ProcessSession": "Process Sessions",
+      "smvs_facility_smvs_device_setup_smvs_device": "Device Setups",
+      "smvs_facility_SyncErrors": "Sync Errors",
+      "smvs_facility_type": "Facility Type",
+      "smvs_facilityid": "Facility",
+      "smvs_msemr_appointmentemr_testing_facility_smv": "Appointments (EMR)",
+      "smvs_name": "Name",
+      "smvs_npi": "NPI",
+      "smvs_ordering_facility_smvs_facility": "Ordering Facility",
+      "smvs_phone": "Phone",
+      "smvs_state": "State",
+      "smvs_test_conducted_at_facility": "Test Conducted At",
+      "smvs_zip_code": "Zip Code",
+      "statecode": "Status",
+      "statuscode": "Status Reason",
+      "timezoneruleversionnumber": "Time Zone Rule Version Number",
+      "utcconversiontimezonecode": "UTC Conversion Time Zone Code",
+      "versionnumber": "Version Number"
+    },
+    "PreferredName": "Facilities",
+    "Type": "NativeCDSDataSourceInfo"
+  },
+  {
+    "DisplayName": "Facilities (Views)",
+    "Name": "_smvs_facility_views",
+    "RelatedEntityName": "Facilities",
+    "TrimmedViewName": true,
+    "Type": "ViewInfo",
+    "ViewInfoNameMapping": {
+      "17b429c5-84ce-4470-bcd6-5c921bb61f68": "Facility Lookup View",
+      "7961b0c3-95d7-ec11-a7b5-000d3a3ade0f": "Testing Look Up Facility",
+      "8fa7cebd-2e4d-4003-9d35-34c75f245af7": "Facility Advanced Find View",
+      "aaf9a232-52c8-ec11-a7b5-6045bd00dbbc": "Active Ordering Facility ",
+      "b5e3b89c-c9d1-ec11-a7b5-00224809c5c0": "All Active Facilities",
+      "bf141d7a-2a1a-4d29-8cee-839efd7bb4dd": "Active Testing Facilities",
+      "e4586cd7-ddcd-47c8-81df-c46b1c2e751c": "Inactive Facilities",
+      "e7134d12-b1fd-ec11-82e5-000d3a5a3fc3": "Testing and Testing & Ordering Facility",
+      "fe9888e4-b97a-42da-8a7e-f3ca127f5c4e": "Facility Associated View"
+    }
+  },
+  {
+    "DisplayName": "Test Conducted At (Facilities)",
+    "Name": "smvs_facility_smvs_test_conducted_at_facility",
+    "OptionSetInfoNameMapping": {
+      "153940000": "In-House",
+      "153940001": "External Lab"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "smvs_test_conducted_at_facility",
+        "OptionSetReferenceEntityName": "Facilities"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "smvs_test_conducted_at_facility",
+    "RelatedEntityName": "Facilities",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status (Facilities)",
+    "Name": "smvs_facility_statecode",
+    "OptionSetInfoNameMapping": {
+      "0": "Active",
+      "1": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statecode",
+        "OptionSetReferenceEntityName": "Facilities"
+      }
+    },
+    "OptionSetTypeKey": "StateType",
+    "RelatedColumnInvariantName": "statecode",
+    "RelatedEntityName": "Facilities",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status Reason (Facilities)",
+    "Name": "smvs_facility_statuscode",
+    "OptionSetInfoNameMapping": {
+      "1": "Active",
+      "2": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statuscode",
+        "OptionSetReferenceEntityName": "Facilities"
+      }
+    },
+    "OptionSetTypeKey": "StatusType",
+    "RelatedColumnInvariantName": "statuscode",
+    "RelatedEntityName": "Facilities",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Facility Type",
+    "Name": "smvs_facility_type",
+    "OptionSetInfoNameMapping": {
+      "153940000": "Ordering Facility",
+      "153940001": "Testing Facility",
+      "153940002": "Ordering and Testing Facilities"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": true,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "smvs_facility_type",
+        "OptionSetReferenceEntityName": "Facilities"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "smvs_facility_type",
+    "RelatedEntityName": "Facilities",
+    "Type": "OptionSetInfo"
+  }
+]

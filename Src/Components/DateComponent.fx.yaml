@@ -1,0 +1,184 @@
+DateComponent As CanvasComponent:
+    ClearExternalDate: ="Text"
+    ExternalDateInput: =Blank()
+    Fill: =RGBA(0, 0, 0, 0)
+    Height: =40
+    SelectedDate: =datePicker.SelectedDate
+    SelectedLabelDate: ="Today"
+    Width: =300
+    X: =0
+    Y: =0
+    ZIndex: =1
+
+    lblDateDisplay As label:
+        Align: =Align.Center
+        Color: =RGBA(33, 33, 33, 1)
+        Font: =Font.Lato
+        FontWeight: =FontWeight.Bold
+        Height: =31
+        Size: =16
+        Text: |-
+            =If(
+                IsBlank(nextDay2),
+                DateComponent.SelectedLabelDate,
+                nextDay2 = Text(
+                    Today(),
+                    "mm/dd/yyyy"
+                ),
+                "Today",
+                nextDay2 = Text(
+                    DateAdd(
+                        Today(),
+                        1,
+                        TimeUnit.Days
+                    ),
+                    "mm/dd/yyyy"
+                ),
+                "Tomorrow",
+                nextDay2 = Text(
+                    DateAdd(
+                        Today(),
+                        -1,
+                        TimeUnit.Days
+                    ),
+                    "mm/dd/yyyy"
+                ),
+                "Yesterday",
+                nextDay2
+            )
+            //If(nextDay2=Text(Today(),DateTimeFormat.ShortDate),"Today")
+            //If(nextDay2=Text(DateAdd(Today(),2,TimeUnit.Days),DateTimeFormat.ShortDate),"Today");
+        Width: =139
+        Wrap: =false
+        X: =109
+        Y: =3
+        ZIndex: =1
+
+    IcnRightCalendar As icon.ArrowRight:
+        Color: =RGBA(33, 33, 33, 1)
+        DisabledBorderColor: =RGBA(255, 255, 255, 1)
+        DisabledColor: =RGBA(237, 237, 237, 1)
+        DisplayMode: |-
+            =//If(nextDay2<>Text(DateAdd(Today(),2,TimeUnit.Days),DateTimeFormat.ShortDate),DisplayMode.Edit, DisplayMode.Disabled)
+            DisplayMode.Edit
+        FocusedBorderThickness: =0
+        Height: =31
+        Icon: =Icon.ChevronRight
+        OnSelect: |-
+            =Set(
+                nextDay2,
+                lblDateDisplay.Text
+            );
+            //If(nextDay2="Yesterday",Set(nextDay2,"Today"),nextDay2="Today",Set(nextDay2,"Tomorrow"));
+            //If(DateAdd(Today(),2,TimeUnit.Days)>datePicker.SelectedDate, Set(nextDay2,Text(DateAdd(datePicker.SelectedDate,1,TimeUnit.Days),DateTimeFormat.ShortDate)));
+            Set(
+                nextDay2,
+                Text(
+                    DateAdd(
+                        datePicker.SelectedDate,
+                        1,
+                        TimeUnit.Days
+                    ),
+                    "mm/dd/yyyy"
+                )
+            );
+            DateComponent.ClearExternalDate();
+        Width: =33
+        X: =254
+        Y: =3
+        ZIndex: =2
+
+    IcnLeftCalendar As icon.ArrowRight:
+        Color: =RGBA(33, 33, 33, 1)
+        DisabledBorderColor: =RGBA(255, 255, 255, 1)
+        DisabledColor: =RGBA(219, 219, 219, 1)
+        DisplayMode: |-
+            =//If(nextDay2="YesterDay",DisplayMode.Disabled,DisplayMode.Edit)
+            DisplayMode.Edit
+        FocusedBorderThickness: =0
+        Height: =31
+        Icon: =Icon.ChevronLeft
+        OnSelect: |-
+            =Set(
+                nextDay2,
+                lblDateDisplay.Text
+            );
+            //If(nextDay2="Today",Set(nextDay2,"Yesterday"),nextDay2="Tomorrow",Set(nextDay2,"Today"));
+            Set(
+                nextDay2,
+                Text(
+                    DateAdd(
+                        datePicker.SelectedDate,
+                        -1,
+                        TimeUnit.Days
+                    ),
+                    "mm/dd/yyyy"
+                )
+            );
+            DateComponent.ClearExternalDate();
+        Width: =33
+        X: =71
+        Y: =3
+        ZIndex: =3
+
+    IcoCalendar As image:
+        Height: =32
+        Image: |-
+            ="data:image/svg+xml;utf8, " & EncodeUrl(
+                "<svg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'>
+            <path d='M19 4H17V3C17 2.73478 16.8946 2.48043 16.7071 2.29289C16.5196 2.10536 16.2652 2 16 2C15.7348 2 15.4804 2.10536 15.2929 2.29289C15.1054 2.48043 15 2.73478 15 3V4H9V3C9 2.73478 8.89464 2.48043 8.70711 2.29289C8.51957 2.10536 8.26522 2 8 2C7.73478 2 7.48043 2.10536 7.29289 2.29289C7.10536 2.48043 7 2.73478 7 3V4H5C4.20435 4 3.44129 4.31607 2.87868 4.87868C2.31607 5.44129 2 6.20435 2 7V19C2 19.7956 2.31607 20.5587 2.87868 21.1213C3.44129 21.6839 4.20435 22 5 22H19C19.7956 22 20.5587 21.6839 21.1213 21.1213C21.6839 20.5587 22 19.7956 22 19V7C22 6.20435 21.6839 5.44129 21.1213 4.87868C20.5587 4.31607 19.7956 4 19 4ZM20 19C20 19.2652 19.8946 19.5196 19.7071 19.7071C19.5196 19.8946 19.2652 20 19 20H5C4.73478 20 4.48043 19.8946 4.29289 19.7071C4.10536 19.5196 4 19.2652 4 19V12H20V19ZM20 10H4V7C4 6.73478 4.10536 6.48043 4.29289 6.29289C4.48043 6.10536 4.73478 6 5 6H7V7C7 7.26522 7.10536 7.51957 7.29289 7.70711C7.48043 7.89464 7.73478 8 8 8C8.26522 8 8.51957 7.89464 8.70711 7.70711C8.89464 7.51957 9 7.26522 9 7V6H15V7C15 7.26522 15.1054 7.51957 15.2929 7.70711C15.4804 7.89464 15.7348 8 16 8C16.2652 8 16.5196 7.89464 16.7071 7.70711C16.8946 7.51957 17 7.26522 17 7V6H19C19.2652 6 19.5196 6.10536 19.7071 6.29289C19.8946 6.48043 20 6.73478 20 7V10Z' fill='#0052CC'/>
+            </svg>
+             "
+            )
+        Width: =34
+        X: =26
+        Y: =2
+        ZIndex: =4
+
+    datePicker As datepicker:
+        BorderColor: =RGBA(0, 0, 0, 0)
+        BorderStyle: =BorderStyle.None
+        BorderThickness: =0
+        Color: =RGBA(255, 255, 255, 0)
+        DefaultDate: |-
+            =If(
+                !IsBlank(DateComponent.ExternalDateInput),
+                DateComponent.ExternalDateInput,
+                lblDateDisplay.Text = "Yesterday",
+                DateAdd(
+                    Today(),
+                    -1,
+                    TimeUnit.Days
+                ),
+                lblDateDisplay.Text = "Tomorrow",
+                DateAdd(
+                    Today(),
+                    1,
+                    TimeUnit.Days
+                ),
+                lblDateDisplay.Text = "Today",
+                Today(),
+                DateValue(lblDateDisplay.Text)
+            )
+        DisabledBorderColor: =RGBA(0, 0, 0, 0)
+        DisabledColor: =RGBA(0, 0, 0, 0)
+        DisabledFill: =RGBA(0, 0, 0, 0)
+        Fill: =RGBA(255, 255, 255, 0)
+        Font: =Font.Lato
+        FontWeight: =FontWeight.Bold
+        Format: |-
+            =//Text(DateTimeFormat.ShortDate,"mm/dd/yyyy")
+            "mm/dd/yyyy"
+        IconBackground: =RGBA(0,0,0,0)
+        IconFill: =RGBA(0,0,0,0)
+        OnChange: |-
+            =Set(toggleDatePicker,false);
+            Set(nextDay2,Text(datePicker.SelectedDate,"mm/dd/yyyy"));
+        OnSelect: =DateComponent.ClearExternalDate();
+        Size: =16
+        Visible: |
+            =//toggleDatePicker
+            true
+        Width: =71
+        ZIndex: =5
+

@@ -1,0 +1,231 @@
+[
+  {
+    "CdsFCBContext": "{\"FileType\":true,\"ImageExternalStorage\":true}",
+    "EntitySetName": "smvs_appointment_date_slots",
+    "IsHidden": false,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "LogicalName": "smvs_appointment_date_slot",
+    "MaxGetRowsCount": 500,
+    "Name": "Appointment Days",
+    "NativeCDSDataSourceInfoNameMapping": {
+      "_ownerid_value": "Owner",
+      "createdby": "Created By",
+      "createdon": "Created On",
+      "createdonbehalfby": "Created By (Delegate)",
+      "importsequencenumber": "Import Sequence Number",
+      "modifiedby": "Modified By",
+      "modifiedon": "Modified On",
+      "modifiedonbehalfby": "Modified By (Delegate)",
+      "overriddencreatedon": "Record Created On",
+      "owningbusinessunit": "Owning Business Unit",
+      "owningteam": "Owning Team",
+      "owninguser": "Owning User",
+      "smvs_allow_save": "Allow Save",
+      "smvs_appointment_date_slot_AsyncOperations": "System Jobs",
+      "smvs_appointment_date_slot_BulkDeleteFailures": "Bulk Delete Failures",
+      "smvs_appointment_date_slot_DuplicateBaseRecord": "Duplicate Records (smvs_appointment_date_slot_DuplicateBaseRecord)",
+      "smvs_appointment_date_slot_DuplicateMatchingRecord": "Duplicate Records (smvs_appointment_date_slot_DuplicateMatchingRecord)",
+      "smvs_appointment_date_slot_MailboxTrackingFolders": "Mailbox Auto Tracking Folders",
+      "smvs_appointment_date_slot_PrincipalObjectAttributeAccesses": "Field Sharing",
+      "smvs_appointment_date_slot_ProcessSession": "Process Sessions",
+      "smvs_appointment_date_slot_status": "Appointment Days status",
+      "smvs_appointment_date_slot_SyncErrors": "Sync Errors",
+      "smvs_appointment_date_slotid": "Appointment Date Slot",
+      "smvs_available_slot_count_first_appointment": "1st Available Count",
+      "smvs_available_slot_count_second_appointment": "2nd Available  Count",
+      "smvs_block_duration_min_first_appointment": "1st Block Duration (minutes)",
+      "smvs_block_duration_min_second_appointment": "2nd Block Duration (minutes)",
+      "smvs_blocks_per_hour_first_appointment": "1st Blocks per Hour",
+      "smvs_blocks_per_hour_second_appointment": "2nd Blocks Per hour",
+      "smvs_capacity_per_block_first_appointment": "1st Capacity Per Block",
+      "smvs_capacity_per_block_second_appointment": "2nd Capacity Per Block",
+      "smvs_clinic_duration_hours_first_appointment": "1st Clinic Duration (hours)",
+      "smvs_clinic_duration_hours_first_appointment_1": "Clinic Duration (hours) first appointment",
+      "smvs_clinic_duration_hours_second_appointment": "2nd Clinic Duration (hours)",
+      "smvs_clinic_duration_hours_second_appointment1": "Clinic Duration (hour) Second appointment",
+      "smvs_current_capacity_first_appointment": "1st Current Capacity",
+      "smvs_current_capacity_second_appointment": "2nd Current Capacity",
+      "smvs_end_first_appointment": "1st End",
+      "smvs_end_second_appointment": "2nd End",
+      "smvs_healthcare_serviceId": "Health care Service",
+      "smvs_locationId": "Location",
+      "smvs_name": "Name",
+      "smvs_set_new_target_capacity_first_appointment": " Set new target capacity First Appointment",
+      "smvs_set_new_target_capacity_secondappointment": " Set new target capacity Second Appointment",
+      "smvs_smvs_appointment_date_slot_msemr_slot": "Slots",
+      "smvs_smvs_appointment_date_slot_smvs_appointme": "Appointment Slots Availability",
+      "smvs_start_first_appointment": "1st Start",
+      "smvs_start_second_appointment": "2nd Start",
+      "smvs_updating_from_time_slot": "Updating From time slot",
+      "statecode": "Status",
+      "statuscode": "Status Reason",
+      "timezoneruleversionnumber": "Time Zone Rule Version Number",
+      "utcconversiontimezonecode": "UTC Conversion Time Zone Code",
+      "versionnumber": "Version Number"
+    },
+    "PreferredName": "Appointment Days",
+    "Type": "NativeCDSDataSourceInfo"
+  },
+  {
+    "DisplayName": "Appointment Days (Views)",
+    "Name": "_smvs_appointment_date_slot_views",
+    "RelatedEntityName": "Appointment Days",
+    "TrimmedViewName": true,
+    "Type": "ViewInfo",
+    "ViewInfoNameMapping": {
+      "052db11f-4111-ec11-b6e6-000d3a570f02": "All Appointment Days",
+      "052e3045-6a64-4815-9843-abeb6cc654ae": "Appointment Days Advanced Find View",
+      "4eb5a3cc-584b-489a-b8e8-cf6f79e18949": "Active Appointment Days",
+      "9aa3219d-0693-4696-a5f3-f6a3582f6f34": "Inactive Appointment Days",
+      "c72ea816-4824-405e-bbe9-55e66de02ccc": "Appointment Days Associated View",
+      "cec585ca-f48b-48db-a02f-3fd9c37ca040": "Appointment Days Lookup View"
+    }
+  },
+  {
+    "DisplayName": "Allow Save (Appointment Days)",
+    "Name": "smvs_appointment_date_slot_smvs_allow_save",
+    "OptionSetInfoNameMapping": {
+      "0": "No",
+      "1": "Yes"
+    },
+    "OptionSetIsBooleanValued": true,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "smvs_allow_save",
+        "OptionSetReferenceEntityName": "Appointment Days"
+      }
+    },
+    "OptionSetTypeKey": "BooleanType",
+    "RelatedColumnInvariantName": "smvs_allow_save",
+    "RelatedEntityName": "Appointment Days",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Appointment Days status (Appointment Days)",
+    "Name": "smvs_appointment_date_slot_smvs_appointment_date_slot_status",
+    "OptionSetInfoNameMapping": {
+      "153940000": "Live",
+      "153940001": "Not Live"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "smvs_appointment_date_slot_status",
+        "OptionSetReferenceEntityName": "Appointment Days"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "smvs_appointment_date_slot_status",
+    "RelatedEntityName": "Appointment Days",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "1st Blocks per Hour (Appointment Days)",
+    "Name": "smvs_appointment_date_slot_smvs_blocks_per_hour_first_appointment",
+    "OptionSetInfoNameMapping": {
+      "153940000": "1",
+      "153940001": "2",
+      "153940002": "4",
+      "153940003": "6",
+      "153940004": "12"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "smvs_blocks_per_hour_first_appointment",
+        "OptionSetReferenceEntityName": "Appointment Days"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "smvs_blocks_per_hour_first_appointment",
+    "RelatedEntityName": "Appointment Days",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "2nd Blocks Per hour (Appointment Days)",
+    "Name": "smvs_appointment_date_slot_smvs_blocks_per_hour_second_appointment",
+    "OptionSetInfoNameMapping": {
+      "153940000": "1",
+      "153940001": "2",
+      "153940002": "4",
+      "153940003": "6",
+      "153940004": "12"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "smvs_blocks_per_hour_second_appointment",
+        "OptionSetReferenceEntityName": "Appointment Days"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "smvs_blocks_per_hour_second_appointment",
+    "RelatedEntityName": "Appointment Days",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Updating From time slot (Appointment Days)",
+    "Name": "smvs_appointment_date_slot_smvs_updating_from_time_slot",
+    "OptionSetInfoNameMapping": {
+      "0": "No",
+      "1": "Yes"
+    },
+    "OptionSetIsBooleanValued": true,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "smvs_updating_from_time_slot",
+        "OptionSetReferenceEntityName": "Appointment Days"
+      }
+    },
+    "OptionSetTypeKey": "BooleanType",
+    "RelatedColumnInvariantName": "smvs_updating_from_time_slot",
+    "RelatedEntityName": "Appointment Days",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status (Appointment Days)",
+    "Name": "smvs_appointment_date_slot_statecode",
+    "OptionSetInfoNameMapping": {
+      "0": "Active",
+      "1": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statecode",
+        "OptionSetReferenceEntityName": "Appointment Days"
+      }
+    },
+    "OptionSetTypeKey": "StateType",
+    "RelatedColumnInvariantName": "statecode",
+    "RelatedEntityName": "Appointment Days",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status Reason (Appointment Days)",
+    "Name": "smvs_appointment_date_slot_statuscode",
+    "OptionSetInfoNameMapping": {
+      "1": "Active",
+      "2": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statuscode",
+        "OptionSetReferenceEntityName": "Appointment Days"
+      }
+    },
+    "OptionSetTypeKey": "StatusType",
+    "RelatedColumnInvariantName": "statuscode",
+    "RelatedEntityName": "Appointment Days",
+    "Type": "OptionSetInfo"
+  }
+]

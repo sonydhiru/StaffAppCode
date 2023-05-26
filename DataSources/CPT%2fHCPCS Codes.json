@@ -1,0 +1,108 @@
+[
+  {
+    "CdsFCBContext": "{\"FileType\":true,\"ImageExternalStorage\":true}",
+    "EntitySetName": "smvs_cpthcpcscodes",
+    "IsHidden": false,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "LogicalName": "smvs_cpthcpcscode",
+    "MaxGetRowsCount": 500,
+    "Name": "CPT/HCPCS Codes",
+    "NativeCDSDataSourceInfoNameMapping": {
+      "_ownerid_value": "Owner",
+      "createdby": "Created By",
+      "createdon": "Created On",
+      "createdonbehalfby": "Created By (Delegate)",
+      "importsequencenumber": "Import Sequence Number",
+      "modifiedby": "Modified By",
+      "modifiedon": "Modified On",
+      "modifiedonbehalfby": "Modified By (Delegate)",
+      "overriddencreatedon": "Record Created On",
+      "owningbusinessunit": "Owning Business Unit",
+      "owningteam": "Owning Team",
+      "owninguser": "Owning User",
+      "smvs_cpt": "CPT",
+      "smvs_cpthcpcscode_AsyncOperations": "System Jobs",
+      "smvs_cpthcpcscode_BulkDeleteFailures": "Bulk Delete Failures",
+      "smvs_cpthcpcscode_DuplicateBaseRecord": "Duplicate Records (smvs_cpthcpcscode_DuplicateBaseRecord)",
+      "smvs_cpthcpcscode_DuplicateMatchingRecord": "Duplicate Records (smvs_cpthcpcscode_DuplicateMatchingRecord)",
+      "smvs_cpthcpcscode_MailboxTrackingFolders": "Mailbox Auto Tracking Folders",
+      "smvs_cpthcpcscode_PrincipalObjectAttributeAccesses": "Field Sharing",
+      "smvs_cpthcpcscode_ProcessSession": "Process Sessions",
+      "smvs_cpthcpcscode_SyncErrors": "Sync Errors",
+      "smvs_cpthcpcscodeid": "CPT/HCPCS Code",
+      "smvs_description": "Description",
+      "smvs_effectivefrom": "Effective From",
+      "smvs_effectiveto": "Effective To",
+      "smvs_hcpcs": "HCPCS",
+      "smvs_modifier": "Modifier",
+      "smvs_msemr_healthcareservice_smvs_CPTHCPCSCode": "Sub Services",
+      "smvs_msemr_healthcareservicecategory_smvs_CPTH": "Services",
+      "smvs_ProcedureType": "Procedure Type",
+      "smvs_shortdescription": "Short Description",
+      "smvs_smvs_appointmentcpthcpcscode_cpthcpcs_smv": "Appointment CPT/HCPCS Codes",
+      "smvs_smvs_procedureconfiguration_CPTHCPCS_smvs": "Procedure Configurations",
+      "statecode": "Status",
+      "statuscode": "Status Reason",
+      "timezoneruleversionnumber": "Time Zone Rule Version Number",
+      "utcconversiontimezonecode": "UTC Conversion Time Zone Code",
+      "versionnumber": "Version Number"
+    },
+    "PreferredName": "CPT/HCPCS Codes",
+    "Type": "NativeCDSDataSourceInfo"
+  },
+  {
+    "DisplayName": "CPT/HCPCS Codes (Views)",
+    "Name": "_smvs_cpthcpcscode_views",
+    "RelatedEntityName": "CPT/HCPCS Codes",
+    "TrimmedViewName": true,
+    "Type": "ViewInfo",
+    "ViewInfoNameMapping": {
+      "13b42c66-b162-45af-bdaf-f7aa610bf52a": "CPT/HCPCS Code Advanced Find View",
+      "288649a7-9ce6-4247-a73b-3af1556398de": "Active CPT/HCPCS Codes",
+      "4a1bbec8-80f4-48d8-be98-37069eb8031b": "CPT/HCPCS Code Associated View",
+      "7c70c18e-a994-4914-b959-331222f946d0": "CPT/HCPCS Code Lookup View",
+      "b6f1bbbf-e132-4ba0-aff5-99e33311d01b": "Inactive CPT/HCPCS Codes"
+    }
+  },
+  {
+    "DisplayName": "Status (CPT/HCPCS Codes)",
+    "Name": "smvs_cpthcpcscode_statecode",
+    "OptionSetInfoNameMapping": {
+      "0": "Active",
+      "1": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statecode",
+        "OptionSetReferenceEntityName": "CPT/HCPCS Codes"
+      }
+    },
+    "OptionSetTypeKey": "StateType",
+    "RelatedColumnInvariantName": "statecode",
+    "RelatedEntityName": "CPT/HCPCS Codes",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status Reason (CPT/HCPCS Codes)",
+    "Name": "smvs_cpthcpcscode_statuscode",
+    "OptionSetInfoNameMapping": {
+      "1": "Active",
+      "2": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statuscode",
+        "OptionSetReferenceEntityName": "CPT/HCPCS Codes"
+      }
+    },
+    "OptionSetTypeKey": "StatusType",
+    "RelatedColumnInvariantName": "statuscode",
+    "RelatedEntityName": "CPT/HCPCS Codes",
+    "Type": "OptionSetInfo"
+  }
+]

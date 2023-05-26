@@ -1,0 +1,599 @@
+"ScnNewAppointment As screen.'tabletAutoLayout_HeaderMainFooter_ver1.0'":
+    OnVisible: |
+        =Set(
+            VarViewAllNewAppointmentRecords,
+            false
+        );
+        Set(
+            VarNewAppointmentValidationChk,
+            false
+        );
+        Set(
+            gblSelectedAppointmentPatient,
+            Blank()
+        );
+        Set(
+            VarClearDefaultSelectedData,
+            false
+        );
+        Set(
+            VarShowPayment,
+            First('App Settings').'Show Payment'
+        );
+        
+        ResetForm(FrmPatientProfilePayment);
+        //ResetForm(Form2); Fulfill while booked
+        Reset([@CmbSiteLocation]);
+        Reset([@CmbServiceType]);
+        Reset([@CmbService]);
+        Reset([@CmbSubService]);
+        Reset(TxtFirstNameSearch);
+        Reset(TxtLastNameSearch);
+        Reset(TextDOBSearch);
+        UpdateContext({locNoRecordFound: false});
+
+    BottomMenuNewAppointment As BottonMenuContainer:
+        ActionNeededActiveMenu: =false
+        FindAppointmentAction: =ScnFindAppointment
+        FindApptActiveMenu: =false
+        FindPatientAction: =ScnFindPatient
+        FindPatientActiveMenu: =false
+        HomeAction: =ScnLanding
+        HomeActiveMenu: =false
+        NeededAction: =ScnActionNeeded
+        NewAppointmentAction: =ScnNewAppointment
+        Width: =Parent.Width
+        Y: =Parent.Height-Self.Height
+
+    ConNewApptGallery As groupContainer.manualLayoutContainer:
+        Height: =Parent.Height-Self.Y-BottomMenuNewAppointment.Height
+        Width: =Parent.Width
+        Y: =ConNamesSearchNewAppt.Y+ConNamesSearchNewAppt.Height
+        ZIndex: =3
+
+        "GalPatientListNewAppt As gallery.'BrowseLayout_Vertical_TwoTextOneImageVariant_ver4.0'":
+            Height: |-
+                =//GalPatientListNewAppt.TemplateHeight * CountRows(GalPatientListNewAppt.AllItems)
+                Parent.Height
+            Items: |
+                =If(VarViewAllNewAppointmentRecords=true,
+                    FirstN(
+                SortByColumns(
+                    Filter(
+                        Contacts,
+                        ( IsBlank(locSearchFirstNameValue) || IsEmpty(locSearchFirstNameValue) || locSearchFirstNameValue in 'First Name' || locSearchFirstNameValue in 'Mobile Phone' || locSearchFirstNameValue in 'Confirmation Code')  && ( IsBlank(locSearchLastNameValue) || IsEmpty(locSearchLastNameValue) || locSearchLastNameValue in 'Last Name')  && 'Contact Type'= 'Contact Type (Contacts)'.Patient 
+                        && ( IsBlank(locSearchDob) || IsEmpty(locSearchDob) || Birthday>=DateValue(locSearchDob) && Birthday <=  DateAdd(DateValue(locSearchDob),1,TimeUnit.Days))
+                    ),
+                    "createdon",
+                    SortOrder.Descending
+                ),
+                20
+                )
+                )
+            Layout: =Layout.Vertical
+            TemplatePadding: =0
+            TemplateSize: =150
+            Width: =Parent.Width-52
+            X: =26
+            Y: =10
+            ZIndex: =1
+
+            IcnSeperatorNewApptGallery As rectangle:
+                Fill: =RGBA(148, 148, 148, 1)
+                Height: =1
+                OnSelect: =Select(Parent)
+                Width: =Parent.TemplateWidth
+                Y: =Parent.TemplateHeight - 1
+                ZIndex: =1
+
+            ConAddAppt As groupContainer.verticalAutoLayoutContainer:
+                Height: =GalPatientListNewAppt.TemplateHeight
+                LayoutAlignItems: =LayoutAlignItems.Center
+                LayoutDirection: =LayoutDirection.Vertical
+                LayoutJustifyContent: =LayoutJustifyContent.Center
+                LayoutMode: =LayoutMode.Auto
+                Width: =Parent.Width*0.25
+                X: =729
+                ZIndex: =2
+
+                ImgAddAppt As image:
+                    Height: =32
+                    Image: |-
+                        ="data:image/svg+xml;utf8, "&EncodeUrl("<svg width='28' height='28' viewBox='0 0 28 28' fill='none' xmlns='http://www.w3.org/2000/svg'> <path d='M14 0C10.3008 0.0446294 6.76575 1.53395 4.14985 4.14985C1.53395 6.76575 0.0446294 10.3008 0 14C0.0446294 17.6992 1.53395 21.2343 4.14985 23.8501C6.76575 26.466 10.3008 27.9554 14 28C17.6992 27.9554 21.2343 26.466 23.8501 23.8501C26.466 21.2343 27.9554 17.6992 28 14C27.9554 10.3008 26.466 6.76575 23.8501 4.14985C21.2343 1.53395 17.6992 0.0446294 14 0ZM22 15H15V22H13V15H6V13H13V6H15V13H22V15Z' fill='#0052CC'/> </svg> ")
+                    OnSelect: |-
+                        =Set(VarPatientProfileMode,"Edit");
+                        Set(VarPatientAppoinmentMode,"Edit");
+                        Set(
+                            gblSelectedPatient,
+                            Blank()
+                        );
+                        
+                        Navigate(ScnLocation);
+                    Width: =32
+                    ZIndex: =1
+
+                BtnAddAppt2 As button:
+                    BorderThickness: =0
+                    Color: =RGBA(0, 82, 204, 1)
+                    Fill: =RGBA(0, 0, 0, 0)
+                    Font: =VarTheme.Font
+                    HoverColor: =VarTheme.PrimaryColor
+                    HoverFill: =
+                    OnSelect: |-
+                        =Set(VarPatientProfileMode,"Edit");
+                        Set(VarPatientAppoinmentMode,"Edit");
+                        Set(
+                            gblSelectedPatient,
+                            Blank()
+                        );
+                        
+                        Navigate(ScnLocation);
+                    PressedColor: =VarTheme.PrimaryColor
+                    PressedFill: =
+                    RadiusBottomLeft: =0
+                    RadiusBottomRight: =0
+                    RadiusTopLeft: =0
+                    RadiusTopRight: =0
+                    Size: =16
+                    Text: ="Add Appointment"
+                    Width: =200
+                    X: =667
+                    Y: =20
+                    ZIndex: =2
+
+            ConPatientInfoNewAppt As groupContainer.verticalAutoLayoutContainer:
+                Height: =GalPatientListNewAppt.TemplateHeight
+                LayoutDirection: =LayoutDirection.Vertical
+                LayoutJustifyContent: =LayoutJustifyContent.Center
+                LayoutMode: =LayoutMode.Auto
+                Width: =581
+                X: =Image3.Width+21
+                ZIndex: =3
+
+                LblFullNameNewAppt As label:
+                    Color: =VarTheme.InputTextDark
+                    Font: =VarTheme.Font
+                    FontWeight: =FontWeight.Bold
+                    Size: =22
+                    Text: =ThisItem.'Full Name'
+                    Width: =700
+                    ZIndex: =1
+
+                ConPatientSubInfoNewAppt As groupContainer.horizontalAutoLayoutContainer:
+                    AlignInContainer: =AlignInContainer.SetByContainer
+                    FillPortions: =0
+                    Height: =50
+                    LayoutAlignItems: =LayoutAlignItems.End
+                    LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
+                    LayoutMinHeight: =100
+                    LayoutMinWidth: =250
+                    LayoutMode: =LayoutMode.Auto
+                    ZIndex: =2
+
+                    LblDOBNewAppt As label:
+                        Color: =VarTheme.InputText
+                        Font: =VarTheme.Font
+                        FontWeight: =FontWeight.Bold
+                        Size: =16
+                        Text: |-
+                            ="DOB:"
+                        Width: =70
+                        ZIndex: =1
+
+                    ValDOBNewAppt As label:
+                        Color: =VarTheme.InputText
+                        Font: =VarTheme.Font
+                        Size: =16
+                        Text: =ThisItem.Birthday
+                        ZIndex: =2
+
+                    LblPhoneNewAppt As label:
+                        Color: =VarTheme.InputText
+                        Font: =VarTheme.Font
+                        FontWeight: =FontWeight.Bold
+                        Size: =16
+                        Text: |-
+                            ="Phone:"
+                        Width: =90
+                        ZIndex: =3
+
+                    ValPhoneNewAppt As label:
+                        Color: =VarTheme.InputText
+                        Font: =VarTheme.Font
+                        Size: =16
+                        Text: =ThisItem.'Mobile Phone'
+                        Width: =250
+                        ZIndex: =4
+
+                ConPatientSubInfo2NewAppt As groupContainer.horizontalAutoLayoutContainer:
+                    AlignInContainer: =AlignInContainer.SetByContainer
+                    FillPortions: =0
+                    Height: =50
+                    LayoutAlignItems: =LayoutAlignItems.End
+                    LayoutMinHeight: =100
+                    LayoutMinWidth: =250
+                    LayoutMode: =LayoutMode.Auto
+                    ZIndex: =3
+
+                    LblEmailNewAppt As label:
+                        Color: =VarTheme.InputTextDark
+                        Font: =VarTheme.Font
+                        FontWeight: =FontWeight.Bold
+                        Size: =16
+                        Text: |-
+                            ="Email:"
+                        Width: =90
+                        ZIndex: =1
+
+                    ValEmailNewAppt As label:
+                        Color: =VarTheme.InputText
+                        Font: =VarTheme.Font
+                        Size: =16
+                        Text: =ThisItem.Email
+                        Width: =500
+                        ZIndex: =2
+
+            BtnAddAppt As button:
+                BorderColor: =
+                BorderStyle: =BorderStyle.None
+                BorderThickness: =0
+                DisabledBorderColor: =RGBA(0, 0, 0, 0)
+                DisabledColor: =RGBA(0, 0, 0, 0)
+                DisabledFill: =RGBA(0, 0, 0, 0)
+                Fill: =RGBA(0, 0, 0, 0)
+                Font: =VarTheme.Font
+                Height: =ConAddAppt.Height
+                HoverBorderColor: =
+                HoverFill: =
+                OnSelect: |
+                    =Select(Parent);
+                    
+                    Set(
+                        gblSelectedPatient,
+                        ThisItem
+                    );
+                    Set(VarOpenFulfill,false);
+                    Set(VarConfirmationScreen,true);
+                    Set(
+                        VarPatientProfileMode,
+                        "Edit"
+                    );
+                    Set(
+                        VarNewAppointmentValidationChk,
+                        false
+                    );
+                    Set(
+                        VarPatientAppoinmentMode,
+                        "New"
+                    );
+                    ResetForm(FrmPayment);
+                    Set(
+                        gblSelectedAppointmentPatient,
+                        Blank()
+                    );
+                    
+                    Set(VarReturningPatient,true);
+                    Set(VarNewPatient,false);
+                    Navigate(ScnPatientType);
+                PressedBorderColor: =
+                PressedFill: =
+                Text: =""
+                Width: =ConAddAppt.Width
+                X: =ConAddAppt.X
+                ZIndex: =4
+
+            Image3 As image:
+                Height: =90
+                Image: |-
+                    ="data:image/svg+xml;utf8, "&EncodeUrl("<svg width='67' height='67' viewBox='0 0 67 67' fill='none' xmlns='http://www.w3.org/2000/svg'>
+                    <rect width='67' height='67' fill='#F3F3F4'/>
+                    <path d='M33.5 33.5C35.2207 33.5 36.9027 32.9868 38.3334 32.0254C39.7641 31.0639 40.8792 29.6973 41.5377 28.0985C42.1961 26.4996 42.3684 24.7403 42.0327 23.043C41.6971 21.3456 40.8685 19.7865 39.6518 18.5628C38.4351 17.3391 36.8849 16.5058 35.1973 16.1681C33.5096 15.8305 31.7604 16.0038 30.1707 16.6661C28.581 17.3283 27.2223 18.4498 26.2663 19.8888C25.3103 21.3277 24.8001 23.0194 24.8001 24.75C24.8001 27.0706 25.7167 29.2962 27.3482 30.9372C28.9798 32.5781 31.1926 33.5 33.5 33.5ZM37.85 36.4167C37.6328 36.4159 37.4169 36.4494 37.2101 36.516C34.8069 37.3558 32.1922 37.3558 29.7889 36.516C29.5825 36.4494 29.3669 36.4159 29.15 36.4167C27.8124 36.4166 26.4879 36.6826 25.2528 37.1991C24.0177 37.7156 22.8963 38.4726 21.9531 39.4266C21.0098 40.3805 20.2633 41.5125 19.7566 42.7576C19.2498 44.0027 18.9928 45.3362 19.0002 46.6815C19.0128 49.075 20.9694 51 23.3501 51H43.6499C46.0306 51 47.9872 49.075 47.9998 46.6815C48.0072 45.3362 47.7502 44.0027 47.2434 42.7576C46.7367 41.5125 45.9902 40.3805 45.0469 39.4266C44.1037 38.4726 42.9823 37.7156 41.7472 37.1991C40.512 36.6826 39.1876 36.4166 37.85 36.4167Z' fill='#0863D1'/>
+                    </svg>
+                    ")
+                OnSelect: =Select(Parent)
+                Width: =90
+                X: =5
+                Y: =30
+                ZIndex: =5
+
+    ConNamesSearchNewAppt As groupContainer.manualLayoutContainer:
+        Height: =210
+        Width: =Parent.Width
+        Y: =ConsentComponentNewAppt.Y+ConsentComponentNewAppt.Height
+        ZIndex: =4
+
+        IcnSeperator2NewAppt As icon.HorizontalLine:
+            Fill: =RGBA(148, 148, 148, 1)
+            FocusedBorderThickness: =0
+            Height: =1
+            Icon: =Icon.HorizontalLine
+            Width: =Parent.Width-52
+            X: =26
+            Y: =Parent.Height-Self.Height
+            ZIndex: =1
+
+        BtnSearchPatient As button:
+            BorderStyle: =BorderStyle.None
+            BorderThickness: =0
+            Fill: =VarTheme.PrimaryColor
+            Font: =VarTheme.Font
+            Height: =50
+            HoverFill: =VarTheme.PrimaryColorDark
+            OnSelect: |-
+                =UpdateContext({locSearchFirstNameValue: TxtFirstNameSearch.Text});
+                UpdateContext({locSearchLastNameValue: TxtLastNameSearch.Text});
+                UpdateContext({locSearchDob: Text(TextDOBSearch.SelectedDate,DateTimeFormat.ShortDate)});
+                Set(VarViewAllNewAppointmentRecords,true);
+                UpdateContext({locNoRecordFound: true});
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Size: =16
+            Text: ="Search"
+            Width: =625
+            X: =200
+            Y: =150
+            ZIndex: =2
+
+        BtnClearDoB As button:
+            Align: =Align.Left
+            BorderStyle: =BorderStyle.None
+            BorderThickness: =0
+            Color: =VarTheme.InputTextDark
+            Fill: =Color.White
+            Font: =VarTheme.Font
+            HoverBorderColor: =
+            HoverColor: =VarTheme.InputTextDark
+            HoverFill: =
+            OnSelect: =Reset(TextDOBSearch);
+            PaddingLeft: =30
+            PressedBorderColor: =
+            PressedColor: =VarTheme.InputTextDark
+            PressedFill: =
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Size: =14
+            Text: ="Clear Date"
+            Visible: =!IsBlank(TextDOBSearch)
+            Width: =129
+            X: =847
+            Y: =17
+            ZIndex: =3
+
+        IcnClearDoB As icon.Cancel:
+            Height: =20
+            Icon: =Icon.Cancel
+            OnSelect: =Reset(TextDOBSearch);
+            Visible: =!IsBlank(TextDOBSearch)
+            Width: =20
+            X: =847
+            Y: =27
+            ZIndex: =4
+
+        TextDOBSearch As datepicker:
+            BorderColor: =
+            BorderStyle: =BorderStyle.None
+            BorderThickness: =0
+            Color: =VarTheme.InputText
+            DefaultDate: =Blank()
+            DisplayMode: =Parent.DisplayMode
+            EndYear: =Year(Today())+100
+            Fill: =VarTheme.InputBackground
+            Font: =VarTheme.Font
+            FontWeight: =FontWeight.Semibold
+            Height: =50
+            IconBackground: =VarTheme.InputBackground
+            IconFill: =Color.Black
+            IsEditable: =true
+            PaddingBottom: =0
+            PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
+            Size: =16
+            StartYear: =1899
+            Tooltip: =
+            Width: =294
+            X: =682
+            Y: =57
+            ZIndex: =5
+
+        LblDoBSearch As label:
+            Color: =VarTheme.InputTextDark
+            Font: =VarTheme.Font
+            FontWeight: =FontWeight.Bold
+            Size: =16
+            Text: ="Birthday"
+            X: =682
+            Y: =17
+            ZIndex: =6
+
+        TxtLastNameSearch As text:
+            BorderStyle: =BorderStyle.None
+            BorderThickness: =0
+            Color: =VarTheme.InputText
+            Default: =""
+            Fill: =VarTheme.InputBackground
+            Font: =VarTheme.Font
+            FontWeight: =FontWeight.Bold
+            Height: =50
+            HintText: ="Last Name"
+            PaddingBottom: =9
+            PaddingLeft: =15
+            PaddingTop: =9
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Size: =16
+            Tooltip: =
+            Width: =294
+            X: =356
+            Y: =57
+            ZIndex: =7
+
+        LblLastNameSearch As label:
+            Font: =VarTheme.Font
+            FontWeight: =FontWeight.Bold
+            Size: =16
+            Text: ="Last Name"
+            X: =356
+            Y: =17
+            ZIndex: =8
+
+        TxtFirstNameSearch As text:
+            BorderStyle: =BorderStyle.None
+            BorderThickness: =0
+            Color: =VarTheme.InputText
+            Default: =""
+            Fill: =VarTheme.InputBackground
+            Font: =VarTheme.Font
+            FontWeight: =FontWeight.Bold
+            Height: =50
+            HintText: ="First Name"
+            PaddingBottom: =9
+            PaddingLeft: =15
+            PaddingTop: =9
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Size: =16
+            Tooltip: =
+            Width: =294
+            X: =30
+            Y: =57
+            ZIndex: =9
+
+        LblFirstNameSearch As label:
+            Font: =VarTheme.Font
+            FontWeight: =FontWeight.Bold
+            Size: =16
+            Text: ="First Name"
+            X: =30
+            Y: =17
+            ZIndex: =10
+
+    ConsentComponentNewAppt As ConsentComponent:
+        ConsentMessage: ="Simply search for the patient's record. If the record is not found, you can easily create a new patient record and appointment "
+        Height: =90
+        HeightProperty: =90
+        Width: =Parent.Width-52
+        X: =26
+        Y: =ConNewApptHeader.Y+ConNewApptHeader.Height
+        ZIndex: =5
+
+    ConNewApptHeader As groupContainer.manualLayoutContainer:
+        Height: =VarTheme.HeaderSize
+        Width: =Parent.Width
+        ZIndex: =6
+
+        IcnSeperatorNewAppt As icon.HorizontalLine:
+            Fill: =RGBA(148, 148, 148, 1)
+            FocusedBorderThickness: =0
+            Height: =1
+            Icon: =Icon.HorizontalLine
+            Width: =Parent.Width
+            Y: =Parent.Height-Self.Height
+            ZIndex: =1
+
+        ImgBackNewAppt As image:
+            Height: =40
+            Image: |-
+                ="data:image/svg+xml;utf8, "&EncodeUrl("<svg width='28' height='28' viewBox='0 0 28 28' fill='none' xmlns='http://www.w3.org/2000/svg'> <path d='M14 28C10.287 28 6.72602 26.525 4.10051 23.8995C1.475 21.274 3.04044e-06 17.713 3.20274e-06 14C3.36504e-06 10.287 1.475 6.72601 4.10051 4.1005C6.72602 1.475 10.287 -7.74261e-07 14 -6.11959e-07C17.713 -4.49658e-07 21.274 1.475 23.8995 4.10051C26.525 6.72601 28 10.287 28 14C28 17.713 26.525 21.274 23.8995 23.8995C21.274 26.525 17.713 28 14 28ZM20.125 14.875C20.3571 14.875 20.5796 14.7828 20.7437 14.6187C20.9078 14.4546 21 14.2321 21 14C21 13.7679 20.9078 13.5454 20.7437 13.3813C20.5796 13.2172 20.3571 13.125 20.125 13.125L9.98725 13.125L13.7445 9.3695C13.9088 9.2052 14.0011 8.98236 14.0011 8.75C14.0011 8.51764 13.9088 8.2948 13.7445 8.1305C13.5802 7.9662 13.3574 7.87389 13.125 7.87389C12.8926 7.87389 12.6698 7.9662 12.5055 8.1305L7.2555 13.3805C7.17402 13.4618 7.10937 13.5583 7.06526 13.6646C7.02114 13.7709 6.99844 13.8849 6.99844 14C6.99844 14.1151 7.02114 14.2291 7.06526 14.3354C7.10937 14.4417 7.17402 14.5382 7.2555 14.6195L12.5055 19.8695C12.6698 20.0338 12.8926 20.1261 13.125 20.1261C13.3574 20.1261 13.5802 20.0338 13.7445 19.8695C13.9088 19.7052 14.0011 19.4824 14.0011 19.25C14.0011 19.0176 13.9088 18.7948 13.7445 18.6305L9.98725 14.875L20.125 14.875Z' fill='#0052CC'/> </svg> ")
+            OnSelect: =Navigate(ScnLanding);
+            Width: =40
+            X: =28
+            Y: =32
+            ZIndex: =2
+
+        LblNewAppointment As label:
+            Color: =VarTheme.InputTextDark
+            Font: =VarTheme.Font
+            FontWeight: =FontWeight.Bold
+            Size: =24
+            Text: ="New Appointment"
+            Width: =328
+            X: =90
+            Y: =30
+            ZIndex: =3
+
+    ConNoRecordNewAppt As groupContainer.manualLayoutContainer:
+        Height: =572
+        Visible: =CountRows(GalPatientListNewAppt.AllItems)<1 && locNoRecordFound
+        Width: =Parent.Width
+        Y: =479
+        ZIndex: =7
+
+        NoRecordNewAppointment As NoRecordFoundComponent:
+            Height: =315
+            Icon: |-
+                ="data:image/svg+xml;utf8, "&EncodeUrl("<svg width='73' height='69' viewBox='0 0 73 69' fill='none' xmlns='http://www.w3.org/2000/svg'>
+                <path d='M53.7913 31C58.7752 31 63.5549 32.9798 67.079 36.5039C70.6032 40.0281 72.583 44.8078 72.583 49.7917C72.583 54.7755 70.6032 59.5553 67.079 63.0794C63.5549 66.6035 58.7752 68.5833 53.7913 68.5833C48.8075 68.5833 44.0277 66.6035 40.5036 63.0794C36.9795 59.5553 34.9997 54.7755 34.9997 49.7917C34.9997 44.8078 36.9795 40.0281 40.5036 36.5039C44.0277 32.9798 48.8075 31 53.7913 31ZM42.7008 24.1667C45.5538 24.1667 48.0411 25.7178 49.3668 28.0275C47.5723 28.3892 45.83 28.9734 44.1803 29.7666C43.7496 29.4561 43.2317 29.2898 42.7008 29.2917H27.319C26.6394 29.2917 25.9876 29.5616 25.507 30.0422C25.0265 30.5228 24.7565 31.1745 24.7565 31.8542V46.3716C24.7565 51.1891 28.0843 55.2344 32.567 56.3312C33.1528 58.2447 33.9977 60.069 35.0783 61.7534L35.0099 61.75C30.9313 61.75 27.0198 60.1298 24.1357 57.2458C21.2517 54.3618 19.6315 50.4502 19.6315 46.3716V31.8542C19.6315 29.8153 20.4414 27.86 21.8831 26.4183C23.3248 24.9766 25.2802 24.1667 27.319 24.1667H42.7008ZM45.5674 41.1338L45.3283 41.332L45.1335 41.5712C44.9366 41.8564 44.8312 42.1949 44.8312 42.5415C44.8312 42.8881 44.9366 43.2265 45.1335 43.5118L45.3317 43.751L51.3792 49.7951L45.3385 55.8289L45.1438 56.0681C44.9469 56.3534 44.8414 56.6918 44.8414 57.0384C44.8414 57.385 44.9469 57.7235 45.1438 58.0088L45.3385 58.2479L45.5777 58.4427C45.8629 58.6395 46.2014 58.745 46.548 58.745C46.8946 58.745 47.2331 58.6395 47.5183 58.4427L47.7575 58.2479L53.7913 52.2107L59.8388 58.2547L60.0746 58.4529C60.3599 58.6498 60.6983 58.7552 61.0449 58.7552C61.3915 58.7552 61.73 58.6498 62.0153 58.4529L62.2544 58.2547L62.4492 58.0156C62.6461 57.7303 62.7515 57.3919 62.7515 57.0452C62.7515 56.6986 62.6461 56.3602 62.4492 56.0749L62.2544 55.8357L56.2069 49.7951L62.2612 43.7476L62.4594 43.5118C62.6571 43.2262 62.7629 42.8871 62.7629 42.5398C62.7629 42.1925 62.6571 41.8534 62.4594 41.5677L62.2612 41.332L62.0255 41.1338C61.7399 40.9362 61.4008 40.8303 61.0535 40.8303C60.7061 40.8303 60.367 40.9362 60.0814 41.1338L59.8457 41.332L53.7913 47.3795L47.7438 41.332L47.5115 41.1338C47.2676 40.9653 46.9841 40.8631 46.6887 40.8374C46.3934 40.8116 46.0965 40.8631 45.8271 40.9869L45.5674 41.1338ZM19.3035 24.1667C17.9318 25.5949 16.9679 27.3646 16.5121 29.2917H8.52051C7.84089 29.2917 7.18911 29.5616 6.70855 30.0422C6.22798 30.5228 5.95801 31.1745 5.95801 31.8542V41.2466C5.95779 42.5377 6.25014 43.812 6.8131 44.9739C7.37607 46.1359 8.195 47.1551 9.20839 47.9551C10.2218 48.7551 11.4033 49.315 12.6641 49.5929C13.925 49.8707 15.2324 49.8593 16.4882 49.5593C16.7786 51.2813 17.3082 52.9247 18.0359 54.452C16.0108 54.9938 13.8882 55.0625 11.8323 54.6529C9.77632 54.2434 7.84212 53.3664 6.17923 52.0899C4.51633 50.8135 3.16929 49.1716 2.24226 47.2914C1.31523 45.4112 0.83305 43.3429 0.833008 41.2466V31.8542C0.832769 29.9062 1.57202 28.0308 2.90135 26.607C4.23069 25.1832 6.05098 24.3171 7.99434 24.1838L8.52051 24.1667H19.3035ZM61.4788 24.1667C63.5177 24.1667 65.473 24.9766 66.9147 26.4183C68.3564 27.86 69.1663 29.8153 69.1663 31.8542V33.7675C65.0356 29.7928 59.5238 27.5759 53.7913 27.5833L52.9543 27.6004C52.4307 26.3254 51.6715 25.1605 50.7163 24.1667H61.4788ZM57.208 3.66667C59.4734 3.66667 61.646 4.56659 63.2479 6.16846C64.8497 7.77034 65.7497 9.94294 65.7497 12.2083C65.7497 14.4737 64.8497 16.6463 63.2479 18.2482C61.646 19.8501 59.4734 20.75 57.208 20.75C54.9426 20.75 52.77 19.8501 51.1681 18.2482C49.5663 16.6463 48.6663 14.4737 48.6663 12.2083C48.6663 9.94294 49.5663 7.77034 51.1681 6.16846C52.77 4.56659 54.9426 3.66667 57.208 3.66667ZM34.9997 0.25C37.7181 0.25 40.3253 1.32991 42.2475 3.25216C44.1698 5.1744 45.2497 7.78153 45.2497 10.5C45.2497 13.2185 44.1698 15.8256 42.2475 17.7478C40.3253 19.6701 37.7181 20.75 34.9997 20.75C32.2812 20.75 29.6741 19.6701 27.7518 17.7478C25.8296 15.8256 24.7497 13.2185 24.7497 10.5C24.7497 7.78153 25.8296 5.1744 27.7518 3.25216C29.6741 1.32991 32.2812 0.25 34.9997 0.25ZM12.7913 3.66667C15.0567 3.66667 17.2293 4.56659 18.8312 6.16846C20.4331 7.77034 21.333 9.94294 21.333 12.2083C21.333 14.4737 20.4331 16.6463 18.8312 18.2482C17.2293 19.8501 15.0567 20.75 12.7913 20.75C10.5259 20.75 8.35334 19.8501 6.75147 18.2482C5.1496 16.6463 4.24967 14.4737 4.24967 12.2083C4.24967 9.94294 5.1496 7.77034 6.75147 6.16846C8.35334 4.56659 10.5259 3.66667 12.7913 3.66667ZM57.208 8.79167C56.3018 8.79167 55.4328 9.15164 54.792 9.79239C54.1513 10.4331 53.7913 11.3022 53.7913 12.2083C53.7913 13.1145 54.1513 13.9835 54.792 14.6243C55.4328 15.265 56.3018 15.625 57.208 15.625C58.1142 15.625 58.9832 15.265 59.624 14.6243C60.2647 13.9835 60.6247 13.1145 60.6247 12.2083C60.6247 11.3022 60.2647 10.4331 59.624 9.79239C58.9832 9.15164 58.1142 8.79167 57.208 8.79167ZM34.9997 5.375C33.6404 5.375 32.3369 5.91495 31.3757 6.87608C30.4146 7.8372 29.8747 9.14077 29.8747 10.5C29.8747 11.8592 30.4146 13.1628 31.3757 14.1239C32.3369 15.085 33.6404 15.625 34.9997 15.625C36.3589 15.625 37.6625 15.085 38.6236 14.1239C39.5847 13.1628 40.1247 11.8592 40.1247 10.5C40.1247 9.14077 39.5847 7.8372 38.6236 6.87608C37.6625 5.91495 36.3589 5.375 34.9997 5.375ZM12.7913 8.79167C11.8852 8.79167 11.0161 9.15164 10.3754 9.79239C9.73464 10.4331 9.37467 11.3022 9.37467 12.2083C9.37467 13.1145 9.73464 13.9835 10.3754 14.6243C11.0161 15.265 11.8852 15.625 12.7913 15.625C13.6975 15.625 14.5665 15.265 15.2073 14.6243C15.848 13.9835 16.208 13.1145 16.208 12.2083C16.208 11.3022 15.848 10.4331 15.2073 9.79239C14.5665 9.15164 13.6975 8.79167 12.7913 8.79167Z' fill='#505050'/>
+                </svg>
+                ")
+            Subtitle: |-
+                ="Click the button below to
+                create new appointment for the patient"
+            Title: ="No Patient Record Found"
+            Visible: =CountRows(GalPatientListNewAppt.AllItems)<1 && locNoRecordFound
+            Width: =921
+            X: =52
+            Y: =45
+            ZIndex: =1
+
+        BtnCreateNewAppt As button:
+            BorderStyle: =BorderStyle.None
+            BorderThickness: =0
+            Fill: =VarTheme.PrimaryColor
+            Font: =VarTheme.Font
+            Height: =50
+            HoverFill: =VarTheme.PrimaryColorDark
+            OnSelect: |
+                =Set(
+                    VarNewPatient,
+                    true
+                );
+                Set(
+                    VarReturningPatient,
+                    false
+                );
+                Set(
+                    VarConfirmationScreen,
+                    true
+                );
+                Set(
+                    VarPatientProfileMode,
+                    "New"
+                );
+                Set(
+                    VarPatientAppoinmentMode,
+                    "New"
+                );
+                Set(
+                    gblSelectedPatient,
+                    Blank()
+                );
+                Set(
+                    gblSelectedAppointmentPatient,
+                    Blank()
+                );
+                
+                Set(
+                    existingPaymentInfo,
+                    Blank()
+                );
+                ResetForm(FrmPatientProfile);
+                Navigate(ScnPatientType);
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Size: =16
+            Text: ="Create appointment"
+            Visible: =CountRows(GalPatientListNewAppt.AllItems)<1 && locNoRecordFound
+            Width: =350
+            X: =337
+            Y: =379
+            ZIndex: =2
+

@@ -1,0 +1,354 @@
+"ScnMedicalSummary As screen.'phoneLayout_FluidGridWithHeaderPageLayout_ver3.0'":
+
+    ConMedicalSummary As groupContainer.manualLayoutContainer:
+        Height: =Parent.Height-Self.Y
+        Width: =Parent.Width
+        Y: =ConMedSummaryHeader.Height
+        ZIndex: =1
+
+        CnvMedicalSummary As fluidGrid.fluidGridWithBlankCard:
+            BorderThickness: =0
+            Height: =Parent.Height - Self.Y
+            Width: =Parent.Width
+            ZIndex: =1
+
+            DcMedicalSummary As dataCard.blankCard:
+                BorderColor: =RGBA(0, 0, 0, 1)
+                BorderStyle: =BorderStyle.Solid
+                DisplayMode: =DisplayMode.Edit
+                Fill: =RGBA(0, 0, 0, 0)
+                Height: =100
+                Width: =Parent.Width
+                X: =0
+                Y: =0
+                ZIndex: =1
+
+                HtmlMedicalSummary As htmlViewer:
+                    AutoHeight: =true
+                    Font: =Font.Lato
+                    HtmlText: |-
+                        ="    <table style='border-collapse: collapse; padding: 0; width: 100%; font-size: 16px;' width='100%'>
+                                <tr>
+                                    <td style='padding: 8px 16px; vertical-align: top;' valign='top'>
+                                        <span class='font-bold font-16' style='font-weight: bold; font-size: 21px;'>
+                                            "&First('App Settings').'Organization Name'&"
+                                        </span>
+                                    </td>
+                                    <td class='text-right' style='padding: 8px 16px; vertical-align: top; text-align: right;' align='right' valign='top'><img class='mw90' src='data:image/jpeg;base64,/9j/4AAQSkZJRgABAgEBIAEgAAD/2wBDAAEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQH/2wBDAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQH/wAARCABEAPQDAREAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD9RP8Agvr/AMF3PFf7Fevv+x/+yJeaRH+0Nf8Ah621X4pfFS9srbWYvgvpniC0+0aDoHhnR9Qt59I1H4j6vpk0GvTX+rwaho/hXRbrSyNL1TWNY3+HAD+Cz4t/tC/Hn4+a3deJPjf8aPin8XddvZDJPqfxH8e+KPGVzzIsiQwtr+p362trCyRi1s7VYbS0jihitoYooYkQA739n79tP9rP9lXxBpfiT9nn9of4sfCq90m5huYdO8NeMNVXwpfGD/V2uv8Age/nvfBfijTBwX0jxLoGraVKVQy2blEKgH+ib/wQy/4LOWn/AAU18A+JPhp8X7Hw94S/ay+Euk22seKtL8OwTWHhz4m+A2ubTSo/iV4Y0y5ubyXSryw1a7sdJ8c6AlzLY6bqmq6NqejtBpevx6NoQB4X/wAHUvxb+K3wd/YZ+BWv/CP4m/EL4Wa7qX7WHhvR9R1v4c+NPEngjV7/AEiT4QfGO9fS73UvDOpaZeXWnPeWdndvYzzSWzXNpbTmIywROoB/G7+wZ+2Z+2B4l/bk/Yx8OeI/2rf2k9f8Pa/+1f8As7aJruha38c/ifquja1o2q/F/wAH2OqaTq2l33imex1LTNSsZ57O/sLyCa1vLWaW3uIpIZHQgH+shLLFBFJNNIkMMKPLLLK6xxRRRqXkkkkchURFBZ3YhVUEkgAmgD/O9/4K8/8ABxr8f/jv8S/F3wT/AGGPiJ4h+CH7OfhTU7zQP+Fp+Br6XQPit8Zruwk+z3viSx8Y2Ew1nwJ4Glu4Zf8AhErDwne6Tr+saSV1jxPquNWj8LaAAfzA+IvGfjDxfrL+I/FnivxL4o8QySrO+veItd1TWtZedWDrM+qaldXN80ququshnLhgGByAaAP0p/Ye/wCCx/7d/wCwr4y8Oal4D+NXjL4gfDHS7yL+3PgV8UvFGveL/hlrmjS3Fu+p6fpumate3kngrU7qGALa+IvCTabqFncbJJ01CzN1p92Af6bP7CP7anwn/wCCgP7M3gD9pj4QST2ui+LILjTfEvhTUZ4p9d+HvjzRvKg8V+BdfaKOFZL7RbySOWyv1t7aDXtBvdG8R2UEen6xaCgD+Nf/AIOn/wBpD9oj4P8A/BQb4O+GfhJ8evjR8LfDl9+xv8PtdvfD/wAOvil448EaJea3c/Gz9oXT7nWLrSvDOu6ZYXGq3Fhpmm2U+oSwPdy2mn2NtJM0NpAkYB+6/wDwbhf8FBNb/bV/Yhf4f/E7xLf+J/jp+yxq2nfDrxnrmuapNq3iLxb4D1uC+1D4VeNNavbyefULy/uNM03XPBd9f38k15ql94FudYvLqe71OYgA/oSoA/yO/wBq/wDbV/bJ0j9qT9pTSdJ/a1/aa0vStL+P3xj07TNM0748/FOy0/TtPsviJ4jtrOxsbO28VRW1pZ2ltFHb2trbxxwQQRpFEiRoqgA/uE/4NdPij8Tfi7/wTs+IHij4r/EXx38TvE0H7WHxI0eDxF8Q/F3iDxprsOkWnwz+C1za6XFq/iTUNS1CPTra5vb24t7FLgW0M93dSxxLJcSs4B/Md/wcA/tW/tR/DX/grl+1p4K+HX7SXx98AeDdF/4UP/Y/hLwV8YviH4V8M6T/AGj+zN8GdW1D+zNB0LxFYaVYfb9Vv77U7z7LaRfatQvLu8n33NxNI4B+N3/Dc37bP/R4f7U3/iQXxa/+a6gA/wCG5v22f+jw/wBqb/xIL4tf/NdQB/Sz/wAGsH7SH7RHxg/4KDfGLwz8W/j18aPil4csf2N/iDrtl4f+IvxS8ceN9Es9btvjZ+z1p9trFrpXibXdTsLfVbew1PUrKDUIoEu4rTUL62jmWG7nSQA/Ar9or9tj9svS/wBoL466Zpn7W/7Tmnadp3xk+J1jp+n2Px6+KlpZWNlaeNtct7Szs7S38VxwW1rbQRxwW9vBGkMMKJHGioqqADxv/hub9tn/AKPD/am/8SC+LX/zXUAH/Dc37bP/AEeH+1N/4kF8Wv8A5rqAPS/gv+21+2bqPxi+E+n6h+1z+07fWF98S/Alne2V58fPirdWl5aXXinSoLm1urafxW8NxbXELvDPBMjxSxO0cisjEEA/rw/4Oz/jj8avgv4d/YVf4O/GD4o/Cd/EetftFr4hf4afEDxZ4EbXV0mx+CZ0tdZbwvq2lHVF006jqB08XxnFmb+9Nv5Zup94B+BP/BFf9rb9qzx9/wAFSf2NvB/jv9pv9oTxr4S134mX9rrfhbxb8Z/iP4j8OaxbR+CfFVzHb6romseJLzTNQgS5gguEiu7WaNZ4YpQokjRgAf6bfjDxd4a8AeEvFPjzxprVj4c8HeCfDut+LvFniHU5fJ03QfDXhvTLrWdd1rUJgGMVjpel2V1fXcoVvLggkbBxigD/ADbP+Cov/BxB+1f+134/8W+A/wBmjx74p/Zx/Zf0zVdQ0nwvb/D7UtR8KfE/4l6NbXD29v4o8f8AjWwks/Eelx69CjXkPgfw7daNpGmabex6R4g/4Sa/tZNVlAP56r7xT4n1PW/+El1LxHr2oeI/tP2z/hIL7V9Qu9b+1+c9x9q/tW4uJL/7T9okkn8/z/N853l3b2ZiAfrx/wAE/f8Agud+3X+wh4v0ONPif4k+O3wOXULQeKvgd8X/ABDqnirSLjRQYoLtPAfifV5tQ8R/DbWoLITPpEnh+8Phf+02hvPEnhLxLbxGzcA/03f2Zf2jPhf+1t8Bvhj+0Z8GtYfWvhz8VvDNt4j0Ge5jjg1LT5fNmsNa8O65axTXEVl4i8La7Z6n4c8Q2MVzcw2mtaXfW8F1dQxx3EoB/kC/tS/GfWv2i/2kvjx8d/EN6+oar8W/i1498eyzufljtvEniXUdR02ytkwBDY6Zpk1np2n2yqsdrY2tvbxqqRKoAP6fP+CE/wDwQQ/Zx/bk/Zh1D9q39q3WfiLqOl+KvGniTwj8MPAfgbxFb+ENNi0fwdcppWueK/EGrR6ZqGsanfXviJNQ0nStPsrrSbLTrfRru5vk1eTU7UaUAfLn/Bf7/gjP8Hf+CaifBX4t/s4+J/Gl78Kfi7rfiPwVrfgvx9qNnr2qeDfGGiadba5plzofiS2sdNuNT0DxDpDaoj6fq1nNqOi32hmb+2dVt9ajtdGAPhX/AIIY/GbW/gj/AMFV/wBjbXNHuXjt/HHxTsvgzr9oPMaDU9E+Mlnd/Dx7a6jjIMiWWp6/pmt2u4+XDqWk2N1IGSBlIB/Wb/wd2f8AJgf7Pv8A2eD4Y/8AVL/GygD+Iz/gnl/yf7+w3/2eF+zP/wCrp8E0Af6XX/BdT44a9+z/AP8ABKb9sDxv4VvZtP8AEut+BtE+FmkXdtdSWN7bJ8Y/G/hj4X65d2F3A8dxb3+n+F/FeuajZzWzrPFcWcckbRlfMQA/yg6AP9D79nD/AINU/wBhTT/gZ4Hi/aH1r44eMvjdrfhHSdS+IGtaJ46svB2h+G/Fmq6VDPqmjeDvD1r4auBDpnh29meztZvFE/iC+1G6tJL+8W2tbtdEsgD+M3/gqb+xDb/8E8v23Pi7+zDpHiXU/GPg7ww3hvxH8PvE+uJYx6/qvgjxr4e07xHosfiBdNgs7CTXdEa+u/Dmr3llYabZarf6PPq1lpem2d/b2MAB/SP/AMGfXxp1uPxX+2T+ztdXcs/hu98PfDv406DYsy+RpWt6ZqWpeBvFt3AoIcy6/Yat4Khu2ZZFVPDVmEMJZxOAfIf/AAdyf8pIfgn/ANmRfDf/ANXx+0nQB+e//BCv9uy6/YT/AOCgXwu8Ra5qrWPwd+NV5Y/A740wzztHptn4a8aatY2+geNboMWihb4feL10bxJd3ywTXy+GIfFGlWQVtZlDAH+qzQB/jQ/tf/8AJ2n7UX/ZxXxs/wDVl+JqAP74/wDg0x/5Rn/EX/s8H4of+qs+BtAH8pn/AAcbf8pmP2x/+7ev/WVvgdQB2X/BCz/gk78Gf+CqHiv9o3QPjB8R/id8PLb4M+Hvhtq+hTfDV/CqT6pP411LxjZX8Wrf8JR4e1+MxWkfhu1e0+xpbPvnuPOaVfLCAH9F3/EIZ+xN/wBHL/tTf9//AIS//O4oA/Q3/gml/wAEJ/2d/wDgmH8dfFnx7+Enxe+NHj/xH4u+Euu/CG90b4iy+B30S20TX/GPgPxnc6najwz4T0G//tWG/wDAGm2sBlvJLT7Je33mWzzGCWEA+H/H3/Bp3+xp8QfHXjTx7qf7R37TllqXjfxb4j8X6hZ2M/wrFjaX3iXWLzWbu2sxcfD2acWsE97JFbieaWbyUTzJJH3MQD+UL/gtx/wTk+F3/BMP9qv4f/AT4SeOfH3j/wAOeLv2fPCnxevdZ+Ir+HX1u21vX/iP8V/BlzplqfDOiaDYf2VDYeANNuoBLZyXf2u9vvMuXhMEUIBz3/BGH/gn38Nf+ClX7Xup/s7/ABV8aeOfAfhiy+DvjT4jx638Pm0BNefVPDWueDtLtLFz4j0fXNP+wTw+I7qS4C2QuPMgt/LnjXzFcA/rU8H/APBph+xf4N8XeFvF9l+0f+0/d3nhXxHoniS0tbq4+FItrm50PU7XVILe4MXw6SUQTS2qRzGJ0k8tm2MrYIAPlL/g8Z/5Fr/gn5/2HP2m/wD0g+A9AH863/BCr/lLX+xD/wBlT1L/ANQLxfQB/b3/AMHNPxr1z4P/APBKj4i6N4fvbrTrz45/Ez4afBS6vrJ3iuE0PVbvVfHviOyMsZBS11zQfh5qPh7UUbKXWm6teWTgrcmgD/NG8DeDta+Injbwd8P/AA1HBN4i8c+KfD/g7QIbmb7PbS614m1a00XSo7ifZJ5ED317Ass2x/LjLPsbbggH+ib4M/4NSP8AgnDpnwz0bwz438RfH7xV8RY9CtbfxH8TNL+IGm+HGvPEjW8R1LVNB8JjwxqWgaRpP27zv7J0jUoNeubTTWhttR1bV72OTUpgD+DT9uL9mPUf2M/2t/j9+zDqOsN4i/4U78Q9W8M6V4hkgFrPr/hiZLfWfCGt3loo8uzv9W8K6po2oahZwtLb2t7cXFvbz3EEcc8gB+uf/BKv/gt144/4J7fs2698BrWJta0u8+LXifx/pCag2mXcej2niHw14L0240vTU1S3uXs7F9V0DUdXe1tjHatqOq3955X2m7uZJAD8EviH4L1f4beP/HPw78QQSWuveAfGPibwXrdtKrLLb6v4W1q90PUoJFdI2WSG8sZo3Vo0YMpBRTlQAf6LP/Bq38dvBnxD/wCCbcnwb0zULZPHX7Pvxc8d6V4s0FpU/tFdE+I2rXHxB8J+J/IDuw0nWJtW8RaDZzsImfUfCOsxGIJDFNcAHR/8HJH7D37U37c/7O37PXgj9lX4UXnxZ8UeC/jTqnirxNpVn4o8D+Fm0vQJ/A2saRFqD3fjrxN4YsblX1G6t7YW9ldXN2DJ5htxCjyKAfzX/wDBPz/ghp/wVS+DH7dH7H3xc+Jn7J2seGPh38M/2lPgv468ceI5fij8DdTj0Lwp4X+IGg6xr2ryadovxO1LV71NP020uLp7XTNPvb6ZYjHbWs8zJGwB+7H/AAd2f8mB/s+/9ng+GP8A1S/xsoA/iM/4J5f8n+/sN/8AZ4X7M/8A6unwTQB/oa/8HMX/ACiE+Pf/AGO/wJ/9XD4PoA/zCKAP9uigD+En/gv9/wAEpv8AgoJ+1z/wUQ8SfGP9nP8AZs8TfE/4aXvwp+F+gWvirS/E/wAPNKtJtY0LS72DVrJbTxJ4w0XUw9nLLGjyNYrC5bMMkgBIAPoP/g2x/wCCav7cP7FP7VHx28e/tRfADxD8JPCPiv8AZ+l8IeH9a1jxF4F1iDUvEbfEbwTrI0uKDwr4p168ilOmaXf3fm3FvDbbLdk87zWjjcA/OH/g7k/5SQ/BP/syL4b/APq+P2k6AP5aKAP9UH/ggj+3Pcftyf8ABPX4b6v4v1pdX+MnwNl/4Ub8Wpbi5WbVdUv/AAjYWZ8G+Mr9Xka7nl8Y+BbnQr3UtVnRYtS8W2nitbdm+xyqgB/mkftf/wDJ2n7UX/ZxXxs/9WX4moA/vj/4NMf+UZ/xF/7PB+KH/qrPgbQB/KZ/wcbf8pmP2x/+7ev/AFlb4HUAfsH/AMGdv/JSP27v+xI+An/p++KdAH91dABQAUAf513/AAdyf8pIfgn/ANmRfDf/ANXx+0nQBxH/AAajf8pP9f8A+zWfiv8A+ph8LKAP9IigD+Kf/g8Z/wCRa/4J+f8AYc/ab/8ASD4D0Afzrf8ABCr/AJS1/sQ/9lT1L/1AvF9AH9g3/B2d/wAoz/h1/wBng/C//wBVZ8cqAP4HP2QP+TtP2Xf+zivgn/6svwzQB/svUAf55H/BYj/gjv8A8FKP2jv+ClH7U/xr+Cn7LHivx78LvHvivwnqHhHxdp/iz4Z6fZ61Z6f8M/BOh3k8FnrnjbS9VgWDVdLv7NlvLC3dnt2dFaJo5HAPzR/4cE/8Fe/+jKfG/wD4XPwe/wDni0AfeP8Awcyf8E2/Ev7Nn7WGt/ti+A/D083wC/an199d8QajYQbrLwN8er22kuvGuiauY9z2yfESe0vPiJo1/dMF1LV9R8YabAI00SFZgD8Nv2O/21P2i/2D/jBY/G39mvx5c+C/F0Vm2j65Yz26ap4V8a+Gpbu1vbvwr408O3LCz13Qrq5s7W48pzBfWF5b2+o6Rf6dqdtbXsIB/fn/AMEz/wDg5K/Zc/bN1Dw38JP2hrLTv2V/2g9ZeHS9Ki1vWpL34NfEHWfIGIvDHju/t7MeD9V1aaOY6b4U8dPAj3ElnoOjeL/FWuXlpb3QB/SVQB/KZ/wd2f8AJgf7Pv8A2eD4Y/8AVL/GygD+Iz/gnl/yf7+w3/2eF+zP/wCrp8E0Af6Gv/BzF/yiE+Pf/Y7/AAJ/9XD4PoA/zCKAP9kv9sf9rT4T/sO/s5fEn9pr403eoR+B/hxpltO+laJFa3PiXxVr2rX9ro3hvwj4Xsby7sba817xDrV9Z2FqLm7tbGxhe51bVryx0fTtQvrYA/nO/wCIvP8AYm/6No/am/78fCX/AOePQB+kn/BMz/guB+z9/wAFQ/ix4++Efwi+E3xj+H+tfD74eN8RtT1L4jx+Ck0u90tPEmh+GTY2J8M+KteuzqBu9etrgC4tobf7PDP+/wDN8uNwD+Vj/g7k/wCUkPwT/wCzIvhv/wCr4/aToA/looA/oL/4Nuf25G/ZK/4KB+G/hp4s19dJ+Dv7WdtZ/B7xal7cGLStP+IJnuLr4NeJpV4jF4ni26n8CJczSR2tlpnxC1a+um22qMgB+P37X/8Aydp+1F/2cV8bP/Vl+JqAP74/+DTH/lGf8Rf+zwfih/6qz4G0Afymf8HG3/KZj9sf/u3r/wBZW+B1AHLf8Egv+Cumpf8ABJ7xJ8c/EOn/AAGsfjn/AMLr0PwJo01nefEif4df8I7/AMIRf+J76O5juIPA/jb+1P7R/wCEleJ4WgsPsv2RHWWfzikYB+83hb/g8B8Q+I/E/hzw8/7AejWia7r2kaM10v7TF9M1suqahb2TXCxH4ERiVoROZBGZEDldpdc7gAf240AFAH+dd/wdyf8AKSH4J/8AZkXw3/8AV8ftJ0AcR/wajf8AKT/X/wDs1n4r/wDqYfCygD/SIoA/in/4PGf+Ra/4J+f9hz9pv/0g+A9AH863/BCr/lLX+xD/ANlT1L/1AvF9AH9g3/B2d/yjP+HX/Z4Pwv8A/VWfHKgD+Bz9kD/k7T9l3/s4r4J/+rL8M0Af7L1ABQAUAeY/GT4MfCv9oT4aeLfg78a/Anh74k/DLxzpj6T4o8H+J7MXmmalal0mglRlaK70/U9Pu4oNR0bWtLubLWdD1W1s9W0e/sdSs7W6iAP4S/8AgpR/wa1fGb4SXfiP4qf8E/8AVNS+Ovw03z6rL8C/El1p9r8ZvB1niJ7ix8K63NLYaL8VNOtWN3cWFqYvD/jWPT0tNHg0/wAb62j6rqQB/JZrWi6z4b1fVPD3iLSdT0DX9E1C70rWtD1qwutL1fSNUsJ3tb/TdU02+igvdP1CyuYpLe7s7uGK4tp43hmjSRGUAH+gL/wbM/8ABWHxJ+0p4H1f9hj9oPxRqHiP4xfBzwufEnwc8ba7dtd6r47+D+lzWGl3/hPWdQuWNzqXij4bXF9pw028nluL/W/Bd9GJk3+DtR1DUADd/wCDuz/kwP8AZ9/7PB8Mf+qX+NlAH8Rn/BPL/k/39hv/ALPC/Zn/APV0+CaAP9DX/g5i/wCUQnx7/wCx3+BP/q4fB9AH+YRQB/aN/wAHN/xT/a6/al+Nfg/9kj4Efs9ftGeNPgF8CVs/FvjLxL4N+DHxS1vwr49+Nus6feRA2GraT4cutE8QaT8OfCeppo1hqFlNMsPibxF43sGY/YInYA/jt8e/Df4ifCrxDJ4S+KHgLxp8N/FcNra303hjx74W1zwf4hisr1S9leSaL4hsdO1KO1u0VntbhrYQ3CqWidwCaAP6m/8Ag0M/5PY/aY/7Nam/9Wz8OaAOH/4O5P8AlJD8E/8AsyL4b/8Aq+P2k6APx0/4J1fsZXf7c/i/9pL4SeHLO81D4k+Ff2Rvin8Y/hFYWDy/adV+Ivw08TfDzVtP8Nw26K0d5c+M9Dm8QeCbGC5C28Wo+I7O+eWB7RLiIA/PyCe7067hurWa5sb+xuY57e4gkltbuzu7WUSRTQyxlJre5t5kV45EZJYpUDKVdQQAafibxJrnjLxJ4h8X+J9Rn1jxL4r1zVvEniHV7kRi51TXNcv7jVNW1G4EKRQie+v7q4uZRFFHGJJWCIi4UAH+ij/waY/8oz/iL/2eD8UP/VWfA2gD+Uz/AIONv+UzH7Y//dvX/rK3wOoA/O79l/8AYi/ar/bRvvGOm/su/BfxN8Y774f2ui33jG28NXOhW8mg2niKbUoNFnuxrer6UHS/m0jUo4jbGco1q/miPdHvAPurwF/wQ6/4Kv6T458GarqP7FHxRttP0zxZ4d1C+uW1DwKy29nZ6xZ3NzOyx+LXkZYoY3kKxo7kLhVZsAgH+qrQAUAf513/AAdyf8pIfgn/ANmRfDf/ANXx+0nQBxH/AAajf8pP9f8A+zWfiv8A+ph8LKAP9IigD+Kf/g8Z/wCRa/4J+f8AYc/ab/8ASD4D0Afzrf8ABCr/AJS1/sQ/9lT1L/1AvF9AH9g3/B2d/wAoz/h1/wBng/C//wBVZ8cqAP4HP2QP+TtP2Xf+zivgn/6svwzQB/svUAFABQB/nXf8Rcn/AAUh/wCiJ/sRf+G3+PH/ANEnQB/Y1/wSC/bQ+KP7f/7CXwy/ae+Mmg+AfDXj7xn4i+JWkappHwz0vxFo3hCC28HePde8LaY9hYeKfFPjPWop59P0u3mv2uPEF1HLePNJbxWsDJbxgH8wn/B25+x78PfBXi39n39s3wVo1loPiz4s6j4h+E/xhNjDDbReLNY8M6Lp+s/D/wAV3cMRjM2vxaDB4i8PazqbxzS32laT4VtpZYjpifaQD8E/+CJ/xR1z4R/8FVP2IfEOhXNzBL4h+OHh34XalHAVKXmh/GGO7+F2r211FIyxTW62fi2S6xIHaCe2gvbZftlrbMoB/XX/AMHdn/Jgf7Pv/Z4Phj/1S/xsoA/iM/4J5f8AJ/v7Df8A2eF+zP8A+rp8E0Af6Gv/AAcxf8ohPj3/ANjv8Cf/AFcPg+gD/MIoA/26KAP8z/8A4Ojf+Urvi7/siPwY/wDTNqNAH1P/AMGhn/J7H7TH/ZrU3/q2fhzQBw//AAdyf8pIfgn/ANmRfDf/ANXx+0nQBxH/AAajf8pP9f8A+zWfiv8A+ph8LKAPnD/g4U/Yal/Yx/4KF/EDWPDWgrpPwZ/aWa7+OPwwezgEWlWOpa7dgfFHwhbCKOK0tZfDnj2XUdRs9ItEWHSfCPifwhEoCyqKAPwuoA/0bf8Ag0x/5Rn/ABF/7PB+KH/qrPgbQB/KZ/wcbf8AKZj9sf8A7t6/9ZW+B1AH7B/8Gdv/ACUj9u7/ALEj4Cf+n74p0Af3V0AFABQB/nXf8Hcn/KSH4J/9mRfDf/1fH7SdAHEf8Go3/KT/AF//ALNZ+K//AKmHwsoA/wBIigD+Kf8A4PGf+Ra/4J+f9hz9pv8A9IPgPQB/Ot/wQq/5S1/sQ/8AZU9S/wDUC8X0Af2Df8HZ3/KM/wCHX/Z4Pwv/APVWfHKgD+Bz9kD/AJO0/Zd/7OK+Cf8A6svwzQB/svUAfxa/8FMf+Dkj9sb9iv8Abm/aD/Zf+HPwa/Zn8TeCvhL4i8PaRoGueNtA+KV14p1C21jwL4V8UzPrFxoXxW0LSZZ4rzXrm3iay0iyj+zQwB4mlEkjgHwp/wARdn7fn/Rvv7H3/hMfGj/59lAH8rWp6beaPqWoaRqMElrqGlX13pt/bSoyS295Y3ElrdQSI6q6SRTxPG6OqsrKQyggigD/AEyP+DYTxVoPiD/gkx8MdH0nUbe81LwN8VfjX4a8UWkMsbzaRrN945vvGVrZXcaOzwyz+HPFehanGsqxs9vfwyKpjdHYA+C/+DwHxJocH7N/7IXhCXUrVPEmq/G7xl4ksdHM0f2640PQPAb6Zq2pJb7vN+y2d/4k0W1km2+X519Em7ccUAfyP/8ABKK0uL3/AIKa/sCw2sTTSp+1z8BLtkUqCLew+JHh++vJcsVGILS2nmYA7isZCBmIUgH9mf8Awd2f8mB/s+/9ng+GP/VL/GygD+Iz/gnl/wAn+/sN/wDZ4X7M/wD6unwTQB/okf8AByjpF/qn/BH79pGeyhaZNE8SfArV78Iru8dgvxx8AadJMFRH+WKfUrd5WfYkcAllZwEwQD/L1oA/2xPBvizQ/HvhDwr458MX9tqvhrxp4b0PxZ4e1SzlE9pqWh+I9LtdY0m/tZgAJra8sLy3uIJQAJIpFcAA0Af5of8Awc5eJtJ8Qf8ABWv4sWGmXUVzP4P+GXwV8M60IZY5Rbas/gSw8Sm1k8tm8uaPTvEmnNJE+JEZ/mUZAoA+2P8Ag0H0u8m/bB/al1tI86fp/wCzXY6Xcy4f5LzWPih4Ru7GPIQoPMh0PUWwzq58r5EcCQxgHm3/AAdyf8pIfgn/ANmRfDf/ANXx+0nQBxH/AAajf8pP9f8A+zWfiv8A+ph8LKAP6qv+DiH9hm5/bO/4J7+Mdb8G6Kuq/GH9mS8ufjn4AS2tll1fV/D+i6Xc2/xT8G2LrHLdSLrfgsz+ILXSrNGuNb8U+DfCtgil2TAB/l60Af6Nv/Bpj/yjP+Iv/Z4PxQ/9VZ8DaAP5TP8Ag42/5TMftj/929f+srfA6gD9g/8Agzt/5KR+3d/2JHwE/wDT98U6AP7q6ACgAoA/zrv+DuT/AJSQ/BP/ALMi+G//AKvj9pOgDiP+DUb/AJSf6/8A9ms/Ff8A9TD4WUAf6RFAH8U//B4z/wAi1/wT8/7Dn7Tf/pB8B6AP51v+CFX/AClr/Yh/7KnqX/qBeL6AP7EP+Dsayu7v/gmV4Int4Hlh0z9rf4W3t/ImNtraSfDn4zaak8uSMI19qFlbDGT5lxGMYJIAP8/r9mHX9I8KftK/s8+KPEF9Bpmg+G/jl8Jdf1vUrp1ittP0jR/H2gajqV9cSOQscFpZ201xK7EKkcbMSACaAP8AZ0VldVdGV0dQyOpDKysMqysMhlYEEEEgg5HFAH+UB/wXV8SaL4q/4K2ftvanoF/BqVja/FPTfDc9xbtujj1rwd4C8H+EPEtgx7T6V4i0PVdLuV/gubOVe1AH5zeC/g98QfiDpdxrPhPQLjVNOttQl0ya4iPypew29rdSQng/MsF7bP8ASQUAfrL/AMF6/wBgPxd+xD+3p8UNZh0W+HwP/aP8VeKfjR8G/E627/2Qw8Vas+t+Ovh+tyqtBBqvw88U6xc6bHpkk8t//wAIjeeENbuznW1wAfnN+zp+2b+1Z+yPd63efs0/H74nfBk+JViHiKy8E+Jr3TtG157dGjtbjWNAdp9D1O8s43kSyvrzT5ryySSRbWeFZHDAHK/H39pb4/8A7U/jWP4i/tF/F7x58ZPGlvpkGiWOu+PPEF7rc+laLbzT3MOjaLbzv9i0TSUu7q7vf7N0m1srJr67u71oGu7q4mkAP6Mv+DW//gn/AOKPjR+1k37bHi/Q760+DX7MsGt2ng3VbmBU0/xn8cfEehTaHYaRZecAb218CeF9f1PxZq13aHOl+IZPA8L+Yl/cJEAfsn/wd2f8mB/s+/8AZ4Phj/1S/wAbKAP4jP8Agnl/yf7+w3/2eF+zP/6unwTQB/rL/tgfs66D+1v+y78ef2a/ElxFY6d8Zvhj4p8E2+rzQvcJ4e17UtOlfwr4pW2jeNrmXwr4nh0fxHBbFtlxPpccMqvG7owB/kC/H34E/E/9mT4yfEP4DfGbwzeeEfiV8MfEl94Z8T6NdxTIn2i1ZZLTVdLnmhg/tPw9r+nS2eueG9agj+xa5oOo6dq9i8lneQyMAfSPwo/4Kgf8FDPgb8OtO+Evwm/bC+O/gj4caLZtp2geE9J8c6k+m+GtObeRp3hY3zXd14Y0+N5JJILHQLjTrW2mkea3ijlZnIB8V+JvE3iTxp4h1vxd4x8Qa54s8WeJtVvtd8SeJ/E2rX+veIfEGt6pcSXmpaxretapcXWpatquo3cst1fahf3Nxd3dxLJPcTSSuzEA/wBHD/g2N/YD8Zfsl/sf+Lvjn8WdAuvDHxO/a21jw54osPDOr6fLY6/4b+EPgy11e2+Haazb3cMd1Yaj4suvEXiXxl9hB2/8I5q3hJ7xYdTS7s7MA/Ar/g7k/wCUkPwT/wCzIvhv/wCr4/aToA4j/g1G/wCUn+v/APZrPxX/APUw+FlAH+kMyq6sjqro6lXRgGVlYYZWU5DKwJBBBBBweKAP8m//AILNfsI3f/BP39vL4rfCnStMks/hL41un+LfwKuUgEVk3wz8a6hfz2vh22KIsXmeAdettb8CSp8s0sPh601N4ooNTttwB/Yv/wAGmP8AyjP+Iv8A2eD8UP8A1VnwNoA/lM/4ONv+UzH7Y/8A3b1/6yt8DqAPyT+Gvxs+M3wZn1a6+D/xb+J3woudfitINduPhr498VeBZ9ag097iSwh1aXwvqulyalFZSXd09pHeNMls9zcNCEaaQsAesf8ADc37bP8A0eH+1N/4kF8Wv/muoA/pZ/4NYP2kP2iPjB/wUG+MXhn4t/Hr40fFLw5Y/sb/ABB12y8P/EX4peOPG+iWet23xs/Z60+21i10rxNrup2FvqtvYanqVlBqEUCXcVpqF9bRzLDdzpIAf300Af513/B3J/ykh+Cf/ZkXw3/9Xx+0nQBxH/BqN/yk/wBf/wCzWfiv/wCph8LKAP8ASIoA/in/AODxn/kWv+Cfn/Yc/ab/APSD4D0Afzrf8EKv+Utf7EP/AGVPUv8A1AvF9AH+kR/wU9/Y6T9vL9hz49fs0Wj6dbeLfGHhm31j4banqhaKz0v4meDNTsvFfgma4u0/eWFjqOs6TDoGsXsayNDoesaoGguY2e3lAP8AI58ceCPF3w08ZeKfh54/8O6r4R8b+Cdf1Xwt4s8Ma5avZavoHiDQ72bT9V0rUbWQbobqyvLeWCVeVLJuRnRlYgH2v4M/4Krf8FH/AIefDbT/AIReCv20v2g/D3w+0jR/+Ee0XQ7H4hav5+g6EsAtbbSNA12eSbxFoWnadaqlppFppGrWUOjWscVtpKWcEUcagHwbdXWpa3qVxeXlxfavrGr30t1d3d1LcX+panqV/cNLPcXE8rS3V7fXt1K0kssjS3FzcSs7s8jkkA/0vv8AgiD/AMEnfB/7O37A/gey/ae+Fekat8Z/iz4k1f41eJ9E8T2cy6v4As/F+i+GtJ8NeB7xIbxTb3+n+GvDOk6rrdhOkV3pXiHWtY0q7ijuLGRQAfs1+0x+yt+z7+2J8LNV+DP7Sfwu8N/FT4farKl4ula7DPDqGiatDFNBbeIPCfiLTJ7HxF4Q8SWkFxc21t4g8M6pperR2d3e2H2trG+vLacA/wA1v/gs7/wTg+A3/BP/AOL+q+E/gfrvxO1PQpNTtWtrT4ha/wCHdefT7fU/t9x9itbnRvCHhu5kt7JYYreze/lvbwwJm9u7y4Zp2APrb/ghV/wSN/ZQ/b11q78SftET/FPWdO8LWEOtyeC/DXjHTvC3hjxIY00KR9M1650/w3/wmMenT/2lcJK3h3xZ4f1MIsXk6lC6s7gH+hh8LPhT8Nvgh8P/AAt8KfhD4I8N/Dn4c+CtMj0fwt4O8JaXbaPoej2MbPKy29pbIge5u7mWa91G/uDNf6pqNzdalqVzdX91c3MoB+Zn/BY79in4V/t1fs//AA3+Fnxb1/4geHfD/hn4xaf8QLC8+HOq+HNI1mbWdP8ABXjPw7DbXdx4m8KeL7KTTGsvE1/LLDDp1vdNdQ2jpepDHNBcAH4Z/s1f8EDf2Pfhd+0Z8AfiZoHxI/aVvNe+Hfxr+FfjrRLTWPGHwvuNIutX8I+OtB1/TbfVILL4OafeT6dPeafDFfQ2l/Y3Mls0qQXltKyTIAf2f0AfmL/wUX/4JTfsa/8ABRTwq2o/tAeBNRs/iJ4S0C6tvCnxk+HWp23hX4o6Fplkt7qEWh/2zc6ZrWja/oAuri7mi0Txd4f8RabYT3l5eaVbWF9cy3TAH+YR+1V8BfB/wN/aG1n4TeE9S8S6j4c07xXd6HBe+IrzS7vW2tINdfTEkludN0fSLFrkwKHZ001IjNlhCE/d0Af2uf8ABFr/AIIe/sFSeA/BP7WPxA8I+MPjP8RrXVft3h3Qfir4g0nWfhv4W1jRNTnax1vT/BeheGvDVnrl8jQxSCDxzceLdJgnjiu7PTba8hiuEAP61aAP5tf+CxP/AASk/Z3/AG6f2mfA3xb+LfjP40eHfEfh34FeGfh1ZWXw68ReB9I0SXRNI8f/ABO8TW11dW3ib4deLr99Ve/8XalFPPFqUFo1pBYxx2Mc0c89yAYP/BI3/gkl+zj+xJ+1TqHxk+FPjX42+IPE918J/F3guSw+IPiPwJqugjS9b1nwnf3dwlr4c+G3hPUBqEc2i2q28rao1ukUlwJLWVnjeIA/pooA/En/AILN/wDBNb9nj9vnwv8ABLWPjFd+PvDniP4Xa/4n0zw74m+GmreGdD1u50Txfp1ldavoWtT+JPCHi611HSkvvDemahpsX2SGfTLs372dzFHqmpRXQB7V/wAEhv2NPhh+w3+y3r3wh+E2u+PfEPhrWvjF4r+IF1ffETVPD2ra5HrOseGfBGg3Ntb3Phrwv4SsF0yOz8MWEkEMmmS3S3M148l7LFJDDbgH5Gf8FLf+CL37Ln7WX7bPxq/aA+Ivj34+6L4y8f8A/CuP7Y0zwV4p+HmneGbb/hFfhL4D8Faf/Zlnrvws8R6rD52leHLG4vPtWtXnmahLdywfZ7Z4bSAA+FP+IdP9ib/oqP7U3/hbfCX/AOchQAf8Q6f7E3/RUf2pv/C2+Ev/AM5CgD9YP+CO3/BKT9nf9hb9pnxz8W/hJ4z+NHiLxH4i+BXib4dXtl8RfEXgfV9Ei0TV/H/wx8TXN1a23hn4deEb9NVS/wDCOmxQTy6lPaLaT30cljJNJBPbAH9JVAH82v8AwWJ/4JSfs7/t0/tM+Bvi38W/Gfxo8O+I/DvwK8M/Dqysvh14i8D6RokuiaR4/wDid4mtrq6tvE3w68XX76q9/wCLtSinni1KC0a0gsY47GOaOee5AMH/AIJG/wDBJL9nH9iT9qnUPjJ8KfGvxt8QeJ7r4T+LvBclh8QfEfgTVdBGl63rPhO/u7hLXw58NvCeoDUI5tFtVt5W1RrdIpLgSWsrPG8QB/TRQB+Gv/Bab/gnr8F/2+bH9nKw+MPif4oeG4fhhd/Fe80BvhrrXhTR5byXxbD8OYdSXWD4o8FeMVuEgXw7ZGxFkmntG0t0Z2uQ8QgAPzi/YB/4Ig/so/s3/th/Ar44+B/iD+0Lqviz4ceKL/XdD0/xX4r+G994durtvDOuWBj1W00j4TaFqU9t5N7KwS01axl81Y287aGRwD+uegD8ZP8AgqJ/wR2/Yg/br8PeJvjF8VvA+ueD/jV4X8LXdzF8XvhJq+n+D/GniCz0TT3aw0jxmmoaJ4i8MeMbWCO3trO11DxD4bv/ABHpem20OmaNrmm6eGtmAP8ANO+KPwW8LeCf2hLv4T6Vf6/ceHYNQntEvdQutOl1oxxHUArNc22lWliXP2SPJGmhfmfCjK7QD+/D/gjd/wAESv2E/g74G+FP7X0/hTxb8WvjRqunw6/4d1D4w6zoXibw38OdatL2RYdX8DeFdG8LeGdHg1iCS2hubDXPEkHibW9FvE+1aDqOlTEvQB/S5QAA/9k=' alt='' style='max-width: 90px;'></td>
+                                </tr>
+                                <!-- Patient Information Start -->
+                                <tr>
+                                    <td colspan='2' style='padding: 8px 16px; vertical-align: top;' valign='top'>
+                                        <div class='font-14 font-bold pt-16' style='font-weight: bold; font-size: 18px; padding-top: 16px;'>
+                                            Patient Information
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr class='form-content'>
+                                    <td style='padding: 8px 16px; vertical-align: top; background-color: #F6F6F6;' valign='top' bgcolor='#F6F6F6'>
+                                        <span class='label mr-32' style='margin-right: 32px; width: 120px; display: inline-block;'>Name: </span>
+                                        <span class='font-bold' style='font-weight: bold;'>"&gblSelectedPatient.'Full Name'&"</span>
+                                    </td>
+                                    <td style='padding: 8px 16px; vertical-align: top; background-color: #F6F6F6;' valign='top' bgcolor='#F6F6F6'>
+                                        <span class='label mr-32' style='margin-right: 32px; width: 120px; display: inline-block;'>Email: </span>
+                                        <span class='font-bold' style='font-weight: bold;'>"&gblSelectedPatient.Email&"</span>
+                                    </td>
+                                </tr>
+                                <tr class='form-content'>
+                                    <td style='padding: 8px 16px; vertical-align: top; background-color: #F6F6F6;' valign='top' bgcolor='#F6F6F6'>
+                                        <span class='label mr-32' style='margin-right: 32px; width: 120px; display: inline-block;'>Birthdate: </span>
+                                        <span class='font-bold' style='font-weight: bold;'>"&gblSelectedPatient.Birthday&"</span>
+                                    </td>
+                                    <td style='padding: 8px 16px; vertical-align: top; background-color: #F6F6F6;' valign='top' bgcolor='#F6F6F6'>
+                                        <span class='label mr-32' style='margin-right: 32px; width: 120px; display: inline-block;'>Ethnicity: </span>
+                                        <span class='font-bold' style='font-weight: bold;'>"&gblSelectedPatient.Ethnicity&"</span>
+                                    </td>
+                                </tr>
+                                <!-- Primary Physican Content -->
+                                
+                                <!-- Vital Information Start -->
+                                <tr>
+                                    <td colspan='2' style='padding: 8px 16px; vertical-align: top;' valign='top'>
+                                        <div class='font-14 font-bold pt-16' style='font-weight: bold; font-size: 18px; padding-top: 16px;'>
+                                            Vitals
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr class='form-content'>
+                                    <td style='padding: 8px 16px; vertical-align: top; background-color: #F6F6F6;' valign='top' bgcolor='#F6F6F6'>
+                                        <span class='label mr-32' style='margin-right: 32px; width: 120px; display: inline-block;'>Blood pressure (BP): </span>
+                                        <span class='font-bold' style='font-weight: bold;'>"&DataCardValue19&"</span>
+                                    </td>
+                                    <td style='padding: 8px 16px; vertical-align: top; background-color: #F6F6F6;' valign='top' bgcolor='#F6F6F6'>
+                                        <span class='label mr-32' style='margin-right: 32px; width: 120px; display: inline-block;'>Respiratory Rate: </span>
+                                        <span class='font-bold' style='font-weight: bold;'>"&DataCardValue24&"</span>
+                                    </td>
+                                </tr>
+                                <tr class='form-content'>
+                                    <td style='padding: 8px 16px; vertical-align: top; background-color: #F6F6F6;' valign='top' bgcolor='#F6F6F6'>
+                                        <span class='label mr-32' style='margin-right: 32px; width: 120px; display: inline-block;'>Heart Rate (HR): </span>
+                                        <span class='font-bold' style='font-weight: bold;'>"&DataCardValue20&"</span>
+                                    </td>
+                                    <td style='padding: 8px 16px; vertical-align: top; background-color: #F6F6F6;' valign='top' bgcolor='#F6F6F6'>
+                                        <span class='label mr-32' style='margin-right: 32px; width: 120px; display: inline-block;'>Height: </span>
+                                        <span class='font-bold' style='font-weight: bold;'>"&DataCardValue22&"</span>
+                                    </td>
+                                </tr>
+                                
+                                <tr class='form-content primary-physican-content'>
+                                    <td colspan='2' style='padding: 8px 16px; vertical-align: top; background-color: #F6F6F6;' valign='top' bgcolor='#F6F6F6'>
+                                        <span class='label' style='width: 120px; display: inline-block;'>Notes: </span>
+                                    </td>
+                                </tr>
+                                <tr class='form-content'>
+                                    <td colspan='2' style='padding: 8px 16px; vertical-align: top; background-color: #F6F6F6;' valign='top' bgcolor='#F6F6F6'>
+                                        <span class='font-bold' style='font-weight: bold;'>"&varObjectiveNotes&"</span>
+                                    </td>
+                                </tr>
+                                <!-- Vital Physican Content -->
+                                
+                                <tr>
+                                    <td colspan='2' style='padding: 8px 16px; vertical-align: top;' valign='top'>
+                                        <div class='font-14 pt-16 font-bold' style='font-weight: bold; font-size: 18px; padding-top: 16px;'>
+                                            Chief Complaint
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr class='form-content'>
+                                    <td colspan='2' style='padding: 8px 16px; vertical-align: top; background-color: #F6F6F6;' valign='top' bgcolor='#F6F6F6'>
+                                        <span class='label mr-32' style='margin-right: 32px; width: 120px; display: inline-block;'>Chief Complaint: </span>
+                                    </td>
+                                    
+                                </tr>
+                                <tr class='form-content'>
+                                    <td colspan='2' style='padding: 8px 16px; vertical-align: top; background-color: #F6F6F6;' valign='top' bgcolor='#F6F6F6'>
+                                        <span class='font-bold' style='font-weight: bold;'>"&varChiefComplain&"</span>
+                                        </td>
+                                    </tr>
+                        
+                                    <tr>
+                                        <td colspan='2' style='padding: 8px 16px; vertical-align: top;' valign='top'>
+                                            <div class='font-14 pt-16 font-bold' style='font-weight: bold; font-size: 18px; padding-top: 16px;'>
+                                                Medication History
+                                            </div>
+                                        </td>
+                                    </tr>
+                        
+                                    <tr class='form-content'>
+                                        <td colspan='2' style='padding: 8px 16px; vertical-align: top; background-color: #F6F6F6;' valign='top' bgcolor='#F6F6F6'>
+                                            <span class='label mr-32' style='margin-right: 32px; width: 150px; display: inline-block;'>Medication History: </span>
+                                        </td>
+                                    </tr>
+                                    <tr class='form-content'>
+                                        <td colspan='2' style='padding: 8px 16px; vertical-align: top; background-color: #F6F6F6;' valign='top' bgcolor='#F6F6F6'>
+                                            <span class='font-bold' style='font-weight: bold;'>
+                                                "&
+                        Concat(colMedicalHistories, "<tr><td colspan='2' style='padding: 8px 16px; vertical-align: top; background-color: #F6F6F6;' valign='top' bgcolor='#F6F6F6'><span class='font-bold' style='font-weight: bold;'>" & 'Drug Name' & " " & Frequency &"</span></td></tr>") &"
+                                            </span>
+                                        </td>
+                                    </tr>
+                                    
+                                    
+                                    <tr>
+                                        <td colspan='2' style='padding: 8px 16px; vertical-align: top;' valign='top'>
+                                            <div class='font-14 pt-16 font-bold' style='font-weight: bold; font-size: 18px; padding-top: 16px;'>
+                                                Assessment Summary
+                                            </div>
+                                        </td>
+                                    </tr>
+                        
+                                    <tr class='form-content'>
+                                        <td colspan='2' style='padding: 8px 16px; vertical-align: top; background-color: #F6F6F6;' valign='top' bgcolor='#F6F6F6'>
+                                            <span class='label mr-32' style='margin-right: 32px; width: 120px; display: inline-block;'>Assessment: </span>
+                                        </td>
+                                    </tr>
+                                    <tr class='form-content'>
+                                        <td colspan='2' style='padding: 8px 16px; vertical-align: top; background-color: #F6F6F6;' valign='top' bgcolor='#F6F6F6'>
+                                            <span class='font-bold' style='font-weight: bold;'>
+                                                "&varAssesment&"
+                                            </span>
+                                        </td>
+                                    </tr>
+                        
+                                    <!-- For spacing !!! Do not remove !!!-->
+                                    <tr><td colspan='2' style='padding: 8px 16px; vertical-align: top;' valign='top'></td></tr>
+                                    <!-- For spacing !!! Do not remove !!!-->
+                        
+                                    <tr class='form-content'>
+                                        <td colspan='2' style='padding: 8px 16px; vertical-align: top; background-color: #F6F6F6;' valign='top' bgcolor='#F6F6F6'>
+                                            <span class='label mr-32' style='margin-right: 32px; width: 120px; display: inline-block;'>Lab Work: </span>
+                                        </td>
+                                    </tr>
+                                    <tr class='form-content'>
+                                        <td colspan='2' style='padding: 8px 16px; vertical-align: top; background-color: #F6F6F6;' valign='top' bgcolor='#F6F6F6'>
+                                            <span class='font-bold' style='font-weight: bold;'>
+                                                "&varLabResult&"
+                                            </span>
+                                        </td>
+                                    </tr>
+                        
+                                    <tr>
+                                        <td colspan='2' style='padding: 8px 16px; vertical-align: top;' valign='top'>
+                                            <div class='font-14 pt-16 font-bold' style='font-weight: bold; font-size: 18px; padding-top: 16px;'>
+                                                Plan Information
+                                            </div>
+                                        </td>
+                                    </tr>
+                        
+                                    <tr class='form-content'>
+                                        <td colspan='2' style='padding: 8px 16px; vertical-align: top; background-color: #F6F6F6;' valign='top' bgcolor='#F6F6F6'>
+                                            <span class='label mr-32' style='margin-right: 32px; width: 120px; display: inline-block;'>Treatment Plan: </span>
+                                        </td>
+                                    </tr>
+                                    <tr class='form-content'>
+                                        <td colspan='2' style='padding: 8px 16px; vertical-align: top; background-color: #F6F6F6;' valign='top' bgcolor='#F6F6F6'>
+                                            <span class='font-bold' style='font-weight: bold;'>
+                                                "&varTreatmentPlan&"
+                                            </span>
+                                        </td>
+                                    </tr>
+                        
+                                    <tr>
+                                        <td class='vab' style='padding: 8px 16px; vertical-align: bottom;' valign='bottom'>
+                                            <div class='signature-box' style='max-width: 200px; border-bottom: 1px solid #ccc; padding-bottom: 12px;'>
+                                                <!-- signature image here -->
+                                            </div>
+                                            <div class='pt-8' style='padding-top: 8px;padding-bottom:150px;'>Practitioner Signature</div>
+                                            <div class='pt-8' style='padding-top: 8px;'>Practitioner Name:</div>
+                                            <div class='font-bold' style='font-weight: bold;'>"&gblSelectedAppointmentPatient.'Actor (Practitioner)'.'Full Name'&"</div>
+                                        </td>
+                                        <td class='text-right vab' style='padding: 8px 16px; text-align: right; vertical-align: bottom;' align='right' valign='bottom'>
+                                            <div class='dos' style='max-width: 200px; margin-left: auto;'>
+                                                <div class='signature-box font-bold' style='font-weight: bold; max-width: 200px; border-bottom: 1px solid #ccc; padding-bottom: 12px;'>
+                                                   "&gblSelectedAppointmentPatient.'Fulfilled Date'&"
+                                                </div>
+                                                <div class='pt-8' style='padding-top: 8px;'>Date of Service</div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>"
+                    Size: =16
+                    Width: =Parent.Width
+                    ZIndex: =1
+
+                ImgPharmacistSignatureSOAP_1 As image:
+                    BorderColor: =
+                    DisplayMode: =Parent.DisplayMode
+                    Height: =128
+                    Image: =gblSOAPNote.'Pharmacist Signature'
+                    Tooltip: =
+                    Width: =307
+                    X: =21
+                    Y: =Parent.Height-Self.Height-50
+                    ZIndex: =2
+
+    ConMedSummaryHeader As groupContainer.manualLayoutContainer:
+        Height: =120
+        Width: =Parent.Width
+        ZIndex: =2
+
+        ImgBackMedSummaryPDF As image:
+            Height: =40
+            Image: |-
+                ="data:image/svg+xml;utf8, "&EncodeUrl("<svg width='28' height='28' viewBox='0 0 28 28' fill='none' xmlns='http://www.w3.org/2000/svg'> <path d='M14 28C10.287 28 6.72602 26.525 4.10051 23.8995C1.475 21.274 3.04044e-06 17.713 3.20274e-06 14C3.36504e-06 10.287 1.475 6.72601 4.10051 4.1005C6.72602 1.475 10.287 -7.74261e-07 14 -6.11959e-07C17.713 -4.49658e-07 21.274 1.475 23.8995 4.10051C26.525 6.72601 28 10.287 28 14C28 17.713 26.525 21.274 23.8995 23.8995C21.274 26.525 17.713 28 14 28ZM20.125 14.875C20.3571 14.875 20.5796 14.7828 20.7437 14.6187C20.9078 14.4546 21 14.2321 21 14C21 13.7679 20.9078 13.5454 20.7437 13.3813C20.5796 13.2172 20.3571 13.125 20.125 13.125L9.98725 13.125L13.7445 9.3695C13.9088 9.2052 14.0011 8.98236 14.0011 8.75C14.0011 8.51764 13.9088 8.2948 13.7445 8.1305C13.5802 7.9662 13.3574 7.87389 13.125 7.87389C12.8926 7.87389 12.6698 7.9662 12.5055 8.1305L7.2555 13.3805C7.17402 13.4618 7.10937 13.5583 7.06526 13.6646C7.02114 13.7709 6.99844 13.8849 6.99844 14C6.99844 14.1151 7.02114 14.2291 7.06526 14.3354C7.10937 14.4417 7.17402 14.5382 7.2555 14.6195L12.5055 19.8695C12.6698 20.0338 12.8926 20.1261 13.125 20.1261C13.3574 20.1261 13.5802 20.0338 13.7445 19.8695C13.9088 19.7052 14.0011 19.4824 14.0011 19.25C14.0011 19.0176 13.9088 18.7948 13.7445 18.6305L9.98725 14.875L20.125 14.875Z' fill='#0052CC'/> </svg> ")
+            OnSelect: |-
+                =Navigate(ScnAppointmentDetails);
+                Set(
+                    VarDirectSoapNote,
+                    true
+                );
+                    UpdateContext({varPDFVisible: false});
+                    UpdateContext({varPDFLoader: false})
+            Visible: =!ScnSOAPPDF.Printing
+            Width: =40
+            X: =28
+            Y: =36
+            ZIndex: =1
+
+        LblMedSummaryHeader As label:
+            Font: =VarTheme.Font
+            FontWeight: =FontWeight.Bold
+            Height: =60
+            Size: =24
+            Text: ="Medical Summary"
+            Width: =500
+            X: =88
+            Y: =26
+            ZIndex: =2
+
+        BtnPrintMedSummary As button:
+            BorderColor: =VarTheme.PrimaryColor
+            BorderThickness: =1
+            Color: =VarTheme.PrimaryColor
+            Fill: =Color.White
+            Font: =VarTheme.Font
+            HoverFill: =VarTheme.PrimaryColorDark
+            OnSelect: |-
+                =If(
+                    BtnPrintMedSummary.Text="Print PDF",
+                    UpdateContext({varPrescriptionPDFLoader: true}) && UpdateContext(
+                        {
+                            varPrescriptionPDF: PDF(
+                                ConMedicalSummary,
+                                {   DPI: 72,
+                                    Margin: "10mm",
+                                    Orientation: PaperOrientation.Portrait,
+                                    Size: PaperSize.A4,
+                                    ExpandContainers: true
+                                }
+                            )
+                        }
+                    )&& UpdateContext(
+                        {
+                            varBasePrescription: Substitute(
+                                JSON(
+                                    varPrescriptionPDF,
+                                    JSONFormat.IncludeBinaryData
+                                ),
+                                """",
+                                ""
+                            )
+                        }
+                    ) && UpdateContext({varPrescriptionPDFVisible: true}),
+                    UpdateContext({varPrescriptionPDFLoader: false});
+                    UpdateContext({varPrescriptionPDFVisible: false})
+                );
+                
+                /*If(
+                    BtnPrintPrescription.Text = "Print PDF",
+                    Set(
+                        varPrescriptionPDFVisible,
+                        true
+                    ),
+                    Set(
+                        varPrescriptionPDFVisible,
+                        false
+                    )
+                );*/
+            PressedBorderColor: =
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Size: =18
+            Text: |-
+                =If(
+                    varPrescriptionPDFVisible,
+                    "Close PDF",
+                    "Print PDF"
+                )
+            Width: =170
+            X: =813
+            Y: =36
+            ZIndex: =3
+
+    "'PDF Viewer MedSummary' As pcfpdfbase64viewercontrol":
+        DisplayMode: =DisplayMode.Edit
+        Height: =Parent.Height-ConPrescriptionPreviewHeader.Height
+        sourceProperty: =varBasePrescription
+        Visible: =varPrescriptionPDFVisible
+        Width: =Parent.Width
+        X: =0
+        Y: =ConPrescriptionPreviewHeader.Height
+        ZIndex: =3
+

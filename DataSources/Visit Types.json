@@ -1,0 +1,98 @@
+[
+  {
+    "CdsFCBContext": "{\"FileType\":true,\"ImageExternalStorage\":true}",
+    "EntitySetName": "smvs_visit_types",
+    "IsHidden": false,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "LogicalName": "smvs_visit_type",
+    "MaxGetRowsCount": 500,
+    "Name": "Visit Types",
+    "NativeCDSDataSourceInfoNameMapping": {
+      "_ownerid_value": "Owner",
+      "createdby": "Created By",
+      "createdon": "Created On",
+      "createdonbehalfby": "Created By (Delegate)",
+      "importsequencenumber": "Import Sequence Number",
+      "modifiedby": "Modified By",
+      "modifiedon": "Modified On",
+      "modifiedonbehalfby": "Modified By (Delegate)",
+      "overriddencreatedon": "Record Created On",
+      "owningbusinessunit": "Owning Business Unit",
+      "owningteam": "Owning Team",
+      "owninguser": "Owning User",
+      "smvs_msemr_appointmentemr_VisitType_smvs_visit": "Appointments (EMR)",
+      "smvs_visit_type_AsyncOperations": "System Jobs",
+      "smvs_visit_type_BulkDeleteFailures": "Bulk Delete Failures",
+      "smvs_visit_type_DuplicateBaseRecord": "Duplicate Records (smvs_visit_type_DuplicateBaseRecord)",
+      "smvs_visit_type_DuplicateMatchingRecord": "Duplicate Records (smvs_visit_type_DuplicateMatchingRecord)",
+      "smvs_visit_type_MailboxTrackingFolders": "Mailbox Auto Tracking Folders",
+      "smvs_visit_type_PrincipalObjectAttributeAccesses": "Field Sharing",
+      "smvs_visit_type_ProcessSession": "Process Sessions",
+      "smvs_visit_type_SyncErrors": "Sync Errors",
+      "smvs_visit_typeid": "Visit Type (smvs_visit_typeid)",
+      "smvs_visittype": "Visit Type (smvs_visittype)",
+      "statecode": "Status",
+      "statuscode": "Status Reason",
+      "timezoneruleversionnumber": "Time Zone Rule Version Number",
+      "utcconversiontimezonecode": "UTC Conversion Time Zone Code",
+      "versionnumber": "Version Number"
+    },
+    "PreferredName": "Visit Types",
+    "Type": "NativeCDSDataSourceInfo"
+  },
+  {
+    "DisplayName": "Visit Types (Views)",
+    "Name": "_smvs_visit_type_views",
+    "RelatedEntityName": "Visit Types",
+    "TrimmedViewName": true,
+    "Type": "ViewInfo",
+    "ViewInfoNameMapping": {
+      "37ff2fb1-b155-4b5f-bb93-6eb63398802a": "Inactive Visit Types",
+      "3fd431be-c3b5-4d43-bb1f-0f8823b86204": "Active Visit Types",
+      "4c1a48d0-0139-4d75-b408-4a3e56e87ea3": "Visit Type Advanced Find View",
+      "b20f128f-3098-48a9-bf50-21555a522742": "Visit Type Associated View",
+      "f0520099-ac3a-4c94-a087-31a8e964b386": "Visit Type Lookup View"
+    }
+  },
+  {
+    "DisplayName": "Status (Visit Types)",
+    "Name": "smvs_visit_type_statecode",
+    "OptionSetInfoNameMapping": {
+      "0": "Active",
+      "1": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statecode",
+        "OptionSetReferenceEntityName": "Visit Types"
+      }
+    },
+    "OptionSetTypeKey": "StateType",
+    "RelatedColumnInvariantName": "statecode",
+    "RelatedEntityName": "Visit Types",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status Reason (Visit Types)",
+    "Name": "smvs_visit_type_statuscode",
+    "OptionSetInfoNameMapping": {
+      "1": "Active",
+      "2": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statuscode",
+        "OptionSetReferenceEntityName": "Visit Types"
+      }
+    },
+    "OptionSetTypeKey": "StatusType",
+    "RelatedColumnInvariantName": "statuscode",
+    "RelatedEntityName": "Visit Types",
+    "Type": "OptionSetInfo"
+  }
+]

@@ -1,0 +1,152 @@
+[
+  {
+    "CdsFCBContext": "{\"FileType\":true,\"ImageExternalStorage\":true}",
+    "EntitySetName": "smvs_eligibilityquestions",
+    "IsHidden": false,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "LogicalName": "smvs_eligibilityquestion",
+    "MaxGetRowsCount": 500,
+    "Name": "Eligibility Questions",
+    "NativeCDSDataSourceInfoNameMapping": {
+      "_ownerid_value": "Owner",
+      "createdby": "Created By",
+      "createdon": "Created On",
+      "createdonbehalfby": "Created By (Delegate)",
+      "importsequencenumber": "Import Sequence Number",
+      "modifiedby": "Modified By",
+      "modifiedon": "Modified On",
+      "modifiedonbehalfby": "Modified By (Delegate)",
+      "overriddencreatedon": "Record Created On",
+      "owningbusinessunit": "Owning Business Unit",
+      "owningteam": "Owning Team",
+      "owninguser": "Owning User",
+      "smvs_eligibilityquestion_AsyncOperations": "System Jobs",
+      "smvs_eligibilityquestion_BulkDeleteFailures": "Bulk Delete Failures",
+      "smvs_eligibilityquestion_DuplicateBaseRecord": "Duplicate Records (smvs_eligibilityquestion_DuplicateBaseRecord)",
+      "smvs_eligibilityquestion_DuplicateMatchingRecord": "Duplicate Records (smvs_eligibilityquestion_DuplicateMatchingRecord)",
+      "smvs_eligibilityquestion_MailboxTrackingFolders": "Mailbox Auto Tracking Folders",
+      "smvs_EligibilityQuestion_msemr_healthcare": "Sub Services",
+      "smvs_EligibilityQuestion_parent_eligibili": "Eligibility Questions",
+      "smvs_eligibilityquestion_PrincipalObjectAttributeAccesses": "Field Sharing",
+      "smvs_eligibilityquestion_ProcessSession": "Process Sessions",
+      "smvs_EligibilityQuestion_smvs_service_typ": "Service Types",
+      "smvs_eligibilityquestion_SyncErrors": "Sync Errors",
+      "smvs_eligibilityquestionid": "Eligibility Question",
+      "smvs_EligibilityResponse_EligibilityQuest": "Eligibility Responses",
+      "smvs_language_code": "Language",
+      "smvs_loinc_code": "Loinc Code",
+      "smvs_msemr_healthcareservicecategory_smvs_Elig": "Services",
+      "smvs_parent_eligibility_question": "Parent Eligibility Question",
+      "smvs_pre_screening_question": "Pre Screening Question",
+      "smvs_questionorder": "Question Order",
+      "smvs_questiontitle": "Question Title",
+      "smvs_response": "Response",
+      "smvs_translation_count": "Translation Count",
+      "smvs_translation_status": "Translation Status",
+      "statecode": "Status",
+      "statuscode": "Status Reason",
+      "timezoneruleversionnumber": "Time Zone Rule Version Number",
+      "utcconversiontimezonecode": "UTC Conversion Time Zone Code",
+      "versionnumber": "Version Number"
+    },
+    "PreferredName": "Eligibility Questions",
+    "Type": "NativeCDSDataSourceInfo"
+  },
+  {
+    "DisplayName": "Eligibility Questions (Views)",
+    "Name": "_smvs_eligibilityquestion_views",
+    "RelatedEntityName": "Eligibility Questions",
+    "TrimmedViewName": true,
+    "Type": "ViewInfo",
+    "ViewInfoNameMapping": {
+      "23fe8494-a884-4619-9ab4-fdae3f0740ba": "Active Eligibility Questions",
+      "4e3b3f47-9d1a-4780-8441-e0d51fac83ab": "Eligibility Question Lookup View",
+      "6e46e894-9857-4c97-84a4-dda092d3df01": "Eligibility Question Advanced Find View",
+      "7e91ca90-b5a8-eb11-b1ac-000d3a9bd897": "All Translation Eligibility Questions",
+      "a562334e-e457-45a5-9748-f65df607b060": "Eligibility Question Associated View",
+      "dddc9f64-5411-ec11-b6e6-000d3a570f02": "All Eligibility Questions",
+      "e09b737b-4f1e-4caa-8655-27e555be1d59": "Inactive Eligibility Questions"
+    }
+  },
+  {
+    "DisplayName": "Pre Screening Question (Eligibility Questions)",
+    "Name": "smvs_eligibilityquestion_smvs_pre_screening_question",
+    "OptionSetInfoNameMapping": {
+      "0": "No",
+      "1": "Yes"
+    },
+    "OptionSetIsBooleanValued": true,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "smvs_pre_screening_question",
+        "OptionSetReferenceEntityName": "Eligibility Questions"
+      }
+    },
+    "OptionSetTypeKey": "BooleanType",
+    "RelatedColumnInvariantName": "smvs_pre_screening_question",
+    "RelatedEntityName": "Eligibility Questions",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status (Eligibility Questions)",
+    "Name": "smvs_eligibilityquestion_statecode",
+    "OptionSetInfoNameMapping": {
+      "0": "Active",
+      "1": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statecode",
+        "OptionSetReferenceEntityName": "Eligibility Questions"
+      }
+    },
+    "OptionSetTypeKey": "StateType",
+    "RelatedColumnInvariantName": "statecode",
+    "RelatedEntityName": "Eligibility Questions",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status Reason (Eligibility Questions)",
+    "Name": "smvs_eligibilityquestion_statuscode",
+    "OptionSetInfoNameMapping": {
+      "1": "Active",
+      "2": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statuscode",
+        "OptionSetReferenceEntityName": "Eligibility Questions"
+      }
+    },
+    "OptionSetTypeKey": "StatusType",
+    "RelatedColumnInvariantName": "statuscode",
+    "RelatedEntityName": "Eligibility Questions",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Response (Eligibility Questions)",
+    "Name": "smvs_smvs_eligibilityquestion_response",
+    "OptionSetInfoNameMapping": {
+      "0": "No",
+      "1": "Yes"
+    },
+    "OptionSetIsBooleanValued": true,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "smvs_response",
+        "OptionSetReferenceEntityName": "Eligibility Questions"
+      }
+    },
+    "OptionSetTypeKey": "BooleanType",
+    "RelatedColumnInvariantName": "smvs_response",
+    "RelatedEntityName": "Eligibility Questions",
+    "Type": "OptionSetInfo"
+  }
+]

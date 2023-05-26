@@ -1,0 +1,542 @@
+"ScnReschedule As screen.'tabletAutoLayout_HeaderMainFooter_ver1.0'":
+    OnVisible: |-
+        =Set(
+            VarResetEligibility,
+            true
+        );
+        Set(
+            VarResetEligibility,
+            false
+        );
+        Set(
+            VarResetEligibility,
+            true
+        );
+        
+        Set(
+            VarAppointmentDetailHealthServiceRechedule,
+            LookUp(
+                'Sub Services',
+                'Healthcare Service (msemr_healthcareserviceid)' = gblSelectedAppointmentPatient.'Healthcare Service'.'Healthcare Service (msemr_healthcareserviceid)'
+            )
+        );
+        
+        ClearCollect(ColRescheduleCalendarFirstDose,
+            Filter(ServiceDataSlot,SlotId in CmbSiteLocation_1.Selected.Slots.Slot && Date>=Now() && Dose='Appointment Type (Slots)'.'First Appointment'));
+        
+            
+            ClearCollect(
+            ColFirstDoseData,
+            ShowColumns(
+                ColCalendarFirstDose,
+                "Date",
+                "Time",
+                "Title"
+            )
+        );
+        
+        
+        ClearCollect(ColRescheduleCalendarSecondDose,
+            Filter(ServiceDataSlot,SlotId in CmbSiteLocation_1.Selected.Slots.Slot && Date>=Now() && Dose='Appointment Type (Slots)'.'Second Appointment'));
+        
+            ClearCollect(
+            ColSecondDoseData,
+            ShowColumns(
+                ColCalendarSecondDose,
+                "Date",
+                "Time",
+                "Title"
+            )
+        );
+
+    ConCalendar_1 As groupContainer.verticalAutoLayoutContainer:
+        Height: =Parent.Height
+        LayoutAlignItems: =LayoutAlignItems.Stretch
+        LayoutDirection: =LayoutDirection.Vertical
+        LayoutMode: =LayoutMode.Auto
+        Width: =Parent.Width
+        ZIndex: =1
+
+        ConCalendarHeader_1 As groupContainer.horizontalAutoLayoutContainer:
+            AlignInContainer: =AlignInContainer.SetByContainer
+            FillPortions: =0
+            Height: =VarTheme.HeaderSize
+            LayoutAlignItems: =LayoutAlignItems.Center
+            LayoutMinHeight: =100
+            LayoutMinWidth: =250
+            LayoutMode: =LayoutMode.Auto
+            PaddingLeft: =26
+            Width: =Parent.Width
+            ZIndex: =2
+
+            ImgCalendarBack_1 As image:
+                Height: =40
+                Image: |-
+                    ="data:image/svg+xml;utf8, "&EncodeUrl("<svg width='28' height='28' viewBox='0 0 28 28' fill='none' xmlns='http://www.w3.org/2000/svg'> <path d='M14 28C10.287 28 6.72602 26.525 4.10051 23.8995C1.475 21.274 3.04044e-06 17.713 3.20274e-06 14C3.36504e-06 10.287 1.475 6.72601 4.10051 4.1005C6.72602 1.475 10.287 -7.74261e-07 14 -6.11959e-07C17.713 -4.49658e-07 21.274 1.475 23.8995 4.10051C26.525 6.72601 28 10.287 28 14C28 17.713 26.525 21.274 23.8995 23.8995C21.274 26.525 17.713 28 14 28ZM20.125 14.875C20.3571 14.875 20.5796 14.7828 20.7437 14.6187C20.9078 14.4546 21 14.2321 21 14C21 13.7679 20.9078 13.5454 20.7437 13.3813C20.5796 13.2172 20.3571 13.125 20.125 13.125L9.98725 13.125L13.7445 9.3695C13.9088 9.2052 14.0011 8.98236 14.0011 8.75C14.0011 8.51764 13.9088 8.2948 13.7445 8.1305C13.5802 7.9662 13.3574 7.87389 13.125 7.87389C12.8926 7.87389 12.6698 7.9662 12.5055 8.1305L7.2555 13.3805C7.17402 13.4618 7.10937 13.5583 7.06526 13.6646C7.02114 13.7709 6.99844 13.8849 6.99844 14C6.99844 14.1151 7.02114 14.2291 7.06526 14.3354C7.10937 14.4417 7.17402 14.5382 7.2555 14.6195L12.5055 19.8695C12.6698 20.0338 12.8926 20.1261 13.125 20.1261C13.3574 20.1261 13.5802 20.0338 13.7445 19.8695C13.9088 19.7052 14.0011 19.4824 14.0011 19.25C14.0011 19.0176 13.9088 18.7948 13.7445 18.6305L9.98725 14.875L20.125 14.875Z' fill='#0052CC'/> </svg> ")
+                OnSelect: |
+                    =Navigate(ScnAppointmentDetails);
+                Width: =40
+                X: =28
+                Y: =32
+                ZIndex: =1
+
+            LblHeaderCalendar_1 As label:
+                Color: =VarTheme.InputTextDark
+                Font: =VarTheme.Font
+                FontWeight: =FontWeight.Bold
+                PaddingLeft: =30
+                Size: =24
+                Text: ="Select Date and Time for Appointment"
+                Width: =700
+                X: =74
+                Y: =32
+                ZIndex: =2
+
+        ConCalendarBody_1 As groupContainer.verticalAutoLayoutContainer:
+            AlignInContainer: =AlignInContainer.SetByContainer
+            LayoutDirection: =LayoutDirection.Vertical
+            LayoutMinHeight: =0
+            LayoutMinWidth: =250
+            LayoutMode: =LayoutMode.Auto
+            LayoutOverflowY: =LayoutOverflow.Scroll
+            Width: =Parent.Width
+            ZIndex: =3
+
+            IcnSeperatorCalendar_1 As icon.HorizontalLine:
+                Fill: =RGBA(202, 202, 202, 1)
+                FocusedBorderThickness: =0
+                Height: =1
+                Icon: =Icon.HorizontalLine
+                Width: =Parent.Width
+                ZIndex: =1
+
+            ConNavigationCalendar_1 As groupContainer.verticalAutoLayoutContainer:
+                AlignInContainer: =AlignInContainer.SetByContainer
+                FillPortions: =0
+                Height: =120
+                LayoutJustifyContent: =LayoutJustifyContent.Center
+                LayoutMinHeight: =0
+                LayoutMinWidth: =250
+                LayoutMode: =LayoutMode.Auto
+                PaddingLeft: =26
+                PaddingRight: =26
+                Width: =Parent.Width
+                ZIndex: =2
+
+                ConSiteReschedule As groupContainer.verticalAutoLayoutContainer:
+                    FillPortions: =0
+                    Height: =Parent.Height
+                    LayoutDirection: =LayoutDirection.Vertical
+                    LayoutMinHeight: =0
+                    LayoutMinWidth: =250
+                    LayoutMode: =LayoutMode.Auto
+                    PaddingLeft: =26
+                    PaddingRight: =26
+                    ZIndex: =1
+
+                    LblSite_1 As label:
+                        Color: =VarTheme.InputTextDark
+                        Font: =VarTheme.Font
+                        FontWeight: =FontWeight.Bold
+                        Height: =50
+                        Size: =16
+                        Text: ="Site Location"
+                        Width: =400
+                        ZIndex: =1
+
+                    CmbSiteLocation_1 As combobox:
+                        BorderColor: =VarTheme.PrimaryColor
+                        BorderStyle: =BorderStyle.None
+                        BorderThickness: =0
+                        ChevronBackground: =VarTheme.InputBackground
+                        ChevronFill: =Color.Black
+                        ChevronHoverBackground: =RGBA(186, 202, 226, 1)
+                        Color: =VarTheme.InputText
+                        DefaultSelectedItems: =If(!IsBlank(gblSelectedAppointmentPatient),gblSelectedAppointmentPatient.Location,VarDefaultSiteLocation)
+                        DisplayFields: =["msemr_name"]
+                        DisplayMode: =DisplayMode.Disabled
+                        Fill: =VarTheme.InputBackground
+                        FontWeight: =FontWeight.Semibold
+                        InputTextPlaceholder: ="Set Your Site Location"
+                        IsSearchable: =false
+                        Items: |-
+                            =Filter(
+                                Locations,
+                                'Location Status' = 'Location Status_1'.Live && 'Status (statecode)' = 'Status (Locations)'.Active
+                            )
+                        PaddingLeft: =20
+                        PressedColor: =Color.Black
+                        PressedFill: =VarTheme.InputBackground
+                        SearchFields: =["msemr_name"]
+                        SearchItems: =[]
+                        SelectionFill: =RGBA(186, 202, 226, 1)
+                        SelectMultiple: =false
+                        Size: =VarTheme.FontSize16
+                        Width: =400
+                        ZIndex: =2
+
+                ConSubServiceLocation_1 As groupContainer.verticalAutoLayoutContainer:
+                    FillPortions: =0
+                    Height: =Parent.Height
+                    LayoutAlignItems: =LayoutAlignItems.Center
+                    LayoutDirection: =LayoutDirection.Vertical
+                    LayoutMinHeight: =0
+                    LayoutMinWidth: =250
+                    LayoutMode: =LayoutMode.Auto
+                    PaddingLeft: =26
+                    PaddingRight: =26
+                    ZIndex: =2
+
+                    LblSubServiceLocation_1 As label:
+                        Color: =VarTheme.InputTextDark
+                        Font: =VarTheme.Font
+                        FontWeight: =FontWeight.Bold
+                        Height: =50
+                        Size: =16
+                        Text: ="Sub Service"
+                        Width: =400
+                        ZIndex: =1
+
+                    CmbSubServiceReschedule As combobox:
+                        BorderColor: =VarTheme.PrimaryColor
+                        BorderStyle: =BorderStyle.None
+                        BorderThickness: =0
+                        ChevronBackground: =VarTheme.InputBackground
+                        ChevronFill: =Color.Black
+                        ChevronHoverBackground: =RGBA(186, 202, 226, 1)
+                        Color: =VarTheme.InputText
+                        DefaultSelectedItems: =If(!IsBlank(gblSelectedAppointmentPatient),gblSelectedAppointmentPatient.'Healthcare Service',VarDefaultSiteLocation)
+                        DisplayFields: =["msemr_name"]
+                        DisplayMode: =DisplayMode.Disabled
+                        Fill: =VarTheme.InputBackground
+                        FontWeight: =FontWeight.Semibold
+                        IsSearchable: =false
+                        Items: =Filter('Sub Services', Status='Status (Sub Services)'.Active && Language.Code="en")
+                        OnChange: |-
+                            =Set(VarFilterRowsScreening,Filter(CmbSubServiceReschedule.Selected.'Patient Screening Questions',  Status='Status (Patient Screening Questions)'.Active ));
+                            CountRows(VarFilterRowsScreening);
+                            
+                            Set(VarFilterRowsEligibility,Filter(CmbSubServiceReschedule.Selected.'Eligibility Questions',  Status='Status (Eligibility Questions)'.Active));
+                            CountRows(VarFilterRowsEligibility);
+                        PaddingLeft: =20
+                        PressedColor: =Color.Black
+                        PressedFill: =VarTheme.InputBackground
+                        SearchFields: =["msemr_name"]
+                        SearchItems: =[]
+                        SelectionFill: =RGBA(186, 202, 226, 1)
+                        SelectMultiple: =false
+                        Size: =VarTheme.FontSize16
+                        Width: =400
+                        ZIndex: =2
+
+            ConInfoCalendarMain_1 As groupContainer.verticalAutoLayoutContainer:
+                AlignInContainer: =AlignInContainer.SetByContainer
+                FillPortions: =0
+                Height: =120
+                LayoutDirection: =LayoutDirection.Vertical
+                LayoutMinHeight: =0
+                LayoutMinWidth: =250
+                LayoutMode: =LayoutMode.Auto
+                PaddingLeft: =26
+                PaddingRight: =26
+                Width: =Parent.Width
+                ZIndex: =3
+
+                ConInfoCalendar_1 As groupContainer.horizontalAutoLayoutContainer:
+                    AlignInContainer: =AlignInContainer.SetByContainer
+                    LayoutMinHeight: =100
+                    LayoutMinWidth: =250
+                    LayoutMode: =LayoutMode.Auto
+                    Width: =800
+                    ZIndex: =5
+
+                    ImgPoCCalendar_1 As image:
+                        Image: |-
+                            =If(VarServiceGroupNew="false","data:image/svg+xml;utf8, "&EncodeUrl("<svg width='76' height='75' viewBox='0 0 76 75' fill='none' xmlns='http://www.w3.org/2000/svg'> <rect x='0.940186' width='75' height='75' fill='#F3F3F4'/> <path d='M38.9402 27.402L34.3626 31.9463L39.8524 37.4361L38.0943 39.1941L32.6046 33.7044L29.669 36.64L35.1587 42.1298L33.4007 43.8878L27.9109 38.398L24.5938 41.7151C24.0667 42.2257 23.7238 42.8966 23.6188 43.6229C23.5138 44.3492 23.6525 45.0898 24.0134 45.7288L25.6719 48.8634L21.9402 52.6615L24.2787 55L28.0768 51.2683L31.2114 52.9268C31.7169 53.2134 32.2889 53.3621 32.8699 53.358C33.3076 53.3584 33.7411 53.2721 34.1453 53.1042C34.5495 52.9362 34.9165 52.6899 35.2251 52.3795L49.5382 38L38.9402 27.402ZM51.8768 33.3561L48.908 30.3707L51.2631 28.0322L53.6016 30.3707L55.9402 28.0322L48.908 21L46.5695 23.3385L48.908 25.6937L46.5695 28.0322L43.5841 25.0634L40.6982 22.161L38.3597 24.5161L40.068 26.2244V26.241L50.6992 36.8722H50.7158L52.4241 38.5805L54.7792 36.242L51.8934 33.3561H51.8768Z' fill='#0052CC'/> </svg> "),"data:image/svg+xml;utf8, "&EncodeUrl("<svg width='76' height='75' viewBox='0 0 76 75' fill='none' xmlns='http://www.w3.org/2000/svg'> <rect x='0.940186' width='75' height='75' fill='#F3F3F4'/> <path fill-rule='evenodd' clip-rule='evenodd' d='M44.3837 21.7436C45.0033 21.1244 45.8325 20.76 46.7076 20.7225C47.5827 20.6849 48.4401 20.9768 49.1104 21.5406L49.3327 21.7436L50.5699 22.9826C51.1889 23.6018 51.5532 24.4305 51.5911 25.3052C51.629 26.1799 51.3377 27.0371 50.7747 27.7076L50.5717 27.9316L49.3327 29.1688C49.226 29.2751 49.1126 29.3745 48.9932 29.4663C49.1463 30.0153 49.163 30.5933 49.042 31.1502C48.9209 31.7071 48.6657 32.226 48.2985 32.6618L48.0954 32.8806L46.3629 34.6131C47.5679 35.6795 48.5322 36.9899 49.1921 38.4574C49.8519 39.9249 50.1921 41.516 50.1902 43.125C50.1902 46.0021 49.1227 48.6288 47.3622 50.6326L47.0227 51H51.9402C52.3862 51.0005 52.8153 51.1713 53.1396 51.4775C53.4639 51.7837 53.6591 52.2022 53.6852 52.6475C53.7114 53.0928 53.5665 53.5312 53.2802 53.8733C52.994 54.2153 52.5879 54.4351 52.145 54.4878L51.9402 54.5H23.9402C23.4942 54.4996 23.0651 54.3288 22.7408 54.0226C22.4165 53.7164 22.2213 53.2979 22.1951 52.8526C22.169 52.4073 22.3139 51.9689 22.6002 51.6268C22.8864 51.2848 23.2925 51.065 23.7354 51.0123L23.9402 51H38.8152C40.3951 51.0002 41.9386 50.5252 43.245 49.6367C44.5514 48.7482 45.5603 47.4872 46.1406 46.0178C46.721 44.5483 46.8459 42.9382 46.4992 41.3968C46.1525 39.8554 45.3501 38.454 44.1964 37.3745L43.8815 37.0946L38.1957 42.782C37.5762 43.4007 36.7474 43.7648 35.8727 43.8023C34.998 43.8399 34.141 43.5483 33.4707 42.9851L33.2467 42.7803L29.535 39.0686C28.9155 38.4492 28.5509 37.6201 28.513 36.745C28.4751 35.8699 28.7667 35.0124 29.3302 34.3418L29.535 34.1196L39.4347 24.2198C39.873 23.7813 40.4199 23.4672 41.0195 23.3094C41.6191 23.1517 42.2499 23.156 42.8472 23.3221L42.9907 23.1471L43.1465 22.9826L44.3837 21.7436ZM28.2977 40.3076L32.0077 44.0193C32.175 44.1806 32.3084 44.3736 32.4003 44.5871C32.4921 44.8005 32.5406 45.0301 32.5428 45.2625C32.5449 45.4948 32.5008 45.7253 32.413 45.9404C32.3251 46.1556 32.1953 46.351 32.0311 46.5155C31.8669 46.6799 31.6716 46.81 31.4566 46.8981C31.2416 46.9862 31.0112 47.0307 30.7789 47.0288C30.5465 47.027 30.3168 46.9789 30.1033 46.8873C29.8897 46.7958 29.6965 46.6626 29.535 46.4956L25.8214 42.782C25.659 42.6195 25.5301 42.4265 25.4422 42.2141C25.3543 42.0017 25.3091 41.774 25.3092 41.5442C25.3093 41.3143 25.3547 41.0867 25.4427 40.8744C25.5307 40.6621 25.6597 40.4692 25.8223 40.3067C25.9849 40.1442 26.1779 40.0153 26.3903 39.9274C26.6027 39.8396 26.8303 39.7944 27.0602 39.7944C27.2901 39.7945 27.5176 39.8399 27.73 39.9279C27.9423 40.016 28.1352 40.145 28.2977 40.3076ZM46.8582 24.2216L45.6209 25.4588L46.8582 26.6961L48.0954 25.4588L46.8582 24.2216Z' fill='#0052CC'/> </svg> "))
+                        ZIndex: =1
+
+                    ConServicesCalendar_1 As groupContainer.verticalAutoLayoutContainer:
+                        AlignInContainer: =AlignInContainer.SetByContainer
+                        Height: =100
+                        LayoutDirection: =LayoutDirection.Vertical
+                        LayoutMinHeight: =100
+                        LayoutMinWidth: =250
+                        LayoutMode: =LayoutMode.Auto
+                        PaddingLeft: =20
+                        ZIndex: =2
+
+                        LblServiceTypeCalendar_1 As label:
+                            Color: =VarTheme.InputTextDark
+                            Font: =VarTheme.Font
+                            FontWeight: =FontWeight.Bold
+                            Size: =20
+                            Text: =CmbServiceType.Selected.Name
+                            Visible: =false
+                            Width: =500
+                            Wrap: =false
+                            X: =140
+                            ZIndex: =1
+
+                        LblServiceCalendar_1 As htmlViewer:
+                            Color: =VarTheme.InputTextDark
+                            Font: =VarTheme.Font
+                            HtmlText: |-
+                                ="Service:  <b>"&CmbExistingAppointmentServiceReschedule.Selected.Name&"</b>"
+                            Size: =14
+                            Width: =Parent.Width
+                            X: =140
+                            Y: =43
+                            ZIndex: =2
+
+                        LblSubServiceCalendar_1 As htmlViewer:
+                            Color: =VarTheme.InputTextDark
+                            Font: =VarTheme.Font
+                            HtmlText: |-
+                                ="Sub Service:  <b>"&gblSelectedAppointmentPatient.'Healthcare Service'.Name &"</b>"
+                            Size: =14
+                            Width: =Parent.Width
+                            X: =140
+                            Y: =83
+                            ZIndex: =3
+
+            ConCalendarMain_1 As groupContainer.verticalAutoLayoutContainer:
+                AlignInContainer: =AlignInContainer.SetByContainer
+                FillPortions: =0
+                Height: =If((VarRegimenDose='Regimen Dose Options'.'Both Doses' || VarRegimenDose='Regimen Dose Options'.'2nd Dose only'),ConFirstDoseCalendar_1.Height+ConSecondDoseCalendar_1.Height,ConFirstDoseCalendar_1.Height)
+                LayoutDirection: =LayoutDirection.Vertical
+                LayoutMinHeight: =0
+                LayoutMinWidth: =250
+                LayoutMode: =LayoutMode.Auto
+                PaddingLeft: =26
+                PaddingRight: =26
+                Width: =Parent.Width
+                ZIndex: =4
+
+                ConFirstDoseCalendar_1 As groupContainer.horizontalAutoLayoutContainer:
+                    AlignInContainer: =AlignInContainer.SetByContainer
+                    FillPortions: =0
+                    Height: =CalendarComponentFirstDose_1.Height+20
+                    LayoutAlignItems: =LayoutAlignItems.End
+                    LayoutGap: =10
+                    LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
+                    LayoutMinHeight: =100
+                    LayoutMinWidth: =250
+                    LayoutMode: =LayoutMode.Auto
+                    Visible: =gblSelectedAppointmentPatient.'Appointment Dose Number' = 'Appointment Dose Number (Appointments (EMR))'.'First Dose'
+                    Width: =Parent.Width-26
+                    ZIndex: =1
+
+                    CalendarComponentFirstDose_1 As CalendarComponent_1:
+                        CalendarItems: =ColRescheduleCalendarFirstDose
+                        Height: =405
+                        LayoutMinWidth: =640
+                        SelectedDateFill: =RGBA(0, 82, 204, 1)
+                        Width: =430
+                        ZIndex: =1
+
+                    GalFirstDoseDefaultSlot_1 As gallery.galleryVertical:
+                        AlignInContainer: =AlignInContainer.SetByContainer
+                        Height: =378
+                        Items: =rescheduleDefaultAppointmentSlotCollection
+                        Layout: =Layout.Vertical
+                        LayoutMinHeight: =287
+                        LayoutMinWidth: =60
+                        TemplatePadding: =2
+                        TemplateSize: =60
+                        Visible: |-
+                            =//(VarRegimenDose='Regimen Dose'.'Both Doses' || VarRegimenDose='Regimen Dose'.'1st Dose only' ) || VarServiceGroupNew="true"
+                            true
+                        Width: =Parent.Width
+                        WrapCount: =5
+                        X: =310
+                        Y: =110
+                        ZIndex: =2
+
+                        BtnDefaultSlotFirstDose_1 As button:
+                            BorderColor: =RGBA(0, 0, 0, 0)
+                            BorderThickness: =0
+                            Color: |
+                                =If(ThisItem.IsSelected,Color.White,VarTheme.InputText)
+                            Fill: =If((ThisItem.IsSelected && VarSelectedItem) ||(VarSelectedItem =false && DateDiff(ThisItem.VarRescheduleStartTime,Now(),TimeUnit.Minutes)<VarRescheduleSlotDurationInterval && DateDiff(ThisItem.VarRescheduleStartTime,Now(),TimeUnit.Minutes)>0),VarTheme.PrimaryColor,RGBA(241, 244, 249, 1))    
+                            Font: =VarTheme.Font
+                            FontWeight: =FontWeight.Normal
+                            Height: =53
+                            HoverColor: =Color.White
+                            HoverFill: =VarTheme.PrimaryColor
+                            OnSelect: |-
+                                =Set(VarRescheduleSelectedDate,DateTimeValue(Text(Text(CalendarComponentFirstDose_1.StartDate,"mm/dd/yyyy") &" " & Text(ThisItem.VarRescheduleStartTime, DateTimeFormat.ShortTime))));
+                                
+                                Set(VarSelectedItem, true);
+                            PressedColor: =Color.White
+                            PressedFill: =VarTheme.PrimaryColor
+                            RadiusBottomLeft: =0
+                            RadiusBottomRight: =0
+                            RadiusTopLeft: =0
+                            RadiusTopRight: =0
+                            Size: =14
+                            Text: =Text(ThisItem.VarRescheduleStartTime,DateTimeFormat.ShortTime)
+                            Width: =100
+                            Y: =3
+                            ZIndex: =1
+
+                        LblFirstDoseDefaultSlotTime_1 As label:
+                            Font: =VarTheme.Font
+                            Height: =22
+                            OnSelect: =Select(Parent)
+                            Text: =If(SelectedItem =false && DateDiff(ThisItem.VarRescheduleStartTime,Now(),TimeUnit.Minutes)<VarRescheduleSlotDurationInterval && DateDiff(ThisItem.VarRescheduleStartTime,Now(),TimeUnit.Minutes)>0=true,ThisItem.VarRescheduleStartTime)
+                            Visible: =false
+                            Width: =1
+                            Y: =3
+                            ZIndex: =2
+
+                    LblFirstDoseDefaultSelectedSlotTime_1 As label:
+                        Text: =First(Filter(GalFirstDoseDefaultSlot_1.AllItems,!IsBlank(LblFirstDoseDefaultSlotTime))).VarRescheduleStartTime
+                        Visible: =false
+                        ZIndex: =3
+
+                ConSecondDoseCalendar_1 As groupContainer.horizontalAutoLayoutContainer:
+                    AlignInContainer: =AlignInContainer.SetByContainer
+                    FillPortions: =0
+                    Height: =If((CalendarComponentSecondDose_1.Visible=true),440,0)
+                    LayoutAlignItems: =LayoutAlignItems.End
+                    LayoutGap: =10
+                    LayoutMinHeight: =100
+                    LayoutMinWidth: =250
+                    LayoutMode: =LayoutMode.Auto
+                    Visible: =gblSelectedAppointmentPatient.'Appointment Dose Number' = 'Appointment Dose Number (Appointments (EMR))'.'Second Dose'
+                    Width: =Parent.Width-26
+                    ZIndex: =2
+
+                    CalendarComponentSecondDose_1 As CalendarComponent:
+                        CalendarItems: =ColRescheduleCalendarSecondDose
+                        DefaultStartDate: =DateAdd(Today(),VarVaccineDayGap,TimeUnit.Days)
+                        Height: =405
+                        LayoutMinWidth: =640
+                        SelectedDateFill: =RGBA(0, 82, 204, 1)
+                        Width: =430
+                        ZIndex: =1
+
+                    GalSecondDoseDefaultSlot_1 As gallery.galleryVertical:
+                        AlignInContainer: =AlignInContainer.SetByContainer
+                        Height: =378
+                        Items: =rescheduleDefaultAppointmentSlotCollection
+                        Layout: =Layout.Vertical
+                        LayoutMinHeight: =287
+                        LayoutMinWidth: =0
+                        TemplateSize: =57
+                        Width: =500
+                        WrapCount: =5
+                        X: =310
+                        Y: =110
+                        ZIndex: =2
+
+                        BtnDefaultSlotSecondDose_1 As button:
+                            BorderColor: =RGBA(0, 0, 0, 0)
+                            BorderThickness: =0
+                            Color: =If(ThisItem.IsSelected,Color.White,RGBA(0, 0, 0, 1))
+                            Fill: =If((ThisItem.IsSelected && VarSelectedItem) ||(VarSelectedItem =false && DateDiff(ThisItem.VarRescheduleStartTime,Now(),TimeUnit.Minutes)<VarRescheduleSlotDurationInterval && DateDiff(ThisItem.VarRescheduleStartTime,Now(),TimeUnit.Minutes)>0),RGBA(56, 96, 178, 1),RGBA(241, 244, 249, 1))    
+                            Font: =VarTheme.Font
+                            FontWeight: =FontWeight.Normal
+                            Height: =53
+                            HoverColor: =Color.White
+                            HoverFill: =VarTheme.PrimaryColor
+                            OnSelect: |-
+                                =Set(VarRescheduleSelectedDate,DateTimeValue(Text(Text(CalendarComponentSecondDose_1.StartDate,"mm/dd/yyyy") &" " & Text(ThisItem.VarRescheduleStartTime, DateTimeFormat.ShortTime))));
+                                
+                                Set(VarSelectedItem, true)
+                            PressedColor: =Color.White
+                            PressedFill: =VarTheme.PrimaryColor
+                            RadiusBottomLeft: =0
+                            RadiusBottomRight: =0
+                            RadiusTopLeft: =0
+                            RadiusTopRight: =0
+                            Size: =14
+                            Text: =Text(ThisItem.VarRescheduleStartTime,DateTimeFormat.ShortTime)
+                            Width: =100
+                            Y: =3
+                            ZIndex: =1
+
+                        LblSecondDoseDefaultSlotTime_1 As label:
+                            Font: =VarTheme.Font
+                            Height: =22
+                            OnSelect: =Select(Parent)
+                            Text: =If(SelectedItem =false && DateDiff(ThisItem.VarRescheduleStartTime,Now(),TimeUnit.Minutes)<VarRescheduleSlotDurationInterval && DateDiff(ThisItem.VarRescheduleStartTime,Now(),TimeUnit.Minutes)>0=true,ThisItem.VarRescheduleStartTime)
+                            Visible: =false
+                            Width: =1
+                            Y: =3
+                            ZIndex: =2
+
+                    LblSecondDoseDefaultSelectedSlotTime_1 As label:
+                        Text: =DateAdd(First(Filter(GalSecondDoseDefaultSlot_1.AllItems,!IsBlank(LblSecondDoseDefaultSlotTime))).VarRescheduleStartTime,28,TimeUnit.Days)
+                        Visible: =false
+                        ZIndex: =3
+
+            ConCalendarContinue_1 As groupContainer.verticalAutoLayoutContainer:
+                AlignInContainer: =AlignInContainer.SetByContainer
+                FillPortions: =0
+                Height: =100
+                LayoutAlignItems: =LayoutAlignItems.Center
+                LayoutDirection: =LayoutDirection.Vertical
+                LayoutJustifyContent: =LayoutJustifyContent.Center
+                LayoutMinHeight: =0
+                LayoutMinWidth: =250
+                LayoutMode: =LayoutMode.Auto
+                PaddingLeft: =26
+                PaddingRight: =26
+                Width: =Parent.Width
+                ZIndex: =5
+
+                BtnCalendarContinue_1 As button:
+                    DisplayMode: |-
+                        =If(
+                            (gblSelectedAppointmentPatient.'Appointment Dose Number' = 'Appointment Dose Number (Appointments (EMR))'.'Second Dose' && IsBlank(VarRescheduleSelectedDate)) || (gblSelectedAppointmentPatient.'Appointment Dose Number' = 'Appointment Dose Number (Appointments (EMR))'.'First Dose' && IsBlank(VarRescheduleSelectedDate)),
+                            DisplayMode.Disabled,
+                            DisplayMode.Edit
+                        )
+                    Fill: =VarTheme.PrimaryColor
+                    Font: =VarTheme.Font
+                    Height: =60
+                    HoverFill: =VarTheme.PrimaryColorDark
+                    OnSelect: |
+                        =If(
+                            IsBlank(VarRescheduleSelectedDate) && gblSelectedAppointmentPatient.'Appointment Dose Number' = 'Appointment Dose Number (Appointments (EMR))'.'First Dose',
+                            Set(
+                                VarRescheduleSelectedDate,
+                                DateTimeValue(LblFirstDoseDefaultSelectedSlotTime_1.Text)
+                            ),
+                            IsBlank(VarRescheduleSelectedDate) && gblSelectedAppointmentPatient.'Appointment Dose Number' = 'Appointment Dose Number (Appointments (EMR))'.'Second Dose',
+                            Set(
+                                VarRescheduleSelectedDate,
+                                DateTimeValue(LblSecondDoseDefaultSelectedSlotTime_1.Text)
+                            )
+                        );
+                        Patch(
+                            'Appointments (EMR)',
+                            gblSelectedAppointmentPatient,
+                            {'Appointment Date Time': VarRescheduleSelectedDate}
+                        );
+                        Navigate(ScnAppointmentDetails);
+                    PaddingBottom: =14
+                    PaddingTop: =14
+                    RadiusBottomLeft: =0
+                    RadiusBottomRight: =0
+                    RadiusTopLeft: =0
+                    RadiusTopRight: =0
+                    Size: =16
+                    Text: ="Continue"
+                    Width: =625
+                    Y: =57
+                    ZIndex: =1
+
+    CmbExistingAppointmentServiceReschedule As dropdown:
+        Height: =45
+        Items: |-
+            =Filter(
+                Services,
+                'Healthcare Service Category (msemr_healthcareservicecategoryid)' = VarAppointmentDetailHealthServiceRechedule.Service.'Healthcare Service Category (msemr_healthcareservicecategoryid)'
+            )
+        Visible: =false
+        X: =696
+        Y: =50
+        ZIndex: =2
+

@@ -1,0 +1,120 @@
+[
+  {
+    "CdsFCBContext": "{\"FileType\":true,\"ImageExternalStorage\":true}",
+    "EntitySetName": "smvs_appointment_icd_10_codes",
+    "IsHidden": false,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "LogicalName": "smvs_appointment_icd_10_code",
+    "MaxGetRowsCount": 500,
+    "Name": "Appointment ICD-10 Codes",
+    "NativeCDSDataSourceInfoNameMapping": {
+      "_ownerid_value": "Owner",
+      "createdby": "Created By",
+      "createdon": "Created On",
+      "createdonbehalfby": "Created By (Delegate)",
+      "importsequencenumber": "Import Sequence Number",
+      "modifiedby": "Modified By",
+      "modifiedon": "Modified On",
+      "modifiedonbehalfby": "Modified By (Delegate)",
+      "overriddencreatedon": "Record Created On",
+      "owningbusinessunit": "Owning Business Unit",
+      "owningteam": "Owning Team",
+      "owninguser": "Owning User",
+      "smvs_appointment": "Appointment",
+      "smvs_appointment_icd_10_code_AsyncOperations": "System Jobs",
+      "smvs_appointment_icd_10_code_BulkDeleteFailures": "Bulk Delete Failures",
+      "smvs_appointment_icd_10_code_DuplicateBaseRecord": "Duplicate Records (smvs_appointment_icd_10_code_DuplicateBaseRecord)",
+      "smvs_appointment_icd_10_code_DuplicateMatchingRecord": "Duplicate Records (smvs_appointment_icd_10_code_DuplicateMatchingRecord)",
+      "smvs_appointment_icd_10_code_MailboxTrackingFolders": "Mailbox Auto Tracking Folders",
+      "smvs_appointment_icd_10_code_PrincipalObjectAttributeAccesses": "Field Sharing",
+      "smvs_appointment_icd_10_code_ProcessSession": "Process Sessions",
+      "smvs_appointment_icd_10_code_SyncErrors": "Sync Errors",
+      "smvs_appointment_icd_10_codeid": "Appointment ICD-10 Code",
+      "smvs_icd_10_code": "ICD-10 Code",
+      "smvs_name": "Name",
+      "smvs_primary_icd_code": "Primary ICD Code",
+      "statecode": "Status",
+      "statuscode": "Status Reason",
+      "timezoneruleversionnumber": "Time Zone Rule Version Number",
+      "utcconversiontimezonecode": "UTC Conversion Time Zone Code",
+      "versionnumber": "Version Number"
+    },
+    "PreferredName": "Appointment ICD-10 Codes",
+    "Type": "NativeCDSDataSourceInfo"
+  },
+  {
+    "DisplayName": "Appointment ICD-10 Codes (Views)",
+    "Name": "_smvs_appointment_icd_10_code_views",
+    "RelatedEntityName": "Appointment ICD-10 Codes",
+    "TrimmedViewName": true,
+    "Type": "ViewInfo",
+    "ViewInfoNameMapping": {
+      "06e2f57e-9012-4beb-91f2-1c39e276b46a": "Active Appointment ICD-10 Codes",
+      "6f415d77-13b0-4a90-85a5-c828599e85da": "Appointment ICD-10 Code Associated View",
+      "88d36ccb-2164-4dc8-81a9-cbf4d5497131": "Inactive Appointment ICD-10 Codes",
+      "c7e626cd-5dfd-48b1-92e3-fdd2ca713441": "Appointment ICD-10 Code Lookup View",
+      "ffede63d-59d4-48ba-8249-2d11d2cc3c8b": "Appointment ICD-10 Code Advanced Find View"
+    }
+  },
+  {
+    "DisplayName": "Primary ICD Code (Appointment ICD-10 Codes)",
+    "Name": "smvs_appointment_icd_10_code_smvs_primary_icd_code",
+    "OptionSetInfoNameMapping": {
+      "0": "No",
+      "1": "Yes"
+    },
+    "OptionSetIsBooleanValued": true,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "smvs_primary_icd_code",
+        "OptionSetReferenceEntityName": "Appointment ICD-10 Codes"
+      }
+    },
+    "OptionSetTypeKey": "BooleanType",
+    "RelatedColumnInvariantName": "smvs_primary_icd_code",
+    "RelatedEntityName": "Appointment ICD-10 Codes",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status (Appointment ICD-10 Codes)",
+    "Name": "smvs_appointment_icd_10_code_statecode",
+    "OptionSetInfoNameMapping": {
+      "0": "Active",
+      "1": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statecode",
+        "OptionSetReferenceEntityName": "Appointment ICD-10 Codes"
+      }
+    },
+    "OptionSetTypeKey": "StateType",
+    "RelatedColumnInvariantName": "statecode",
+    "RelatedEntityName": "Appointment ICD-10 Codes",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status Reason (Appointment ICD-10 Codes)",
+    "Name": "smvs_appointment_icd_10_code_statuscode",
+    "OptionSetInfoNameMapping": {
+      "1": "Active",
+      "2": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statuscode",
+        "OptionSetReferenceEntityName": "Appointment ICD-10 Codes"
+      }
+    },
+    "OptionSetTypeKey": "StatusType",
+    "RelatedColumnInvariantName": "statuscode",
+    "RelatedEntityName": "Appointment ICD-10 Codes",
+    "Type": "OptionSetInfo"
+  }
+]

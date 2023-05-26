@@ -1,0 +1,261 @@
+[
+  {
+    "CdsFCBContext": "{\"FileType\":true,\"ImageExternalStorage\":true}",
+    "EntitySetName": "smvs_insuranceorganizations",
+    "IsHidden": false,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "LogicalName": "smvs_insuranceorganization",
+    "MaxGetRowsCount": 500,
+    "Name": "Insurance Organizations",
+    "NativeCDSDataSourceInfoNameMapping": {
+      "_ownerid_value": "Owner",
+      "createdby": "Created By",
+      "createdon": "Created On",
+      "createdonbehalfby": "Created By (Delegate)",
+      "exchangerate": "Exchange Rate",
+      "importsequencenumber": "Import Sequence Number",
+      "modifiedby": "Modified By",
+      "modifiedon": "Modified On",
+      "modifiedonbehalfby": "Modified By (Delegate)",
+      "overriddencreatedon": "Record Created On",
+      "owningbusinessunit": "Owning Business Unit",
+      "owningteam": "Owning Team",
+      "owninguser": "Owning User",
+      "smvs_billable_status": "Billable",
+      "smvs_BillingConfiguration_InsuranceOrgani": "Billing Configurations",
+      "smvs_charges_1": "Vaccine Cost",
+      "smvs_charges_1_base": "Charges (1) (Base)",
+      "smvs_charges2": "Administration Cost",
+      "smvs_charges2_base": "Charges (2) (Base)",
+      "smvs_claim_InsuranceOrganization_smvs_ins": "Claims",
+      "smvs_enable_eligibility_check": "Enable Eligibility Check",
+      "smvs_include_taxonomy_code": "Include Taxonomy Code",
+      "smvs_includendc": "Include NDC",
+      "smvs_insurance_organization_insurance_details": "Insurance Details",
+      "smvs_insurance_type": "Insurance Type",
+      "smvs_insuranceorganization_AsyncOperations": "System Jobs",
+      "smvs_insuranceorganization_BulkDeleteFailures": "Bulk Delete Failures",
+      "smvs_insuranceorganization_DuplicateBaseRecord": "Duplicate Records (smvs_insuranceorganization_DuplicateBaseRecord)",
+      "smvs_insuranceorganization_DuplicateMatchingRecord": "Duplicate Records (smvs_insuranceorganization_DuplicateMatchingRecord)",
+      "smvs_insuranceorganization_MailboxTrackingFolders": "Mailbox Auto Tracking Folders",
+      "smvs_insuranceorganization_PrincipalObjectAttributeAccesses": "Field Sharing",
+      "smvs_insuranceorganization_ProcessSession": "Process Sessions",
+      "smvs_insuranceorganization_SyncErrors": "Sync Errors",
+      "smvs_insuranceorganizationid": "Insurance Organization",
+      "smvs_msemr_healthcareservicecategory_smvs_insu": "Services (smvs_msemr_healthcareservicecategory_smvs_insu)",
+      "smvs_msemr_service_pharmacy_insurance": "Services (smvs_msemr_service_pharmacy_insurance)",
+      "smvs_name": "Name",
+      "smvs_payer_id": "Payer Id",
+      "smvs_payer_name": "Payer Name",
+      "smvs_pharmacy_insurance": "Pharmacy Insurance",
+      "smvs_servicecode": "Administration Code",
+      "smvs_skip_eligibility": "Skip Eligibility",
+      "smvs_skipbilling": "Skip Billing",
+      "smvs_smvs_insuranceorganization_msemr_appointm": "Appointments (EMR)",
+      "statecode": "Status",
+      "statuscode": "Status Reason",
+      "timezoneruleversionnumber": "Time Zone Rule Version Number",
+      "transactioncurrencyid": "Currency",
+      "utcconversiontimezonecode": "UTC Conversion Time Zone Code",
+      "versionnumber": "Version Number"
+    },
+    "PreferredName": "Insurance Organizations",
+    "Type": "NativeCDSDataSourceInfo"
+  },
+  {
+    "DisplayName": "Insurance Organizations (Views)",
+    "Name": "_smvs_insuranceorganization_views",
+    "RelatedEntityName": "Insurance Organizations",
+    "TrimmedViewName": true,
+    "Type": "ViewInfo",
+    "ViewInfoNameMapping": {
+      "08b532a0-2d60-4594-9616-c2d25cf7e56a": "Insurance Organization Associated View",
+      "0f64773b-962e-45b0-b367-729a70ca5114": "Insurance Organization Lookup View",
+      "cf608ca3-5111-ec11-b6e6-000d3a57036a": "All Insurance Organizations",
+      "e4ba227d-c8f0-4a78-9120-45d693cda6f9": "Insurance Organization Advanced Find View",
+      "ee728498-a4ba-4461-8edc-6e5981027f0a": "Inactive Insurance Organizations",
+      "fc1133a2-2920-419f-8b79-0d27b997f4ec": "Active Insurance Organizations"
+    }
+  },
+  {
+    "DisplayName": "Enable Eligibility Check (Insurance Organizations)",
+    "Name": "smvs_insuranceorganization_smvs_enable_eligibility_check",
+    "OptionSetInfoNameMapping": {
+      "0": "No",
+      "1": "Yes"
+    },
+    "OptionSetIsBooleanValued": true,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "smvs_enable_eligibility_check",
+        "OptionSetReferenceEntityName": "Insurance Organizations"
+      }
+    },
+    "OptionSetTypeKey": "BooleanType",
+    "RelatedColumnInvariantName": "smvs_enable_eligibility_check",
+    "RelatedEntityName": "Insurance Organizations",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Pharmacy Insurance (Insurance Organizations)",
+    "Name": "smvs_insuranceorganization_smvs_pharmacy_insurance",
+    "OptionSetInfoNameMapping": {
+      "0": "Off",
+      "1": "On"
+    },
+    "OptionSetIsBooleanValued": true,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "smvs_pharmacy_insurance",
+        "OptionSetReferenceEntityName": "Insurance Organizations"
+      }
+    },
+    "OptionSetTypeKey": "BooleanType",
+    "RelatedColumnInvariantName": "smvs_pharmacy_insurance",
+    "RelatedEntityName": "Insurance Organizations",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Skip Eligibility (Insurance Organizations)",
+    "Name": "smvs_insuranceorganization_smvs_skip_eligibility",
+    "OptionSetInfoNameMapping": {
+      "0": "No",
+      "1": "Yes"
+    },
+    "OptionSetIsBooleanValued": true,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "smvs_skip_eligibility",
+        "OptionSetReferenceEntityName": "Insurance Organizations"
+      }
+    },
+    "OptionSetTypeKey": "BooleanType",
+    "RelatedColumnInvariantName": "smvs_skip_eligibility",
+    "RelatedEntityName": "Insurance Organizations",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status (Insurance Organizations)",
+    "Name": "smvs_insuranceorganization_statecode",
+    "OptionSetInfoNameMapping": {
+      "0": "Active",
+      "1": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statecode",
+        "OptionSetReferenceEntityName": "Insurance Organizations"
+      }
+    },
+    "OptionSetTypeKey": "StateType",
+    "RelatedColumnInvariantName": "statecode",
+    "RelatedEntityName": "Insurance Organizations",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status Reason (Insurance Organizations)",
+    "Name": "smvs_insuranceorganization_statuscode",
+    "OptionSetInfoNameMapping": {
+      "1": "Active",
+      "2": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statuscode",
+        "OptionSetReferenceEntityName": "Insurance Organizations"
+      }
+    },
+    "OptionSetTypeKey": "StatusType",
+    "RelatedColumnInvariantName": "statuscode",
+    "RelatedEntityName": "Insurance Organizations",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Skip Billing (Insurance Organizations)",
+    "Name": "smvs_skipbilling_smvs_insuranceorganization",
+    "OptionSetInfoNameMapping": {
+      "0": "No",
+      "1": "Yes"
+    },
+    "OptionSetIsBooleanValued": true,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "smvs_skipbilling",
+        "OptionSetReferenceEntityName": "Insurance Organizations"
+      }
+    },
+    "OptionSetTypeKey": "BooleanType",
+    "RelatedColumnInvariantName": "smvs_skipbilling",
+    "RelatedEntityName": "Insurance Organizations",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Billable (Insurance Organizations)",
+    "Name": "smvs_smvs_insuranceorganization_billable_status",
+    "OptionSetInfoNameMapping": {
+      "0": "No",
+      "1": "Yes"
+    },
+    "OptionSetIsBooleanValued": true,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "smvs_billable_status",
+        "OptionSetReferenceEntityName": "Insurance Organizations"
+      }
+    },
+    "OptionSetTypeKey": "BooleanType",
+    "RelatedColumnInvariantName": "smvs_billable_status",
+    "RelatedEntityName": "Insurance Organizations",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Include Taxonomy Code (Insurance Organizations)",
+    "Name": "smvs_smvs_insuranceorganization_include_taxonomy_code",
+    "OptionSetInfoNameMapping": {
+      "0": "No",
+      "1": "Yes"
+    },
+    "OptionSetIsBooleanValued": true,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "smvs_include_taxonomy_code",
+        "OptionSetReferenceEntityName": "Insurance Organizations"
+      }
+    },
+    "OptionSetTypeKey": "BooleanType",
+    "RelatedColumnInvariantName": "smvs_include_taxonomy_code",
+    "RelatedEntityName": "Insurance Organizations",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Include NDC (Insurance Organizations)",
+    "Name": "smvs_smvs_insuranceorganization_includendc",
+    "OptionSetInfoNameMapping": {
+      "0": "No",
+      "1": "Yes"
+    },
+    "OptionSetIsBooleanValued": true,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "smvs_includendc",
+        "OptionSetReferenceEntityName": "Insurance Organizations"
+      }
+    },
+    "OptionSetTypeKey": "BooleanType",
+    "RelatedColumnInvariantName": "smvs_includendc",
+    "RelatedEntityName": "Insurance Organizations",
+    "Type": "OptionSetInfo"
+  }
+]

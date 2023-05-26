@@ -1,0 +1,120 @@
+BreadCrumbNavigationComponent As CanvasComponent:
+    ActiveStageNumber: =1
+    Fill: =RGBA(0, 0, 0, 0)
+    Height: =140
+    Items: |-
+        =Table(
+            {
+                StageNumber: 1,
+                Label: "Location & Services"
+            },
+            {
+                StageNumber: 2,
+                Label: "Screening Questions"
+            },
+            {
+                StageNumber: 3,
+                Label: "Patient Information"
+            },   {
+                StageNumber: 4,
+                Label: "Payment Information"
+            },   {
+                StageNumber: 5,
+                Label: "Schedule Appointment"
+            },   {
+                StageNumber: 6,
+                Label: "Confirmation"
+            }
+        )
+    Width: =985
+    X: =0
+    Y: =0
+    ZIndex: =1
+
+    galBreadCrumbNavigation As gallery.galleryHorizontal:
+        DelayItemLoading: =true
+        Height: =100
+        Items: =BreadCrumbNavigationComponent.Items
+        LoadingSpinner: =LoadingSpinner.Data
+        TemplatePadding: =0
+        TemplateSize: =Parent.Width/Value(CountRows(BreadCrumbNavigationComponent.Items))
+        Width: =Parent.Width
+        Y: =30
+        ZIndex: =2
+
+        rectBreadCrumb As rectangle:
+            Fill: =RGBA(243, 243, 244, 1)
+            Height: =2
+            OnSelect: =Select(Parent)
+            Width: |-
+                =If(
+                    ThisItem.StageNumber = 1,
+                    Parent.TemplateWidth-circleBreadcrumb.X,
+                    ThisItem.StageNumber = Value(CountRows(BreadCrumbNavigationComponent.Items)),
+                    circleBreadcrumb.X,
+                    Parent.TemplateWidth
+                )
+            X: |-
+                =If(
+                    ThisItem.StageNumber = 1,
+                    circleBreadcrumb.X,
+                    0
+                )
+            Y: =13
+            ZIndex: =1
+
+        lblBreadCrumb As label:
+            Align: |-
+                =If(
+                    ThisItem.StageNumber = 1,
+                    Align.Left,
+                    ThisItem.StageNumber = Value(CountRows(BreadCrumbNavigationComponent.Items)),
+                    Align.Right,
+                    Align.Center
+                )
+            Font: =Font.Lato
+            FontWeight: =FontWeight.Semibold
+            Height: =45
+            OnSelect: =Select(Parent)
+            PaddingLeft: =10
+            PaddingRight: =10
+            PaddingTop: =10
+            Size: =12
+            Text: =ThisItem.Label
+            Width: |-
+                =Parent.TemplateWidth - Self.X - If(
+                    ThisItem.StageNumber = Value(CountRows(BreadCrumbNavigationComponent.Items)),
+                30,
+                    0
+                )
+            X: |-
+                =If(
+                    ThisItem.StageNumber = 1,
+                    25,
+                    0
+                )
+            Y: =32
+            ZIndex: =2
+
+        circleBreadcrumb As circle:
+            BorderColor: =RGBA(0, 82, 204, 1)
+            BorderThickness: |-
+                =If(
+                    BreadCrumbNavigationComponent.ActiveStageNumber = ThisItem.StageNumber,
+                    4,
+                    0
+                )
+            Fill: =RGBA(243, 243, 244, 1)
+            Height: =20-Self.BorderThickness
+            Width: =20-Self.BorderThickness
+            X: |-
+                =If(
+                    ThisItem.StageNumber = 1,
+                    35,
+                    ThisItem.StageNumber = Value(CountRows(BreadCrumbNavigationComponent.Items)),
+                    Parent.TemplateWidth-35-Self.Width,
+                    (Parent.TemplateWidth-Self.Width)/2
+                )
+            Y: =4+Self.BorderThickness
+            ZIndex: =3
+

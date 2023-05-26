@@ -1,0 +1,9 @@
+[
+  {
+    "IsComponentScoped": false,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "Name": "colImmunizationHistories",
+    "Type": "CollectionDataSourceInfo"
+  }
+]

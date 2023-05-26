@@ -1,0 +1,64 @@
+EligibilityComponent As CanvasComponent:
+    Fill: =RGBA(0, 0, 0, 0)
+    GalleryHeight: =EligibilityGallery.Height
+    Height: =640
+    Items: |-
+        =Table({QuestionText: "SampleText", Answer: "Yes", SampleBooleanField: true},
+        {QuestionText: "SampleText1", Answer: "Yes", SampleBooleanField: true},
+        {QuestionText: "SampleText2", Answer: "Yes", SampleBooleanField: true}
+        
+        )
+    Width: =1024
+    X: =0
+    Y: =0
+    ZIndex: =1
+
+    EligibilityGallery As gallery.variableTemplateHeightGallery:
+        DelayItemLoading: =true
+        Height: =Sum(EligibilityGallery.AllItems,Rectangle1.Tooltip+15)
+        Items: =EligibilityComponent.Items
+        Layout: =Layout.Vertical
+        LoadingSpinner: =LoadingSpinner.Data
+        TemplateSize: =85
+        Width: =Parent.Width
+        Y: =51
+        ZIndex: =1
+
+        AnswerText As label:
+            OnSelect: =Select(Parent)
+            Text: =ThisItem.Answer
+            Width: =87
+            X: =927
+            Y: =2
+            ZIndex: =1
+
+        QuestionText As label:
+            AutoHeight: =true
+            Font: =Font.Lato
+            Height: =38
+            OnSelect: =Select(Parent)
+            Text: =ThisItem.QuestionText
+            Width: =901
+            X: =8
+            Y: =2
+            ZIndex: =2
+
+        Rectangle1 As rectangle:
+            Height: =1
+            OnSelect: =Select(Parent)
+            Tooltip: =Self.Y+Self.Height
+            Width: =1000
+            X: =8
+            Y: =Max(10+QuestionText.Height)
+            ZIndex: =3
+
+    Label3 As label:
+        Font: =Font.'Segoe UI'
+        FontWeight: =FontWeight.Bold
+        Height: =49
+        Size: =18
+        Text: ="Eligibility Screening"
+        Width: =455
+        Y: =2
+        ZIndex: =2
+

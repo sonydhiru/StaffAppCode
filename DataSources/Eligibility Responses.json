@@ -1,0 +1,121 @@
+[
+  {
+    "CdsFCBContext": "{\"FileType\":true,\"ImageExternalStorage\":true}",
+    "EntitySetName": "smvs_eligibilityresponses",
+    "IsHidden": false,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "LogicalName": "smvs_eligibilityresponse",
+    "MaxGetRowsCount": 500,
+    "Name": "Eligibility Responses",
+    "NativeCDSDataSourceInfoNameMapping": {
+      "_ownerid_value": "Owner",
+      "createdby": "Created By",
+      "createdon": "Created On",
+      "createdonbehalfby": "Created By (Delegate)",
+      "importsequencenumber": "Import Sequence Number",
+      "modifiedby": "Modified By",
+      "modifiedon": "Modified On",
+      "modifiedonbehalfby": "Modified By (Delegate)",
+      "overriddencreatedon": "Record Created On",
+      "owningbusinessunit": "Owning Business Unit",
+      "owningteam": "Owning Team",
+      "owninguser": "Owning User",
+      "smvs_Appointment": "Appointment",
+      "smvs_EligibilityQuestion": "Eligibility Question",
+      "smvs_eligibilityresponse_AsyncOperations": "System Jobs",
+      "smvs_eligibilityresponse_BulkDeleteFailures": "Bulk Delete Failures",
+      "smvs_eligibilityresponse_DuplicateBaseRecord": "Duplicate Records (smvs_eligibilityresponse_DuplicateBaseRecord)",
+      "smvs_eligibilityresponse_DuplicateMatchingRecord": "Duplicate Records (smvs_eligibilityresponse_DuplicateMatchingRecord)",
+      "smvs_eligibilityresponse_MailboxTrackingFolders": "Mailbox Auto Tracking Folders",
+      "smvs_eligibilityresponse_PrincipalObjectAttributeAccesses": "Field Sharing",
+      "smvs_eligibilityresponse_ProcessSession": "Process Sessions",
+      "smvs_eligibilityresponse_SyncErrors": "Sync Errors",
+      "smvs_eligibilityresponseid": "Eligibility Response",
+      "smvs_name": "Name",
+      "smvs_response": "Response",
+      "smvs_WaitlistRecordId": "Wait list Record",
+      "statecode": "Status",
+      "statuscode": "Status Reason",
+      "timezoneruleversionnumber": "Time Zone Rule Version Number",
+      "utcconversiontimezonecode": "UTC Conversion Time Zone Code",
+      "versionnumber": "Version Number"
+    },
+    "PreferredName": "Eligibility Responses",
+    "Type": "NativeCDSDataSourceInfo"
+  },
+  {
+    "DisplayName": "Eligibility Responses (Views)",
+    "Name": "_smvs_eligibilityresponse_views",
+    "RelatedEntityName": "Eligibility Responses",
+    "TrimmedViewName": true,
+    "Type": "ViewInfo",
+    "ViewInfoNameMapping": {
+      "73ea6f7c-6944-406c-8e9b-e6da2c5be036": "Active Eligibility Responses",
+      "90a62d62-b68b-433b-ade5-7d0cfffb2488": "Eligibility Response Lookup View",
+      "ad7b08ea-3209-4db7-b831-cbcfeb459729": "Inactive Eligibility Responses",
+      "afeff081-7095-4425-965d-092f2754611c": "Eligibility Response Associated View",
+      "e0ccde65-971b-446b-92c8-1c447dbb653a": "Eligibility Response Advanced Find View"
+    }
+  },
+  {
+    "DisplayName": "Status (Eligibility Responses)",
+    "Name": "smvs_eligibilityresponse_statecode",
+    "OptionSetInfoNameMapping": {
+      "0": "Active",
+      "1": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statecode",
+        "OptionSetReferenceEntityName": "Eligibility Responses"
+      }
+    },
+    "OptionSetTypeKey": "StateType",
+    "RelatedColumnInvariantName": "statecode",
+    "RelatedEntityName": "Eligibility Responses",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status Reason (Eligibility Responses)",
+    "Name": "smvs_eligibilityresponse_statuscode",
+    "OptionSetInfoNameMapping": {
+      "1": "Active",
+      "2": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statuscode",
+        "OptionSetReferenceEntityName": "Eligibility Responses"
+      }
+    },
+    "OptionSetTypeKey": "StatusType",
+    "RelatedColumnInvariantName": "statuscode",
+    "RelatedEntityName": "Eligibility Responses",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Response (Eligibility Responses)",
+    "Name": "smvs_smvs_eligibilityresponse_response",
+    "OptionSetInfoNameMapping": {
+      "0": "No",
+      "1": "Yes"
+    },
+    "OptionSetIsBooleanValued": true,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "smvs_response",
+        "OptionSetReferenceEntityName": "Eligibility Responses"
+      }
+    },
+    "OptionSetTypeKey": "BooleanType",
+    "RelatedColumnInvariantName": "smvs_response",
+    "RelatedEntityName": "Eligibility Responses",
+    "Type": "OptionSetInfo"
+  }
+]

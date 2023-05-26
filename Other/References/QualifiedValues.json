@@ -1,0 +1,442 @@
+{
+  "QualifiedValues": [
+    {
+      "Kind": "default.cds_msemr_location_forms",
+      "Namespace": "Locations (Forms)",
+      "Values": {
+        "Information": "a31ff07d-c418-482d-96ea-9c9c5881443a",
+        "MVS Location Information": "9b1cbf6a-b921-41fc-8d32-ab9287c31c04"
+      }
+    },
+    {
+      "Kind": "default.cds_msemr_codeableconcept_forms",
+      "Namespace": "Codeable Concepts (Forms)",
+      "Values": {
+        "Alpha Code": "0ba64e46-362f-4934-8576-19e8e0920eb6",
+        "Information": "68299a25-0f31-4d16-bbd7-b25cc7395d75"
+      }
+    },
+    {
+      "Kind": "default.cds_contact_forms",
+      "Namespace": "Contacts (Forms)",
+      "Values": {
+        "account contact card": "29de27bc-a257-4f29-99cf-bab4a84e688f",
+        "Contact": "1fed44d1-ae68-4a41-bd2b-f13acac4acfa",
+        "contact card": "707fc57b-c5e6-471b-a180-e37ed28a38e2",
+        "Contact Card form": "bc0f68dd-a4b1-4a8f-bed3-c8f5db2f89cf",
+        "Contact Quick Create": "661157fe-2fc9-4eaa-835f-5bfa2f7b64f7",
+        "Contact Quick Form": "bdb0ae1c-32fa-4374-b637-8dafe107bc44",
+        "Contact Reference Panel": "d880c3cf-80e2-42f3-82f9-24d040d09f17",
+        "Contacts Dashboard": "70ad8b15-e3f3-4d7d-9e4b-16cb4e51b484",
+        "History Form": "9f20f0a7-9782-4d2e-9577-bcff0937a727",
+        "Information": "894cc46a-b0cb-4ab0-8bf6-200544e46a2d",
+        "Live Persona Card Form": "449faa0e-f471-48ec-87d0-4719909546d2",
+        "MVS Patient Form": "196a6162-8975-eb11-a812-000d3a8e7d53",
+        "MVS Practitioner Form": "0dc2c333-cc27-42b5-b44a-2c0bd1d9106a",
+        "Patient 360": "521146a5-4d4c-4225-bd09-2870f2df4e60",
+        "Physician 360": "c95e8df7-179b-4f05-a0f4-9967fcdda652",
+        "PHYSICIAN 360": "e9486f9f-8013-4a53-9c85-c9f59515a185",
+        "Recent Cases and Entitlements": "f3b707fb-3b5f-45f9-9c6b-5e573bb5d19e",
+        "Social Profiles": "7bb87dfd-ec3e-4ed9-8e3e-5725d3067295",
+        "Update Contact": "26843818-6508-4afe-9342-5fae2ebf15ca"
+      }
+    },
+    {
+      "Kind": "default.cds_smvs_service_type_forms",
+      "Namespace": "Service Types (Forms)",
+      "Values": {
+        " main form": "93d4ba87-b2ea-eb11-bacb-00224822b23c",
+        "Information": "e9f99ab4-dcc5-4fda-a5cf-8c51ce6bc3b1"
+      }
+    },
+    {
+      "Kind": "default.cds_smvs_language_code_forms",
+      "Namespace": "Language Codes (Forms)",
+      "Values": {
+        "Information": "47cca9df-dedb-4b7d-bbe3-8afe91a54546"
+      }
+    },
+    {
+      "Kind": "default.cds_msemr_healthcareservicecategory_forms",
+      "Namespace": "Services (Forms)",
+      "Values": {
+        "Information": "ad58b444-856e-4441-aab4-c81dfdb99e5d"
+      }
+    },
+    {
+      "Kind": "default.cds_smvs_vaccinetype_forms",
+      "Namespace": "Vaccine Types (Forms)",
+      "Values": {
+        "Information": "c36d49bb-80c4-4aee-bbfb-dfe5739286e6"
+      }
+    },
+    {
+      "Kind": "default.cds_smvs_vaccinefacility_forms",
+      "Namespace": "Vaccine Facilities (Forms)",
+      "Values": {
+        "Information": "f95547de-7745-4912-be0e-f6e6ff804042"
+      }
+    },
+    {
+      "Kind": "default.cds_msemr_appointmentemr_forms",
+      "Namespace": "Appointments (EMR) (Forms)",
+      "Values": {
+        " main form": "955b97c2-ad59-eb11-a812-000d3a8ca75a",
+        "Appointment": "add5084b-3a72-eb11-a812-000d3a1ab1f9",
+        "Appointment Form": "ac3e6fa0-105e-4685-8dcb-d4a0cfc471a1",
+        "Information": "a40411d7-a8c3-4ebf-af80-ef699ea674e8",
+        "New Form": "0f5d29c5-6afb-4993-8aa4-cecd3b5a762b",
+        "Portal Appointment Form": "29018fa3-c9ea-4d0a-9dfb-fb14d3601be1"
+      }
+    },
+    {
+      "Kind": "default.cds_msemr_healthcareservice_forms",
+      "Namespace": "Sub Services (Forms)",
+      "Values": {
+        " quick create form": "2c98a5da-41c7-eb11-bacc-000d3a990aa6",
+        "Information": "9be11a63-8131-49d3-8e77-bcc0201e23b4",
+        "MVS Main form": "52aaf186-ef74-eb11-a812-000d3a8e7d53"
+      }
+    },
+    {
+      "Kind": "default.cds_systemuser_forms",
+      "Namespace": "Users (Forms)",
+      "Values": {
+        "Admin Clinician Detail Form": "477c9245-8324-4598-ad1d-ec1d268a1fda",
+        "Application User": "d26924ef-4d80-46f7-ab1d-e6ae80a54ce8",
+        "Information": "094fb08a-77bb-49e0-b7ea-8dbddfd01294",
+        "New Form": "5bfa775d-a8bf-4862-85eb-cc8bbebe7267",
+        "User": "c2cd9e55-d4b4-4b55-9951-16ead79643e5",
+        "User form – Business": "c2413504-7eb2-4c59-a087-95d819866114",
+        "User Hierarchy Tile Form": "c68d6c09-d7a7-4959-8d0f-44b8cff9b452"
+      }
+    },
+    {
+      "Kind": "default.cds_account_forms",
+      "Namespace": "Accounts (Forms)",
+      "Values": {
+        "Account": "8448b78f-8f42-454e-8e2a-f8196b0419af",
+        "account card": "b028db32-3619-48a5-ac51-cf3f947b0ef3",
+        "Account Card form": "cccff382-2b92-467e-bf1b-3db179512af8",
+        "Account for Interactive experience": "a72c7955-442b-4ea4-9499-b10cd18b4256",
+        "Account Hierarchy Tile Form": "69cff312-cfb6-4289-9631-249ab85d2c62",
+        "Account Quick Create": "c9e7ec2d-efca-4e4c-b3e3-f63c4bba5e4b",
+        "Account Reference Panel": "098ae145-1567-41ec-8398-86dbaac70c9b",
+        "Client Organization form": "534159a4-2b6c-4219-bda0-94e204c102d6",
+        "Information": "b053a39a-041a-4356-acef-ddf00182762b",
+        "Organization": "3281616c-730a-ea11-a811-000d3a8aaa0f",
+        "Social Profiles": "2205c86d-ed88-4a2f-a447-3b86a8781f2e"
+      }
+    },
+    {
+      "Kind": "default.cds_smvs_appsetting_forms",
+      "Namespace": "App Settings (Forms)",
+      "Values": {
+        "Information": "728a81b9-be8a-472f-ac2a-899522c1b006"
+      }
+    },
+    {
+      "Kind": "default.cds_smvs_insuranceorganization_forms",
+      "Namespace": "Insurance Organizations (Forms)",
+      "Values": {
+        "Information": "42734079-5844-4231-a23a-f2ded05cc786",
+        "MVS Main Form": "a769aeed-1136-eb11-a813-002248086451"
+      }
+    },
+    {
+      "Kind": "default.cds_smvs_eligibilityquestion_forms",
+      "Namespace": "Eligibility Questions (Forms)",
+      "Values": {
+        " quick create form": "ec1f5a01-7eca-eb11-bacc-000d3a990aa6",
+        "Information": "07979df4-dd3e-490b-9fe5-913b98d35acb"
+      }
+    },
+    {
+      "Kind": "default.cds_smvs_patientscreeningquestion_forms",
+      "Namespace": "Patient Screening Questions (Forms)",
+      "Values": {
+        " quick create form": "3d8d1978-81ca-eb11-bacc-000d3a990aa6",
+        "Information": "d5d594f4-d396-4b5a-a340-f38475dbdf71"
+      }
+    },
+    {
+      "Kind": "default.cds_smvs_eligibilityresponse_forms",
+      "Namespace": "Eligibility Responses (Forms)",
+      "Values": {
+        "Information": "d016f9bd-e3cb-48b5-96ef-c16ee0c27f6d"
+      }
+    },
+    {
+      "Kind": "default.cds_smvs_patientscreeninganswers_forms",
+      "Namespace": "Patient Screening Responses (Forms)",
+      "Values": {
+        "Information": "ae6ea8a7-a8ff-448d-bad3-fe14f13fcab7"
+      }
+    },
+    {
+      "Kind": "default.cds_smvs_test_performed_forms",
+      "Namespace": "Test Performeds (Forms)",
+      "Values": {
+        "Information": "bb542d02-74d9-4a00-9248-972e7c0999e7"
+      }
+    },
+    {
+      "Kind": "default.cds_smvs_specimen_source_type_forms",
+      "Namespace": "Specimen Source Types (Forms)",
+      "Values": {
+        "Information": "7c33aad5-04d6-4a57-a195-a5b597b1e590"
+      }
+    },
+    {
+      "Kind": "default.cds_smvs_device_setup_forms",
+      "Namespace": "Device Setups (Forms)",
+      "Values": {
+        "Information": "d15776f0-60b6-4fd3-a04c-85ff56819ded",
+        "New Form": "3f52e0cd-376c-46ea-b181-7e8ef534d615"
+      }
+    },
+    {
+      "Kind": "default.cds_smvs_facility_forms",
+      "Namespace": "Facilities (Forms)",
+      "Values": {
+        "Information": "49247481-2292-47ea-8426-fbb2521488fb",
+        "New Form": "371336c5-571f-4ba4-aa96-c03e781a96d1"
+      }
+    },
+    {
+      "Kind": "default.cds_msemr_appointmentemrslot_forms",
+      "Namespace": "Appointment (EMR) Slots (Forms)",
+      "Values": {
+        "Information": "45fcdb36-aaee-42d0-9fe6-5c11517dbfd4"
+      }
+    },
+    {
+      "Kind": "default.cds_msemr_slot_forms",
+      "Namespace": "Slots (Forms)",
+      "Values": {
+        " MVS Main Form": "3216ce04-38a1-eb11-b1ac-000d3a99f913",
+        "Information": "3e86dd61-c8d7-49f3-a369-c21cec3f4326",
+        "New Form": "1a277acd-5bf4-46d1-a5af-1c2239113939"
+      }
+    },
+    {
+      "Kind": "default.cds_smvs_appointment_date_slot_forms",
+      "Namespace": "Appointment Days (Forms)",
+      "Values": {
+        "Information": "ae81f744-a656-4b66-8230-a50ce5b336af"
+      }
+    },
+    {
+      "Kind": "default.cds_smvs_clinics_forms",
+      "Namespace": "Clinics Sites (Forms)",
+      "Values": {
+        "Information": "e1ae4642-f17e-4458-bb48-b93014562f2d"
+      }
+    },
+    {
+      "Kind": "default.cds_smvs_county_forms",
+      "Namespace": "Counties (Forms)",
+      "Values": {
+        "Information": "d7622340-c8de-4176-bbb4-eb3a2aae21b6"
+      }
+    },
+    {
+      "Kind": "default.cds_smvs_appointment_slot_availability_forms",
+      "Namespace": "Appointment Slots Availability (Forms)",
+      "Values": {
+        "Information": "5a3abe71-3524-4693-9118-ba91d2ac06f0"
+      }
+    },
+    {
+      "Kind": "default.cds_smvs_localise_website_ontent_forms",
+      "Namespace": "Localize Website Contents (Forms)",
+      "Values": {
+        " quick create form": "8d36c09c-79ca-eb11-bacc-000d3a99093d",
+        "Information": "4b29a045-969e-446b-8074-fa6b1df62846"
+      }
+    },
+    {
+      "Kind": "default.cds_smvs_state_forms",
+      "Namespace": "States (Forms)",
+      "Values": {
+        "Information": "00359f2d-f78c-4600-8d0c-e2e3bfef935b"
+      }
+    },
+    {
+      "Kind": "default.cds_smvs_appointmentcpthcpcscode_forms",
+      "Namespace": "Appointment CPT/HCPCS Codes (Forms)",
+      "Values": {
+        "Information": "c28fc764-f25e-4bdc-82f0-56aa6bf0a767"
+      }
+    },
+    {
+      "Kind": "default.cds_smvs_cpthcpcscode_forms",
+      "Namespace": "CPT/HCPCS Codes (Forms)",
+      "Values": {
+        "Information": "2a036348-9631-41b2-8a80-6f1833be944f"
+      }
+    },
+    {
+      "Kind": "default.cds_smvs_soapnote_forms",
+      "Namespace": "SOAP Notes (Forms)",
+      "Values": {
+        "Information": "60a82c4d-0d4b-4907-81b5-fdb423b67a43"
+      }
+    },
+    {
+      "Kind": "default.cds_smvs_soapquestion_forms",
+      "Namespace": "SOAP Questions (Forms)",
+      "Values": {
+        "Information": "4eb6d851-22b7-406d-8914-900c296cc00b"
+      }
+    },
+    {
+      "Kind": "default.cds_smvs_soaptemplate_forms",
+      "Namespace": "SOAP Templates (Forms)",
+      "Values": {
+        "Information": "ca35e860-b8e5-4082-955e-f9b64625cda6"
+      }
+    },
+    {
+      "Kind": "default.cds_smvs_soaptemplatequestionassignment_forms",
+      "Namespace": "SOAP Template Question Assignments (Forms)",
+      "Values": {
+        "Information": "e29c70e1-c37f-45cf-a0e3-f1f0c27ff8f1"
+      }
+    },
+    {
+      "Kind": "default.cds_smvs_allergyhistory_forms",
+      "Namespace": "Allergy Histories (Forms)",
+      "Values": {
+        "Information": "2f4c4b86-50ee-4712-a204-f70528974b94"
+      }
+    },
+    {
+      "Kind": "default.cds_smvs_medicationhistory_forms",
+      "Namespace": "Medication Histories (Forms)",
+      "Values": {
+        "Information": "ee5d22e3-a441-486a-b445-f72f6a6db259"
+      }
+    },
+    {
+      "Kind": "default.cds_smvs_immunizationhistory_forms",
+      "Namespace": "Immunization Histories (Forms)",
+      "Values": {
+        "Information": "5bc93839-e470-43c5-bd62-8ddac1389263"
+      }
+    },
+    {
+      "Kind": "default.cds_rsp_question_forms",
+      "Namespace": "Questions (Forms)",
+      "Values": {
+        "Information": "fb757545-16f4-4e35-8615-f1da46f9c9ac"
+      }
+    },
+    {
+      "Kind": "default.cds_duplicaterecord_forms",
+      "Namespace": "Duplicate Records (Forms)",
+      "Values": {}
+    },
+    {
+      "Kind": "default.cds_smvs_appointment_icd_10_code_forms",
+      "Namespace": "Appointment ICD-10 Codes (Forms)",
+      "Values": {
+        "Information": "02728a2b-e7d1-492f-aca2-70f90dfb0e6c"
+      }
+    },
+    {
+      "Kind": "default.cds_smvs_icd_10_code_forms",
+      "Namespace": "ICD-10 Codes (Forms)",
+      "Values": {
+        "Information": "7076dee9-a0ff-47ed-b247-69ae0a1fa739"
+      }
+    },
+    {
+      "Kind": "default.cds_smvs_type_of_service_code_forms",
+      "Namespace": "Type of Service Codes (Forms)",
+      "Values": {
+        "Information": "287b1393-740e-4e88-bb46-5d1c23d68aa1"
+      }
+    },
+    {
+      "Kind": "default.cds_smvs_soapresponse_forms",
+      "Namespace": "SOAP Responses (Forms)",
+      "Values": {
+        "Information": "316726dd-923f-4815-8c70-fdca5173b2f6"
+      }
+    },
+    {
+      "Kind": "default.cds_msemr_appointmentemrparticipant_forms",
+      "Namespace": "Appointment (EMR) Participants (Forms)",
+      "Values": {
+        "Information": "59a756a4-d9de-4ed8-b769-fcd6aeb90ac4"
+      }
+    },
+    {
+      "Kind": "default.cds_smvs_visit_type_forms",
+      "Namespace": "Visit Types (Forms)",
+      "Values": {
+        "Information": "7d4210e7-14de-4585-acfe-890814e7fce1"
+      }
+    },
+    {
+      "Kind": "default.cds_msemr_encounter_forms",
+      "Namespace": "Encounters (Forms)",
+      "Values": {
+        "Information": "89cb3722-df5f-4196-adfd-c7e1ae694828"
+      }
+    },
+    {
+      "Kind": "default.cds_bulkdeletefailure_forms",
+      "Namespace": "Bulk Delete Failures (Forms)",
+      "Values": {}
+    },
+    {
+      "Kind": "default.cds_actioncard_forms",
+      "Namespace": "Action Cards (Forms)",
+      "Values": {}
+    },
+    {
+      "Kind": "default.cds_smvs_service_type_compatibility_forms",
+      "Namespace": "Service Type Compatibilities (Forms)",
+      "Values": {
+        "Information": "c115fbff-d3b7-45e0-b8d9-d2ad88eb792a"
+      }
+    },
+    {
+      "Kind": "default.cds_new_healthcare_service_category_forms",
+      "Namespace": "Healthcare Service Category (Forms)",
+      "Values": {
+        "Information": "e095b254-a5a6-4e0e-9727-438bf65631c2"
+      }
+    },
+    {
+      "Kind": "default.cds_msemr_appointmentemrservicetype_forms",
+      "Namespace": "Appointment (EMR) Service Types (Forms)",
+      "Values": {
+        "Information": "c3579c18-76c9-4171-af68-d03a2daa872e"
+      }
+    },
+    {
+      "Kind": "default.cds_msemr_healthcareserviceprogramname_forms",
+      "Namespace": "Healthcare Service Program Name (Forms)",
+      "Values": {
+        "Information": "4e11fe0f-a0f6-4469-b242-dad0be3e72d2"
+      }
+    },
+    {
+      "Kind": "default.cds_appointment_forms",
+      "Namespace": "Appointments (Forms)",
+      "Values": {
+        "After Meeting": "7f58467b-ab43-447c-ab95-29deea3b1e35",
+        "Appointment": "549a8aa3-c349-4ab9-8bac-4873fa9a7a5c",
+        "Appointment Card form": "656cc4ad-235b-495b-8cb9-6174f9b09321",
+        "Appointment for Interactive experience": "230cd27c-0ce0-4b52-9fe5-d7a5ed94ba4e",
+        "Appointment quick create form.": "5895e983-598b-4834-80f9-68a4e9f4f744",
+        "Appointment Reference Panel": "4cd45c5d-29b3-48d3-997a-2bc3f8beeba8",
+        "Information": "fcfde47d-4951-4fea-bcd9-e5b5d673911f",
+        "Wizard": "3a7d8836-e2d7-4bc3-919b-cc86a8d9688a"
+      }
+    }
+  ]
+}

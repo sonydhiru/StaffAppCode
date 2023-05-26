@@ -1,0 +1,185 @@
+[
+  {
+    "CdsFCBContext": "{\"FileType\":true,\"ImageExternalStorage\":true}",
+    "EntitySetName": "smvs_clinicses",
+    "IsHidden": false,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "LogicalName": "smvs_clinics",
+    "MaxGetRowsCount": 500,
+    "Name": "Clinics Sites",
+    "NativeCDSDataSourceInfoNameMapping": {
+      "_ownerid_value": "Owner",
+      "createdby": "Created By",
+      "createdon": "Created On",
+      "createdonbehalfby": "Created By (Delegate)",
+      "importsequencenumber": "Import Sequence Number",
+      "modifiedby": "Modified By",
+      "modifiedon": "Modified On",
+      "modifiedonbehalfby": "Modified By (Delegate)",
+      "overriddencreatedon": "Record Created On",
+      "owningbusinessunit": "Owning Business Unit",
+      "owningteam": "Owning Team",
+      "owninguser": "Owning User",
+      "smvs_address": "Address",
+      "smvs_city": "City",
+      "smvs_clinic_vaccine_type": "Clinic Vaccination Type",
+      "smvs_clinicbookedappointments": "#Booked Appts",
+      "smvs_clinicbookedappointments_date": "#Booked Appts (Last Updated On)",
+      "smvs_clinicbookedappointments_state": "#Booked Appts (State)",
+      "smvs_clinics_AsyncOperations": "System Jobs",
+      "smvs_clinics_BulkDeleteFailures": "Bulk Delete Failures",
+      "smvs_clinics_DuplicateBaseRecord": "Duplicate Records (smvs_clinics_DuplicateBaseRecord)",
+      "smvs_clinics_DuplicateMatchingRecord": "Duplicate Records (smvs_clinics_DuplicateMatchingRecord)",
+      "smvs_clinics_MailboxTrackingFolders": "Mailbox Auto Tracking Folders",
+      "smvs_clinics_PrincipalObjectAttributeAccesses": "Field Sharing",
+      "smvs_clinics_ProcessSession": "Process Sessions",
+      "smvs_clinics_SyncErrors": "Sync Errors",
+      "smvs_clinicsid": "Clinic",
+      "smvs_clinicstatus": "Clinic Status",
+      "smvs_clinictype": "Clinic Type",
+      "smvs_estimated_number_of_immunizations": "Estimated Number Of Immunizations",
+      "smvs_fulfilledappointments": "Fulfilled Appointments",
+      "smvs_fulfilledappointments_date": "Fulfilled Appointments (Last Updated On)",
+      "smvs_fulfilledappointments_state": "Fulfilled Appointments (State)",
+      "smvs_latitude": "Latitude",
+      "smvs_longitude": "Longitude",
+      "smvs_name": "Clinic Name",
+      "smvs_number_of_people_in_a_slot": "Number of people in a slot",
+      "smvs_parkinginstructions": "Parking Instructions",
+      "smvs_shots_administered": "Shots administered",
+      "smvs_site_name": "Site name",
+      "smvs_slot_time": "Slot duration (minute)",
+      "smvs_smvs_clinics_account": "Accounts",
+      "smvs_smvs_clinics_msemr_appointmentemr": "Appointments (EMR)",
+      "smvs_smvs_clinics_smvs_clinic_days": "Clinic Days",
+      "smvs_smvs_clinics_smvs_clinician_clinic": "Clinician Assignments",
+      "smvs_specialinstructions": "Special instructions",
+      "smvs_zipcode": "Zip Code",
+      "statecode": "Status",
+      "statuscode": "Status Reason",
+      "timezoneruleversionnumber": "Time Zone Rule Version Number",
+      "utcconversiontimezonecode": "UTC Conversion Time Zone Code",
+      "versionnumber": "Version Number"
+    },
+    "PreferredName": "Clinics Sites",
+    "Type": "NativeCDSDataSourceInfo"
+  },
+  {
+    "DisplayName": "Clinics Sites (Views)",
+    "Name": "_smvs_clinics_views",
+    "RelatedEntityName": "Clinics Sites",
+    "TrimmedViewName": true,
+    "Type": "ViewInfo",
+    "ViewInfoNameMapping": {
+      "08d367fd-e5c4-ea11-a812-000d3a3b3f7c": "smvs Account associated Clinc View",
+      "2bf0234f-e2c4-ea11-a812-000d3a3b3f7c": "Clinician Active Clinics",
+      "423a7cba-ec93-41e8-8e69-72387246224c": "Clinic Advanced Find View",
+      "5b335a44-9f63-4999-9c2e-7f83fd98b15b": "Inactive Clinics",
+      "843934b1-f5db-4f8d-b3dd-6e1a348b04a8": "Clinic Lookup View",
+      "93923eb2-e4d0-424c-a524-0cd61f7b02bf": "Clinic Associated View",
+      "aed2a6d1-6931-4fc1-9ab1-75d21ef710cf": "Active Clinics"
+    }
+  },
+  {
+    "DisplayName": "Clinic Vaccination Type (Clinics Sites)",
+    "Name": "smvs_clinics_smvs_clinic_vaccine_type",
+    "OptionSetInfoNameMapping": {
+      "153940000": "Flu Vaccine",
+      "153940001": "Covid Vaccine"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "smvs_clinic_vaccine_type",
+        "OptionSetReferenceEntityName": "Clinics Sites"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "smvs_clinic_vaccine_type",
+    "RelatedEntityName": "Clinics Sites",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Clinic Status (Clinics Sites)",
+    "Name": "smvs_clinics_smvs_clinicstatus",
+    "OptionSetInfoNameMapping": {
+      "153940000": "Active",
+      "153940001": "Cancelled",
+      "153940002": "Complete"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "smvs_clinicstatus",
+        "OptionSetReferenceEntityName": "Clinics Sites"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "smvs_clinicstatus",
+    "RelatedEntityName": "Clinics Sites",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Clinic Type (Clinics Sites)",
+    "Name": "smvs_clinics_smvs_clinictype",
+    "OptionSetInfoNameMapping": {
+      "153940000": "General",
+      "153940001": "Organization Specific"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "smvs_clinictype",
+        "OptionSetReferenceEntityName": "Clinics Sites"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "smvs_clinictype",
+    "RelatedEntityName": "Clinics Sites",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status (Clinics Sites)",
+    "Name": "smvs_clinics_statecode",
+    "OptionSetInfoNameMapping": {
+      "0": "Active",
+      "1": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statecode",
+        "OptionSetReferenceEntityName": "Clinics Sites"
+      }
+    },
+    "OptionSetTypeKey": "StateType",
+    "RelatedColumnInvariantName": "statecode",
+    "RelatedEntityName": "Clinics Sites",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status Reason (Clinics Sites)",
+    "Name": "smvs_clinics_statuscode",
+    "OptionSetInfoNameMapping": {
+      "1": "Active",
+      "2": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statuscode",
+        "OptionSetReferenceEntityName": "Clinics Sites"
+      }
+    },
+    "OptionSetTypeKey": "StatusType",
+    "RelatedColumnInvariantName": "statuscode",
+    "RelatedEntityName": "Clinics Sites",
+    "Type": "OptionSetInfo"
+  }
+]

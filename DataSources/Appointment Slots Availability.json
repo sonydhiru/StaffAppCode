@@ -1,0 +1,172 @@
+[
+  {
+    "CdsFCBContext": "{\"FileType\":true,\"ImageExternalStorage\":true}",
+    "EntitySetName": "smvs_appointment_slot_availabilities",
+    "IsHidden": false,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "LogicalName": "smvs_appointment_slot_availability",
+    "MaxGetRowsCount": 500,
+    "Name": "Appointment Slots Availability",
+    "NativeCDSDataSourceInfoNameMapping": {
+      "_ownerid_value": "Owner",
+      "createdby": "Created By",
+      "createdon": "Created On",
+      "createdonbehalfby": "Created By (Delegate)",
+      "importsequencenumber": "Import Sequence Number",
+      "modifiedby": "Modified By",
+      "modifiedon": "Modified On",
+      "modifiedonbehalfby": "Modified By (Delegate)",
+      "mvs_locationId": "Location",
+      "overriddencreatedon": "Record Created On",
+      "owningbusinessunit": "Owning Business Unit",
+      "owningteam": "Owning Team",
+      "owninguser": "Owning User",
+      "smvs__total_slots": "Total Slots",
+      "smvs_appointment_dose_number": "Appointment Dose Number",
+      "smvs_appointment_slot_availability_AsyncOperations": "System Jobs",
+      "smvs_appointment_slot_availability_BulkDeleteFailures": "Bulk Delete Failures",
+      "smvs_appointment_slot_availability_DuplicateBaseRecord": "Duplicate Records (smvs_appointment_slot_availability_DuplicateBaseRecord)",
+      "smvs_appointment_slot_availability_DuplicateMatchingRecord": "Duplicate Records (smvs_appointment_slot_availability_DuplicateMatchingRecord)",
+      "smvs_appointment_slot_availability_MailboxTrackingFolders": "Mailbox Auto Tracking Folders",
+      "smvs_appointment_slot_availability_PrincipalObjectAttributeAccesses": "Field Sharing",
+      "smvs_appointment_slot_availability_ProcessSession": "Process Sessions",
+      "smvs_appointment_slot_availability_SyncErrors": "Sync Errors",
+      "smvs_appointment_slot_availabilityid": "Appointment Slot Availability",
+      "smvs_AppointmentDateslotId": "Appointment Date slot",
+      "smvs_clinic_date": "Clinic Date",
+      "smvs_date_slotId": "Date Slot",
+      "smvs_date_time_slot": "Date Time Slot",
+      "smvs_decrement_count": "Decrement Count",
+      "smvs_filled_slots": "FIlled Slots",
+      "smvs_first_slot": "Slot",
+      "smvs_increment_count": "Increament Count",
+      "smvs_name": "Name",
+      "smvs_slot_appointment_slot_availability": "Slots",
+      "statecode": "Status",
+      "statuscode": "Status Reason",
+      "timezoneruleversionnumber": "Time Zone Rule Version Number",
+      "utcconversiontimezonecode": "UTC Conversion Time Zone Code",
+      "versionnumber": "Version Number"
+    },
+    "PreferredName": "Appointment Slots Availability",
+    "Type": "NativeCDSDataSourceInfo"
+  },
+  {
+    "DisplayName": "Appointment Slots Availability (Views)",
+    "Name": "_smvs_appointment_slot_availability_views",
+    "RelatedEntityName": "Appointment Slots Availability",
+    "TrimmedViewName": true,
+    "Type": "ViewInfo",
+    "ViewInfoNameMapping": {
+      "4944a34e-071c-45f6-bf59-06bc86fa57e5": "Appointment Slot Availability Lookup View",
+      "4bafe865-85a6-eb11-b1ac-000d3a9bd8ef": "First Appointment Availability Slot",
+      "5ada17c9-d21a-4da1-8bce-e59fd08cbbad": "Active Appointment Slots Availability",
+      "9f13c678-5f95-40a6-805a-1a759a2e2b19": "Appointment Slot Availability Associated View",
+      "b67800c0-2d6b-4177-9ee2-2161fa2f869a": "Inactive Appointment Slots Availability",
+      "b75b2c6d-85a6-eb11-b1ac-000d3a9bd8ef": "Second Appointment Availability Slot",
+      "c6a1ea4f-22d9-4208-98b3-0854ab98d018": "Appointment Slot Availability Advanced Find View",
+      "d113bc22-5211-ec11-b6e6-000d3a57036a": "All Appointment Slots Availability"
+    }
+  },
+  {
+    "DisplayName": "Appointment Dose Number (Appointment Slots Availability)",
+    "Name": "smvs_appointment_slot_availability_smvs_appointment_dose_number",
+    "OptionSetInfoNameMapping": {
+      "153940000": "First Appointment",
+      "153940001": "Second Appointment"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "smvs_appointment_dose_number",
+        "OptionSetReferenceEntityName": "Appointment Slots Availability"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "smvs_appointment_dose_number",
+    "RelatedEntityName": "Appointment Slots Availability",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Decrement Count (Appointment Slots Availability)",
+    "Name": "smvs_appointment_slot_availability_smvs_decrement_count",
+    "OptionSetInfoNameMapping": {
+      "0": "No",
+      "1": "Yes"
+    },
+    "OptionSetIsBooleanValued": true,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "smvs_decrement_count",
+        "OptionSetReferenceEntityName": "Appointment Slots Availability"
+      }
+    },
+    "OptionSetTypeKey": "BooleanType",
+    "RelatedColumnInvariantName": "smvs_decrement_count",
+    "RelatedEntityName": "Appointment Slots Availability",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Increament Count (Appointment Slots Availability)",
+    "Name": "smvs_appointment_slot_availability_smvs_increment_count",
+    "OptionSetInfoNameMapping": {
+      "0": "No",
+      "1": "Yes"
+    },
+    "OptionSetIsBooleanValued": true,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "smvs_increment_count",
+        "OptionSetReferenceEntityName": "Appointment Slots Availability"
+      }
+    },
+    "OptionSetTypeKey": "BooleanType",
+    "RelatedColumnInvariantName": "smvs_increment_count",
+    "RelatedEntityName": "Appointment Slots Availability",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status (Appointment Slots Availability)",
+    "Name": "smvs_appointment_slot_availability_statecode",
+    "OptionSetInfoNameMapping": {
+      "0": "Active",
+      "1": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statecode",
+        "OptionSetReferenceEntityName": "Appointment Slots Availability"
+      }
+    },
+    "OptionSetTypeKey": "StateType",
+    "RelatedColumnInvariantName": "statecode",
+    "RelatedEntityName": "Appointment Slots Availability",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status Reason (Appointment Slots Availability)",
+    "Name": "smvs_appointment_slot_availability_statuscode",
+    "OptionSetInfoNameMapping": {
+      "1": "Active",
+      "2": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statuscode",
+        "OptionSetReferenceEntityName": "Appointment Slots Availability"
+      }
+    },
+    "OptionSetTypeKey": "StatusType",
+    "RelatedColumnInvariantName": "statuscode",
+    "RelatedEntityName": "Appointment Slots Availability",
+    "Type": "OptionSetInfo"
+  }
+]

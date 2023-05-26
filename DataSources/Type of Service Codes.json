@@ -1,0 +1,96 @@
+[
+  {
+    "CdsFCBContext": "{\"FileType\":true,\"ImageExternalStorage\":true}",
+    "EntitySetName": "smvs_type_of_service_codes",
+    "IsHidden": false,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "LogicalName": "smvs_type_of_service_code",
+    "MaxGetRowsCount": 500,
+    "Name": "Type of Service Codes",
+    "NativeCDSDataSourceInfoNameMapping": {
+      "createdby": "Created By",
+      "createdon": "Created On",
+      "createdonbehalfby": "Created By (Delegate)",
+      "importsequencenumber": "Import Sequence Number",
+      "modifiedby": "Modified By",
+      "modifiedon": "Modified On",
+      "modifiedonbehalfby": "Modified By (Delegate)",
+      "organizationid": "Organization Id",
+      "overriddencreatedon": "Record Created On",
+      "smvs_code": "Code",
+      "smvs_name": "Name",
+      "smvs_service_type_of_service_code": "Services",
+      "smvs_type_of_service_code_AsyncOperations": "System Jobs",
+      "smvs_type_of_service_code_BulkDeleteFailures": "Bulk Delete Failures",
+      "smvs_type_of_service_code_DuplicateBaseRecord": "Duplicate Records (smvs_type_of_service_code_DuplicateBaseRecord)",
+      "smvs_type_of_service_code_DuplicateMatchingRecord": "Duplicate Records (smvs_type_of_service_code_DuplicateMatchingRecord)",
+      "smvs_type_of_service_code_MailboxTrackingFolders": "Mailbox Auto Tracking Folders",
+      "smvs_type_of_service_code_PrincipalObjectAttributeAccesses": "Field Sharing",
+      "smvs_type_of_service_code_ProcessSession": "Process Sessions",
+      "smvs_type_of_service_code_SyncErrors": "Sync Errors",
+      "smvs_type_of_service_codeid": "Type of Service Code",
+      "statecode": "Status",
+      "statuscode": "Status Reason",
+      "timezoneruleversionnumber": "Time Zone Rule Version Number",
+      "utcconversiontimezonecode": "UTC Conversion Time Zone Code",
+      "versionnumber": "Version Number"
+    },
+    "PreferredName": "Type of Service Codes",
+    "Type": "NativeCDSDataSourceInfo"
+  },
+  {
+    "DisplayName": "Type of Service Codes (Views)",
+    "Name": "_smvs_type_of_service_code_views",
+    "RelatedEntityName": "Type of Service Codes",
+    "TrimmedViewName": true,
+    "Type": "ViewInfo",
+    "ViewInfoNameMapping": {
+      "1c3e7258-c69c-4224-a332-a10de364205d": "Type of Service Code Advanced Find View",
+      "5fb8532c-9535-426d-8602-82843148a823": "Inactive Type of Service Codes",
+      "72d886d6-090c-48b7-8e53-f648ef9bbe3d": "Active Type of Service Codes",
+      "848e0175-4883-474a-bf02-58087993cc91": "Type of Service Code Lookup View",
+      "e201692c-5ad3-4c63-b2e2-43d6554ec8ec": "Type of Service Code Associated View"
+    }
+  },
+  {
+    "DisplayName": "Status (Type of Service Codes)",
+    "Name": "smvs_type_of_service_code_statecode",
+    "OptionSetInfoNameMapping": {
+      "0": "Active",
+      "1": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statecode",
+        "OptionSetReferenceEntityName": "Type of Service Codes"
+      }
+    },
+    "OptionSetTypeKey": "StateType",
+    "RelatedColumnInvariantName": "statecode",
+    "RelatedEntityName": "Type of Service Codes",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status Reason (Type of Service Codes)",
+    "Name": "smvs_type_of_service_code_statuscode",
+    "OptionSetInfoNameMapping": {
+      "1": "Active",
+      "2": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statuscode",
+        "OptionSetReferenceEntityName": "Type of Service Codes"
+      }
+    },
+    "OptionSetTypeKey": "StatusType",
+    "RelatedColumnInvariantName": "statuscode",
+    "RelatedEntityName": "Type of Service Codes",
+    "Type": "OptionSetInfo"
+  }
+]

@@ -1,0 +1,99 @@
+[
+  {
+    "CdsFCBContext": "{\"FileType\":true,\"ImageExternalStorage\":true}",
+    "EntitySetName": "smvs_appointmentcpthcpcscodes",
+    "IsHidden": false,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "LogicalName": "smvs_appointmentcpthcpcscode",
+    "MaxGetRowsCount": 500,
+    "Name": "Appointment CPT/HCPCS Codes",
+    "NativeCDSDataSourceInfoNameMapping": {
+      "_ownerid_value": "Owner",
+      "createdby": "Created By",
+      "createdon": "Created On",
+      "createdonbehalfby": "Created By (Delegate)",
+      "importsequencenumber": "Import Sequence Number",
+      "modifiedby": "Modified By",
+      "modifiedon": "Modified On",
+      "modifiedonbehalfby": "Modified By (Delegate)",
+      "overriddencreatedon": "Record Created On",
+      "owningbusinessunit": "Owning Business Unit",
+      "owningteam": "Owning Team",
+      "owninguser": "Owning User",
+      "smvs_Appointment": "Appointment",
+      "smvs_appointmentcpthcpcscode_AsyncOperations": "System Jobs",
+      "smvs_appointmentcpthcpcscode_BulkDeleteFailures": "Bulk Delete Failures",
+      "smvs_appointmentcpthcpcscode_DuplicateBaseRecord": "Duplicate Records (smvs_appointmentcpthcpcscode_DuplicateBaseRecord)",
+      "smvs_appointmentcpthcpcscode_DuplicateMatchingRecord": "Duplicate Records (smvs_appointmentcpthcpcscode_DuplicateMatchingRecord)",
+      "smvs_appointmentcpthcpcscode_MailboxTrackingFolders": "Mailbox Auto Tracking Folders",
+      "smvs_appointmentcpthcpcscode_PrincipalObjectAttributeAccesses": "Field Sharing",
+      "smvs_appointmentcpthcpcscode_ProcessSession": "Process Sessions",
+      "smvs_appointmentcpthcpcscode_SyncErrors": "Sync Errors",
+      "smvs_appointmentcpthcpcscodeid": "Appointment CPT/HCPCS Code",
+      "smvs_cpthcpcs": "CPT/HCPCS",
+      "smvs_name": "Name",
+      "statecode": "Status",
+      "statuscode": "Status Reason",
+      "timezoneruleversionnumber": "Time Zone Rule Version Number",
+      "utcconversiontimezonecode": "UTC Conversion Time Zone Code",
+      "versionnumber": "Version Number"
+    },
+    "PreferredName": "Appointment CPT/HCPCS Codes",
+    "Type": "NativeCDSDataSourceInfo"
+  },
+  {
+    "DisplayName": "Appointment CPT/HCPCS Codes (Views)",
+    "Name": "_smvs_appointmentcpthcpcscode_views",
+    "RelatedEntityName": "Appointment CPT/HCPCS Codes",
+    "TrimmedViewName": true,
+    "Type": "ViewInfo",
+    "ViewInfoNameMapping": {
+      "227616eb-bdaa-4d52-9a21-f3cd0f5f0a23": "Active Appointment CPT/HCPCS Codes",
+      "6b61f9ac-3de5-407f-93db-1f1f2bf04cbd": "Appointment CPT/HCPCS Code Advanced Find View",
+      "b7c172c2-53f9-49d2-8276-530f2ed9570e": "Inactive Appointment CPT/HCPCS Codes",
+      "e6363009-03c8-43ec-bf87-4680aef8c117": "Appointment CPT/HCPCS Code Lookup View",
+      "eab8d5b1-3e77-49b2-93be-04388e204b1f": "Appointment CPT/HCPCS Code Associated View"
+    }
+  },
+  {
+    "DisplayName": "Status (Appointment CPT/HCPCS Codes)",
+    "Name": "smvs_appointmentcpthcpcscode_statecode",
+    "OptionSetInfoNameMapping": {
+      "0": "Active",
+      "1": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statecode",
+        "OptionSetReferenceEntityName": "Appointment CPT/HCPCS Codes"
+      }
+    },
+    "OptionSetTypeKey": "StateType",
+    "RelatedColumnInvariantName": "statecode",
+    "RelatedEntityName": "Appointment CPT/HCPCS Codes",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status Reason (Appointment CPT/HCPCS Codes)",
+    "Name": "smvs_appointmentcpthcpcscode_statuscode",
+    "OptionSetInfoNameMapping": {
+      "1": "Active",
+      "2": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statuscode",
+        "OptionSetReferenceEntityName": "Appointment CPT/HCPCS Codes"
+      }
+    },
+    "OptionSetTypeKey": "StatusType",
+    "RelatedColumnInvariantName": "statuscode",
+    "RelatedEntityName": "Appointment CPT/HCPCS Codes",
+    "Type": "OptionSetInfo"
+  }
+]

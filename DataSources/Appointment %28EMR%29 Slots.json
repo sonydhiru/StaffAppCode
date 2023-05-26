@@ -1,0 +1,99 @@
+[
+  {
+    "CdsFCBContext": "{\"FileType\":true,\"ImageExternalStorage\":true}",
+    "EntitySetName": "msemr_appointmentemrslots",
+    "IsHidden": false,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "LogicalName": "msemr_appointmentemrslot",
+    "MaxGetRowsCount": 500,
+    "Name": "Appointment (EMR) Slots",
+    "NativeCDSDataSourceInfoNameMapping": {
+      "_ownerid_value": "Owner",
+      "createdby": "Created By",
+      "createdon": "Created On",
+      "createdonbehalfby": "Created By (Delegate)",
+      "importsequencenumber": "Import Sequence Number",
+      "modifiedby": "Modified By",
+      "modifiedon": "Modified On",
+      "modifiedonbehalfby": "Modified By (Delegate)",
+      "msemr_AppointmentEMR": "Appointment (EMR)",
+      "msemr_appointmentemrslot_AsyncOperations": "System Jobs",
+      "msemr_appointmentemrslot_BulkDeleteFailures": "Bulk Delete Failures",
+      "msemr_appointmentemrslot_DuplicateBaseRecord": "Duplicate Records (msemr_appointmentemrslot_DuplicateBaseRecord)",
+      "msemr_appointmentemrslot_DuplicateMatchingRecord": "Duplicate Records (msemr_appointmentemrslot_DuplicateMatchingRecord)",
+      "msemr_appointmentemrslot_MailboxTrackingFolders": "Mailbox Auto Tracking Folders",
+      "msemr_appointmentemrslot_PrincipalObjectAttributeAccesses": "Field Sharing",
+      "msemr_appointmentemrslot_ProcessSession": "Process Sessions",
+      "msemr_appointmentemrslot_SyncErrors": "Sync Errors",
+      "msemr_appointmentemrslotid": "Appointment (EMR) Slot",
+      "msemr_name": "Name",
+      "msemr_Slot": "Slot",
+      "overriddencreatedon": "Record Created On",
+      "owningbusinessunit": "Owning Business Unit",
+      "owningteam": "Owning Team",
+      "owninguser": "Owning User",
+      "statecode": "Status",
+      "statuscode": "Status Reason",
+      "timezoneruleversionnumber": "Time Zone Rule Version Number",
+      "utcconversiontimezonecode": "UTC Conversion Time Zone Code",
+      "versionnumber": "Version Number"
+    },
+    "PreferredName": "Appointment (EMR) Slots",
+    "Type": "NativeCDSDataSourceInfo"
+  },
+  {
+    "DisplayName": "Appointment (EMR) Slots (Views)",
+    "Name": "_msemr_appointmentemrslot_views",
+    "RelatedEntityName": "Appointment (EMR) Slots",
+    "TrimmedViewName": true,
+    "Type": "ViewInfo",
+    "ViewInfoNameMapping": {
+      "5a64be93-af30-4948-b478-916be80c0cf0": "Appointment (EMR) Slot Associated View",
+      "d5caf5ad-7a8a-4974-9ad4-0d19a6bf9d5a": "Inactive Appointment (EMR) Slots",
+      "ec57b370-ef1c-49a8-a651-2cffd2790a05": "Active Appointment (EMR) Slots",
+      "f1e079d8-f687-4d2e-8a32-bc1b060124eb": "Appointment (EMR) Slot Lookup View",
+      "fe69ceef-c54b-43b8-adbe-a34fd11ba849": "Appointment (EMR) Slot Advanced Find View"
+    }
+  },
+  {
+    "DisplayName": "Status (Appointment (EMR) Slots)",
+    "Name": "msemr_appointmentemrslot_statecode",
+    "OptionSetInfoNameMapping": {
+      "0": "Active",
+      "1": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statecode",
+        "OptionSetReferenceEntityName": "Appointment (EMR) Slots"
+      }
+    },
+    "OptionSetTypeKey": "StateType",
+    "RelatedColumnInvariantName": "statecode",
+    "RelatedEntityName": "Appointment (EMR) Slots",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status Reason (Appointment (EMR) Slots)",
+    "Name": "msemr_appointmentemrslot_statuscode",
+    "OptionSetInfoNameMapping": {
+      "1": "Active",
+      "2": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statuscode",
+        "OptionSetReferenceEntityName": "Appointment (EMR) Slots"
+      }
+    },
+    "OptionSetTypeKey": "StatusType",
+    "RelatedColumnInvariantName": "statuscode",
+    "RelatedEntityName": "Appointment (EMR) Slots",
+    "Type": "OptionSetInfo"
+  }
+]

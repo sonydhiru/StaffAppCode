@@ -1,0 +1,329 @@
+[
+  {
+    "CdsFCBContext": "{\"FileType\":true,\"ImageExternalStorage\":true}",
+    "EntitySetName": "msemr_healthcareservicecategories",
+    "IsHidden": false,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "LogicalName": "msemr_healthcareservicecategory",
+    "MaxGetRowsCount": 500,
+    "Name": "Services",
+    "NativeCDSDataSourceInfoNameMapping": {
+      "_ownerid_value": "Owner",
+      "bpf_msemr_healthcareservicecategory_new_healthcare_service_category": "Healthcare Service Category (bpf_msemr_healthcareservicecategory_new_healthcare_service_category)",
+      "createdby": "Created By",
+      "createdon": "Created On",
+      "createdonbehalfby": "Created By (Delegate)",
+      "exchangerate": "Exchange Rate",
+      "importsequencenumber": "Import Sequence Number",
+      "modifiedby": "Modified By",
+      "modifiedon": "Modified On",
+      "modifiedonbehalfby": "Modified By (Delegate)",
+      "msemr_HealthcareService": "Healthcare Service",
+      "msemr_healthcareservicecategory_AsyncOperations": "System Jobs",
+      "msemr_healthcareservicecategory_BulkDeleteFailures": "Bulk Delete Failures",
+      "msemr_healthcareservicecategory_DuplicateBaseRecord": "Duplicate Records (msemr_healthcareservicecategory_DuplicateBaseRecord)",
+      "msemr_healthcareservicecategory_DuplicateMatchingRecord": "Duplicate Records (msemr_healthcareservicecategory_DuplicateMatchingRecord)",
+      "msemr_healthcareservicecategory_MailboxTrackingFolders": "Mailbox Auto Tracking Folders",
+      "msemr_healthcareservicecategory_PrincipalObjectAttributeAccesses": "Field Sharing",
+      "msemr_healthcareservicecategory_ProcessSession": "Process Sessions",
+      "msemr_healthcareservicecategory_SyncErrors": "Sync Errors",
+      "msemr_healthcareservicecategoryid": "Healthcare Service Category (msemr_healthcareservicecategoryid)",
+      "msemr_name": "Name",
+      "msemr_Type": "Type",
+      "overriddencreatedon": "Record Created On",
+      "owningbusinessunit": "Owning Business Unit",
+      "owningteam": "Owning Team",
+      "owninguser": "Owning User",
+      "processid": "Process Id",
+      "smvs_age_limit": "Age Limit",
+      "smvs_age_limit_validation_info": "Age Limit Validation Info",
+      "smvs_billable_status": "Billable",
+      "smvs_BillingConfiguration_Service_msemr_h": "Billing Configurations",
+      "smvs_confirmation_message": "Confirmation Message",
+      "smvs_defaultadminbillrate": "Default Admin Bill Rate",
+      "smvs_defaultadminbillrate_base": "Default Admin Bill Rate (Base)",
+      "smvs_expected_amount": "Expected Amount",
+      "smvs_expected_amount_base": "Expected Amount (Base)",
+      "smvs_expected_vaccine_cost": "Expected Vaccine Cost",
+      "smvs_expected_vaccine_cost_base": "Expected Vaccine Cost (Base)",
+      "smvs_factsheet_url": "Factsheet URL",
+      "smvs_icd_10_code_service": "ICD-10 Codes",
+      "smvs_insurance": "Collect Insurance",
+      "smvs_language": "Language",
+      "smvs_msemr_healthcareservice_HealthcareCategor": "Sub Services",
+      "smvs_msemr_healthcareservicecategory_device": "Device Setups",
+      "smvs_msemr_healthcareservicecategory_parent_se": "Services",
+      "smvs_msemr_healthcareservicecategory_smvs_CPTH": "CPT/HCPCS Codes",
+      "smvs_msemr_healthcareservicecategory_smvs_Elig": "Eligibility Questions",
+      "smvs_msemr_healthcareservicecategory_smvs_insu": "Insurance Organizations (smvs_msemr_healthcareservicecategory_smvs_insu)",
+      "smvs_msemr_healthcareservicecategory_smvs_loca": "Localize Website Contents",
+      "smvs_msemr_healthcareservicecategory_smvs_Pati": "Patient Screening Questions",
+      "smvs_msemr_service_pharmacy_insurance": "Insurance Organizations (smvs_msemr_service_pharmacy_insurance)",
+      "smvs_no_insurance": "Collect Id’s",
+      "smvs_out_of_pocket_text": "Out of Pocket Text",
+      "smvs_parent_service": "Parent Service",
+      "smvs_pay_at_time_of_service": "Out of Pocket",
+      "smvs_pcf_add_to_pharmacy": "PCF Add to Pharmacy",
+      "smvs_pricing": "Pricing",
+      "smvs_pricing_base": "Pricing (Base)",
+      "smvs_regimen_type": "Regimen Type",
+      "smvs_service_code": "Service Code",
+      "smvs_service_information": "Service Information",
+      "smvs_service_type": "Service Type",
+      "smvs_soap_note_required": "Soap Note Required",
+      "smvs_subgrid_control": "Subgrid Control",
+      "smvs_template_msemr_healthcareservicecate": "Templates",
+      "smvs_translation_count": "Translation Count",
+      "smvs_translation_status": "Translation Status",
+      "smvs_vaccinebillrate": "Default Vaccine Bill Rate",
+      "smvs_vaccinebillrate_base": "Default Vaccine Bill Rate (Base)",
+      "smvs_waitlist": "Waitlist",
+      "smvs_WaitList_service_msemr_healthcareser": "Wait Lists",
+      "stageid": "(Deprecated) Stage Id",
+      "statecode": "Status",
+      "statuscode": "Status Reason",
+      "timezoneruleversionnumber": "Time Zone Rule Version Number",
+      "transactioncurrencyid": "Currency",
+      "traversedpath": "(Deprecated) Traversed Path",
+      "utcconversiontimezonecode": "UTC Conversion Time Zone Code",
+      "versionnumber": "Version Number"
+    },
+    "PreferredName": "Services",
+    "Type": "NativeCDSDataSourceInfo"
+  },
+  {
+    "DisplayName": "Services (Views)",
+    "Name": "_msemr_healthcareservicecategory_views",
+    "RelatedEntityName": "Services",
+    "TrimmedViewName": true,
+    "Type": "ViewInfo",
+    "ViewInfoNameMapping": {
+      "19f5b5bf-3713-4d0a-897c-92025257cfd2": "Active Services",
+      "1a6cb359-e3ef-4ecd-ba12-5ca6eb380102": "Healthcare Service Category Associated View",
+      "7c98b66b-c87f-eb11-a812-000d3a9c24b3": "All Services",
+      "904c5e01-aa39-40cc-8406-c019e2c7069e": "Healthcare Service Category Advanced Find View",
+      "a064b3a2-2c1d-ec11-b6e6-000d3a1f39aa": "All Associated Services",
+      "c23a5c0e-3eaf-48eb-842a-4b544370d7a8": "Healthcare Service Category Lookup View",
+      "c9c6c275-621c-ec11-b6e6-000d3a1f39aa": "Service Translation",
+      "d2edfb43-cd85-44f9-b9b5-9213b6e8541e": "Inactive Services"
+    }
+  },
+  {
+    "DisplayName": "Status (Services)",
+    "Name": "msemr_healthcareservicecategory_statecode",
+    "OptionSetInfoNameMapping": {
+      "0": "Active",
+      "1": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statecode",
+        "OptionSetReferenceEntityName": "Services"
+      }
+    },
+    "OptionSetTypeKey": "StateType",
+    "RelatedColumnInvariantName": "statecode",
+    "RelatedEntityName": "Services",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status Reason (Services)",
+    "Name": "msemr_healthcareservicecategory_statuscode",
+    "OptionSetInfoNameMapping": {
+      "1": "Active",
+      "2": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statuscode",
+        "OptionSetReferenceEntityName": "Services"
+      }
+    },
+    "OptionSetTypeKey": "StatusType",
+    "RelatedColumnInvariantName": "statuscode",
+    "RelatedEntityName": "Services",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Billable (Services)",
+    "Name": "smvs_msemr_healthcareservicecategory_billable_status",
+    "OptionSetInfoNameMapping": {
+      "0": "No",
+      "1": "Yes"
+    },
+    "OptionSetIsBooleanValued": true,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "smvs_billable_status",
+        "OptionSetReferenceEntityName": "Services"
+      }
+    },
+    "OptionSetTypeKey": "BooleanType",
+    "RelatedColumnInvariantName": "smvs_billable_status",
+    "RelatedEntityName": "Services",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Collect Insurance (Services)",
+    "Name": "smvs_msemr_healthcareservicecategory_insurance",
+    "OptionSetInfoNameMapping": {
+      "0": "Off",
+      "1": "On"
+    },
+    "OptionSetIsBooleanValued": true,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "smvs_insurance",
+        "OptionSetReferenceEntityName": "Services"
+      }
+    },
+    "OptionSetTypeKey": "BooleanType",
+    "RelatedColumnInvariantName": "smvs_insurance",
+    "RelatedEntityName": "Services",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Collect Id’s (Services)",
+    "Name": "smvs_msemr_healthcareservicecategory_no_insurance",
+    "OptionSetInfoNameMapping": {
+      "0": "Off",
+      "1": "On"
+    },
+    "OptionSetIsBooleanValued": true,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "smvs_no_insurance",
+        "OptionSetReferenceEntityName": "Services"
+      }
+    },
+    "OptionSetTypeKey": "BooleanType",
+    "RelatedColumnInvariantName": "smvs_no_insurance",
+    "RelatedEntityName": "Services",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Out of Pocket (Services)",
+    "Name": "smvs_msemr_healthcareservicecategory_pay_at_time_of_service",
+    "OptionSetInfoNameMapping": {
+      "0": "Off",
+      "1": "On"
+    },
+    "OptionSetIsBooleanValued": true,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "smvs_pay_at_time_of_service",
+        "OptionSetReferenceEntityName": "Services"
+      }
+    },
+    "OptionSetTypeKey": "BooleanType",
+    "RelatedColumnInvariantName": "smvs_pay_at_time_of_service",
+    "RelatedEntityName": "Services",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Soap Note Required (Services)",
+    "Name": "smvs_msemr_healthcareservicecategory_smvs_soap_note_required",
+    "OptionSetInfoNameMapping": {
+      "0": "No",
+      "1": "Yes"
+    },
+    "OptionSetIsBooleanValued": true,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "smvs_soap_note_required",
+        "OptionSetReferenceEntityName": "Services"
+      }
+    },
+    "OptionSetTypeKey": "BooleanType",
+    "RelatedColumnInvariantName": "smvs_soap_note_required",
+    "RelatedEntityName": "Services",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Waitlist (Services)",
+    "Name": "smvs_msemr_healthcareservicecategory_waitlist",
+    "OptionSetInfoNameMapping": {
+      "0": "Off",
+      "1": "On"
+    },
+    "OptionSetIsBooleanValued": true,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "smvs_waitlist",
+        "OptionSetReferenceEntityName": "Services"
+      }
+    },
+    "OptionSetTypeKey": "BooleanType",
+    "RelatedColumnInvariantName": "smvs_waitlist",
+    "RelatedEntityName": "Services",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Regimen Type",
+    "Name": "smvs_regimen_type",
+    "OptionSetInfoNameMapping": {
+      "153940000": "1 dose series",
+      "153940001": "2 dose series"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": true,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "smvs_regimen_type",
+        "OptionSetReferenceEntityName": "Services"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "smvs_regimen_type",
+    "RelatedEntityName": "Services",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Translation Status",
+    "Name": "smvs_translation_status",
+    "OptionSetInfoNameMapping": {
+      "153940000": "Pending",
+      "153940001": "In Progress",
+      "153940002": "Completed"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": true,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "smvs_translation_status",
+        "OptionSetReferenceEntityName": "Services"
+      },
+      "OptionSetReferenceItem1": {
+        "OptionSetReferenceColumnName": "smvs_translation_status",
+        "OptionSetReferenceEntityName": "Sub Services"
+      },
+      "OptionSetReferenceItem2": {
+        "OptionSetReferenceColumnName": "smvs_translation_status",
+        "OptionSetReferenceEntityName": "Eligibility Questions"
+      },
+      "OptionSetReferenceItem3": {
+        "OptionSetReferenceColumnName": "smvs_translation_status",
+        "OptionSetReferenceEntityName": "Patient Screening Questions"
+      },
+      "OptionSetReferenceItem4": {
+        "OptionSetReferenceColumnName": "smvs_translation_status",
+        "OptionSetReferenceEntityName": "Localize Website Contents"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "smvs_translation_status",
+    "RelatedEntityName": "Services",
+    "Type": "OptionSetInfo"
+  }
+]

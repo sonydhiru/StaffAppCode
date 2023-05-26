@@ -1,0 +1,275 @@
+TestReportComponent As CanvasComponent:
+    DisplayFields: |-
+        =Table(
+            {
+                PatientName: "John Smith",
+                TestingFacility: "Demo Testing Facility",
+                TestDevice: "Demo Test Device",
+                TestPerformedName: "Demo Test Performed Name",
+                SpecimentCollectedOn: Today(),
+                TestDate: "Demo Test Date",
+                TestResult: "Positive",
+                TestResultDate: Today()
+            }
+        )
+    Fill: =RGBA(0, 0, 0, 0)
+    Height: =1366
+    OnClose: ="Text"
+    OnSave: ="Text"
+    TestDate: =Now()
+    TestResult: =CmbTestResult_6.Selected.Value
+    Width: =1024
+    X: =0
+    Y: =0
+    ZIndex: =1
+
+    Container5 As groupContainer.manualLayoutContainer:
+        BorderThickness: =1
+        Fill: =RGBA(255, 255, 255, 1)
+        Height: =750
+        PaddingLeft: =28
+        PaddingRight: =28
+        Width: =634
+        X: =195
+        Y: =105
+        ZIndex: =3
+
+        Label1_8 As label:
+            Font: =Font.Lato
+            Height: =110
+            Size: =26
+            Text: =First(TestReportComponent.DisplayFields).PatientName&"'s Test Result"
+            Width: =530
+            Wrap: =false
+            X: =40
+            ZIndex: =1
+
+        Gallery2 As gallery.galleryVertical:
+            BorderColor: =RGBA(243, 243, 244, 1)
+            BorderThickness: =1
+            Height: =250
+            Items: |-
+                =Table(
+                    {
+                        FieldName: "Testing Facility",
+                        FieldValue: First(TestReportComponent.DisplayFields).TestingFacility
+                    },
+                    {
+                        FieldName: "Test Device",
+                        FieldValue: First(TestReportComponent.DisplayFields).TestDevice
+                    },
+                    {
+                        FieldName: "Specimen Source",
+                        FieldValue: First(TestReportComponent.DisplayFields).TestingFacility
+                    },
+                    {
+                        FieldName: "Test Performed Name",
+                        FieldValue: First(TestReportComponent.DisplayFields).TestPerformedName
+                    },
+                    {
+                        FieldName: "Test Date",
+                        FieldValue: First(TestReportComponent.DisplayFields).TestDate
+                    }
+                )
+            Layout: =Layout.Vertical
+            TemplateSize: =40
+            Width: =578
+            X: =28
+            Y: =180
+            ZIndex: =1
+
+            Label24 As label:
+                Font: =Font.Lato
+                FontWeight: =FontWeight.Bold
+                OnSelect: =Select(Parent)
+                PaddingLeft: =20
+                Size: =14
+                Text: |-
+                    =ThisItem.FieldName&" :"
+                Width: =235
+                ZIndex: =1
+
+            Label24_1 As label:
+                Font: =Font.Lato
+                OnSelect: =Select(Parent)
+                PaddingLeft: =0
+                Size: =14
+                Text: =ThisItem.FieldValue
+                Width: =235
+                Wrap: =false
+                X: =286
+                ZIndex: =2
+
+        Icon1_4 As icon.Cancel:
+            Height: =25
+            Icon: =Icon.Cancel
+            OnSelect: =TestReportComponent.OnClose()
+            Width: =25
+            X: =570
+            Y: =40
+            ZIndex: =2
+
+        Label2_11 As label:
+            Fill: =RGBA(243, 243, 244, 1)
+            Font: =Font.Lato
+            FontWeight: =FontWeight.Bold
+            Height: =60
+            PaddingLeft: =25
+            Size: =16
+            Text: ="Fulfill Details"
+            Width: =578
+            X: =Parent.PaddingLeft
+            Y: =107
+            ZIndex: =3
+
+        Label2_12 As label:
+            Fill: =RGBA(243, 243, 244, 1)
+            Font: =Font.Lato
+            FontWeight: =FontWeight.Bold
+            Height: =60
+            PaddingLeft: =25
+            Size: =16
+            Text: ="Fulfill Details"
+            Width: =578
+            X: =28
+            Y: =458
+            ZIndex: =4
+
+        Rectangle10 As rectangle:
+            BorderColor: =RGBA(243, 243, 244, 1)
+            BorderThickness: =1
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =113
+            Width: =578
+            X: =28
+            Y: =518
+            ZIndex: =5
+
+        Button2 As button:
+            Fill: |-
+                =RGBA(
+                            0,
+                            82,
+                            204,
+                            1
+                        )
+            Font: =Font.Lato
+            Height: =46
+            OnSelect: =TestReportComponent.OnSave()
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Size: =16
+            Text: ="Save Result"
+            Width: =578
+            X: =28
+            Y: =666
+            ZIndex: =6
+
+        Label3_31 As label:
+            Color: |-
+                =RGBA(
+                            9,
+                            30,
+                            66,
+                            1
+                        )
+            Font: =Font.Lato
+            FontWeight: =FontWeight.Bold
+            Size: =14
+            Text: |-
+                ="Test Result:"
+            Width: =230
+            X: =40
+            Y: =536
+            ZIndex: =7
+
+        CmbTestResult_6 As combobox:
+            BorderColor: =
+            BorderStyle: =BorderStyle.None
+            BorderThickness: =0
+            ChevronBackground: =RGBA(243, 243, 244, 1)
+            ChevronFill: =Color.Black
+            ChevronHoverBackground: =RGBA(243, 243, 244, 1)
+            ChevronHoverFill: =Color.Black
+            Color: |-
+                =RGBA(
+                            9,
+                            30,
+                            66,
+                            1
+                        )
+            DefaultSelectedItems: =[First(TestReportComponent.DisplayFields).TestResult]
+            DisplayFields: =["Value"]
+            DisplayMode: =Parent.DisplayMode
+            Fill: =RGBA(243, 243, 244, 1)
+            Font: =Font.Lato
+            IsSearchable: =false
+            Items: =["Positive","Negative","Inconclusive"]
+            OnChange: =If(IsBlank(CmbTestResult_6.Selected.Value),Set(VarResultDateAppt,Blank()),Set(VarResultDateAppt,Now()))
+            PaddingLeft: =12
+            PressedFill: =Color.White
+            SearchFields: =["Value"]
+            SearchItems: =[]
+            SelectionColor: =Color.Black
+            SelectionFill: =RGBA(243, 243, 244, 1)
+            SelectMultiple: =false
+            Size: =14
+            Tooltip: =
+            Width: =250
+            X: =40
+            Y: =576
+            ZIndex: =8
+
+        Label3_32 As label:
+            Color: |-
+                =RGBA(
+                            9,
+                            30,
+                            66,
+                            1
+                        )
+            Font: =Font.Lato
+            FontWeight: =FontWeight.Bold
+            Size: =14
+            Text: |-
+                ="Test Date:"
+            Width: =230
+            X: =331
+            Y: =536
+            ZIndex: =9
+
+        DateTestResult_6 As datepicker:
+            BorderColor: =
+            BorderStyle: =BorderStyle.None
+            BorderThickness: =0
+            Color: |-
+                =RGBA(
+                            9,
+                            30,
+                            66,
+                            1
+                        )
+            DefaultDate: =If(IsBlank(First(TestReportComponent.DisplayFields).TestResultDate),VarResultDateAppt,(First(TestReportComponent.DisplayFields).TestResultDate))
+            DisplayMode: =Parent.DisplayMode
+            EndYear: =Year(Today())+100
+            Fill: =RGBA(243, 243, 244, 1)
+            Font: =Font.Lato
+            IconBackground: =RGBA(243, 243, 244, 1)
+            IconFill: |-
+                =RGBA(
+                            9,
+                            30,
+                            66,
+                            1
+                        )
+            IsEditable: =true
+            PaddingBottom: =0
+            StartYear: =1899
+            Tooltip: =
+            Width: =250
+            X: =331
+            Y: =576
+            ZIndex: =10
+

@@ -1,0 +1,116 @@
+[
+  {
+    "CdsFCBContext": "{\"FileType\":true,\"ImageExternalStorage\":true}",
+    "EntitySetName": "actioncards",
+    "IsHidden": false,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "LogicalName": "actioncard",
+    "MaxGetRowsCount": 500,
+    "Name": "Action Cards",
+    "NativeCDSDataSourceInfoNameMapping": {
+      "_ownerid_value": "Owner",
+      "_regardingobjectid_value": "Regarding",
+      "actioncardid": "Action Card",
+      "ActionCardUserState_ActionCard": "ActionCardUserStates",
+      "cardtype": "CardType ENUM",
+      "createdby": "Created By",
+      "createdon": "Created On",
+      "createdonbehalfby": "Created By (Delegate)",
+      "data": "Data Associated with Card Commandbar Actions",
+      "description": "Card Description",
+      "exchangerate": "Exchange Rate",
+      "expirydate": "Expiry Date",
+      "importsequencenumber": "Import Sequence Number",
+      "modifiedby": "Modified By",
+      "modifiedon": "Modified On",
+      "modifiedonbehalfby": "Modified By (Delegate)",
+      "overriddencreatedon": "Record Created On",
+      "owningbusinessunit": "Owning Business Unit",
+      "parentregardingobjectiddata": "ParentRegardingObjectIdData",
+      "priority": "Priority",
+      "recordidobjecttypecode2": "RecordIdObjectTypeCode2",
+      "referencetokens": "Data Associated constructing title and body",
+      "source": "Action Card Source",
+      "startdate": "Start Date",
+      "state": "Action Card State",
+      "title": "Title",
+      "transactioncurrencyid": "Currency",
+      "versionnumber": "Version Number",
+      "visibility": "Visibiliy Status of ActionCard"
+    },
+    "PreferredName": "Action Cards",
+    "Type": "NativeCDSDataSourceInfo"
+  },
+  {
+    "DisplayName": "Action Cards (Views)",
+    "Name": "_actioncard_views",
+    "RelatedEntityName": "Action Cards",
+    "TrimmedViewName": true,
+    "Type": "ViewInfo",
+    "ViewInfoNameMapping": {
+      "92afd454-0f2e-4397-a1c8-05e37c6ad699": "ActionCard Dashboard"
+    }
+  },
+  {
+    "DisplayName": "Action Card Source (Action Cards)",
+    "Name": "actioncard_source",
+    "OptionSetInfoNameMapping": {
+      "1": "CRM",
+      "2": "Exchange"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "source",
+        "OptionSetReferenceEntityName": "Action Cards"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "source",
+    "RelatedEntityName": "Action Cards",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Action Card State (Action Cards)",
+    "Name": "actioncard_state",
+    "OptionSetInfoNameMapping": {
+      "0": "Active",
+      "1": "Dismissed",
+      "2": "Completed"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "state",
+        "OptionSetReferenceEntityName": "Action Cards"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "state",
+    "RelatedEntityName": "Action Cards",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Visibiliy Status of ActionCard (Action Cards)",
+    "Name": "actioncard_visibility",
+    "OptionSetInfoNameMapping": {
+      "0": "Public",
+      "1": "Private"
+    },
+    "OptionSetIsBooleanValued": true,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "visibility",
+        "OptionSetReferenceEntityName": "Action Cards"
+      }
+    },
+    "OptionSetTypeKey": "BooleanType",
+    "RelatedColumnInvariantName": "visibility",
+    "RelatedEntityName": "Action Cards",
+    "Type": "OptionSetInfo"
+  }
+]

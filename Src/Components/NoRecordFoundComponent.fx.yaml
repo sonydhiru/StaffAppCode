@@ -1,0 +1,50 @@
+NoRecordFoundComponent As CanvasComponent:
+    Fill: =RGBA(0, 0, 0, 0)
+    Height: =400
+    Icon: =SampleImage
+    Subtitle: ="Text"
+    Title: ="Text"
+    Width: =740
+    X: =0
+    Y: =0
+    ZIndex: =2
+
+    recBackground As rectangle:
+        Fill: =RGBA(243, 243, 244, 1)
+        Height: =120
+        Width: =120
+        X: =(Parent.Width-Self.Width)/2
+        Y: =32
+        ZIndex: =1
+
+    lblTitle As label:
+        Align: =Align.Center
+        Font: =Font.Lato
+        FontWeight: =FontWeight.Semibold
+        Height: =41
+        Size: =20
+        Text: =NoRecordFoundComponent.Title
+        Width: =Parent.Width
+        Y: =166
+        ZIndex: =3
+
+    lblSubtitle As label:
+        Align: =Align.Center
+        Font: =Font.Lato
+        Height: =104
+        PaddingLeft: =20
+        PaddingRight: =20
+        Size: =16
+        Text: =NoRecordFoundComponent.Subtitle
+        Width: =Parent.Width
+        Y: =222
+        ZIndex: =4
+
+    imgIcon As image:
+        Height: =60
+        Image: =NoRecordFoundComponent.Icon
+        Width: =60
+        X: =(Parent.Width-Self.Width)/2
+        Y: =62
+        ZIndex: =5
+

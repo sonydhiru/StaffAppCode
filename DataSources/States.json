@@ -1,0 +1,100 @@
+[
+  {
+    "CdsFCBContext": "{\"FileType\":true,\"ImageExternalStorage\":true}",
+    "EntitySetName": "smvs_states",
+    "IsHidden": false,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "LogicalName": "smvs_state",
+    "MaxGetRowsCount": 500,
+    "Name": "States",
+    "NativeCDSDataSourceInfoNameMapping": {
+      "_ownerid_value": "Owner",
+      "createdby": "Created By",
+      "createdon": "Created On",
+      "createdonbehalfby": "Created By (Delegate)",
+      "importsequencenumber": "Import Sequence Number",
+      "modifiedby": "Modified By",
+      "modifiedon": "Modified On",
+      "modifiedonbehalfby": "Modified By (Delegate)",
+      "overriddencreatedon": "Record Created On",
+      "owningbusinessunit": "Owning Business Unit",
+      "owningteam": "Owning Team",
+      "owninguser": "Owning User",
+      "smvs_msemr_location_state_smvs_state": "Locations",
+      "smvs_name": "Name",
+      "smvs_smvs_county_state_smvs_state": "Counties",
+      "smvs_state_AsyncOperations": "System Jobs",
+      "smvs_state_BulkDeleteFailures": "Bulk Delete Failures",
+      "smvs_state_code": "Description",
+      "smvs_state_DuplicateBaseRecord": "Duplicate Records (smvs_state_DuplicateBaseRecord)",
+      "smvs_state_DuplicateMatchingRecord": "Duplicate Records (smvs_state_DuplicateMatchingRecord)",
+      "smvs_state_MailboxTrackingFolders": "Mailbox Auto Tracking Folders",
+      "smvs_state_PrincipalObjectAttributeAccesses": "Field Sharing",
+      "smvs_state_ProcessSession": "Process Sessions",
+      "smvs_state_SyncErrors": "Sync Errors",
+      "smvs_stateid": "State",
+      "statecode": "Status",
+      "statuscode": "Status Reason",
+      "timezoneruleversionnumber": "Time Zone Rule Version Number",
+      "utcconversiontimezonecode": "UTC Conversion Time Zone Code",
+      "versionnumber": "Version Number"
+    },
+    "PreferredName": "States",
+    "Type": "NativeCDSDataSourceInfo"
+  },
+  {
+    "DisplayName": "States (Views)",
+    "Name": "_smvs_state_views",
+    "RelatedEntityName": "States",
+    "TrimmedViewName": true,
+    "Type": "ViewInfo",
+    "ViewInfoNameMapping": {
+      "291fea4b-0bda-4631-8a17-1a458349847a": "State Associated View",
+      "44ebcbf6-7cd4-41c9-8606-f006be4f809d": "State Advanced Find View",
+      "97e3cda1-e504-4ef1-b19a-ff85b0578079": "State Lookup View",
+      "9928eeae-979e-4ef4-98e9-5c172b74faa0": "Inactive States",
+      "c2ffff1e-ac71-4763-aa4f-7f208cd687f3": "Active States"
+    }
+  },
+  {
+    "DisplayName": "Status (States)",
+    "Name": "smvs_state_statecode",
+    "OptionSetInfoNameMapping": {
+      "0": "Active",
+      "1": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statecode",
+        "OptionSetReferenceEntityName": "States"
+      }
+    },
+    "OptionSetTypeKey": "StateType",
+    "RelatedColumnInvariantName": "statecode",
+    "RelatedEntityName": "States",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status Reason (States)",
+    "Name": "smvs_state_statuscode",
+    "OptionSetInfoNameMapping": {
+      "1": "Active",
+      "2": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statuscode",
+        "OptionSetReferenceEntityName": "States"
+      }
+    },
+    "OptionSetTypeKey": "StatusType",
+    "RelatedColumnInvariantName": "statuscode",
+    "RelatedEntityName": "States",
+    "Type": "OptionSetInfo"
+  }
+]

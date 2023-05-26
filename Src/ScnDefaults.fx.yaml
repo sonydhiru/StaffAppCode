@@ -1,0 +1,888 @@
+"ScnDefaults As screen.'tabletAutoLayout_HeaderMainFooter_ver1.0'":
+    OnVisible: =
+
+    ConDefaults As groupContainer.verticalAutoLayoutContainer:
+        Height: =Parent.Height
+        LayoutAlignItems: =LayoutAlignItems.Stretch
+        LayoutDirection: =LayoutDirection.Vertical
+        LayoutMode: =LayoutMode.Auto
+        Width: =Parent.Width
+        ZIndex: =1
+
+        ConDefaultHeader As groupContainer.horizontalAutoLayoutContainer:
+            AlignInContainer: =AlignInContainer.SetByContainer
+            FillPortions: =0
+            Height: =VarTheme.HeaderSize
+            LayoutAlignItems: =LayoutAlignItems.Center
+            LayoutMinHeight: =100
+            LayoutMinWidth: =250
+            LayoutMode: =LayoutMode.Auto
+            PaddingLeft: =26
+            Width: =Parent.Width
+            ZIndex: =2
+
+            ImgBackDefaults As image:
+                Height: =40
+                Image: |-
+                    ="data:image/svg+xml;utf8, "&EncodeUrl("<svg width='28' height='28' viewBox='0 0 28 28' fill='none' xmlns='http://www.w3.org/2000/svg'> <path d='M14 28C10.287 28 6.72602 26.525 4.10051 23.8995C1.475 21.274 3.04044e-06 17.713 3.20274e-06 14C3.36504e-06 10.287 1.475 6.72601 4.10051 4.1005C6.72602 1.475 10.287 -7.74261e-07 14 -6.11959e-07C17.713 -4.49658e-07 21.274 1.475 23.8995 4.10051C26.525 6.72601 28 10.287 28 14C28 17.713 26.525 21.274 23.8995 23.8995C21.274 26.525 17.713 28 14 28ZM20.125 14.875C20.3571 14.875 20.5796 14.7828 20.7437 14.6187C20.9078 14.4546 21 14.2321 21 14C21 13.7679 20.9078 13.5454 20.7437 13.3813C20.5796 13.2172 20.3571 13.125 20.125 13.125L9.98725 13.125L13.7445 9.3695C13.9088 9.2052 14.0011 8.98236 14.0011 8.75C14.0011 8.51764 13.9088 8.2948 13.7445 8.1305C13.5802 7.9662 13.3574 7.87389 13.125 7.87389C12.8926 7.87389 12.6698 7.9662 12.5055 8.1305L7.2555 13.3805C7.17402 13.4618 7.10937 13.5583 7.06526 13.6646C7.02114 13.7709 6.99844 13.8849 6.99844 14C6.99844 14.1151 7.02114 14.2291 7.06526 14.3354C7.10937 14.4417 7.17402 14.5382 7.2555 14.6195L12.5055 19.8695C12.6698 20.0338 12.8926 20.1261 13.125 20.1261C13.3574 20.1261 13.5802 20.0338 13.7445 19.8695C13.9088 19.7052 14.0011 19.4824 14.0011 19.25C14.0011 19.0176 13.9088 18.7948 13.7445 18.6305L9.98725 14.875L20.125 14.875Z' fill='#0052CC'/> </svg> ")
+                OnSelect: |-
+                    =If(
+                        VarNavigateFulfill = true,
+                        Navigate(
+                            ScnAppointmentDetails,
+                            ScreenTransition.None
+                        ),
+                        VarNavigateBooked = true,
+                        Navigate(
+                            ScnConfirmation,
+                            ScreenTransition.None
+                        ),
+                        VarNavigateSOAP = true,
+                        Navigate(
+                            ScnAppointmentDetails,
+                            ScreenTransition.None
+                        ) && Set(
+                            VarDirectSoapNote,
+                            true
+                        ) && Set(
+                            VarNavigateSOAP,
+                            false
+                        ),
+                     
+                        Navigate(
+                            ScnLanding,
+                            ScreenTransition.None
+                        )
+                    );
+                    
+                    If(IsBlank(VarDefaultSiteLocation),Reset(CmbDefaultLocation));
+                    If(IsBlank(VarDefaultAssignedPractitioner),Reset(CmbDefaultPractitioner));
+                    If(IsBlank(VarDefaultService),Reset(CmbDefaultServices));
+                    If(IsBlank(VarDefaultAlphaCode),Reset(CmbDefaultCode));
+                    If(IsBlank(VarDefaultServiceType),Reset(CmbDefaultServiceType));
+                    If(IsBlank(VarDefaultFilterAppointmentStatus),Reset(CmbDefaultAppointmentStatus));
+                    If(IsBlank(VarDefaultFilterServiceType),Reset(CmbDefaultSubService));
+                    If(IsBlank(VarDefaultfilterTodaysAppt),Reset(LblDefaultTodayAppointment));
+                    
+                    Set(VarNavigateFulfill,false);
+                    Set(VarNavigateBooked,false);
+                Width: =40
+                X: =28
+                Y: =32
+                ZIndex: =1
+
+            LblHeaderDefaults As label:
+                Align: =Align.Center
+                Font: =VarTheme.Font
+                FontWeight: =FontWeight.Bold
+                Size: =24
+                Text: ="Set Defaults"
+                Width: =250
+                X: =74
+                Y: =32
+                ZIndex: =2
+
+        ConDefaultBody As groupContainer.verticalAutoLayoutContainer:
+            AlignInContainer: =AlignInContainer.SetByContainer
+            LayoutDirection: =LayoutDirection.Vertical
+            LayoutMinHeight: =0
+            LayoutMinWidth: =250
+            LayoutMode: =LayoutMode.Auto
+            LayoutOverflowY: =LayoutOverflow.Scroll
+            PaddingLeft: =26
+            PaddingRight: =26
+            Width: =Parent.Width
+            ZIndex: =3
+
+            CanvasDefaults As fluidGrid.fluidGridWithBlankCard:
+                AlignInContainer: =AlignInContainer.SetByContainer
+                BorderThickness: =0
+                Height: =Parent.Height
+                LayoutMinHeight: =250
+                LayoutMinWidth: =100
+                Width: =Parent.Width-26
+                Y: =
+                ZIndex: =1
+
+                DcSetLocation As dataCard:
+                    BorderColor: =RGBA(0, 0, 0, 1)
+                    BorderStyle: =BorderStyle.Solid
+                    BorderThickness: =0
+                    DisplayMode: =DisplayMode.Edit
+                    Fill: =RGBA(0, 0, 0, 0)
+                    Height: =104
+                    Width: =Parent.Width
+                    X: =0
+                    Y: =0
+                    ZIndex: =1
+
+                    ConDefaultLocation As groupContainer.verticalAutoLayoutContainer:
+                        Height: =50
+                        LayoutDirection: =LayoutDirection.Vertical
+                        LayoutMode: =LayoutMode.Auto
+                        Width: =Parent.Width-52
+                        Y: =40
+                        ZIndex: =1
+
+                        CmbDefaultLocation As combobox:
+                            BorderColor: =VarTheme.PrimaryColor
+                            BorderStyle: =BorderStyle.None
+                            BorderThickness: =0
+                            ChevronBackground: =VarTheme.InputBackground
+                            ChevronFill: =Color.Black
+                            ChevronHoverBackground: =RGBA(186, 202, 226, 1)
+                            DefaultSelectedItems: |-
+                                =If(!IsBlank(VarDefaultSiteLocation),
+                                LookUp(Locations, Location = VarDefaultSiteLocation.Location))
+                            DisplayFields: =["msemr_name"]
+                            DisplayMode: =If(VarNavigateBooked=true || VarNavigateFulfill=true,DisplayMode.Disabled,DisplayMode.Edit)
+                            Fill: =VarTheme.InputBackground
+                            Font: =VarTheme.Font
+                            FontWeight: =FontWeight.Semibold
+                            InputTextPlaceholder: ="Select Location"
+                            Items: |-
+                                =Filter(
+                                    Locations,
+                                    'Location Status' = 'Location Status_1'.Live && 'Status (statecode)' = 'Status (Locations)'.Active
+                                )
+                            PaddingLeft: =20
+                            PressedColor: =Color.Black
+                            PressedFill: =VarTheme.InputBackground
+                            Reset: =true
+                            SearchFields: =["msemr_name"]
+                            SearchItems: |-
+                                =Search(Filter(
+                                    Locations,
+                                    'Location Status' = 'Location Status_1'.Live && 'Status (statecode)' = 'Status (Locations)'.Active
+                                ),CmbDefaultLocation.SearchText,"msemr_name")
+                            SelectionFill: =RGBA(186, 202, 226, 1)
+                            SelectionTagFill: =VarTheme.InputBackground
+                            SelectMultiple: =false
+                            Size: =VarTheme.FontSize16
+                            Width: =Parent.Width
+                            ZIndex: =2
+
+                    LblDefaultLocation As label:
+                        FontWeight: =FontWeight.Bold
+                        Size: =VarTheme.FontSize16
+                        Text: ="Site Location"
+                        ZIndex: =2
+
+                DcFulfillingDetails As dataCard.blankCard:
+                    BorderColor: =RGBA(0, 0, 0, 1)
+                    BorderStyle: =BorderStyle.Solid
+                    DisplayMode: =DisplayMode.Edit
+                    Fill: =RGBA(0, 0, 0, 0)
+                    Height: =253
+                    Width: =972
+                    X: =0
+                    Y: =2
+                    ZIndex: =2
+
+                    LblDefaultFulfill As label:
+                        Font: =VarTheme.Font
+                        FontWeight: =FontWeight.Semibold
+                        Height: =50
+                        Size: =VarTheme.FontSize20
+                        Text: ="Fulfilling Details"
+                        Width: =400
+                        ZIndex: =1
+
+                    ConDefaultFulfill As groupContainer.horizontalAutoLayoutContainer:
+                        LayoutAlignItems: =LayoutAlignItems.End
+                        LayoutMode: =LayoutMode.Auto
+                        Width: =Parent.Width
+                        Y: =50
+                        ZIndex: =2
+
+                        ConDefaultFulfullLeft As groupContainer.verticalAutoLayoutContainer:
+                            AlignInContainer: =AlignInContainer.SetByContainer
+                            LayoutDirection: =LayoutDirection.Vertical
+                            LayoutJustifyContent: =LayoutJustifyContent.End
+                            LayoutMinHeight: =100
+                            LayoutMinWidth: =250
+                            LayoutMode: =LayoutMode.Auto
+                            ZIndex: =1
+
+                            LblDefaultPractitioner As label:
+                                Font: =VarTheme.Font
+                                FontWeight: =FontWeight.Semibold
+                                Height: =55
+                                Size: =VarTheme.FontSize16
+                                Text: ="Assigned Practitioner"
+                                Width: =Parent.Width
+                                ZIndex: =1
+
+                            CmbDefaultPractitioner As combobox:
+                                BorderColor: =VarTheme.PrimaryColor
+                                BorderStyle: =BorderStyle.None
+                                BorderThickness: =0
+                                ChevronBackground: =VarTheme.InputBackground
+                                ChevronFill: =Color.Black
+                                ChevronHoverBackground: =RGBA(186, 202, 226, 1)
+                                DisplayFields: =["fullname"]
+                                DisplayMode: =If(VarNavigateBooked=true || VarNavigateFulfill=true,DisplayMode.Disabled,DisplayMode.Edit)
+                                Fill: =VarTheme.InputBackground
+                                Font: =VarTheme.Font
+                                FontWeight: =FontWeight.Semibold
+                                InputTextPlaceholder: ="Select Practitioner"
+                                Items: |-
+                                    =SortByColumns(
+                                        Filter(
+                                            Contacts,
+                                            'Contact Type' = 'Contact Type (Contacts)'.Practitioner && 'Available to work' <> 'Available to work (Contacts)'.No && Status = 'Status (Contacts)'.Active
+                                        ),
+                                        "fullname",
+                                        SortOrder.Ascending
+                                    )
+                                PaddingLeft: =20
+                                PressedColor: =Color.Black
+                                PressedFill: =VarTheme.InputBackground
+                                SearchFields: =["fullname"]
+                                SearchItems: |-
+                                    =Search(SortByColumns(
+                                        Filter(
+                                            Contacts,
+                                            'Contact Type' = 'Contact Type (Contacts)'.Practitioner && 'Available to work' <> 'Available to work (Contacts)'.No && Status = 'Status (Contacts)'.Active
+                                        ),
+                                        "fullname",
+                                        SortOrder.Ascending
+                                    ),CmbDefaultPractitioner.SearchText,"fullname")
+                                SelectionFill: =RGBA(186, 202, 226, 1)
+                                SelectionTagFill: =VarTheme.InputBackground
+                                SelectMultiple: =false
+                                Size: =VarTheme.FontSize16
+                                Width: =471
+                                ZIndex: =2
+
+                            LblDefaultCode As label:
+                                Font: =VarTheme.Font
+                                FontWeight: =FontWeight.Semibold
+                                Height: =65
+                                Size: =VarTheme.FontSize16
+                                Text: ="Vaccine Code"
+                                Width: =400
+                                ZIndex: =3
+
+                            CmbDefaultCode As combobox:
+                                BorderColor: =VarTheme.PrimaryColor
+                                BorderStyle: =BorderStyle.None
+                                BorderThickness: =0
+                                ChevronBackground: =VarTheme.InputBackground
+                                ChevronFill: =Color.Black
+                                ChevronHoverBackground: =RGBA(186, 202, 226, 1)
+                                DisplayFields: =["msemr_name"]
+                                DisplayMode: =If(VarNavigateBooked=true || VarNavigateFulfill=true,DisplayMode.Disabled,DisplayMode.Edit)
+                                Fill: =VarTheme.InputBackground
+                                Font: =VarTheme.Font
+                                FontWeight: =FontWeight.Semibold
+                                InputTextPlaceholder: ="Select Vaccine Code"
+                                Items: =Filter('Codeable Concepts', 'Codeable Concepts (Views)'.'Active Codeable Concepts')
+                                PaddingLeft: =20
+                                PressedColor: =Color.Black
+                                PressedFill: =VarTheme.InputBackground
+                                SearchFields: =["msemr_name"]
+                                SearchItems: =Search(Filter('Codeable Concepts', 'Codeable Concepts (Views)'.'Active Codeable Concepts'),CmbDefaultCode.SearchText,"msemr_name")
+                                SelectionFill: =RGBA(186, 202, 226, 1)
+                                SelectionTagFill: =VarTheme.InputBackground
+                                SelectMultiple: =false
+                                Size: =VarTheme.FontSize16
+                                Width: =471
+                                ZIndex: =5
+
+                        ConDefaultFulfullRight As groupContainer.horizontalAutoLayoutContainer:
+                            AlignInContainer: =AlignInContainer.SetByContainer
+                            Fill: =VarTheme.InputBackground
+                            Height: =160
+                            LayoutDirection: =LayoutDirection.Vertical
+                            LayoutMinHeight: =100
+                            LayoutMinWidth: =250
+                            LayoutMode: =LayoutMode.Auto
+                            ZIndex: =2
+
+                            ConDefaultVaccine As groupContainer.horizontalAutoLayoutContainer:
+                                AlignInContainer: =AlignInContainer.SetByContainer
+                                Fill: =VarTheme.InputBackground
+                                Height: =40
+                                LayoutMinHeight: =0
+                                LayoutMinWidth: =250
+                                LayoutMode: =LayoutMode.Auto
+                                PaddingLeft: =10
+                                Width: =Parent.Width
+                                ZIndex: =1
+
+                                LblDefaultVaccineName As label:
+                                    Font: =VarTheme.Font
+                                    Size: =VarTheme.FontSize16
+                                    Text: |-
+                                        ="Vaccine Name:"
+                                    ZIndex: =1
+
+                                LblDefaultVaccineValue As label:
+                                    Font: =VarTheme.Font
+                                    FontWeight: =FontWeight.Bold
+                                    Size: =VarTheme.FontSize16
+                                    Text: =CmbDefaultCode.Selected.'Vaccine Type'.Name
+                                    Tooltip: =CmbDefaultCode.Selected.'Vaccine Type'.Name
+                                    Width: =320
+                                    Wrap: =false
+                                    ZIndex: =2
+
+                            ConDefaultLot As groupContainer.horizontalAutoLayoutContainer:
+                                AlignInContainer: =AlignInContainer.SetByContainer
+                                Fill: =VarTheme.InputBackground
+                                Height: =40
+                                LayoutMinHeight: =0
+                                LayoutMinWidth: =250
+                                LayoutMode: =LayoutMode.Auto
+                                PaddingLeft: =10
+                                Width: =Parent.Width
+                                ZIndex: =2
+
+                                LblDefaultLot As label:
+                                    Font: =VarTheme.Font
+                                    Size: =VarTheme.FontSize16
+                                    Text: |-
+                                        ="Lot:"
+                                    ZIndex: =1
+
+                                LblDefaultLotValue As label:
+                                    Font: =VarTheme.Font
+                                    FontWeight: =FontWeight.Bold
+                                    Size: =VarTheme.FontSize16
+                                    Text: =CmbDefaultCode.Selected.Lot
+                                    ZIndex: =2
+
+                            ConDefaultExpiryValue As groupContainer.horizontalAutoLayoutContainer:
+                                AlignInContainer: =AlignInContainer.SetByContainer
+                                Height: =40
+                                LayoutMinHeight: =0
+                                LayoutMinWidth: =250
+                                LayoutMode: =LayoutMode.Auto
+                                PaddingLeft: =10
+                                Width: =Parent.Width
+                                ZIndex: =3
+
+                                LblDefaultExpiryDate As label:
+                                    Font: =VarTheme.Font
+                                    Size: =VarTheme.FontSize16
+                                    Text: |-
+                                        ="Expiry Date:"
+                                    ZIndex: =1
+
+                                LblDefaultExpiryValue As label:
+                                    Font: =VarTheme.Font
+                                    FontWeight: =FontWeight.Bold
+                                    Size: =VarTheme.FontSize16
+                                    Text: =Text(CmbDefaultCode.Selected.Expiration,DateTimeFormat.ShortDate)
+                                    ZIndex: =2
+
+                            ConDefaultFacility As groupContainer.horizontalAutoLayoutContainer:
+                                AlignInContainer: =AlignInContainer.SetByContainer
+                                Height: =40
+                                LayoutMinHeight: =0
+                                LayoutMinWidth: =250
+                                LayoutMode: =LayoutMode.Auto
+                                PaddingLeft: =10
+                                Width: =Parent.Width
+                                ZIndex: =4
+
+                                LblDefaultFacilityName As label:
+                                    Font: =VarTheme.Font
+                                    Size: =VarTheme.FontSize16
+                                    Text: |-
+                                        ="Facility:"
+                                    ZIndex: =1
+
+                                LblDefaultFacilityValue As label:
+                                    Font: =VarTheme.Font
+                                    FontWeight: =FontWeight.Bold
+                                    Size: =VarTheme.FontSize16
+                                    Text: =CmbDefaultCode.Selected.'Vaccine Facility'.'Facility Name'
+                                    Tooltip: =CmbDefaultCode.Selected.'Vaccine Facility'.'Facility Name'
+                                    Width: =300
+                                    Wrap: =false
+                                    ZIndex: =2
+
+                DcPatientServiceDefaults As dataCard.blankCard:
+                    BorderColor: =RGBA(0, 0, 0, 1)
+                    BorderStyle: =BorderStyle.Solid
+                    DisplayMode: =DisplayMode.Edit
+                    Fill: =RGBA(0, 0, 0, 0)
+                    Height: =173
+                    Width: =972
+                    X: =0
+                    Y: =3
+                    ZIndex: =3
+
+                    LblServiceDefaults As label:
+                        Font: =VarTheme.Font
+                        FontWeight: =FontWeight.Bold
+                        Size: =VarTheme.FontSize20
+                        Text: ="New Patient Service Defaults"
+                        Width: =Parent.Width
+                        Y: =17
+                        ZIndex: =1
+
+                    ConServiceDefaults As groupContainer.horizontalAutoLayoutContainer:
+                        Height: =101
+                        LayoutMode: =LayoutMode.Auto
+                        Width: =Parent.Width
+                        Y: =72
+                        ZIndex: =2
+
+                        ConDefaultServiceType As groupContainer.verticalAutoLayoutContainer:
+                            AlignInContainer: =AlignInContainer.SetByContainer
+                            Height: =100
+                            LayoutDirection: =LayoutDirection.Vertical
+                            LayoutMinHeight: =100
+                            LayoutMinWidth: =250
+                            LayoutMode: =LayoutMode.Auto
+                            ZIndex: =1
+
+                            LblDefaultServiceType As label:
+                                Font: =VarTheme.Font
+                                FontWeight: =FontWeight.Semibold
+                                Size: =VarTheme.FontSize16
+                                Text: ="Service Type"
+                                ZIndex: =1
+
+                            CmbDefaultServiceType As combobox:
+                                BorderColor: =VarTheme.PrimaryColor
+                                BorderStyle: =BorderStyle.None
+                                BorderThickness: =0
+                                ChevronBackground: =VarTheme.InputBackground
+                                ChevronFill: =Color.Black
+                                ChevronHoverBackground: =VarTheme.InputBackground
+                                DisplayFields: =["smvs_name"]
+                                DisplayMode: =If(VarNavigateBooked=true || VarNavigateFulfill=true,DisplayMode.Disabled,DisplayMode.Edit)
+                                Fill: =VarTheme.InputBackground
+                                Font: =VarTheme.Font
+                                FontWeight: =FontWeight.Semibold
+                                HoverBorderColor: =VarTheme.InputBackground
+                                InputTextPlaceholder: ="Select Service Type"
+                                Items: =Filter('Service Types', Status='Status (Service Types)'.Active && 'Service Type Status'= 'Service Type Status Code'.Live)
+                                PaddingLeft: =20
+                                PressedColor: =Color.Black
+                                PressedFill: =VarTheme.InputBackground
+                                SearchFields: =["smvs_name"]
+                                SearchItems: =Search(Filter('Service Types', Status='Status (Service Types)'.Active && 'Service Type Status'= 'Service Type Status Code'.Live),CmbDefaultServiceType.SearchText,"smvs_name")
+                                SelectionFill: =RGBA(186, 202, 226, 1)
+                                SelectionTagFill: =VarTheme.InputBackground
+                                SelectMultiple: =false
+                                Size: =VarTheme.FontSize16
+                                Width: =471
+                                ZIndex: =3
+
+                        ConDefaultServices As groupContainer.verticalAutoLayoutContainer:
+                            AlignInContainer: =AlignInContainer.SetByContainer
+                            Height: =100
+                            LayoutDirection: =LayoutDirection.Vertical
+                            LayoutMinHeight: =100
+                            LayoutMinWidth: =250
+                            LayoutMode: =LayoutMode.Auto
+                            ZIndex: =2
+
+                            LblDefaultServices As label:
+                                Font: =VarTheme.Font
+                                FontWeight: =FontWeight.Semibold
+                                Size: =VarTheme.FontSize16
+                                Text: ="Services"
+                                ZIndex: =1
+
+                            CmbDefaultServices As combobox:
+                                BorderColor: =VarTheme.PrimaryColor
+                                BorderStyle: =BorderStyle.None
+                                BorderThickness: =0
+                                ChevronBackground: =VarTheme.InputBackground
+                                ChevronFill: =Color.Black
+                                ChevronHoverBackground: =RGBA(186, 202, 226, 1)
+                                DisplayFields: =["msemr_name"]
+                                DisplayMode: =If(VarNavigateBooked=true || VarNavigateFulfill=true,DisplayMode.Disabled,DisplayMode.Edit)
+                                Fill: =VarTheme.InputBackground
+                                Font: =VarTheme.Font
+                                FontWeight: =FontWeight.Semibold
+                                InputTextPlaceholder: ="Select Service"
+                                Items: |
+                                    =Filter(Services, ('Service Type'.'Service Type' = CmbDefaultServiceType.Selected.'Service Type' && Status='Status (Services)'.Active && Language.Code="en"))          
+                                PaddingLeft: =20
+                                PressedColor: =Color.Black
+                                PressedFill: =VarTheme.InputBackground
+                                SearchFields: =["msemr_name"]
+                                SearchItems: |-
+                                    =Search(Filter(Services, ('Service Type'.'Service Type' = CmbDefaultServiceType.Selected.'Service Type' && Status='Status (Services)'.Active && Language.Code="en"))          
+                                    ,CmbDefaultServices.SearchText,"msemr_name")
+                                SelectionFill: =RGBA(186, 202, 226, 1)
+                                SelectionTagFill: =VarTheme.InputBackground
+                                SelectMultiple: =false
+                                Size: =VarTheme.FontSize16
+                                Width: =471
+                                ZIndex: =3
+
+                DcDefaultFilters As dataCard.blankCard:
+                    BorderColor: =RGBA(0, 0, 0, 1)
+                    BorderStyle: =BorderStyle.Solid
+                    DisplayMode: =DisplayMode.Edit
+                    Fill: =RGBA(0, 0, 0, 0)
+                    Height: =125
+                    Width: =972
+                    X: =0
+                    Y: =4
+                    ZIndex: =4
+
+                    LblDefaultFilters As label:
+                        Font: =VarTheme.Font
+                        FontWeight: =FontWeight.Bold
+                        Size: =VarTheme.FontSize20
+                        Text: ="Default Filters"
+                        Width: =Parent.Width
+                        ZIndex: =1
+
+                    ConDefaultFilters As groupContainer.horizontalAutoLayoutContainer:
+                        Height: =92
+                        LayoutMode: =LayoutMode.Auto
+                        Width: =Parent.Width
+                        Y: =51
+                        ZIndex: =2
+
+                        ConDefaultSubService As groupContainer.verticalAutoLayoutContainer:
+                            AlignInContainer: =AlignInContainer.SetByContainer
+                            Height: =100
+                            LayoutDirection: =LayoutDirection.Vertical
+                            LayoutMinHeight: =100
+                            LayoutMinWidth: =250
+                            LayoutMode: =LayoutMode.Auto
+                            ZIndex: =1
+
+                            LblDefaultSubService As label:
+                                Font: =VarTheme.Font
+                                FontWeight: =FontWeight.Semibold
+                                Size: =VarTheme.FontSize16
+                                Text: ="Sub Service"
+                                ZIndex: =1
+
+                            CmbDefaultSubService As combobox:
+                                BorderColor: =VarTheme.PrimaryColor
+                                BorderStyle: =BorderStyle.None
+                                BorderThickness: =0
+                                ChevronBackground: =VarTheme.InputBackground
+                                ChevronFill: =Color.Black
+                                ChevronHoverBackground: =RGBA(186, 202, 226, 1)
+                                DisplayFields: =["msemr_name"]
+                                DisplayMode: =If(VarNavigateBooked=true || VarNavigateFulfill=true,DisplayMode.Disabled,DisplayMode.Edit)
+                                Fill: =VarTheme.InputBackground
+                                Font: =VarTheme.Font
+                                FontWeight: =FontWeight.Semibold
+                                InputTextPlaceholder: ="Select Sub Service"
+                                Items: =Filter('Sub Services', Status='Status (Sub Services)'.Active && Language.Code="en")
+                                PaddingLeft: =20
+                                PressedColor: =Color.Black
+                                PressedFill: =VarTheme.InputBackground
+                                SearchFields: =["msemr_name"]
+                                SearchItems: =Search(Filter('Sub Services', Status='Status (Sub Services)'.Active && Language.Code="en"),CmbDefaultSubService.SearchText,"msemr_name")
+                                SelectionFill: =RGBA(186, 202, 226, 1)
+                                SelectionTagFill: =VarTheme.InputBackground
+                                SelectMultiple: =false
+                                Size: =VarTheme.FontSize16
+                                Width: =471
+                                ZIndex: =3
+
+                        ConDefaultAppointmentStatus As groupContainer.verticalAutoLayoutContainer:
+                            AlignInContainer: =AlignInContainer.SetByContainer
+                            Height: =100
+                            LayoutDirection: =LayoutDirection.Vertical
+                            LayoutMinHeight: =100
+                            LayoutMinWidth: =250
+                            LayoutMode: =LayoutMode.Auto
+                            ZIndex: =2
+
+                            LblDefaultAppointmentStatus As label:
+                                Font: =VarTheme.Font
+                                FontWeight: =FontWeight.Semibold
+                                Size: =VarTheme.FontSize16
+                                Text: ="Appointment Status"
+                                Width: =400
+                                ZIndex: =1
+
+                            CmbDefaultAppointmentStatus As combobox:
+                                BorderColor: =VarTheme.PrimaryColor
+                                BorderStyle: =BorderStyle.None
+                                BorderThickness: =0
+                                ChevronBackground: =VarTheme.InputBackground
+                                ChevronFill: =Color.Black
+                                ChevronHoverBackground: =RGBA(186, 202, 226, 1)
+                                DisplayFields: =["Value"]
+                                DisplayMode: =If(VarNavigateBooked=true || VarNavigateFulfill=true,DisplayMode.Disabled,DisplayMode.Edit)
+                                Fill: =VarTheme.InputBackground
+                                Font: =VarTheme.Font
+                                FontWeight: =FontWeight.Semibold
+                                InputTextPlaceholder: ="Select Apponintment Status"
+                                Items: =Choices('Appointment Status')
+                                PaddingLeft: =20
+                                PressedColor: =Color.Black
+                                PressedFill: =VarTheme.InputBackground
+                                SearchFields: =["Value"]
+                                SearchItems: =Choices('Appointment Status',CmbDefaultAppointmentStatus.SearchText)
+                                SelectionFill: =RGBA(186, 202, 226, 1)
+                                SelectionTagFill: =VarTheme.InputBackground
+                                SelectMultiple: =false
+                                Size: =VarTheme.FontSize16
+                                Width: =471
+                                ZIndex: =3
+
+                DcDefaultTodayAppointment As dataCard.blankCard:
+                    BorderColor: =RGBA(0, 0, 0, 1)
+                    BorderStyle: =BorderStyle.Solid
+                    DisplayMode: =DisplayMode.Edit
+                    Fill: =RGBA(0, 0, 0, 0)
+                    Height: =70
+                    Width: =972
+                    X: =0
+                    Y: =5
+                    ZIndex: =5
+
+                    LblDefaultTodayAppointment As checkbox:
+                        BorderStyle: =BorderStyle.None
+                        Font: =VarTheme.Font
+                        FontWeight: =FontWeight.Semibold
+                        Text: ="Today's Appointment Only"
+                        Width: =Parent.Width
+                        Y: =8
+                        ZIndex: =2
+
+                DcDefaultPharmacistSignature As dataCard.blankCard:
+                    BorderColor: =RGBA(0, 0, 0, 1)
+                    BorderStyle: =BorderStyle.Solid
+                    DisplayMode: =DisplayMode.Edit
+                    Fill: =RGBA(0, 0, 0, 0)
+                    Height: =294
+                    Width: =998
+                    X: =0
+                    Y: =6
+                    ZIndex: =6
+
+                    LblDefaultPharmacistSignature As label:
+                        Font: =VarTheme.Font
+                        FontWeight: =FontWeight.Semibold
+                        Size: =VarTheme.FontSize16
+                        Text: ="Pharmacist Signature"
+                        Width: =500
+                        ZIndex: =1
+
+                    PenDefaultPharmacistSignature As inkControl:
+                        BorderThickness: =0
+                        Fill: =VarTheme.InputBackground
+                        Height: =200
+                        OnSelect: |-
+                            =UpdateContext({resetPenInput:false});
+                        Reset: =resetPenInput
+                        ShowControls: =false
+                        Width: =Parent.Width/2
+                        Y: =88
+                        ZIndex: =2
+
+                    BtnClearSignaturePatient_1 As button:
+                        BorderStyle: =BorderStyle.None
+                        BorderThickness: =0
+                        Fill: =VarTheme.PrimaryColor
+                        Font: =VarTheme.Font
+                        Height: =62
+                        HoverFill: =VarTheme.PrimaryColorDark
+                        OnSelect: |-
+                            =UpdateContext({resetPenInput:true});
+                        PaddingBottom: =14
+                        PaddingTop: =14
+                        RadiusBottomLeft: =0
+                        RadiusBottomRight: =0
+                        RadiusTopLeft: =0
+                        RadiusTopRight: =0
+                        Size: =16
+                        Text: ="Clear Signature"
+                        Width: =206
+                        X: =530
+                        Y: =226
+                        ZIndex: =3
+
+                    LblSignatureMessagePatient_1 As label:
+                        Font: =VarTheme.Font
+                        Size: =16
+                        Text: ="Please draw your signature below"
+                        Width: =790
+                        Y: =48
+                        ZIndex: =4
+
+                DcSetDetaults As dataCard.blankCard:
+                    BorderColor: =RGBA(0, 0, 0, 1)
+                    BorderStyle: =BorderStyle.Solid
+                    DisplayMode: =DisplayMode.Edit
+                    Fill: =RGBA(0, 0, 0, 0)
+                    Height: =109
+                    Width: =972
+                    X: =0
+                    Y: =7
+                    ZIndex: =7
+
+                    BtnSetDefaults As button:
+                        Fill: =VarTheme.PrimaryColor
+                        Font: =VarTheme.Font
+                        Height: =50
+                        HoverFill: =VarTheme.PrimaryColorDark
+                        OnSelect: |
+                            =Set(
+                                VarDefaultDuration,
+                                CmbDefaultDuration.Selected.Value
+                            );
+                            Set(
+                                VarDefaultSiteLocation,
+                                CmbDefaultLocation.Selected
+                            );
+                            Set(
+                                VarDefaultAssignedPractitioner,
+                                CmbDefaultPractitioner.Selected
+                            );
+                            Set(
+                                VarDefaultService,
+                                CmbDefaultServices.Selected
+                            );
+                            Set(
+                                VarDefaultAlphaCode,
+                                CmbDefaultCode.Selected
+                            );
+                            Set(
+                                VarDefaultServiceType,
+                                CmbDefaultServiceType.Selected
+                            );
+                            Set(
+                                VarDefaultFilterServiceType,
+                                CmbDefaultSubService.Selected.Name
+                            );
+                            Set(
+                                VarDefaultSubServiceValue,
+                                CmbDefaultSubService.Selected.'Healthcare Service (msemr_healthcareserviceid)'
+                            );
+                            Set(
+                                VarDefaultFilterAppointmentStatus,
+                                CmbDefaultAppointmentStatus.Selected.Value
+                            );
+                            Set(
+                                VarDefaultfilterTodaysAppt,
+                                LblDefaultTodayAppointment.Value
+                            );
+                            If(
+                                VarNavigateFulfill = true,
+                                Navigate(
+                                    ScnAppointmentDetails,
+                                    ScreenTransition.None
+                                ) && Set(
+                                    VarNavigateFulfill,
+                                    false
+                                ),
+                                VarNavigateBooked = true,
+                                Navigate(
+                                    ScnConfirmation,
+                                    ScreenTransition.None
+                                ) && Set(
+                                    VarNavigateBooked,
+                                    false
+                                ),
+                                VarNavigateSOAP = true,
+                                Navigate(
+                                    ScnAppointmentDetails,
+                                    ScreenTransition.None
+                                ) && Set(
+                                    VarDirectSoapNote,
+                                    true
+                                ) && Set(
+                                    VarNavigateSOAP,
+                                    false
+                                ),
+                                Navigate(
+                                    ScnLanding,
+                                    ScreenTransition.None
+                                )
+                            );
+                        RadiusBottomLeft: =0
+                        RadiusBottomRight: =0
+                        RadiusTopLeft: =0
+                        RadiusTopRight: =0
+                        Text: ="Set Defaults"
+                        Width: =625
+                        X: =174
+                        Y: =30
+                        ZIndex: =1
+
+                DcDefaultDuration As dataCard.blankCard:
+                    BorderColor: =RGBA(0, 0, 0, 1)
+                    BorderStyle: =BorderStyle.Solid
+                    DisplayMode: =DisplayMode.Edit
+                    Fill: =RGBA(0, 0, 0, 0)
+                    Height: =CmbDefaultDuration.Y+CmbDefaultDuration.Height+10
+                    Width: =Parent.Width-52
+                    X: =0
+                    Y: =1
+                    ZIndex: =8
+
+                    LblDefaultDurationHeader As label:
+                        Font: =VarTheme.Font
+                        FontWeight: =FontWeight.Semibold
+                        Height: =50
+                        Size: =VarTheme.FontSize20
+                        Text: ="Clinic schedule setup"
+                        Width: =400
+                        ZIndex: =1
+
+                    LblDefaultDuration As label:
+                        Font: =VarTheme.Font
+                        FontWeight: =FontWeight.Semibold
+                        Height: =55
+                        Size: =VarTheme.FontSize16
+                        Text: ="Max time to serve a patient (in minutes)"
+                        Width: =Parent.Width
+                        Y: =LblDefaultDurationHeader.Height+LblDefaultDurationHeader.Y
+                        ZIndex: =2
+
+                    CmbDefaultDuration As combobox:
+                        BorderColor: =VarTheme.PrimaryColor
+                        BorderStyle: =BorderStyle.None
+                        BorderThickness: =0
+                        ChevronBackground: =VarTheme.InputBackground
+                        ChevronFill: =Color.Black
+                        ChevronHoverBackground: =RGBA(186, 202, 226, 1)
+                        DefaultSelectedItems: =[15]
+                        DisplayFields: =["msemr_name"]
+                        DisplayMode: =If(VarNavigateBooked=true || VarNavigateFulfill=true,DisplayMode.Disabled,DisplayMode.Edit)
+                        Fill: =VarTheme.InputBackground
+                        Font: =VarTheme.Font
+                        FontWeight: =FontWeight.Semibold
+                        InputTextPlaceholder: ="Select Duration"
+                        IsSearchable: =false
+                        Items: =[5,10,15,30,60]
+                        PaddingLeft: =20
+                        PressedColor: =Color.Black
+                        PressedFill: =VarTheme.InputBackground
+                        Reset: =true
+                        SearchFields: =["msemr_name"]
+                        SearchItems: =[]
+                        SelectionFill: =RGBA(186, 202, 226, 1)
+                        SelectionTagFill: =VarTheme.InputBackground
+                        SelectMultiple: =false
+                        Size: =VarTheme.FontSize16
+                        Width: =Parent.Width
+                        Y: =LblDefaultDuration.Y+LblDefaultDuration.Height
+                        ZIndex: =3
+
+        BottomMenuDefault As BottonMenuContainer:
+            ActionNeededActiveMenu: =false
+            FindAppointmentAction: =ScnFindAppointment
+            FindApptActiveMenu: =false
+            FindPatientAction: =ScnFindPatient
+            FindPatientActiveMenu: =false
+            HomeAction: =ScnLanding
+            LayoutMinHeight: =640
+            LayoutMinWidth: =640
+            NeededAction: =ScnActionNeeded
+            NewAppointmentAction: =ScnNewAppointment
+            NewApptActiveMenu: =false
+            Width: =Parent.Width
+            ZIndex: =5
+

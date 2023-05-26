@@ -1,0 +1,333 @@
+"ScnPatientType As screen.'tabletAutoLayout_HeaderMainFooter_ver1.0'":
+    OnVisible: |-
+        =If(VarExistingPatient=true,
+        (/*Set(VarNewPatient,false) &&
+        Set(VarReturningPatient,true) &&*/
+        Set(VarWalkIn,true) &&
+        Set(VarForLater,false)),
+        (
+        /*Set(VarNewPatient,true) &&
+        Set(VarReturningPatient,false) &&*/
+        Set(VarWalkIn,true) &&
+        Set(VarForLater,false)
+        )
+        );
+
+    BottomMenuPatientType As BottonMenuContainer:
+        ActionNeededActiveMenu: =false
+        FindAppointmentAction: =ScnFindAppointment
+        FindApptActiveMenu: =false
+        FindPatientAction: =ScnFindPatient
+        FindPatientActiveMenu: =false
+        HomeAction: =ScnLanding
+        HomeActiveMenu: =false
+        NeededAction: =ScnActionNeeded
+        NewAppointmentAction: =ScnNewAppointment
+        Width: =Parent.Width
+        Y: =Parent.Height-Self.Height
+
+    BtnContinuePatientType As button:
+        Fill: =VarTheme.PrimaryColor
+        Font: =VarTheme.Font
+        Height: =50
+        HoverFill: =VarTheme.PrimaryColorDark
+        OnSelect: |
+            =Set(
+                varGuardianFirstName,
+                Blank()
+            );
+            Set(
+                varGuardianMiddleName,
+                Blank()
+            );
+            Set(
+                varGuardianLastName,
+                Blank()
+            );
+            Set(
+                varAdditionalService,
+                false
+            );
+            ResetForm(FrmPayment);
+            Set(
+                VarConfirmationScreen,
+                true
+            );
+            Navigate(ScnLocation);
+            ResetForm(FrmPatientProfilePayment);
+        RadiusBottomLeft: =0
+        RadiusBottomRight: =0
+        RadiusTopLeft: =0
+        RadiusTopRight: =0
+        Text: ="Continue"
+        Width: =625
+        X: =199
+        Y: =ConWalkInBtn.Y+ConWalkInBtn.Height+20
+        ZIndex: =2
+
+    ConWalkInBtn As groupContainer.manualLayoutContainer:
+        BorderColor: =VarTheme.PrimaryColor
+        BorderThickness: =1
+        Height: =215
+        Width: =468
+        X: =26
+        Y: =LblHeaderPatientType2.Height+LblHeaderPatientType2.Y+20
+        ZIndex: =4
+
+        IcnRdoWalkInGray As image:
+            Height: =35
+            Image: |-
+                ="data:image/svg+xml;utf8, "&EncodeUrl("<svg width='35' height='35' viewBox='0 0 35 35' fill='none' xmlns='http://www.w3.org/2000/svg'> <circle cx='17.5' cy='17.5' r='17' fill='white' stroke='#0052CC'/> <circle cx='17.5' cy='17.5' r='12.5' fill='#0052CC'/> </svg>")
+            PaddingTop: =1
+            Visible: =VarWalkIn
+            Width: =36
+            X: =405
+            Y: =21
+            ZIndex: =1
+
+        IcnRdoWalkInBlue As image:
+            Height: =35
+            Image: |-
+                ="data:image/svg+xml;utf8, "&EncodeUrl("<svg width='35' height='35' viewBox='0 0 35 35' fill='none' xmlns='http://www.w3.org/2000/svg'> <circle cx='17.5' cy='17.5' r='17' fill='white' stroke='#2A2A2A'/> </svg> ")
+            PaddingTop: =1
+            Visible: =VarWalkIn=false
+            Width: =35
+            X: =405
+            Y: =21
+            ZIndex: =2
+
+        ImgWalkInBlue As image:
+            Height: =65
+            Image: |-
+                ="data:image/svg+xml;utf8, "&EncodeUrl("<svg width='30' height='48' viewBox='0 0 30 48' fill='none' xmlns='http://www.w3.org/2000/svg'>
+                <g clip-path='url(#clip0_1637_15207)'>
+                <path d='M19.5006 9C21.985 9 24.0006 6.98438 24.0006 4.5C24.0006 2.01562 21.985 0 19.5006 0C17.0162 0 15.0006 2.01562 15.0006 4.5C15.0006 6.98438 17.0162 9 19.5006 9ZM28.36 22.9781L26.1756 21.8719L25.2662 19.1156C23.8881 14.9344 20.0443 12.0094 15.685 12C12.31 11.9906 10.4443 12.9469 6.93809 14.3625C4.91309 15.1781 3.25371 16.725 2.27871 18.6937L1.65059 19.9688C0.919336 21.45 1.50996 23.25 2.98184 23.9906C4.44434 24.7312 6.22559 24.1313 6.96621 22.65L7.59434 21.375C7.92246 20.7188 8.46621 20.2031 9.14121 19.9313L11.6537 18.9188L10.2287 24.6094C9.74121 26.5594 10.2662 28.6312 11.6256 30.1219L17.2412 36.2531C17.9162 36.9938 18.3943 37.8844 18.6381 38.85L20.3537 45.7219C20.7568 47.325 22.3881 48.3094 23.9912 47.9062C25.5943 47.5031 26.5787 45.8719 26.1756 44.2688L24.0943 35.925C23.8506 34.9594 23.3725 34.0594 22.6975 33.3281L18.4318 28.6687L20.0443 22.2281L20.56 23.775C21.0568 25.2844 22.1256 26.5312 23.5318 27.2438L25.7162 28.35C27.1787 29.0906 28.96 28.4906 29.7006 27.0094C30.4225 25.5375 29.8318 23.7188 28.36 22.9781ZM6.90059 36.1687C6.60059 36.9281 6.15059 37.6125 5.56934 38.1844L0.881836 42.8812C-0.290039 44.0531 -0.290039 45.9563 0.881836 47.1281C2.05371 48.3 3.94746 48.3 5.11934 47.1281L10.6881 41.5594C11.26 40.9875 11.71 40.3031 12.0193 39.5437L13.285 36.375C8.10059 30.7219 9.65684 32.4562 8.84121 31.3406L6.90059 36.1687Z' fill='#0052CC'/>
+                </g>
+                <defs>
+                <clipPath id='clip0_1637_15207'>
+                <rect width='30' height='48' fill='white'/>
+                </clipPath>
+                </defs>
+                </svg>
+                ")
+            Visible: =VarWalkIn
+            Width: =65
+            X: =201
+            Y: =56
+            ZIndex: =3
+
+        ImgWalkInGray As image:
+            Height: =65
+            Image: |-
+                ="data:image/svg+xml;utf8, "&EncodeUrl("<svg width='30' height='48' viewBox='0 0 30 48' fill='none' xmlns='http://www.w3.org/2000/svg'>
+                <g clip-path='url(#clip0_1637_10986)'>
+                <path d='M19.5006 9C21.985 9 24.0006 6.98438 24.0006 4.5C24.0006 2.01562 21.985 0 19.5006 0C17.0162 0 15.0006 2.01562 15.0006 4.5C15.0006 6.98438 17.0162 9 19.5006 9ZM28.36 22.9781L26.1756 21.8719L25.2662 19.1156C23.8881 14.9344 20.0443 12.0094 15.685 12C12.31 11.9906 10.4443 12.9469 6.93809 14.3625C4.91309 15.1781 3.25371 16.725 2.27871 18.6937L1.65059 19.9688C0.919336 21.45 1.50996 23.25 2.98184 23.9906C4.44434 24.7312 6.22559 24.1313 6.96621 22.65L7.59434 21.375C7.92246 20.7188 8.46621 20.2031 9.14121 19.9313L11.6537 18.9188L10.2287 24.6094C9.74121 26.5594 10.2662 28.6312 11.6256 30.1219L17.2412 36.2531C17.9162 36.9938 18.3943 37.8844 18.6381 38.85L20.3537 45.7219C20.7568 47.325 22.3881 48.3094 23.9912 47.9062C25.5943 47.5031 26.5787 45.8719 26.1756 44.2688L24.0943 35.925C23.8506 34.9594 23.3725 34.0594 22.6975 33.3281L18.4318 28.6687L20.0443 22.2281L20.56 23.775C21.0568 25.2844 22.1256 26.5312 23.5318 27.2438L25.7162 28.35C27.1787 29.0906 28.96 28.4906 29.7006 27.0094C30.4225 25.5375 29.8318 23.7188 28.36 22.9781ZM6.90059 36.1687C6.60059 36.9281 6.15059 37.6125 5.56934 38.1844L0.881836 42.8812C-0.290039 44.0531 -0.290039 45.9563 0.881836 47.1281C2.05371 48.3 3.94746 48.3 5.11934 47.1281L10.6881 41.5594C11.26 40.9875 11.71 40.3031 12.0193 39.5437L13.285 36.375C8.10059 30.7219 9.65684 32.4562 8.84121 31.3406L6.90059 36.1687Z' fill='#7B7B7B'/>
+                </g>
+                <defs>
+                <clipPath id='clip0_1637_10986'>
+                <rect width='30' height='48' fill='white'/>
+                </clipPath>
+                </defs>
+                </svg>
+                ")
+            Visible: =VarWalkIn=false
+            Width: =65
+            X: =201
+            Y: =56
+            ZIndex: =4
+
+        LblWalkInSubTitle As label:
+            Align: =Align.Center
+            Color: |-
+                =If(VarWalkIn=true,RGBA(0, 0, 0, 1),
+                RGBA(123, 123, 123, 1))
+            Font: =VarTheme.Font
+            FontWeight: =FontWeight.Bold
+            PaddingLeft: =15
+            Size: =18
+            Text: ="Walk In"
+            Width: =300
+            X: =84
+            Y: =142
+            ZIndex: =5
+
+        RectWalkInBtn As rectangle:
+            BorderColor: =RGBA(0, 0, 0, 0)
+            BorderStyle: =BorderStyle.None
+            DisabledFill: =
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =Parent.Height
+            HoverFill: =
+            OnSelect: |-
+                =Set(VarWalkIn,true);
+                Set(VarForLater,false);
+            PressedFill: =
+            Width: =Parent.Width
+            ZIndex: =6
+
+    ConForLaterBtn As groupContainer.manualLayoutContainer:
+        BorderColor: =VarTheme.PrimaryColor
+        BorderThickness: =1
+        Height: =215
+        Width: =468
+        X: =ConWalkInBtn.X+ConWalkInBtn.Width+33
+        Y: =LblHeaderPatientType2.Height+LblHeaderPatientType2.Y+20
+        ZIndex: =5
+
+        IcnForLaterBlue As image:
+            Height: =35
+            Image: |-
+                ="data:image/svg+xml;utf8, "&EncodeUrl("<svg width='35' height='35' viewBox='0 0 35 35' fill='none' xmlns='http://www.w3.org/2000/svg'> <circle cx='17.5' cy='17.5' r='17' fill='white' stroke='#0052CC'/> <circle cx='17.5' cy='17.5' r='12.5' fill='#0052CC'/> </svg>")
+            PaddingTop: =1
+            Visible: =VarForLater
+            Width: =36
+            X: =396
+            Y: =21
+            ZIndex: =1
+
+        IcnForLaterGray As image:
+            Height: =35
+            Image: |-
+                ="data:image/svg+xml;utf8, "&EncodeUrl("<svg width='35' height='35' viewBox='0 0 35 35' fill='none' xmlns='http://www.w3.org/2000/svg'> <circle cx='17.5' cy='17.5' r='17' fill='white' stroke='#2A2A2A'/> </svg> ")
+            PaddingTop: =1
+            Visible: =VarForLater=false
+            Width: =35
+            X: =396
+            Y: =21
+            ZIndex: =2
+
+        ImgForLaterBlue As image:
+            Height: =65
+            Image: |-
+                ="data:image/svg+xml;utf8, "&EncodeUrl("<svg width='62' height='66' viewBox='0 0 62 66' fill='none' xmlns='http://www.w3.org/2000/svg'>
+                <path d='M10.6875 49.875C10.6875 49.875 7.125 49.875 7.125 46.3125C7.125 42.75 10.6875 32.0625 28.5 32.0625C46.3125 32.0625 49.875 42.75 49.875 46.3125C49.875 49.875 46.3125 49.875 46.3125 49.875H10.6875ZM28.5 28.5C31.3345 28.5 34.0529 27.374 36.0572 25.3697C38.0615 23.3654 39.1875 20.647 39.1875 17.8125C39.1875 14.978 38.0615 12.2596 36.0572 10.2553C34.0529 8.251 31.3345 7.125 28.5 7.125C25.6655 7.125 22.9471 8.251 20.9428 10.2553C18.9385 12.2596 17.8125 14.978 17.8125 17.8125C17.8125 20.647 18.9385 23.3654 20.9428 25.3697C22.9471 27.374 25.6655 28.5 28.5 28.5Z' fill='#0052CC'/>
+                <path d='M54.1794 44.6778V49.819H56.8588V55.1769H46.3596V52.1744L38 57.7475L46.3596 63.3206V60.3181H62V44.6777H54.1794V44.6778Z' fill='#0052CC'/>
+                </svg>
+                ")
+            Visible: =VarForLater
+            Width: =65
+            X: =202
+            Y: =56
+            ZIndex: =3
+
+        ImgForLaterGray As image:
+            Height: =65
+            Image: |-
+                ="data:image/svg+xml;utf8, "&EncodeUrl("<svg width='62' height='66' viewBox='0 0 62 66' fill='none' xmlns='http://www.w3.org/2000/svg'>
+                <path d='M10.6875 49.875C10.6875 49.875 7.125 49.875 7.125 46.3125C7.125 42.75 10.6875 32.0625 28.5 32.0625C46.3125 32.0625 49.875 42.75 49.875 46.3125C49.875 49.875 46.3125 49.875 46.3125 49.875H10.6875ZM28.5 28.5C31.3345 28.5 34.0529 27.374 36.0572 25.3697C38.0615 23.3654 39.1875 20.647 39.1875 17.8125C39.1875 14.978 38.0615 12.2596 36.0572 10.2553C34.0529 8.251 31.3345 7.125 28.5 7.125C25.6655 7.125 22.9471 8.251 20.9428 10.2553C18.9385 12.2596 17.8125 14.978 17.8125 17.8125C17.8125 20.647 18.9385 23.3654 20.9428 25.3697C22.9471 27.374 25.6655 28.5 28.5 28.5Z' fill='#7B7B7B'/>
+                <path d='M54.1794 44.6778V49.819H56.8588V55.1769H46.3596V52.1744L38 57.7475L46.3596 63.3206V60.3181H62V44.6777H54.1794V44.6778Z' fill='#7B7B7B'/>
+                </svg>
+                ")
+            Visible: =VarForLater=false
+            Width: =65
+            X: =202
+            Y: =56
+            ZIndex: =4
+
+        LblForLaterSubTitle As label:
+            Align: =Align.Center
+            Color: |-
+                =If(VarForLater=true,RGBA(0, 0, 0, 1),
+                RGBA(123, 123, 123, 1))
+            Font: =VarTheme.Font
+            FontWeight: =FontWeight.Bold
+            PaddingLeft: =15
+            Size: =18
+            Text: ="For Later"
+            Width: =300
+            X: =84
+            Y: =138
+            ZIndex: =5
+
+        RectForLaterBtn As rectangle:
+            BorderColor: =RGBA(0, 0, 0, 0)
+            BorderStyle: =BorderStyle.None
+            DisabledFill: =
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =Parent.Height
+            HoverFill: =
+            OnSelect: |-
+                =Set(VarWalkIn,false);
+                Set(VarForLater,true);
+            PressedFill: =
+            Width: =Parent.Width
+            ZIndex: =6
+
+    LblHeaderPatientType2 As label:
+        Font: =VarTheme.Font
+        FontWeight: =FontWeight.Bold
+        PaddingLeft: =15
+        Size: =24
+        Text: ="The appointment is"
+        Width: =500
+        X: =26
+        Y: =ConPatientInfoPatientType.Y+ConPatientInfoPatientType.Height+10
+        ZIndex: =6
+
+    ConPatientInfoPatientType As groupContainer.manualLayoutContainer:
+        Height: =230
+        Width: =Parent.Width
+        Y: =ConPatientTypeHeader.Height+ConPatientTypeHeader.Y
+        ZIndex: =7
+
+        HtmlPatientInfoNewAppt As htmlViewer:
+            Fill: =RGBA(243, 243, 244, 1)
+            Font: =VarTheme.Font
+            Height: =Parent.Height
+            HtmlText: |-
+                ="
+                    <div style='padding-top:14px;'>
+                    <label style='font-weight: 700; font-size: 30px;padding-left: 22px;'>" & gblSelectedPatient.'Full Name' & "</label> </div>
+                    <div style='display: flex; width: 100%; padding: 20px;'>
+                    <div style='width: 50%; padding-right: 20px;'>
+                        <div style='line-height: 1.8;'>
+                        <div style='display: flex;font-size: 22px;'><label style='color: #000000; min-width: 100px;'> Birthdate:</label><label style='font-weight: 700;'>" & gblSelectedPatient.birthdate & " (" & RoundDown(
+                    DateDiff(
+                        gblSelectedPatient.birthdate,
+                        Now(),
+                        TimeUnit.Days
+                    ) / 365.25,
+                    0
+                ) & " years old)</label></div>
+                        </div>
+                    </div>
+                    <div style='width: 50%;'>
+                        <div style='line-height: 1.8;'>
+                                <div style='font-size: 22px;display: flex;'><label style='color: #000000; min-width: 100px;'>Phone:</label> <label style='font-weight: 700;'>" & gblSelectedPatient.'Mobile Phone' & "</label></div>
+                    </div>
+                    </div>
+                </div>
+                    <div style='padding-left: 22px;font-size: 22px;display: flex;'><label style='color: #000000; min-width: 100px;'>Email:</label><label style='font-weight: 700;width:70%;'>" & gblSelectedPatient.Email & "</label></div>"
+            Width: =Parent.Width-52
+            X: =26
+            ZIndex: =1
+
+    ConPatientTypeHeader As groupContainer.manualLayoutContainer:
+        Height: =VarTheme.HeaderSize
+        Width: =Parent.Width
+        ZIndex: =8
+
+        ImgBackPatientType As image:
+            Height: =40
+            Image: |-
+                ="data:image/svg+xml;utf8, "&EncodeUrl("<svg width='28' height='28' viewBox='0 0 28 28' fill='none' xmlns='http://www.w3.org/2000/svg'> <path d='M14 28C10.287 28 6.72602 26.525 4.10051 23.8995C1.475 21.274 3.04044e-06 17.713 3.20274e-06 14C3.36504e-06 10.287 1.475 6.72601 4.10051 4.1005C6.72602 1.475 10.287 -7.74261e-07 14 -6.11959e-07C17.713 -4.49658e-07 21.274 1.475 23.8995 4.10051C26.525 6.72601 28 10.287 28 14C28 17.713 26.525 21.274 23.8995 23.8995C21.274 26.525 17.713 28 14 28ZM20.125 14.875C20.3571 14.875 20.5796 14.7828 20.7437 14.6187C20.9078 14.4546 21 14.2321 21 14C21 13.7679 20.9078 13.5454 20.7437 13.3813C20.5796 13.2172 20.3571 13.125 20.125 13.125L9.98725 13.125L13.7445 9.3695C13.9088 9.2052 14.0011 8.98236 14.0011 8.75C14.0011 8.51764 13.9088 8.2948 13.7445 8.1305C13.5802 7.9662 13.3574 7.87389 13.125 7.87389C12.8926 7.87389 12.6698 7.9662 12.5055 8.1305L7.2555 13.3805C7.17402 13.4618 7.10937 13.5583 7.06526 13.6646C7.02114 13.7709 6.99844 13.8849 6.99844 14C6.99844 14.1151 7.02114 14.2291 7.06526 14.3354C7.10937 14.4417 7.17402 14.5382 7.2555 14.6195L12.5055 19.8695C12.6698 20.0338 12.8926 20.1261 13.125 20.1261C13.3574 20.1261 13.5802 20.0338 13.7445 19.8695C13.9088 19.7052 14.0011 19.4824 14.0011 19.25C14.0011 19.0176 13.9088 18.7948 13.7445 18.6305L9.98725 14.875L20.125 14.875Z' fill='#0052CC'/> </svg> ")
+            OnSelect: |-
+                =//If(VarExistingPatient=false,Navigate(ScnLanding),Navigate(ScnPatientAppointment));
+                
+                Navigate(ScnNewAppointment)
+            Width: =40
+            X: =40
+            Y: =40
+            ZIndex: =1
+
+        LblHeaderPatientType As label:
+            Font: =VarTheme.Font
+            FontWeight: =FontWeight.Bold
+            PaddingLeft: =15
+            Size: =24
+            Text: ="New Appointment"
+            Width: =500
+            X: =86
+            Y: =40
+            ZIndex: =2
+

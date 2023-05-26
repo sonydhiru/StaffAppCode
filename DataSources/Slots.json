@@ -1,0 +1,394 @@
+[
+  {
+    "CdsFCBContext": "{\"FileType\":true,\"ImageExternalStorage\":true}",
+    "EntitySetName": "msemr_slots",
+    "IsHidden": false,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "LogicalName": "msemr_slot",
+    "MaxGetRowsCount": 500,
+    "Name": "Slots",
+    "NativeCDSDataSourceInfoNameMapping": {
+      "_ownerid_value": "Owner",
+      "createdby": "Created By",
+      "createdon": "Created On",
+      "createdonbehalfby": "Created By (Delegate)",
+      "dev_test": "test",
+      "importsequencenumber": "Import Sequence Number",
+      "modifiedby": "Modified By",
+      "modifiedon": "Modified On",
+      "modifiedonbehalfby": "Modified By (Delegate)",
+      "msemr_appointmentemrId": "Appointment",
+      "msemr_appointmenttypenew": "AppointmentType",
+      "msemr_comment": "Comment",
+      "msemr_end": "End",
+      "msemr_msemr_slot_msemr_appointmentemrslot_Slot": "Appointment (EMR) Slots",
+      "msemr_msemr_slot_msemr_slotservicetype_Slots": "Slot Service Types",
+      "msemr_msemr_slot_msemr_slotspecialty_slot": "Slots Specialty",
+      "msemr_name": "Name",
+      "msemr_overbooked": "Overbooked",
+      "msemr_Schedule": "Schedule (msemr_Schedule)",
+      "msemr_ServiceCategory": "Service Category",
+      "msemr_ServiceTypeNew": "Service Type",
+      "msemr_slot_AsyncOperations": "System Jobs",
+      "msemr_slot_BulkDeleteFailures": "Bulk Delete Failures",
+      "msemr_slot_DuplicateBaseRecord": "Duplicate Records (msemr_slot_DuplicateBaseRecord)",
+      "msemr_slot_DuplicateMatchingRecord": "Duplicate Records (msemr_slot_DuplicateMatchingRecord)",
+      "msemr_slot_MailboxTrackingFolders": "Mailbox Auto Tracking Folders",
+      "msemr_slot_PrincipalObjectAttributeAccesses": "Field Sharing",
+      "msemr_slot_ProcessSession": "Process Sessions",
+      "msemr_slot_SyncErrors": "Sync Errors",
+      "msemr_slotid": "Slot",
+      "msemr_Specialty": "Specialty",
+      "msemr_start": "Start",
+      "msemr_status": "Status (msemr_status)",
+      "overriddencreatedon": "Record Created On",
+      "owningbusinessunit": "Owning Business Unit",
+      "owningteam": "Owning Team",
+      "owninguser": "Owning User",
+      "smvs_appointment_date_slotId": "Appointment Days",
+      "smvs_appointment_dose_number": "Appointment Type",
+      "smvs_appointment_report": "Appointment Report",
+      "smvs_appointment_slot_availability_first_": "Appointment Slots Availability (smvs_appointment_slot_availability_first_)",
+      "smvs_associated_first_appointmentId": "Associated First appointment",
+      "smvs_available_slot_count": "Available Slot Count",
+      "smvs_decreament_availability_count": "Decreament Availability Count",
+      "smvs_decrement_count": "Decrement Count",
+      "smvs_eligible_for_first_appointment": "Eligible for First Appointment",
+      "smvs_HealthcareService": "Healthcare Service",
+      "smvs_increament_count": "Increament Count",
+      "smvs_increment_available_slot": "Increment Available Slot",
+      "smvs_Location": "Location",
+      "smvs_msemr_healthcareservice_msemr_slot_msemr_": "Sub Services",
+      "smvs_msemr_slot_msemr_appointmentemr_RegistrationBlock": "Appointments (EMR)",
+      "smvs_msemr_slot_msemr_slot": "Slots",
+      "smvs_msemr_slot_smvs_appointment_slot_availabi": "Appointment Slots Availability (smvs_msemr_slot_smvs_appointment_slot_availabi)",
+      "smvs_new_capacity": "New Capacity",
+      "smvs_parent_second_slot": "Parent Second Slot",
+      "smvs_schedule": "Schedule (smvs_schedule)",
+      "smvs_shot_duration_minutes": "Block Duration (minutes)",
+      "smvs_shotestimate": "Capacity Per Block",
+      "smvs_slot_appointment_slot_availability": "Appointment Slots Availability (smvs_slot_appointment_slot_availability)",
+      "smvs_slot_duration": "Clinic Duration (Minutes)",
+      "smvs_slot_status": "Slot Status",
+      "smvs_slotdurationhour": "Slot duration (hour)",
+      "smvs_slotperhour": "Blocks Per Hour",
+      "smvs_total_slot_count": "Current Capacity",
+      "smvs_updated_from_appointment_days": "Updated from Appointment Days",
+      "smvs_updated_from_schedule": "Updated From Schedule",
+      "smvs_version": "Version",
+      "statecode": "Status (statecode)",
+      "statuscode": "Status Reason",
+      "timezoneruleversionnumber": "Time Zone Rule Version Number",
+      "utcconversiontimezonecode": "UTC Conversion Time Zone Code",
+      "versionnumber": "Version Number"
+    },
+    "PreferredName": "Slots",
+    "Type": "NativeCDSDataSourceInfo"
+  },
+  {
+    "DisplayName": "Slots (Views)",
+    "Name": "_msemr_slot_views",
+    "RelatedEntityName": "Slots",
+    "TrimmedViewName": true,
+    "Type": "ViewInfo",
+    "ViewInfoNameMapping": {
+      "489452a5-d068-4c57-bc0f-04eb04bda069": "Slot Advanced Find View",
+      "6205aa8c-8d40-4f7a-996c-7f23563f9ca2": "Slot Lookup View",
+      "9b3fd4a6-80b9-4158-8a35-bff3fd078de5": "Inactive Slots",
+      "b17f9d3f-1682-eb11-a812-000d3a9c269e": "Future Slots (Next 60 days)",
+      "dd0b5fdd-78fd-4294-bf9c-cd95320c0828": "All Slots",
+      "e9474f13-a7d6-4053-a1e6-73da630ed5b6": "Slot Associated View",
+      "f7b88976-1682-eb11-a812-000d3a9c269e": "Past Slots (Previous 60 days)"
+    }
+  },
+  {
+    "DisplayName": "Appointment Type",
+    "Name": "msemr_appointmenttype",
+    "OptionSetInfoNameMapping": {
+      "935000000": "Check Up",
+      "935000001": "Emergency",
+      "935000002": "Follow Up",
+      "935000003": "Routine",
+      "935000004": "Walk In"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": true,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "msemr_appointmenttypenew",
+        "OptionSetReferenceEntityName": "Slots"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "msemr_appointmenttypenew",
+    "RelatedEntityName": "Slots",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Overbooked (Slots)",
+    "Name": "msemr_slot_msemr_overbooked",
+    "OptionSetInfoNameMapping": {
+      "0": "No",
+      "1": "Yes"
+    },
+    "OptionSetIsBooleanValued": true,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "msemr_overbooked",
+        "OptionSetReferenceEntityName": "Slots"
+      }
+    },
+    "OptionSetTypeKey": "BooleanType",
+    "RelatedColumnInvariantName": "msemr_overbooked",
+    "RelatedEntityName": "Slots",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status (Slots)",
+    "Name": "msemr_slot_msemr_status",
+    "OptionSetInfoNameMapping": {
+      "935000000": "Busy",
+      "935000001": "Free",
+      "935000002": "Busy-Unavailable",
+      "935000003": "Busy-Tentative",
+      "935000004": "Entered-In-Error"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "msemr_status",
+        "OptionSetReferenceEntityName": "Slots"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "msemr_status",
+    "RelatedEntityName": "Slots",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status (Slots)_1",
+    "Name": "msemr_slot_statecode",
+    "OptionSetInfoNameMapping": {
+      "0": "Active",
+      "1": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statecode",
+        "OptionSetReferenceEntityName": "Slots"
+      }
+    },
+    "OptionSetTypeKey": "StateType",
+    "RelatedColumnInvariantName": "statecode",
+    "RelatedEntityName": "Slots",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status Reason (Slots)",
+    "Name": "msemr_slot_statuscode",
+    "OptionSetInfoNameMapping": {
+      "1": "Active",
+      "2": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statuscode",
+        "OptionSetReferenceEntityName": "Slots"
+      }
+    },
+    "OptionSetTypeKey": "StatusType",
+    "RelatedColumnInvariantName": "statuscode",
+    "RelatedEntityName": "Slots",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Appointment Type (Slots)",
+    "Name": "smvs_msemr_slot_smvs_appointment_dose_number",
+    "OptionSetInfoNameMapping": {
+      "153940000": "First Appointment",
+      "153940001": "Second Appointment"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "smvs_appointment_dose_number",
+        "OptionSetReferenceEntityName": "Slots"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "smvs_appointment_dose_number",
+    "RelatedEntityName": "Slots",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Decreament Availability Count (Slots)",
+    "Name": "smvs_msemr_slot_smvs_decreament_availability_count",
+    "OptionSetInfoNameMapping": {
+      "0": "No",
+      "1": "Yes"
+    },
+    "OptionSetIsBooleanValued": true,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "smvs_decreament_availability_count",
+        "OptionSetReferenceEntityName": "Slots"
+      }
+    },
+    "OptionSetTypeKey": "BooleanType",
+    "RelatedColumnInvariantName": "smvs_decreament_availability_count",
+    "RelatedEntityName": "Slots",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Eligible for First Appointment (Slots)",
+    "Name": "smvs_msemr_slot_smvs_eligible_for_first_appointment",
+    "OptionSetInfoNameMapping": {
+      "0": "No",
+      "1": "Yes"
+    },
+    "OptionSetIsBooleanValued": true,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "smvs_eligible_for_first_appointment",
+        "OptionSetReferenceEntityName": "Slots"
+      }
+    },
+    "OptionSetTypeKey": "BooleanType",
+    "RelatedColumnInvariantName": "smvs_eligible_for_first_appointment",
+    "RelatedEntityName": "Slots",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Increment Available Slot (Slots)",
+    "Name": "smvs_msemr_slot_smvs_increment_available_slot",
+    "OptionSetInfoNameMapping": {
+      "0": "No",
+      "1": "Yes"
+    },
+    "OptionSetIsBooleanValued": true,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "smvs_increment_available_slot",
+        "OptionSetReferenceEntityName": "Slots"
+      }
+    },
+    "OptionSetTypeKey": "BooleanType",
+    "RelatedColumnInvariantName": "smvs_increment_available_slot",
+    "RelatedEntityName": "Slots",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Parent Second Slot (Slots)",
+    "Name": "smvs_msemr_slot_smvs_parent_second_slot",
+    "OptionSetInfoNameMapping": {
+      "0": "No",
+      "1": "Yes"
+    },
+    "OptionSetIsBooleanValued": true,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "smvs_parent_second_slot",
+        "OptionSetReferenceEntityName": "Slots"
+      }
+    },
+    "OptionSetTypeKey": "BooleanType",
+    "RelatedColumnInvariantName": "smvs_parent_second_slot",
+    "RelatedEntityName": "Slots",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Slot Status (Slots)",
+    "Name": "smvs_msemr_slot_smvs_slot_status",
+    "OptionSetInfoNameMapping": {
+      "153940000": "Live",
+      "153940001": "Not Live"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "smvs_slot_status",
+        "OptionSetReferenceEntityName": "Slots"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "smvs_slot_status",
+    "RelatedEntityName": "Slots",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Updated from Appointment Days (Slots)",
+    "Name": "smvs_msemr_slot_smvs_updated_from_appointment_days",
+    "OptionSetInfoNameMapping": {
+      "0": "No",
+      "1": "Yes"
+    },
+    "OptionSetIsBooleanValued": true,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "smvs_updated_from_appointment_days",
+        "OptionSetReferenceEntityName": "Slots"
+      }
+    },
+    "OptionSetTypeKey": "BooleanType",
+    "RelatedColumnInvariantName": "smvs_updated_from_appointment_days",
+    "RelatedEntityName": "Slots",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Updated From Schedule (Slots)",
+    "Name": "smvs_msemr_slot_smvs_updated_from_schedule",
+    "OptionSetInfoNameMapping": {
+      "0": "No",
+      "1": "Yes"
+    },
+    "OptionSetIsBooleanValued": true,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "smvs_updated_from_schedule",
+        "OptionSetReferenceEntityName": "Slots"
+      }
+    },
+    "OptionSetTypeKey": "BooleanType",
+    "RelatedColumnInvariantName": "smvs_updated_from_schedule",
+    "RelatedEntityName": "Slots",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Slot Per Hour",
+    "Name": "smvs_slotperhour",
+    "OptionSetInfoNameMapping": {
+      "153940000": "1",
+      "153940001": "2",
+      "153940002": "4",
+      "153940003": "6",
+      "153940004": "12"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": true,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "smvs_slotperhour",
+        "OptionSetReferenceEntityName": "Slots"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "smvs_slotperhour",
+    "RelatedEntityName": "Slots",
+    "Type": "OptionSetInfo"
+  }
+]

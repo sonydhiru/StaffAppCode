@@ -1,0 +1,639 @@
+"ScnSOAPPDF As screen.'tabletAutoLayout_HeaderMainFooter_ver1.0'":
+    OnVisible: |-
+        =UpdateContext({varPDFVisible: false})
+    Width: |-
+        =Max(App.Width, App.MinScreenWidth)
+        //900+planslist*150
+
+    ConSoapPDF As groupContainer.verticalAutoLayoutContainer:
+        Height: =Parent.Height-ConSOAPHeader.Height
+        LayoutAlignItems: =LayoutAlignItems.Stretch
+        LayoutDirection: =LayoutDirection.Vertical
+        LayoutMode: =LayoutMode.Auto
+        PaddingLeft: =32
+        Width: =Parent.Width
+        Y: =ConSOAPHeader.Height
+        ZIndex: =1
+
+        CnvSOAPPDF As fluidGrid.fluidGridWithBlankCard:
+            AlignInContainer: =AlignInContainer.SetByContainer
+            BorderThickness: =0
+            FillPortions: =0
+            Height: =Parent.Height - Self.Y
+            LayoutMinHeight: =250
+            LayoutMinWidth: =100
+            Width: =Parent.Width
+            ZIndex: =4
+
+            DataCard1_1 As dataCard:
+                BorderColor: =RGBA(117, 117, 117, 1)
+                BorderStyle: =BorderStyle.None
+                BorderThickness: =1
+                DisplayMode: =DisplayMode.Edit
+                Fill: =RGBA(0, 0, 0, 0)
+                Height: =120
+                Width: =Parent.Width-32
+                X: =0
+                Y: =0
+                ZIndex: =1
+
+                Label6_7 As label:
+                    AutoHeight: =true
+                    Font: =VarTheme.Font
+                    FontWeight: =FontWeight.Bold
+                    Size: =20
+                    Text: |-
+                        ="My Medication - 
+                        Related Action Plan"
+                    Width: =300
+                    Y: =30
+                    ZIndex: =1
+
+            DataCard4 As dataCard.blankCard:
+                BorderColor: =RGBA(117, 117, 117, 1)
+                BorderStyle: =BorderStyle.Solid
+                BorderThickness: =1
+                DisplayMode: =DisplayMode.Edit
+                Fill: =RGBA(0, 0, 0, 0)
+                Height: =287
+                Width: =Parent.Width-32
+                X: =0
+                Y: =1
+                ZIndex: =2
+
+                HtmlPatientInfo1_1 As htmlViewer:
+                    Color: =VarTheme.InputTextDark
+                    Font: =VarTheme.Font
+                    Height: =Parent.Height
+                    HtmlText: |-
+                        ="
+                        <div style='line-height: 1.5;'>
+                        <div style='display: flex;padding-bottom:14px;'><label style='color: #000000; min-width: 100px;'>Patient Name:</label> <strong style=padding-left:20px;>" &gblSelectedPatient.'Full Name'& "</strong></div>
+                        <div style='display: flex;padding-bottom:14px;'><label style='color: #000000; min-width: 100px;'>DOB:</label> <strong style=padding-left:75px;>" &gblSelectedPatient.Birthday& "</strong></div>
+                        <div style='display: flex;padding-bottom:14px;'><label style='color: #000000; min-width: 100px;'>Provider Name:</label>  <strong style=padding-left:10px;>" &User().FullName &"</strong></div>
+                        <div style='display: flex;padding-bottom:14px;'><label style='color: #000000; min-width: 100px;'>Date Prepared:</label> <strong style=padding-left:10px;>" &Now()& "</strong></div>
+                        </div>
+                        "
+                    PaddingLeft: =20
+                    PaddingTop: =18
+                    Size: =18
+                    Width: =Parent.Width/2
+                    ZIndex: =1
+
+                HtmlPatientInfo1_2 As htmlViewer:
+                    Color: =VarTheme.InputTextDark
+                    Font: =VarTheme.Font
+                    Height: =HtmlPatientInfo1_1.Height
+                    HtmlText: |-
+                        ="
+                        <div style='line-height: 1.5;'>
+                        <div style='display: flex;padding-bottom:14px;'><label style='color: #000000; min-width: 100px;'>Physician Name:</label> <strong>" & gblSelectedAppointmentPatient.'Primary Care Physician Name' & "</strong></div>
+                        <div style='display: flex;padding-bottom:14px;'><label style='color: #000000; min-width: 100px;'>Physician Mobile No:</label> <strong>" & gblSelectedAppointmentPatient.'Primary Care Physician Phone Number' & "</strong></div>
+                        </div>
+                        "
+                    PaddingLeft: =20
+                    PaddingTop: =18
+                    Size: =18
+                    Visible: =!IsBlank(gblSelectedAppointmentPatient.'Primary Care Physician Name')
+                    Width: =Parent.Width/2
+                    X: =HtmlPatientInfo1_1.Width
+                    ZIndex: =2
+
+            DataCard18 As dataCard.blankCard:
+                BorderColor: =RGBA(117, 117, 117, 1)
+                BorderStyle: =BorderStyle.Solid
+                BorderThickness: =1
+                DisplayMode: =DisplayMode.Edit
+                Fill: =RGBA(0, 0, 0, 0)
+                Height: =Label23_1.Y+Label23_1.Height+10
+                Width: =Parent.Width-32
+                X: =0
+                Y: =2
+                ZIndex: =3
+
+                Label6_4 As label:
+                    Font: =VarTheme.Font
+                    FontWeight: =FontWeight.Bold
+                    Size: =18
+                    Text: ="Assessment Summary"
+                    Width: =500
+                    X: =18
+                    Y: =18
+                    ZIndex: =1
+
+                Label23_1 As label:
+                    AutoHeight: =true
+                    Color: =RGBA(53, 53, 53, 1)
+                    Font: =VarTheme.Font
+                    PaddingLeft: =18
+                    PaddingRight: =18
+                    Size: =18
+                    Text: =TxtAssesmentMain.Text
+                    Width: =Parent.Width
+                    Y: =Label6_4.Y+Label6_4.Height+10
+                    ZIndex: =2
+
+            DataCard28 As dataCard.blankCard:
+                BorderColor: =RGBA(117, 117, 117, 1)
+                BorderStyle: =BorderStyle.Solid
+                BorderThickness: =1
+                DisplayMode: =DisplayMode.Edit
+                Fill: =RGBA(0, 0, 0, 0)
+                Height: =150
+                Width: =Parent.Width-32
+                X: =0
+                Y: =3
+                ZIndex: =4
+
+                Label23 As label:
+                    BorderColor: =RGBA(117, 117, 117, 1)
+                    Color: =RGBA(53, 53, 53, 1)
+                    Font: =VarTheme.Font
+                    Height: =Parent.Height
+                    PaddingLeft: =18
+                    PaddingRight: =18
+                    Size: =16
+                    Text: ="This is a summary of your appointment with the doctor. You may accomplish your goals by using the action plan provided below. As you complete each item on your list, note your activities. This will allow you to keep track of your actions and discuss them in the next session."
+                    Width: =Parent.Width
+                    ZIndex: =1
+
+            DataCard29 As dataCard.blankCard:
+                BorderColor: =RGBA(117, 117, 117, 1)
+                BorderStyle: =BorderStyle.Solid
+                BorderThickness: =1
+                DisplayMode: =DisplayMode.Edit
+                Fill: =RGBA(0, 0, 0, 0)
+                Height: =50
+                Width: =Parent.Width-32
+                X: =0
+                Y: =4
+                ZIndex: =5
+
+                Label6_5 As label:
+                    Align: =Align.Center
+                    BorderColor: =RGBA(117, 117, 117, 1)
+                    Font: =VarTheme.Font
+                    FontWeight: =FontWeight.Bold
+                    Height: =50
+                    Size: =18
+                    Text: ="Action Steps - What I need to do"
+                    Width: =Parent.Width/2
+                    ZIndex: =1
+
+                Label6_6 As label:
+                    Align: =Align.Center
+                    BorderColor: =RGBA(117, 117, 117, 1)
+                    BorderThickness: =1
+                    Font: =VarTheme.Font
+                    FontWeight: =FontWeight.Bold
+                    Height: =50
+                    Size: =18
+                    Text: ="Notes - What did I do"
+                    Width: =Parent.Width/2
+                    X: =Label6_5.Width
+                    ZIndex: =2
+
+            DataCard32 As dataCard.blankCard:
+                BorderColor: =RGBA(117, 117, 117, 1)
+                BorderStyle: =BorderStyle.Solid
+                BorderThickness: =1
+                DisplayMode: =DisplayMode.Edit
+                Fill: =RGBA(0, 0, 0, 0)
+                Height: =GalPlansPDF.Height
+                Width: =Parent.Width-32
+                X: =0
+                Y: =5
+                ZIndex: =6
+
+                GalPlansPDF As gallery.variableTemplateHeightGallery:
+                    BorderStyle: =BorderStyle.None
+                    DelayItemLoading: =true
+                    Fill: =Color.White
+                    Height: =GalPlansPDF.TemplateHeight * CountRows(GalPlansPDF.AllItems)
+                    Items: =colplans
+                    Layout: =Layout.Vertical
+                    LoadingSpinner: =LoadingSpinner.Data
+                    TemplatePadding: =0
+                    TemplateSize: =150
+                    Width: =Parent.Width
+                    ZIndex: =1
+
+                    Container14_9 As groupContainer.horizontalAutoLayoutContainer:
+                        BorderColor: =RGBA(117, 117, 117, 1)
+                        Height: =GalPlansPDF.TemplateHeight
+                        LayoutMode: =LayoutMode.Auto
+                        Width: =Parent.Width
+                        ZIndex: =2
+
+                        Container14_10 As groupContainer.horizontalAutoLayoutContainer:
+                            BorderColor: =RGBA(117, 117, 117, 1)
+                            BorderThickness: =1
+                            Height: =50
+                            LayoutMinHeight: =50
+                            LayoutMinWidth: =250
+                            LayoutMode: =LayoutMode.Auto
+                            PaddingLeft: =16
+                            PaddingTop: =12
+                            ZIndex: =1
+
+                            LblPlansPDF As label:
+                                AutoHeight: =true
+                                BorderColor: =RGBA(117, 117, 117, 1)
+                                Color: =RGBA(0, 82, 204, 1)
+                                Font: =VarTheme.Font
+                                Height: =48
+                                Size: =20
+                                Text: =ThisItem.Result
+                                Width: =Parent.Width-20
+                                ZIndex: =1
+
+                        Container14_11 As groupContainer.horizontalAutoLayoutContainer:
+                            BorderColor: =RGBA(117, 117, 117, 1)
+                            BorderThickness: =1
+                            Height: =50
+                            LayoutMinHeight: =50
+                            LayoutMinWidth: =250
+                            LayoutMode: =LayoutMode.Auto
+                            PaddingTop: =12
+                            ZIndex: =2
+
+            DataCard33 As dataCard.blankCard:
+                BorderColor: =RGBA(117, 117, 117, 1)
+                BorderStyle: =BorderStyle.Solid
+                BorderThickness: =1
+                DisplayMode: =DisplayMode.Edit
+                Fill: =RGBA(0, 0, 0, 0)
+                Height: =214
+                Width: =Parent.Width-32
+                X: =0
+                Y: =6
+                ZIndex: =7
+
+                ConBottomSOAPPDF As groupContainer.manualLayoutContainer:
+                    Height: =214
+                    Width: =Parent.Width
+                    ZIndex: =1
+
+                    Label21_4 As label:
+                        Font: =VarTheme.Font
+                        Size: =18
+                        Text: ="Pharmasist Signature"
+                        Width: =240
+                        X: =(Rectangle7.X+Rectangle7.Width)/5
+                        Y: =Parent.Height-60
+                        ZIndex: =1
+
+                    Label21_5 As label:
+                        Align: =Align.Center
+                        Font: =VarTheme.Font
+                        Size: =18
+                        Text: ="Date Prepared"
+                        Width: =180
+                        X: =Parent.Width-Self.Width-40
+                        Y: =Parent.Height-60
+                        ZIndex: =2
+
+                    Rectangle7 As rectangle:
+                        Fill: =RGBA(190, 190, 190, 1)
+                        Height: =2
+                        Width: =Image8.Width
+                        X: =24
+                        Y: =Label21_4.Y-5
+                        ZIndex: =3
+
+                    Rectangle7_3 As rectangle:
+                        Fill: =RGBA(190, 190, 190, 1)
+                        Height: =2
+                        Width: =220
+                        X: =Parent.Width-Self.Width-20
+                        Y: =Label21_5.Y-5
+                        ZIndex: =4
+
+                    Label21_6 As label:
+                        Font: =VarTheme.Font
+                        Size: =18
+                        Text: =Now()
+                        Width: =240
+                        X: =Parent.Width-Self.Width
+                        Y: =107
+                        ZIndex: =5
+
+                    Image8 As image:
+                        Height: =133
+                        Image: =ImgPharmacistSignatureSOAP.Image
+                        Width: =315
+                        X: =24
+                        Y: =16
+                        ZIndex: =6
+
+    TimerSOAPPDF As timer:
+        Duration: =50
+        OnTimerEnd: =//Navigate(ScnAppointmentDetails);
+        OnTimerStart: =
+        Reset: =//resetTimer
+        Start: =//startTimer
+        Visible: =false
+        X: =747
+        Y: =18
+        ZIndex: =2
+
+    ConSOAPHeader As groupContainer.manualLayoutContainer:
+        Height: =120
+        Width: =Parent.Width
+        ZIndex: =3
+
+        ImgBackSoapPDF As image:
+            Height: =40
+            Image: |-
+                ="data:image/svg+xml;utf8, "&EncodeUrl("<svg width='28' height='28' viewBox='0 0 28 28' fill='none' xmlns='http://www.w3.org/2000/svg'> <path d='M14 28C10.287 28 6.72602 26.525 4.10051 23.8995C1.475 21.274 3.04044e-06 17.713 3.20274e-06 14C3.36504e-06 10.287 1.475 6.72601 4.10051 4.1005C6.72602 1.475 10.287 -7.74261e-07 14 -6.11959e-07C17.713 -4.49658e-07 21.274 1.475 23.8995 4.10051C26.525 6.72601 28 10.287 28 14C28 17.713 26.525 21.274 23.8995 23.8995C21.274 26.525 17.713 28 14 28ZM20.125 14.875C20.3571 14.875 20.5796 14.7828 20.7437 14.6187C20.9078 14.4546 21 14.2321 21 14C21 13.7679 20.9078 13.5454 20.7437 13.3813C20.5796 13.2172 20.3571 13.125 20.125 13.125L9.98725 13.125L13.7445 9.3695C13.9088 9.2052 14.0011 8.98236 14.0011 8.75C14.0011 8.51764 13.9088 8.2948 13.7445 8.1305C13.5802 7.9662 13.3574 7.87389 13.125 7.87389C12.8926 7.87389 12.6698 7.9662 12.5055 8.1305L7.2555 13.3805C7.17402 13.4618 7.10937 13.5583 7.06526 13.6646C7.02114 13.7709 6.99844 13.8849 6.99844 14C6.99844 14.1151 7.02114 14.2291 7.06526 14.3354C7.10937 14.4417 7.17402 14.5382 7.2555 14.6195L12.5055 19.8695C12.6698 20.0338 12.8926 20.1261 13.125 20.1261C13.3574 20.1261 13.5802 20.0338 13.7445 19.8695C13.9088 19.7052 14.0011 19.4824 14.0011 19.25C14.0011 19.0176 13.9088 18.7948 13.7445 18.6305L9.98725 14.875L20.125 14.875Z' fill='#0052CC'/> </svg> ")
+            OnSelect: |-
+                =Navigate(ScnAppointmentDetails);
+                Set(
+                    VarDirectSoapNote,
+                    true
+                );
+                    UpdateContext({varPDFVisible: false});
+                    UpdateContext({varPDFLoader: false})
+            Visible: =!ScnSOAPPDF.Printing
+            Width: =40
+            X: =48
+            Y: =36
+            ZIndex: =1
+
+        LblActionPlanHeader As label:
+            Font: =VarTheme.Font
+            FontWeight: =FontWeight.Bold
+            Height: =80
+            Size: =24
+            Text: ="Medical Action Plan"
+            Width: =Parent.Width-BtnPrintPlan.Width-BtnSharePlan.Width-ImgBackSoapPDF.Width-80
+            X: =112
+            Y: =16
+            ZIndex: =2
+
+        BtnPrintPlan As button:
+            BorderColor: =VarTheme.PrimaryColor
+            BorderThickness: =1
+            Color: =VarTheme.PrimaryColor
+            Fill: =Color.White
+            Font: =VarTheme.Font
+            HoverFill: =VarTheme.PrimaryColorDark
+            OnSelect: |
+                =Launch(First('App Settings').'Dynamic Base URL'&"/WebResources/smvs_ActionPlanViewer.html?Data="&gblSelectedAppointmentPatient.Activity)
+                /*If(
+                    BtnPrintPlan.Text = "Print PDF",
+                    UpdateContext({varPDFLoader: true}) && UpdateContext(
+                        {
+                            varSOAPPDF: PDF(
+                                ConSoapPDF,
+                                {
+                                    Orientation: PaperOrientation.Portrait,
+                                    Size: PaperSize.A4,
+                                    ExpandContainers: true
+                                }
+                            )
+                        }
+                    ) && UpdateContext(
+                        {
+                            varBaseSOAP: Substitute(
+                                JSON(
+                                    varSOAPPDF,
+                                    JSONFormat.IncludeBinaryData
+                                ),
+                                """",
+                                ""
+                            )
+                        }
+                    ) && UpdateContext({varPDFVisible: true}),
+                    UpdateContext({varPDFVisible: false});
+                    UpdateContext({varPDFLoader: false})
+                );*/
+            PressedBorderColor: =
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Size: =18
+            Text: =If(varPDFVisible,"Close PDF","Print PDF")
+            Width: =170
+            X: =542
+            Y: =36
+            ZIndex: =3
+
+        BtnSharePlan As button:
+            BorderColor: =VarTheme.PrimaryColor
+            BorderThickness: =1
+            Color: =VarTheme.PrimaryColor
+            Fill: =Color.White
+            Font: =VarTheme.Font
+            HoverFill: =VarTheme.PrimaryColorDark
+            OnSelect: |-
+                =UpdateContext({locshareplan:true});
+            PressedBorderColor: =
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Size: =18
+            Text: ="Share with Patient"
+            Width: =250
+            X: =737
+            Y: =36
+            ZIndex: =4
+
+    FullPagePreLoader_2 As FullPagePreLoader:
+        Height: =1246
+        LoadingMessage: ="Generating PDF. Please wait."
+        Visible: =varPDFLoader
+        Width: =1024
+        Y: =120
+        ZIndex: =4
+
+    "'PDF Viewer SOAP Plan' As pcfpdfbase64viewercontrol":
+        DisplayMode: =DisplayMode.Edit
+        Height: =Max(App.Height, App.MinScreenHeight)-ConSOAPHeader.Height
+        sourceProperty: =//varBaseSOAP
+        Visible: =varPDFVisible
+        Width: =Parent.Width
+        X: =0
+        Y: =120
+        ZIndex: =5
+
+    ConSOAPEmail As groupContainer.manualLayoutContainer:
+        BorderColor: =RGBA(224, 224, 219, 1)
+        BorderThickness: =2
+        Fill: =Color.White
+        Height: =445
+        Visible: =locshareplan
+        Width: =544
+        X: =392
+        Y: =84
+        ZIndex: =6
+
+        LblSubjectiveHeader_1 As label:
+            BorderStyle: =BorderStyle.None
+            Color: =VarTheme.InputTextDark
+            Font: =VarTheme.Font
+            FontWeight: =FontWeight.Bold
+            Size: =18
+            Text: ="Share SOAP Note with patient"
+            Width: =480
+            X: =24
+            Y: =24
+            ZIndex: =1
+
+        IcnCloseEmailPopUP As icon.Cancel:
+            Color: =RGBA(0, 0, 0, 1)
+            Height: =20
+            Icon: =Icon.Cancel
+            OnSelect: |-
+                =UpdateContext({locshareplan:false});
+            Width: =20
+            X: =504
+            Y: =24
+            ZIndex: =2
+
+        BtnCancelSOAPEmail As button:
+            BorderColor: =VarTheme.PrimaryColor
+            BorderThickness: =1
+            Color: =VarTheme.PrimaryColor
+            Fill: =Color.White
+            Font: =VarTheme.Font
+            Height: =47
+            HoverFill: =VarTheme.PrimaryColor
+            OnSelect: |-
+                =UpdateContext({locshareplan:false});
+            PaddingBottom: =10
+            PaddingLeft: =10
+            PaddingRight: =10
+            PaddingTop: =10
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Size: =16
+            Text: ="Cancel"
+            Width: =150
+            X: =189
+            Y: =372
+            ZIndex: =3
+
+        BtnShareSOAPPlan As button:
+            DisplayMode: |-
+                =If(
+                    !IsBlank(TxtPatientEmailSOAP.Text) && chkSendPatientEmail.Value=true && 
+                    IsMatch(
+                        TxtPatientEmailSOAP.Text,
+                        "^([a-zA-Z0-9_.-])+@(([a-zA-Z0-9-])+.)+([a-zA-Z0-9]{2,4})+$"
+                    ),
+                    DisplayMode.Edit,
+                    DisplayMode.Disabled
+                )
+            Fill: =VarTheme.PrimaryColor
+            Font: =VarTheme.Font
+            Height: =47
+            HoverFill: =VarTheme.PrimaryColor
+            OnSelect: |-
+                =UpdateContext(
+                    {
+                        locemailsoap: PDF(
+                            ConSoapPDF,
+                            {
+                                Orientation: PaperOrientation.Portrait,
+                                Size: PaperSize.A4,
+                                ExpandContainers: true
+                            }
+                        )
+                    }
+                );
+                UpdateContext({locsendsoap: TxtPatientEmailSOAP.Text});
+                EmailPDFSOAP.Run(
+                    "MedicationActionPlan.pdf",
+                    locsendsoap,
+                    {
+                        file: {
+                            name: "MedicationActionPlan.pdf",
+                            contentBytes: locemailsoap
+                        }
+                    }
+                );
+                
+                UpdateContext({locshareplan:false});
+            PaddingBottom: =10
+            PaddingLeft: =10
+            PaddingRight: =10
+            PaddingTop: =10
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Size: =16
+            Text: ="Share"
+            Width: =150
+            X: =374
+            Y: =372
+            ZIndex: =4
+
+        chkSendPatientEmail As checkbox:
+            BorderStyle: =BorderStyle.None
+            CheckboxBackgroundFill: |-
+                =//If(chkSendToIIS.Value=true,VarTheme.PrimaryColor,White)
+                Color.White
+            Default: =true
+            Font: =VarTheme.Font
+            Height: =104
+            Size: =16
+            Text: ="Patient has consented to receive their medical action plan through email and share the medical summary to other health providers."
+            Width: =Parent.Width-48
+            X: =24
+            Y: =242
+            ZIndex: =5
+
+        ConPatientEmailSOAP As groupContainer.manualLayoutContainer:
+            Fill: =RGBA(243, 243, 244, 1)
+            Height: =104
+            Width: =Parent.Width-48
+            X: =24
+            Y: =121
+            ZIndex: =6
+
+            LblSubjectiveHeader_2 As label:
+                BorderStyle: =BorderStyle.None
+                Color: =VarTheme.InputTextDark
+                Font: =VarTheme.Font
+                FontWeight: =FontWeight.Bold
+                Size: =16
+                Text: ="*Patient’s Email ID"
+                Width: =480
+                X: =16
+                Y: =4
+                ZIndex: =1
+
+            TxtPatientEmailSOAP As text:
+                BorderStyle: =BorderStyle.None
+                BorderThickness: =0
+                Default: =gblSelectedPatient.Email
+                Font: =VarTheme.Font
+                RadiusBottomLeft: =0
+                RadiusBottomRight: =0
+                RadiusTopLeft: =0
+                RadiusTopRight: =0
+                Size: =16
+                Width: =Parent.Width-32
+                X: =16
+                Y: =44
+                ZIndex: =2
+
+        LblSubjectiveHeader_3 As label:
+            BorderStyle: =BorderStyle.None
+            Color: =RGBA(53, 53, 53, 1)
+            Font: =VarTheme.Font
+            FontWeight: =FontWeight.Bold
+            Size: =12
+            Text: ="The patient's email address is missing, please add to share."
+            Visible: =IsBlank(TxtPatientEmailSOAP)
+            Width: =480
+            X: =32
+            Y: =72
+            ZIndex: =7
+

@@ -1,0 +1,1773 @@
+[
+  {
+    "CdsFCBContext": "{\"FileType\":true,\"ImageExternalStorage\":true}",
+    "EntitySetName": "contacts",
+    "IsHidden": false,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "LogicalName": "contact",
+    "MaxGetRowsCount": 500,
+    "Name": "Contacts",
+    "NativeCDSDataSourceInfoNameMapping": {
+      "_ownerid_value": "Owner",
+      "_parentcustomerid_value": "Company Name",
+      "{Attachments}": "Attachments",
+      "account_primary_contact": "Accounts (account_primary_contact)",
+      "accountrolecode": "Role",
+      "address1_addresstypecode": "Address 1: Address Type",
+      "address1_city": "City",
+      "address1_composite": "Address 1",
+      "address1_country": "Address 1: Country/Region",
+      "address1_county": "County",
+      "address1_fax": "Address 1: Fax",
+      "address1_freighttermscode": "Address 1: Freight Terms",
+      "address1_latitude": "Address 1: Latitude",
+      "address1_line1": "Street",
+      "address1_line2": "Address 1: Street 2",
+      "address1_line3": "Address 1: Street 3",
+      "address1_longitude": "Address 1: Longitude",
+      "address1_name": "Address 1: Name",
+      "address1_postalcode": "Zip Code",
+      "address1_postofficebox": "Address 1: Post Office Box",
+      "address1_primarycontactname": "Address 1: Primary Contact Name",
+      "address1_shippingmethodcode": "Address 1: Shipping Method",
+      "address1_stateorprovince": "State/Province",
+      "address1_telephone1": "Address 1: Phone",
+      "address1_telephone2": "Address 1: Telephone 2",
+      "address1_telephone3": "Address 1: Telephone 3",
+      "address1_upszone": "Address 1: UPS Zone",
+      "address1_utcoffset": "Address 1: UTC Offset",
+      "address2_addresstypecode": "Address 2: Address Type",
+      "address2_city": "Address 2: City",
+      "address2_composite": "Address 2",
+      "address2_country": "Address 2: Country/Region",
+      "address2_county": "Address 2: County",
+      "address2_fax": "Address 2: Fax",
+      "address2_freighttermscode": "Address 2: Freight Terms",
+      "address2_latitude": "Address 2: Latitude",
+      "address2_line1": "Address 2: Street 1",
+      "address2_line2": "Address 2: Street 2",
+      "address2_line3": "Address 2: Street 3",
+      "address2_longitude": "Address 2: Longitude",
+      "address2_name": "Address 2: Name",
+      "address2_postalcode": "Address 2: ZIP/Postal Code",
+      "address2_postofficebox": "Address 2: Post Office Box",
+      "address2_primarycontactname": "Address 2: Primary Contact Name",
+      "address2_shippingmethodcode": "Address 2: Shipping Method",
+      "address2_stateorprovince": "Address 2: State/Province",
+      "address2_telephone1": "Address 2: Telephone 1",
+      "address2_telephone2": "Address 2: Telephone 2",
+      "address2_telephone3": "Address 2: Telephone 3",
+      "address2_upszone": "Address 2: UPS Zone",
+      "address2_utcoffset": "Address 2: UTC Offset",
+      "address3_addresstypecode": "Address 3: Address Type",
+      "address3_city": "Address 3: City",
+      "address3_composite": "Address 3",
+      "address3_country": "Address3: Country/Region",
+      "address3_county": "Address 3: County",
+      "address3_fax": "Address 3: Fax",
+      "address3_freighttermscode": "Address 3: Freight Terms",
+      "address3_latitude": "Address 3: Latitude",
+      "address3_line1": "Address3: Street 1",
+      "address3_line2": "Address3: Street 2",
+      "address3_line3": "Address3: Street 3",
+      "address3_longitude": "Address 3: Longitude",
+      "address3_name": "Address 3: Name",
+      "address3_postalcode": "Address3: ZIP/Postal Code",
+      "address3_postofficebox": "Address 3: Post Office Box",
+      "address3_primarycontactname": "Address 3: Primary Contact Name",
+      "address3_shippingmethodcode": "Address 3: Shipping Method",
+      "address3_stateorprovince": "Address3: State/Province",
+      "address3_telephone1": "Address 3: Telephone1",
+      "address3_telephone2": "Address 3: Telephone2",
+      "address3_telephone3": "Address 3: Telephone3",
+      "address3_upszone": "Address 3: UPS Zone",
+      "address3_utcoffset": "Address 3: UTC Offset",
+      "aging30": "Aging 30",
+      "aging30_base": "Aging 30 (Base)",
+      "aging60": "Aging 60",
+      "aging60_base": "Aging 60 (Base)",
+      "aging90": "Aging 90",
+      "aging90_base": "Aging 90 (Base)",
+      "anniversary": "Anniversary",
+      "annualincome": "Annual Income",
+      "annualincome_base": "Annual Income (Base)",
+      "assistantname": "Assistant",
+      "assistantphone": "Assistant Phone",
+      "birthdate": "Birthday",
+      "business2": "Business Phone 2",
+      "callback": "Callback Number",
+      "childrensnames": "Children's Names",
+      "company": "Company Phone",
+      "contact_actioncard": "Action Cards",
+      "Contact_ActivityPointers": "Activities",
+      "Contact_Annotation": "Notes",
+      "Contact_Appointments": "Appointments",
+      "Contact_AsyncOperations": "System Jobs",
+      "Contact_BulkDeleteFailures": "Bulk Delete Failures",
+      "contact_chats": "Teams chats",
+      "contact_connections1": "Connections (contact_connections1)",
+      "contact_connections2": "Connections (contact_connections2)",
+      "contact_customer_contacts": "Contacts (contact_customer_contacts)",
+      "Contact_CustomerAddress": "Addresses",
+      "Contact_DuplicateBaseRecord": "Duplicate Records (Contact_DuplicateBaseRecord)",
+      "Contact_DuplicateMatchingRecord": "Duplicate Records (Contact_DuplicateMatchingRecord)",
+      "Contact_Email_EmailSender": "Email Messages (Contact_Email_EmailSender)",
+      "Contact_Emails": "Email Messages (Contact_Emails)",
+      "Contact_Faxes": "Faxes",
+      "Contact_Feedback": "Feedback (Contact_Feedback)",
+      "Contact_Letters": "Letters",
+      "Contact_MailboxTrackingFolder": "Mailbox Auto Tracking Folders",
+      "contact_master_contact": "Contacts (contact_master_contact)",
+      "contact_msemr_appointmentemrs": "Appointments (EMR) (contact_msemr_appointmentemrs)",
+      "contact_msfp_alerts": "Customer Voice alert",
+      "contact_msfp_surveyinvites": "Customer Voice survey invites",
+      "contact_msfp_surveyresponses": "Customer Voice survey responses",
+      "Contact_Phonecalls": "Phone Calls",
+      "contact_PostFollows": "Follows",
+      "contact_PostRegardings": "Post Regarding",
+      "contact_principalobjectattributeaccess": "Field Sharing",
+      "Contact_ProcessSessions": "Process Sessions",
+      "Contact_RecurringAppointmentMasters": "Recurring Appointments",
+      "Contact_SyncErrors": "Sync Errors",
+      "Contact_Tasks": "Tasks (Contact_Tasks)",
+      "contactid": "Contact",
+      "createdby": "Created By",
+      "createdon": "Created On",
+      "createdonbehalfby": "Created By (Delegate)",
+      "creditlimit": "Credit Limit",
+      "creditlimit_base": "Credit Limit (Base)",
+      "creditonhold": "Credit Hold",
+      "customersizecode": "Customer Size",
+      "customertypecode": "Relationship Type",
+      "department": "Department",
+      "description": "Description",
+      "donotbulkemail": "Do not allow Bulk Emails",
+      "donotbulkpostalmail": "Do not allow Bulk Mails",
+      "donotemail": "Do not allow Emails",
+      "donotfax": "Do not allow Faxes",
+      "donotphone": "Do not allow Phone Calls",
+      "donotpostalmail": "Do not allow Mails",
+      "donotsendmm": "Send Marketing Materials",
+      "educationcode": "Education",
+      "emailaddress1": "Email",
+      "emailaddress2": "Email Address 2",
+      "emailaddress3": "Email Address 3",
+      "employeeid": "Employee",
+      "entityimage": "Entity Image",
+      "entityimageid": "Entity Image Id",
+      "exchangerate": "Exchange Rate",
+      "externaluseridentifier": "External User Identifier",
+      "familystatuscode": "Marital Status",
+      "fax": "Fax",
+      "firstname": "First Name",
+      "followemail": "Follow Email Activity",
+      "ftpsiteurl": "FTP Site",
+      "fullname": "Full Name",
+      "gendercode": "Gender",
+      "governmentid": "Government",
+      "haschildrencode": "Has Children",
+      "home2": "Home Phone 2",
+      "importsequencenumber": "Import Sequence Number",
+      "isbackofficecustomer": "Back Office Customer",
+      "jobtitle": "Job Title",
+      "lastname": "Last Name",
+      "lastonholdtime": "Last On Hold Time",
+      "lastusedincampaign": "Last Date Included in Campaign",
+      "leadsourcecode": "Lead Source",
+      "lk_contact_feedback_createdby": "Feedback (lk_contact_feedback_createdby)",
+      "lk_contact_feedback_createdonbehalfby": "Feedback (lk_contact_feedback_createdonbehalfby)",
+      "managername": "Manager",
+      "managerphone": "Manager Phone",
+      "marketingonly": "Marketing Only",
+      "masterid": "Master ID",
+      "merged": "Merged",
+      "middlename": "Middle Name",
+      "mobilephone": "Mobile Phone",
+      "modifiedby": "Modified By",
+      "modifiedon": "Modified On",
+      "modifiedonbehalfby": "Modified By (Delegate)",
+      "msemr_activitystartdate": "Activity Start Date",
+      "msemr_address1periodenddate": "Permanent - Address Period End Date",
+      "msemr_address1periodstartdate": "Permanent- Address Period Start Date",
+      "msemr_address2periodenddate": "Current - Address Period End Date",
+      "msemr_address2periodstartdate": "Current - Address Period Start Date",
+      "msemr_address3periodenddate": "Billing  - Address Period End Date",
+      "msemr_address3periodstartdate": "Billing  - Address Period Start Date",
+      "msemr_animal": "Animal",
+      "msemr_AnimalBreed": "Animal Breed",
+      "msemr_AnimalGenderStatus": "Animal Gender Status",
+      "msemr_AnimalSpecies": "AnimalSpecies",
+      "msemr_Communication1Language": "Primary Language",
+      "msemr_communication1preferred": "Primary Language Preferred",
+      "msemr_Communication2Language": "Secondary Language",
+      "msemr_communication2preferred": "Secondary Language Preferred",
+      "msemr_contac1tenddate": "Emergency Contact End Date",
+      "msemr_contac2tenddate": "Primary Contact End Date",
+      "msemr_contact_account_Contact2": "Accounts (msemr_contact_account_Contact2)",
+      "msemr_contact_contact_Contact1": "Contacts (msemr_contact_contact_Contact1)",
+      "msemr_contact_contact_Contact2": "Contacts (msemr_contact_contact_Contact2)",
+      "msemr_contact_contact_GeneralPractioner": "Contacts (msemr_contact_contact_GeneralPractioner)",
+      "msemr_contact_contact_Link1": "Contacts (msemr_contact_contact_Link1)",
+      "msemr_contact_contact_Link2": "Contacts (msemr_contact_contact_Link2)",
+      "msemr_contact_msemr_activitydefinitioncontact_Contact": "Activity Definition Contacts",
+      "msemr_contact_msemr_activitydefinitioncontributorcontact_Contact": "Activity Definition Contributor Contacts",
+      "msemr_contact_msemr_additionalname_Patient": "Additional Names",
+      "msemr_contact_msemr_allergyintolerance_Patient": "Allergy Intolerances",
+      "msemr_contact_msemr_appointmentemr_ActorPatient": "Appointments (EMR) (msemr_contact_msemr_appointmentemr_ActorPatient)",
+      "msemr_contact_msemr_appointmentemr_ActorPractitioner": "Appointments (EMR) (msemr_contact_msemr_appointmentemr_ActorPractitioner)",
+      "msemr_contact_msemr_appointmentemr_ActorRelatedPerson": "Appointments (EMR) (msemr_contact_msemr_appointmentemr_ActorRelatedPerson)",
+      "msemr_contact_msemr_appointmentemrparticipant_ActorPatient": "Appointment (EMR) Participants (msemr_contact_msemr_appointmentemrparticipant_ActorPatient)",
+      "msemr_contact_msemr_appointmentemrparticipant_ActorPhysician": "Appointment (EMR) Participants (msemr_contact_msemr_appointmentemrparticipant_ActorPhysician)",
+      "msemr_contact_msemr_appointmentemrparticipant_ActorRelatedPerson": "Appointment (EMR) Participants (msemr_contact_msemr_appointmentemrparticipant_ActorRelatedPerson)",
+      "msemr_contact_msemr_careplan_PatientIdentifier": "Care Plans",
+      "msemr_contact_msemr_careplanactivityperformer_PerformerTypePatient": "Care Plan Activity Performers (msemr_contact_msemr_careplanactivityperformer_PerformerTypePatient)",
+      "msemr_contact_msemr_careplanactivityperformer_PerformerTypePractitioner": "Care Plan Activity Performers (msemr_contact_msemr_careplanactivityperformer_PerformerTypePractitioner)",
+      "msemr_contact_msemr_careplanactivityperformer_PerformerTypeRelatedPerson": "Care Plan Activity Performers (msemr_contact_msemr_careplanactivityperformer_PerformerTypeRelatedPerson)",
+      "msemr_contact_msemr_careplanauthor_PlanAuthorPatientIdentifier": "Care Plan Authors (msemr_contact_msemr_careplanauthor_PlanAuthorPatientIdentifier)",
+      "msemr_contact_msemr_careplanauthor_PlanAuthorPractitionerIdentifier": "Care Plan Authors (msemr_contact_msemr_careplanauthor_PlanAuthorPractitionerIdentifier)",
+      "msemr_contact_msemr_careplanauthor_PlanAuthorRelatedPersonIdentifier": "Care Plan Authors (msemr_contact_msemr_careplanauthor_PlanAuthorRelatedPersonIdentifier)",
+      "msemr_contact_msemr_careteam_SubjectPatient": "Care Teams",
+      "msemr_contact_msemr_careteamparticipant_MemberPatient": "Care Team Participants (msemr_contact_msemr_careteamparticipant_MemberPatient)",
+      "msemr_contact_msemr_careteamparticipant_MemberPractioner": "Care Team Participants (msemr_contact_msemr_careteamparticipant_MemberPractioner)",
+      "msemr_contact_msemr_careteamparticipant_MemberRelatedPerson": "Care Team Participants (msemr_contact_msemr_careteamparticipant_MemberRelatedPerson)",
+      "msemr_contact_msemr_clinicalimpression_Assessor": "Clinical Impressions (msemr_contact_msemr_clinicalimpression_Assessor)",
+      "msemr_contact_msemr_clinicalimpression_SubjectPatient": "Clinical Impressions (msemr_contact_msemr_clinicalimpression_SubjectPatient)",
+      "msemr_contact_msemr_communication_Contact": "Communications",
+      "msemr_contact_msemr_communicationrequest_Lookup": "Communication Requests (msemr_contact_msemr_communicationrequest_Lookup)",
+      "msemr_contact_msemr_communicationrequest_RequesterAgentPatient": "Communication Requests (msemr_contact_msemr_communicationrequest_RequesterAgentPatient)",
+      "msemr_contact_msemr_communicationrequest_RequesterAgentRelatedPerson": "Communication Requests (msemr_contact_msemr_communicationrequest_RequesterAgentRelatedPerson)",
+      "msemr_contact_msemr_communicationrequest_SenderPatient": "Communication Requests (msemr_contact_msemr_communicationrequest_SenderPatient)",
+      "msemr_contact_msemr_communicationrequest_SenderPractitioner": "Communication Requests (msemr_contact_msemr_communicationrequest_SenderPractitioner)",
+      "msemr_contact_msemr_communicationrequest_SenderRelatedPerson": "Communication Requests (msemr_contact_msemr_communicationrequest_SenderRelatedPerson)",
+      "msemr_contact_msemr_communicationrequest_SubjectPatient": "Communication Requests (msemr_contact_msemr_communicationrequest_SubjectPatient)",
+      "msemr_contact_msemr_communicationrequestrecipient_RecipientPatient": "Communication Request Recipients (msemr_contact_msemr_communicationrequestrecipient_RecipientPatient)",
+      "msemr_contact_msemr_communicationrequestrecipient_RecipientPractitioner": "Communication Request Recipients (msemr_contact_msemr_communicationrequestrecipient_RecipientPractitioner)",
+      "msemr_contact_msemr_communicationrequestrecipient_RecipientRelatedPerson": "Communication Request Recipients (msemr_contact_msemr_communicationrequestrecipient_RecipientRelatedPerson)",
+      "msemr_contact_msemr_condition_Asserter": "Conditions (msemr_contact_msemr_condition_Asserter)",
+      "msemr_contact_msemr_condition_Practitioner": "Conditions (msemr_contact_msemr_condition_Practitioner)",
+      "msemr_contact_msemr_condition_SubjectTypePatient": "Conditions (msemr_contact_msemr_condition_SubjectTypePatient)",
+      "msemr_contact_msemr_contactlink_Link": "Contact Links (msemr_contact_msemr_contactlink_Link)",
+      "msemr_contact_msemr_contactlink_Patient": "Contact Links (msemr_contact_msemr_contactlink_Patient)",
+      "msemr_contact_msemr_device_Patient": "Devices",
+      "msemr_contact_msemr_devicerequest_PerformerTypePatient": "Device Requests (msemr_contact_msemr_devicerequest_PerformerTypePatient)",
+      "msemr_contact_msemr_devicerequest_PerformerTypeRelatedPerson": "Device Requests (msemr_contact_msemr_devicerequest_PerformerTypeRelatedPerson)",
+      "msemr_contact_msemr_devicerequest_Practitioner": "Device Requests (msemr_contact_msemr_devicerequest_Practitioner)",
+      "msemr_contact_msemr_devicerequest_RequesterAgentTypePractitoner": "Device Requests (msemr_contact_msemr_devicerequest_RequesterAgentTypePractitoner)",
+      "msemr_contact_msemr_devicerequest_SubjectTypePatient": "Device Requests (msemr_contact_msemr_devicerequest_SubjectTypePatient)",
+      "msemr_contact_msemr_encounter_EncounterPatientIdentifier": "Encounters (msemr_contact_msemr_encounter_EncounterPatientIdentifier)",
+      "msemr_contact_msemr_encounter_SubjectPatient": "Encounters (msemr_contact_msemr_encounter_SubjectPatient)",
+      "msemr_contact_msemr_encounterparticipant": "Encounter Participants (msemr_contact_msemr_encounterparticipant)",
+      "msemr_contact_msemr_encounterparticipant_IndividualType": "Encounter Participants (msemr_contact_msemr_encounterparticipant_IndividualType)",
+      "msemr_contact_msemr_encounterparticipant_IndividualTypeRelatedPerson": "Encounter Participants (msemr_contact_msemr_encounterparticipant_IndividualTypeRelatedPerson)",
+      "msemr_contact_msemr_episodeofcare_CareManager": "Episodes of Care (msemr_contact_msemr_episodeofcare_CareManager)",
+      "msemr_contact_msemr_episodeofcare_Patient": "Episodes of Care (msemr_contact_msemr_episodeofcare_Patient)",
+      "msemr_contact_msemr_familymemberhistory_Patient": "Family Member Histories",
+      "msemr_contact_msemr_goal_GoalExpressedByPatient": "Goals (msemr_contact_msemr_goal_GoalExpressedByPatient)",
+      "msemr_contact_msemr_goal_GoalExpressedByPractitioner": "Goals (msemr_contact_msemr_goal_GoalExpressedByPractitioner)",
+      "msemr_contact_msemr_goal_GoalExpressedByRelatedPerson": "Goals (msemr_contact_msemr_goal_GoalExpressedByRelatedPerson)",
+      "msemr_contact_msemr_goal_GoalSubjectPatient": "Goals (msemr_contact_msemr_goal_GoalSubjectPatient)",
+      "msemr_contact_msemr_medicalidentifier_Assignee": "Medical Identifiers",
+      "msemr_contact_msemr_medicationadministration_SubjectTypePatient": "Medication Administration",
+      "msemr_contact_msemr_medicationadministrationperformer_PerformerActorTypePatient": "Medication Administration Performers (msemr_contact_msemr_medicationadministrationperformer_PerformerActorTypePatient)",
+      "msemr_contact_msemr_medicationadministrationperformer_PerformerActorTypePractitioner": "Medication Administration Performers (msemr_contact_msemr_medicationadministrationperformer_PerformerActorTypePractitioner)",
+      "msemr_contact_msemr_medicationadministrationperformer_PerformerActorTypeRelatedPerson": "Medication Administration Performers (msemr_contact_msemr_medicationadministrationperformer_PerformerActorTypeRelatedPerson)",
+      "msemr_contact_msemr_medicationrequest_Recorder": "Medication Requests (msemr_contact_msemr_medicationrequest_Recorder)",
+      "msemr_contact_msemr_medicationrequest_RequesterAgentTypePatient": "Medication Requests (msemr_contact_msemr_medicationrequest_RequesterAgentTypePatient)",
+      "msemr_contact_msemr_medicationrequest_RequesterAgentTypePractitioner": "Medication Requests (msemr_contact_msemr_medicationrequest_RequesterAgentTypePractitioner)",
+      "msemr_contact_msemr_medicationrequest_RequesterAgentTypeRelatedPerson": "Medication Requests (msemr_contact_msemr_medicationrequest_RequesterAgentTypeRelatedPerson)",
+      "msemr_contact_msemr_medicationrequest_SubjectTypePatient": "Medication Requests (msemr_contact_msemr_medicationrequest_SubjectTypePatient)",
+      "msemr_contact_msemr_nutritionorder_Orderer": "Nutrition Orders (msemr_contact_msemr_nutritionorder_Orderer)",
+      "msemr_contact_msemr_nutritionorder_Patient": "Nutrition Orders (msemr_contact_msemr_nutritionorder_Patient)",
+      "msemr_contact_msemr_observation_SubjectTypePatient": "Observations",
+      "msemr_contact_msemr_observationperformer_ObsPerformerPatient": "Observation Performers (msemr_contact_msemr_observationperformer_ObsPerformerPatient)",
+      "msemr_contact_msemr_observationperformer_ObsPerformerPractitioner": "Observation Performers (msemr_contact_msemr_observationperformer_ObsPerformerPractitioner)",
+      "msemr_contact_msemr_observationperformer_ObsPerformerRelatedPerson": "Observation Performers (msemr_contact_msemr_observationperformer_ObsPerformerRelatedPerson)",
+      "msemr_contact_msemr_plandefinitioncontributorcontact_contact": "Plan Definition Contributor Contacts",
+      "msemr_contact_msemr_practitionerqualification_Practitioner": "Practitioner Qualifications",
+      "msemr_contact_msemr_practitionerrole_Practitioner": "Practitioner Roles",
+      "msemr_contact_msemr_procedure_Patient": "Procedures",
+      "msemr_contact_msemr_procedureperformer_PerformerActorPatient": "Procedure Performers (msemr_contact_msemr_procedureperformer_PerformerActorPatient)",
+      "msemr_contact_msemr_procedureperformer_PerformerActorPractitioner": "Procedure Performers (msemr_contact_msemr_procedureperformer_PerformerActorPractitioner)",
+      "msemr_contact_msemr_procedureperformer_PerformerActorRelatedPerson": "Procedure Performers (msemr_contact_msemr_procedureperformer_PerformerActorRelatedPerson)",
+      "msemr_contact_msemr_procedurerequest_PerformerAgentPatient": "Procedure Requests (msemr_contact_msemr_procedurerequest_PerformerAgentPatient)",
+      "msemr_contact_msemr_procedurerequest_PerformerPractitioner": "Procedure Requests (msemr_contact_msemr_procedurerequest_PerformerPractitioner)",
+      "msemr_contact_msemr_procedurerequest_PerformertRelatedPerson": "Procedure Requests (msemr_contact_msemr_procedurerequest_PerformertRelatedPerson)",
+      "msemr_contact_msemr_procedurerequest_RequesterAgentPractitioner": "Procedure Requests (msemr_contact_msemr_procedurerequest_RequesterAgentPractitioner)",
+      "msemr_contact_msemr_procedurerequest_SubjectPatient": "Procedure Requests (msemr_contact_msemr_procedurerequest_SubjectPatient)",
+      "msemr_contact_msemr_referralrequest_RequesterAgentPatient": "Referral Requests (msemr_contact_msemr_referralrequest_RequesterAgentPatient)",
+      "msemr_contact_msemr_referralrequest_RequesterAgentPractitioner": "Referral Requests (msemr_contact_msemr_referralrequest_RequesterAgentPractitioner)",
+      "msemr_contact_msemr_referralrequest_RequesterAgentRelatedPerson": "Referral Requests (msemr_contact_msemr_referralrequest_RequesterAgentRelatedPerson)",
+      "msemr_contact_msemr_referralrequest_Requestor": "Referral Requests (msemr_contact_msemr_referralrequest_Requestor)",
+      "msemr_contact_msemr_referralrequest_SubjectPatient": "Referral Requests (msemr_contact_msemr_referralrequest_SubjectPatient)",
+      "msemr_contact_msemr_referralrequestrecipient_RecipientPractitioner": "Referral Request Recipients",
+      "msemr_contact_msemr_relatedperson_Patient": "Related Persons (msemr_contact_msemr_relatedperson_Patient)",
+      "msemr_contact_msemr_relatedperson_RelatedPerson": "Related Persons (msemr_contact_msemr_relatedperson_RelatedPerson)",
+      "msemr_contact_msemr_requestgroup_AuthorTypePractitioner": "Request Groups (msemr_contact_msemr_requestgroup_AuthorTypePractitioner)",
+      "msemr_contact_msemr_requestgroup_SubjectTypePatient": "Request Groups (msemr_contact_msemr_requestgroup_SubjectTypePatient)",
+      "msemr_contact_msemr_requestgroupactionparticipant_ActionParticipantTypePatient": "Request Group Action Participants (msemr_contact_msemr_requestgroupactionparticipant_ActionParticipantTypePatient)",
+      "msemr_contact_msemr_requestgroupactionparticipant_ActionParticipantTypePerson": "Request Group Action Participants (msemr_contact_msemr_requestgroupactionparticipant_ActionParticipantTypePerson)",
+      "msemr_contact_msemr_requestgroupactionparticipant_ActionParticipantTypePractitioner": "Request Group Action Participants (msemr_contact_msemr_requestgroupactionparticipant_ActionParticipantTypePractitioner)",
+      "msemr_contact_msemr_requestgroupactionparticipant_ActionParticipantTypeRelatedPerson": "Request Group Action Participants (msemr_contact_msemr_requestgroupactionparticipant_ActionParticipantTypeRelatedPerson)",
+      "msemr_contact_msemr_riskassessment_performerPractitioner": "Risk Assessments (msemr_contact_msemr_riskassessment_performerPractitioner)",
+      "msemr_contact_msemr_riskassessment_subjectpatient": "Risk Assessments (msemr_contact_msemr_riskassessment_subjectpatient)",
+      "msemr_contact_msemr_schedule_ActorPatient": "Schedules (msemr_contact_msemr_schedule_ActorPatient)",
+      "msemr_contact_msemr_schedule_ActorPractitioner": "Schedules (msemr_contact_msemr_schedule_ActorPractitioner)",
+      "msemr_contact_msemr_scheduleactor_ActorPatient": "Schedule Actors (msemr_contact_msemr_scheduleactor_ActorPatient)",
+      "msemr_contact_msemr_scheduleactor_ActorPractitioner": "Schedule Actors (msemr_contact_msemr_scheduleactor_ActorPractitioner)",
+      "msemr_contact_msemr_specimen_CollectionCollector": "Specimens (msemr_contact_msemr_specimen_CollectionCollector)",
+      "msemr_contact_msemr_specimen_SubjectTypePatient": "Specimens (msemr_contact_msemr_specimen_SubjectTypePatient)",
+      "msemr_contact_msemr_taskrestrictionrecipient_RestrictionRecipientPatient": "Task Restriction Recipients (msemr_contact_msemr_taskrestrictionrecipient_RestrictionRecipientPatient)",
+      "msemr_contact_msemr_taskrestrictionrecipient_RestrictionRecipientPractitioner": "Task Restriction Recipients (msemr_contact_msemr_taskrestrictionrecipient_RestrictionRecipientPractitioner)",
+      "msemr_contact_msemr_taskrestrictionrecipient_RestrictionRecipientRelatedPerson": "Task Restriction Recipients (msemr_contact_msemr_taskrestrictionrecipient_RestrictionRecipientRelatedPerson)",
+      "msemr_contact_msemr_visionprescription_Patient": "Vision Prescriptions (msemr_contact_msemr_visionprescription_Patient)",
+      "msemr_contact_msemr_visionprescription_Prescriber": "Vision Prescriptions (msemr_contact_msemr_visionprescription_Prescriber)",
+      "msemr_contact_task_PerformerOwnerPatient": "Tasks (msemr_contact_task_PerformerOwnerPatient)",
+      "msemr_contact_task_PerformerOwnerPractitioner": "Tasks (msemr_contact_task_PerformerOwnerPractitioner)",
+      "msemr_contact_task_PerformerOwnerRelatedPerson": "Tasks (msemr_contact_task_PerformerOwnerRelatedPerson)",
+      "msemr_contact_task_RequesterAgentPatient": "Tasks (msemr_contact_task_RequesterAgentPatient)",
+      "msemr_contact_task_RequesterAgentPractitioner": "Tasks (msemr_contact_task_RequesterAgentPractitioner)",
+      "msemr_contact_task_RequesterAgentRelatedPerson": "Tasks (msemr_contact_task_RequesterAgentRelatedPerson)",
+      "msemr_Contact1": "Emergency Contact Name",
+      "msemr_Contact1Relationship": "Emergency Contact Relationship",
+      "msemr_contact1startdate": "Emergency Contact Start Date",
+      "msemr_Contact2": "Primary Contact Name",
+      "msemr_Contact2Relationship": "Primary Contact Relationship",
+      "msemr_contact2startdate": "Primary Contact Start Date",
+      "msemr_contacttype": "Contact Type",
+      "msemr_deceaseddate": "Deceased Date",
+      "msemr_GeneralPractioner": "Primary Practitioner",
+      "msemr_Link1": "Patient Link 1",
+      "msemr_Link1Type": "Patient Link Type 1",
+      "msemr_Link2": "Patient Link 2",
+      "msemr_Link2Type": "Patient Link Type 2",
+      "msemr_ManagingOrganization": "Managing Organization",
+      "msemr_medicalrecordnumber": "Medical Record Number",
+      "msemr_multiplebirth": "Multiple Birth",
+      "msemr_name1enddate": "Usual-Name End Date",
+      "msemr_name1startdate": "Usual-Name Start Date",
+      "msemr_name1use": "Use of Name (msemr_name1use)",
+      "msemr_name2": "Official Name",
+      "msemr_name2enddate": "Official-Name End Date (msemr_name2enddate)",
+      "msemr_name2familyname": "Official- Family Name (msemr_name2familyname)",
+      "msemr_name2givenname": "Official - Given Name (msemr_name2givenname)",
+      "msemr_name2prefix": "Official- Prefix (msemr_name2prefix)",
+      "msemr_name2startdate": "Official-Name Start Date (msemr_name2startdate)",
+      "msemr_name2suffix": "Official- Suffix (msemr_name2suffix)",
+      "msemr_name2use": "Use of Name (msemr_name2use)",
+      "msemr_name3": "Temporary Name",
+      "msemr_name3familyname": "Official- Family Name (msemr_name3familyname)",
+      "msemr_name3givenname": "Official - Given Name (msemr_name3givenname)",
+      "msemr_name3nameenddate": "Official-Name End Date (msemr_name3nameenddate)",
+      "msemr_name3namestartdate": "Official-Name Start Date (msemr_name3namestartdate)",
+      "msemr_name3prefix": "Official- Prefix (msemr_name3prefix)",
+      "msemr_name3suffix": "Official- Suffix (msemr_name3suffix)",
+      "msemr_name3use": "Use of Name (msemr_name3use)",
+      "msemr_qualification1identifier": "Provider NPI Number",
+      "msemr_Qualification1Issuer": "Qualification Issuer",
+      "msemr_qualification1periodenddate": "Qualification Expiry Date",
+      "msemr_qualification1periodstartdate": "Qualification Issue Date",
+      "msemr_telecom1enddate": "Primary Day Time Phone End Date",
+      "msemr_telecom1rank": "Rank of Contact (msemr_telecom1rank)",
+      "msemr_telecom1startdate": "Primary Day Time Phone Start Date",
+      "msemr_telecom1system": "Telecom System (msemr_telecom1system)",
+      "msemr_telecom1use": "Use of contact point",
+      "msemr_telecom2enddate": "Primary Evening Phone End Date",
+      "msemr_telecom2rank": "Rank of Contact (msemr_telecom2rank)",
+      "msemr_telecom2startdate": "Primary Evening Phone Start Date",
+      "msemr_telecom2system": "Telecom System (msemr_telecom2system)",
+      "msemr_telecom2use": "Use of Contact Point (msemr_telecom2use)",
+      "msemr_telecom3enddate": "Primary Email End Date",
+      "msemr_telecom3rank": "Rank of Contact (msemr_telecom3rank)",
+      "msemr_telecom3startdate": "Primary Email Start Date",
+      "msemr_telecom3system": "Telecom System (msemr_telecom3system)",
+      "msemr_telecom3use": "Use of Contact Point (msemr_telecom3use)",
+      "nickname": "Nickname",
+      "numberofchildren": "No. of Children",
+      "onholdtime": "On Hold Time (Minutes)",
+      "overriddencreatedon": "Record Created On",
+      "owningbusinessunit": "Owning Business Unit",
+      "owningteam": "Owning Team",
+      "owninguser": "Owning User",
+      "pager": "Pager",
+      "participatesinworkflow": "Participates in Workflow",
+      "paymenttermscode": "Payment Terms",
+      "preferredappointmentdaycode": "Preferred Day",
+      "preferredappointmenttimecode": "Preferred Time",
+      "preferredcontactmethodcode": "Preferred Method of Contact",
+      "preferredsystemuserid": "Preferred User",
+      "processid": "Process",
+      "salutation": "Salutation",
+      "shippingmethodcode": "Shipping Method",
+      "smvs_address_filled_type": "Address Filled Type",
+      "smvs_altstaffname": "Alt Staff Name",
+      "smvs_apartment_number": "Apartment Number",
+      "smvs_associated_singe_use_code": "Associated Singe use Code",
+      "smvs_availabletowork": "Available to work",
+      "smvs_batch_unique_identifier": "Batch Unique Identifier",
+      "smvs_cannot_bring_guardian": "Cannot bring guardian",
+      "smvs_confirmationcode": "Confirmation Code",
+      "smvs_contact_smvs_claim": "Claims",
+      "smvs_contact_smvs_patient_remittance": "Patient Remittances",
+      "smvs_contact_smvs_single_use_code": "Single Use Codes",
+      "smvs_ethnicity": "Ethnicity",
+      "smvs_externalcontactid": "External Contact ID",
+      "smvs_externalsystemcontactid": "External System Contact Id",
+      "smvs_guardian_first_name": "Guardian First Name",
+      "smvs_guardian_last_name": "Guardian Last Name",
+      "smvs_guardian_middle_name": "Guardian Middle Name",
+      "smvs_language": "Language",
+      "smvs_medical_credential": "Medical Credential",
+      "smvs_migrationid": "Migration ID",
+      "smvs_npi_number": "NPI Number",
+      "smvs_partialmobilenumber": "Partial Mobile Number",
+      "smvs_patienttype": "Patient Type",
+      "smvs_position": "Position",
+      "smvs_positionmedical": "Position/ Medical Credential",
+      "smvs_primary_care_physician_name": "Primary Care Physician Name",
+      "smvs_primary_care_physician_phone_number": "Primary Care Physician Phone Number",
+      "smvs_race": "Race",
+      "smvs_receivenotification": "Email Notification",
+      "smvs_referredby": "Referred by",
+      "smvs_relationship_with_guardian": "Relationship with guardian",
+      "smvs_smsnotification": "SMS Notification",
+      "smvs_smvs_allergyhistory_Patient_contact": "Allergy Histories",
+      "smvs_smvs_immunizationhistory_Patient_contact": "Immunization Histories",
+      "smvs_smvs_medicationhistory_Patient_contact": "Medication Histories",
+      "smvs_smvs_soapnote_Patient_contact": "SOAP Notes",
+      "smvs_Staff": "Staff",
+      "smvs_stafffullname": "Staff Name",
+      "spousesname": "Spouse/Partner Name",
+      "stageid": "(Deprecated) Process Stage",
+      "statecode": "Status",
+      "statuscode": "Status Reason",
+      "suffix": "Suffix",
+      "telephone1": "Business Phone",
+      "telephone2": "Home Phone",
+      "telephone3": "Telephone 3",
+      "territorycode": "Territory",
+      "timespentbymeonemailandmeetings": "Time Spent by me",
+      "timezoneruleversionnumber": "Time Zone Rule Version Number",
+      "transactioncurrencyid": "Currency",
+      "traversedpath": "(Deprecated) Traversed Path",
+      "utcconversiontimezonecode": "UTC Conversion Time Zone Code",
+      "versionnumber": "Version Number",
+      "websiteurl": "Website",
+      "yomifirstname": "Yomi First Name",
+      "yomifullname": "Yomi Full Name",
+      "yomilastname": "Yomi Last Name",
+      "yomimiddlename": "Yomi Middle Name"
+    },
+    "PreferredName": "Contacts",
+    "Type": "NativeCDSDataSourceInfo"
+  },
+  {
+    "DisplayName": "Contacts (Views)",
+    "Name": "_contact_views",
+    "RelatedEntityName": "Contacts",
+    "TrimmedViewName": true,
+    "Type": "ViewInfo",
+    "ViewInfoNameMapping": {
+      "00000000-0000-0000-00aa-000000666400": "Contacts Advanced Find View",
+      "00000000-0000-0000-00aa-000010001003": "My Active Contacts",
+      "00000000-0000-0000-00aa-000010001004": "Active Contacts",
+      "00000000-0000-0000-00aa-000010001033": "Inactive Contacts",
+      "00000000-0000-0000-00aa-000010001210": "Contact Associated View",
+      "0a8fa653-4147-4282-bf6b-168cfa839803": "Contacts: Influenced Deals That We Won",
+      "0d5d377b-5e7c-47b5-bab1-a5cb8b4ac105": "All Contacts",
+      "20521ce2-4311-ec11-b6e6-000d3a57036a": "All Practitioners",
+      "23fb2d21-0ba4-eb11-b1ac-000d3a8f67f4": "Inactive Practitioners",
+      "38453ee4-4411-ec11-b6e6-000d3a570f02": "All Patients",
+      "43481007-2681-e811-a83b-000d3a33bdbd": "Active Practitioners",
+      "5afea9de-0aa4-eb11-b1ac-000d3a8f67f4": "Inactive Patients",
+      "73bc2d9b-4e0e-424c-8839-ed59d6817e3a": "Active Contacts Subgrid View",
+      "927e6cd8-b3ed-4c20-a154-b8bd8a86d172": "Contacts: No Campaign Activities in Last 3 Months",
+      "9c241a33-ca0b-4e50-ae92-db780d5b2a12": "Contacts: Responded to Campaigns in Last 6 Months",
+      "a2d479c5-53e3-4c69-addd-802327e67a0d": "Contacts Lookup View",
+      "ab582fb0-a846-453e-ad88-77f75ce91264": "My Connections",
+      "b137e02a-6205-ea11-a828-000d3a1cae2a": "Patients By Priority",
+      "c659cc00-2681-e811-a83b-000d3a33bdbd": "Active Patients",
+      "eda26f1e-dbcc-40ad-91f2-ff2878d1d8d8": "Entitlement Contacts"
+    }
+  },
+  {
+    "DisplayName": "Role (Contacts)",
+    "Name": "contact_accountrolecode",
+    "OptionSetInfoNameMapping": {
+      "1": "Decision Maker",
+      "2": "Employee",
+      "3": "Influencer"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "accountrolecode",
+        "OptionSetReferenceEntityName": "Contacts"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "accountrolecode",
+    "RelatedEntityName": "Contacts",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Address 1: Address Type (Contacts)",
+    "Name": "contact_address1_addresstypecode",
+    "OptionSetInfoNameMapping": {
+      "1": "Bill To",
+      "2": "Ship To",
+      "3": "Primary",
+      "4": "Other"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "address1_addresstypecode",
+        "OptionSetReferenceEntityName": "Contacts"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "address1_addresstypecode",
+    "RelatedEntityName": "Contacts",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Address 1: Freight Terms (Contacts)",
+    "Name": "contact_address1_freighttermscode",
+    "OptionSetInfoNameMapping": {
+      "1": "FOB",
+      "2": "No Charge"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "address1_freighttermscode",
+        "OptionSetReferenceEntityName": "Contacts"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "address1_freighttermscode",
+    "RelatedEntityName": "Contacts",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Address 1: Shipping Method (Contacts)",
+    "Name": "contact_address1_shippingmethodcode",
+    "OptionSetInfoNameMapping": {
+      "1": "Airborne",
+      "2": "DHL",
+      "3": "FedEx",
+      "4": "UPS",
+      "5": "Postal Mail",
+      "6": "Full Load",
+      "7": "Will Call"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "address1_shippingmethodcode",
+        "OptionSetReferenceEntityName": "Contacts"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "address1_shippingmethodcode",
+    "RelatedEntityName": "Contacts",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Address 2: Address Type (Contacts)",
+    "Name": "contact_address2_addresstypecode",
+    "OptionSetInfoNameMapping": {
+      "1": "Default Value"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "address2_addresstypecode",
+        "OptionSetReferenceEntityName": "Contacts"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "address2_addresstypecode",
+    "RelatedEntityName": "Contacts",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Address 2: Freight Terms (Contacts)",
+    "Name": "contact_address2_freighttermscode",
+    "OptionSetInfoNameMapping": {
+      "1": "Default Value"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "address2_freighttermscode",
+        "OptionSetReferenceEntityName": "Contacts"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "address2_freighttermscode",
+    "RelatedEntityName": "Contacts",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Address 2: Shipping Method (Contacts)",
+    "Name": "contact_address2_shippingmethodcode",
+    "OptionSetInfoNameMapping": {
+      "1": "Default Value"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "address2_shippingmethodcode",
+        "OptionSetReferenceEntityName": "Contacts"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "address2_shippingmethodcode",
+    "RelatedEntityName": "Contacts",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Address 3: Address Type (Contacts)",
+    "Name": "contact_address3_addresstypecode",
+    "OptionSetInfoNameMapping": {
+      "1": "Default Value"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "address3_addresstypecode",
+        "OptionSetReferenceEntityName": "Contacts"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "address3_addresstypecode",
+    "RelatedEntityName": "Contacts",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Address 3: Freight Terms (Contacts)",
+    "Name": "contact_address3_freighttermscode",
+    "OptionSetInfoNameMapping": {
+      "1": "Default Value"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "address3_freighttermscode",
+        "OptionSetReferenceEntityName": "Contacts"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "address3_freighttermscode",
+    "RelatedEntityName": "Contacts",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Address 3: Shipping Method (Contacts)",
+    "Name": "contact_address3_shippingmethodcode",
+    "OptionSetInfoNameMapping": {
+      "1": "Default Value"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "address3_shippingmethodcode",
+        "OptionSetReferenceEntityName": "Contacts"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "address3_shippingmethodcode",
+    "RelatedEntityName": "Contacts",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Credit Hold (Contacts)",
+    "Name": "contact_creditonhold",
+    "OptionSetInfoNameMapping": {
+      "0": "No",
+      "1": "Yes"
+    },
+    "OptionSetIsBooleanValued": true,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "creditonhold",
+        "OptionSetReferenceEntityName": "Contacts"
+      }
+    },
+    "OptionSetTypeKey": "BooleanType",
+    "RelatedColumnInvariantName": "creditonhold",
+    "RelatedEntityName": "Contacts",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Customer Size (Contacts)",
+    "Name": "contact_customersizecode",
+    "OptionSetInfoNameMapping": {
+      "1": "Default Value"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "customersizecode",
+        "OptionSetReferenceEntityName": "Contacts"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "customersizecode",
+    "RelatedEntityName": "Contacts",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Relationship Type (Contacts)",
+    "Name": "contact_customertypecode",
+    "OptionSetInfoNameMapping": {
+      "1": "Default Value"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "customertypecode",
+        "OptionSetReferenceEntityName": "Contacts"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "customertypecode",
+    "RelatedEntityName": "Contacts",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Do not allow Bulk Emails (Contacts)",
+    "Name": "contact_donotbulkemail",
+    "OptionSetInfoNameMapping": {
+      "0": "Allow",
+      "1": "Do Not Allow"
+    },
+    "OptionSetIsBooleanValued": true,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "donotbulkemail",
+        "OptionSetReferenceEntityName": "Contacts"
+      }
+    },
+    "OptionSetTypeKey": "BooleanType",
+    "RelatedColumnInvariantName": "donotbulkemail",
+    "RelatedEntityName": "Contacts",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Do not allow Bulk Mails (Contacts)",
+    "Name": "contact_donotbulkpostalmail",
+    "OptionSetInfoNameMapping": {
+      "0": "No",
+      "1": "Yes"
+    },
+    "OptionSetIsBooleanValued": true,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "donotbulkpostalmail",
+        "OptionSetReferenceEntityName": "Contacts"
+      }
+    },
+    "OptionSetTypeKey": "BooleanType",
+    "RelatedColumnInvariantName": "donotbulkpostalmail",
+    "RelatedEntityName": "Contacts",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Do not allow Emails (Contacts)",
+    "Name": "contact_donotemail",
+    "OptionSetInfoNameMapping": {
+      "0": "Allow",
+      "1": "Do Not Allow"
+    },
+    "OptionSetIsBooleanValued": true,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "donotemail",
+        "OptionSetReferenceEntityName": "Contacts"
+      }
+    },
+    "OptionSetTypeKey": "BooleanType",
+    "RelatedColumnInvariantName": "donotemail",
+    "RelatedEntityName": "Contacts",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Do not allow Faxes (Contacts)",
+    "Name": "contact_donotfax",
+    "OptionSetInfoNameMapping": {
+      "0": "Allow",
+      "1": "Do Not Allow"
+    },
+    "OptionSetIsBooleanValued": true,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "donotfax",
+        "OptionSetReferenceEntityName": "Contacts"
+      }
+    },
+    "OptionSetTypeKey": "BooleanType",
+    "RelatedColumnInvariantName": "donotfax",
+    "RelatedEntityName": "Contacts",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Do not allow Phone Calls (Contacts)",
+    "Name": "contact_donotphone",
+    "OptionSetInfoNameMapping": {
+      "0": "Allow",
+      "1": "Do Not Allow"
+    },
+    "OptionSetIsBooleanValued": true,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "donotphone",
+        "OptionSetReferenceEntityName": "Contacts"
+      }
+    },
+    "OptionSetTypeKey": "BooleanType",
+    "RelatedColumnInvariantName": "donotphone",
+    "RelatedEntityName": "Contacts",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Do not allow Mails (Contacts)",
+    "Name": "contact_donotpostalmail",
+    "OptionSetInfoNameMapping": {
+      "0": "Allow",
+      "1": "Do Not Allow"
+    },
+    "OptionSetIsBooleanValued": true,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "donotpostalmail",
+        "OptionSetReferenceEntityName": "Contacts"
+      }
+    },
+    "OptionSetTypeKey": "BooleanType",
+    "RelatedColumnInvariantName": "donotpostalmail",
+    "RelatedEntityName": "Contacts",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Send Marketing Materials (Contacts)",
+    "Name": "contact_donotsendmm",
+    "OptionSetInfoNameMapping": {
+      "0": "Send",
+      "1": "Do Not Send"
+    },
+    "OptionSetIsBooleanValued": true,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "donotsendmm",
+        "OptionSetReferenceEntityName": "Contacts"
+      }
+    },
+    "OptionSetTypeKey": "BooleanType",
+    "RelatedColumnInvariantName": "donotsendmm",
+    "RelatedEntityName": "Contacts",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Education (Contacts)",
+    "Name": "contact_educationcode",
+    "OptionSetInfoNameMapping": {
+      "1": "Default Value"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "educationcode",
+        "OptionSetReferenceEntityName": "Contacts"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "educationcode",
+    "RelatedEntityName": "Contacts",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Marital Status (Contacts)",
+    "Name": "contact_familystatuscode",
+    "OptionSetInfoNameMapping": {
+      "1": "Single",
+      "2": "Married",
+      "3": "Divorced",
+      "4": "Widowed",
+      "935000000": "Anulled",
+      "935000001": "Interlocutory",
+      "935000002": "Legally Seperated",
+      "935000003": "Domestic Partner",
+      "935000004": "Unmarried",
+      "935000005": "Unknown",
+      "935000006": "Polygamous",
+      "935000007": "Never Married"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "familystatuscode",
+        "OptionSetReferenceEntityName": "Contacts"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "familystatuscode",
+    "RelatedEntityName": "Contacts",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Follow Email Activity (Contacts)",
+    "Name": "contact_followemail",
+    "OptionSetInfoNameMapping": {
+      "0": "Do Not Allow",
+      "1": "Allow"
+    },
+    "OptionSetIsBooleanValued": true,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "followemail",
+        "OptionSetReferenceEntityName": "Contacts"
+      }
+    },
+    "OptionSetTypeKey": "BooleanType",
+    "RelatedColumnInvariantName": "followemail",
+    "RelatedEntityName": "Contacts",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Gender (Contacts)",
+    "Name": "contact_gendercode",
+    "OptionSetInfoNameMapping": {
+      "1": "Male",
+      "153940001": "Other/ I'd prefer not to say",
+      "153940002": "Transgender",
+      "153940003": "Non-Binary",
+      "2": "Female"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "gendercode",
+        "OptionSetReferenceEntityName": "Contacts"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "gendercode",
+    "RelatedEntityName": "Contacts",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Has Children (Contacts)",
+    "Name": "contact_haschildrencode",
+    "OptionSetInfoNameMapping": {
+      "1": "Default Value"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "haschildrencode",
+        "OptionSetReferenceEntityName": "Contacts"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "haschildrencode",
+    "RelatedEntityName": "Contacts",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Auto-created (Contacts)",
+    "Name": "contact_isautocreate",
+    "OptionSetInfoNameMapping": {
+      "0": "No",
+      "1": "Yes"
+    },
+    "OptionSetIsBooleanValued": true,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "isautocreate",
+        "OptionSetReferenceEntityName": "Contacts"
+      }
+    },
+    "OptionSetTypeKey": "BooleanType",
+    "RelatedColumnInvariantName": "isautocreate",
+    "RelatedEntityName": "Contacts",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Back Office Customer (Contacts)",
+    "Name": "contact_isbackofficecustomer",
+    "OptionSetInfoNameMapping": {
+      "0": "No",
+      "1": "Yes"
+    },
+    "OptionSetIsBooleanValued": true,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "isbackofficecustomer",
+        "OptionSetReferenceEntityName": "Contacts"
+      }
+    },
+    "OptionSetTypeKey": "BooleanType",
+    "RelatedColumnInvariantName": "isbackofficecustomer",
+    "RelatedEntityName": "Contacts",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "IsPrivate (Contacts)",
+    "Name": "contact_isprivate",
+    "OptionSetInfoNameMapping": {
+      "0": "No",
+      "1": "Yes"
+    },
+    "OptionSetIsBooleanValued": true,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "isprivate",
+        "OptionSetReferenceEntityName": "Contacts"
+      }
+    },
+    "OptionSetTypeKey": "BooleanType",
+    "RelatedColumnInvariantName": "isprivate",
+    "RelatedEntityName": "Contacts",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Lead Source (Contacts)",
+    "Name": "contact_leadsourcecode",
+    "OptionSetInfoNameMapping": {
+      "1": "Default Value"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "leadsourcecode",
+        "OptionSetReferenceEntityName": "Contacts"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "leadsourcecode",
+    "RelatedEntityName": "Contacts",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Marketing Only (Contacts)",
+    "Name": "contact_marketingonly",
+    "OptionSetInfoNameMapping": {
+      "0": "No",
+      "1": "Yes"
+    },
+    "OptionSetIsBooleanValued": true,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "marketingonly",
+        "OptionSetReferenceEntityName": "Contacts"
+      }
+    },
+    "OptionSetTypeKey": "BooleanType",
+    "RelatedColumnInvariantName": "marketingonly",
+    "RelatedEntityName": "Contacts",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Merged (Contacts)",
+    "Name": "contact_merged",
+    "OptionSetInfoNameMapping": {
+      "0": "No",
+      "1": "Yes"
+    },
+    "OptionSetIsBooleanValued": true,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "merged",
+        "OptionSetReferenceEntityName": "Contacts"
+      }
+    },
+    "OptionSetTypeKey": "BooleanType",
+    "RelatedColumnInvariantName": "merged",
+    "RelatedEntityName": "Contacts",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Participates in Workflow (Contacts)",
+    "Name": "contact_participatesinworkflow",
+    "OptionSetInfoNameMapping": {
+      "0": "No",
+      "1": "Yes"
+    },
+    "OptionSetIsBooleanValued": true,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "participatesinworkflow",
+        "OptionSetReferenceEntityName": "Contacts"
+      }
+    },
+    "OptionSetTypeKey": "BooleanType",
+    "RelatedColumnInvariantName": "participatesinworkflow",
+    "RelatedEntityName": "Contacts",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Payment Terms (Contacts)",
+    "Name": "contact_paymenttermscode",
+    "OptionSetInfoNameMapping": {
+      "1": "Net 30",
+      "2": "2% 10, Net 30",
+      "3": "Net 45",
+      "4": "Net 60"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "paymenttermscode",
+        "OptionSetReferenceEntityName": "Contacts"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "paymenttermscode",
+    "RelatedEntityName": "Contacts",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Preferred Day (Contacts)",
+    "Name": "contact_preferredappointmentdaycode",
+    "OptionSetInfoNameMapping": {
+      "0": "Sunday",
+      "1": "Monday",
+      "2": "Tuesday",
+      "3": "Wednesday",
+      "4": "Thursday",
+      "5": "Friday",
+      "6": "Saturday"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "preferredappointmentdaycode",
+        "OptionSetReferenceEntityName": "Contacts"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "preferredappointmentdaycode",
+    "RelatedEntityName": "Contacts",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Preferred Time (Contacts)",
+    "Name": "contact_preferredappointmenttimecode",
+    "OptionSetInfoNameMapping": {
+      "1": "Morning",
+      "2": "Afternoon",
+      "3": "Evening"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "preferredappointmenttimecode",
+        "OptionSetReferenceEntityName": "Contacts"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "preferredappointmenttimecode",
+    "RelatedEntityName": "Contacts",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Preferred Method of Contact (Contacts)",
+    "Name": "contact_preferredcontactmethodcode",
+    "OptionSetInfoNameMapping": {
+      "1": "Any",
+      "2": "Email",
+      "3": "Phone",
+      "4": "Fax",
+      "5": "Mail"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "preferredcontactmethodcode",
+        "OptionSetReferenceEntityName": "Contacts"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "preferredcontactmethodcode",
+    "RelatedEntityName": "Contacts",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Shipping Method (Contacts)",
+    "Name": "contact_shippingmethodcode",
+    "OptionSetInfoNameMapping": {
+      "1": "Default Value"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "shippingmethodcode",
+        "OptionSetReferenceEntityName": "Contacts"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "shippingmethodcode",
+    "RelatedEntityName": "Contacts",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status (Contacts)",
+    "Name": "contact_statecode",
+    "OptionSetInfoNameMapping": {
+      "0": "Active",
+      "1": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statecode",
+        "OptionSetReferenceEntityName": "Contacts"
+      }
+    },
+    "OptionSetTypeKey": "StateType",
+    "RelatedColumnInvariantName": "statecode",
+    "RelatedEntityName": "Contacts",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status Reason (Contacts)",
+    "Name": "contact_statuscode",
+    "OptionSetInfoNameMapping": {
+      "1": "Active",
+      "2": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statuscode",
+        "OptionSetReferenceEntityName": "Contacts"
+      }
+    },
+    "OptionSetTypeKey": "StatusType",
+    "RelatedColumnInvariantName": "statuscode",
+    "RelatedEntityName": "Contacts",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Territory (Contacts)",
+    "Name": "contact_territorycode",
+    "OptionSetInfoNameMapping": {
+      "1": "Default Value"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "territorycode",
+        "OptionSetReferenceEntityName": "Contacts"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "territorycode",
+    "RelatedEntityName": "Contacts",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Animal (Contacts)",
+    "Name": "msemr_contact_msemr_animal",
+    "OptionSetInfoNameMapping": {
+      "0": "No",
+      "1": "Yes"
+    },
+    "OptionSetIsBooleanValued": true,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "msemr_animal",
+        "OptionSetReferenceEntityName": "Contacts"
+      }
+    },
+    "OptionSetTypeKey": "BooleanType",
+    "RelatedColumnInvariantName": "msemr_animal",
+    "RelatedEntityName": "Contacts",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Primary Language Preferred (Contacts)",
+    "Name": "msemr_contact_msemr_communication1preferred",
+    "OptionSetInfoNameMapping": {
+      "0": "No",
+      "1": "Yes"
+    },
+    "OptionSetIsBooleanValued": true,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "msemr_communication1preferred",
+        "OptionSetReferenceEntityName": "Contacts"
+      }
+    },
+    "OptionSetTypeKey": "BooleanType",
+    "RelatedColumnInvariantName": "msemr_communication1preferred",
+    "RelatedEntityName": "Contacts",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Secondary Language Preferred (Contacts)",
+    "Name": "msemr_contact_msemr_communication2preferred",
+    "OptionSetInfoNameMapping": {
+      "0": "No",
+      "1": "Yes"
+    },
+    "OptionSetIsBooleanValued": true,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "msemr_communication2preferred",
+        "OptionSetReferenceEntityName": "Contacts"
+      }
+    },
+    "OptionSetTypeKey": "BooleanType",
+    "RelatedColumnInvariantName": "msemr_communication2preferred",
+    "RelatedEntityName": "Contacts",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Contact Type (Contacts)",
+    "Name": "msemr_contact_msemr_contacttype",
+    "OptionSetInfoNameMapping": {
+      "935000000": "Patient",
+      "935000001": "Practitioner",
+      "935000002": "Related Person"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "msemr_contacttype",
+        "OptionSetReferenceEntityName": "Contacts"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "msemr_contacttype",
+    "RelatedEntityName": "Contacts",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Use of Name",
+    "Name": "msemr_nameuse",
+    "OptionSetInfoNameMapping": {
+      "935000000": "Usual",
+      "935000001": "Official",
+      "935000002": "Temp",
+      "935000003": "Nick",
+      "935000004": "Maiden",
+      "935000005": "Old",
+      "935000006": "Anonymus"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": true,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "msemr_name1use",
+        "OptionSetReferenceEntityName": "Contacts"
+      },
+      "OptionSetReferenceItem1": {
+        "OptionSetReferenceColumnName": "msemr_name3use",
+        "OptionSetReferenceEntityName": "Contacts"
+      },
+      "OptionSetReferenceItem2": {
+        "OptionSetReferenceColumnName": "msemr_name2use",
+        "OptionSetReferenceEntityName": "Contacts"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "msemr_name1use",
+    "RelatedEntityName": "Contacts",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Telecom System",
+    "Name": "msemr_telecomsystem",
+    "OptionSetInfoNameMapping": {
+      "935000000": "Phone",
+      "935000001": "Email",
+      "935000002": "Fax",
+      "935000003": "Pager",
+      "935000004": "SMS",
+      "935000005": "Skype"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": true,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "msemr_telecom1system",
+        "OptionSetReferenceEntityName": "Contacts"
+      },
+      "OptionSetReferenceItem1": {
+        "OptionSetReferenceColumnName": "msemr_telecom3system",
+        "OptionSetReferenceEntityName": "Contacts"
+      },
+      "OptionSetReferenceItem2": {
+        "OptionSetReferenceColumnName": "msemr_telecom2system",
+        "OptionSetReferenceEntityName": "Contacts"
+      },
+      "OptionSetReferenceItem3": {
+        "OptionSetReferenceColumnName": "msemr_telecom3system",
+        "OptionSetReferenceEntityName": "Accounts"
+      },
+      "OptionSetReferenceItem4": {
+        "OptionSetReferenceColumnName": "msemr_telecom1system",
+        "OptionSetReferenceEntityName": "Accounts"
+      },
+      "OptionSetReferenceItem5": {
+        "OptionSetReferenceColumnName": "msemr_telecom2system",
+        "OptionSetReferenceEntityName": "Accounts"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "msemr_telecom1system",
+    "RelatedEntityName": "Contacts",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Use of Contact Point",
+    "Name": "msemr_telecomuse",
+    "OptionSetInfoNameMapping": {
+      "935000000": "Home",
+      "935000001": "Work",
+      "935000002": "Temp",
+      "935000003": "Mobile",
+      "935000004": "Old"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": true,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "msemr_telecom3use",
+        "OptionSetReferenceEntityName": "Contacts"
+      },
+      "OptionSetReferenceItem1": {
+        "OptionSetReferenceColumnName": "msemr_telecom2use",
+        "OptionSetReferenceEntityName": "Contacts"
+      },
+      "OptionSetReferenceItem2": {
+        "OptionSetReferenceColumnName": "msemr_telecom1use",
+        "OptionSetReferenceEntityName": "Contacts"
+      },
+      "OptionSetReferenceItem3": {
+        "OptionSetReferenceColumnName": "msemr_telecom3use",
+        "OptionSetReferenceEntityName": "Accounts"
+      },
+      "OptionSetReferenceItem4": {
+        "OptionSetReferenceColumnName": "msemr_telecom2use",
+        "OptionSetReferenceEntityName": "Accounts"
+      },
+      "OptionSetReferenceItem5": {
+        "OptionSetReferenceColumnName": "msemr_telecom1use",
+        "OptionSetReferenceEntityName": "Accounts"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "msemr_telecom3use",
+    "RelatedEntityName": "Contacts",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Address Filled Type",
+    "Name": "smvs_addressfilledtype",
+    "OptionSetInfoNameMapping": {
+      "153940000": "Verified",
+      "153940001": "Manual"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": true,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "smvs_address_filled_type",
+        "OptionSetReferenceEntityName": "Contacts"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "smvs_address_filled_type",
+    "RelatedEntityName": "Contacts",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Available to work (Contacts)",
+    "Name": "smvs_contact_availabletowork",
+    "OptionSetInfoNameMapping": {
+      "0": "No",
+      "1": "Yes"
+    },
+    "OptionSetIsBooleanValued": true,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "smvs_availabletowork",
+        "OptionSetReferenceEntityName": "Contacts"
+      }
+    },
+    "OptionSetTypeKey": "BooleanType",
+    "RelatedColumnInvariantName": "smvs_availabletowork",
+    "RelatedEntityName": "Contacts",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Cannot bring guardian (Contacts)",
+    "Name": "smvs_contact_cannot_bring_guardian",
+    "OptionSetInfoNameMapping": {
+      "0": "No",
+      "1": "Yes"
+    },
+    "OptionSetIsBooleanValued": true,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "smvs_cannot_bring_guardian",
+        "OptionSetReferenceEntityName": "Contacts"
+      }
+    },
+    "OptionSetTypeKey": "BooleanType",
+    "RelatedColumnInvariantName": "smvs_cannot_bring_guardian",
+    "RelatedEntityName": "Contacts",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Email Notification (Contacts)",
+    "Name": "smvs_contact_receivenotification",
+    "OptionSetInfoNameMapping": {
+      "0": "No",
+      "1": "Yes"
+    },
+    "OptionSetIsBooleanValued": true,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "smvs_receivenotification",
+        "OptionSetReferenceEntityName": "Contacts"
+      }
+    },
+    "OptionSetTypeKey": "BooleanType",
+    "RelatedColumnInvariantName": "smvs_receivenotification",
+    "RelatedEntityName": "Contacts",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "SMS Notification (Contacts)",
+    "Name": "smvs_contact_smsnotification",
+    "OptionSetInfoNameMapping": {
+      "0": "No",
+      "1": "Yes"
+    },
+    "OptionSetIsBooleanValued": true,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "smvs_smsnotification",
+        "OptionSetReferenceEntityName": "Contacts"
+      }
+    },
+    "OptionSetTypeKey": "BooleanType",
+    "RelatedColumnInvariantName": "smvs_smsnotification",
+    "RelatedEntityName": "Contacts",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Ethnicity (Contacts)",
+    "Name": "smvs_contact_smvs_ethnicity",
+    "OptionSetInfoNameMapping": {
+      "153940000": "Hispanic/Latino",
+      "153940001": "I'd prefer not to say",
+      "153940003": "Not Hispanic/Latino"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "smvs_ethnicity",
+        "OptionSetReferenceEntityName": "Contacts"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "smvs_ethnicity",
+    "RelatedEntityName": "Contacts",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Race (Contacts)",
+    "Name": "smvs_contact_smvs_race",
+    "OptionSetInfoNameMapping": {
+      "153940000": "Asian",
+      "153940001": "American indian or Alaskan Native",
+      "153940002": "Black or African American",
+      "153940003": "Native Hawaiian or Other Pacific Islander",
+      "153940004": "White",
+      "153940005": "I'd prefer not to say",
+      "153940006": "Other Race"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "smvs_race",
+        "OptionSetReferenceEntityName": "Contacts"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "smvs_race",
+    "RelatedEntityName": "Contacts",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Language",
+    "Name": "smvs_language",
+    "OptionSetInfoNameMapping": {
+      "153940000": "Amharic",
+      "153940001": "Arabic",
+      "153940002": "ASL",
+      "153940003": "Burmese",
+      "153940004": "Cantonese",
+      "153940005": "Chuukese",
+      "153940006": "Filipino/Pilipino",
+      "153940007": "French",
+      "153940008": "German",
+      "153940009": "Hindi",
+      "153940010": "Hmong",
+      "153940011": "Japanese",
+      "153940012": "Karen Languages",
+      "153940013": "Korean",
+      "153940014": "Lao",
+      "153940015": "Mandarin",
+      "153940016": "Marshallese",
+      "153940017": "Nepali",
+      "153940018": "Oromo",
+      "153940019": "Persian",
+      "153940020": "Portuguese",
+      "153940021": "Punjabi",
+      "153940022": "Romanian",
+      "153940023": "Russian",
+      "153940024": "Samoan",
+      "153940025": "Somali",
+      "153940026": "Spanish",
+      "153940027": "Swahili",
+      "153940028": "Tagalog",
+      "153940029": "Tamil",
+      "153940030": "Telugu",
+      "153940031": "Thai",
+      "153940032": "Tigrinya",
+      "153940033": "Urdu",
+      "153940034": "Ukrainian",
+      "153940035": "Vietnamese",
+      "153940036": "Other",
+      "153940037": "English",
+      "153940038": "Khmer/Cambodian"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": true,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "smvs_language",
+        "OptionSetReferenceEntityName": "Contacts"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "smvs_language",
+    "RelatedEntityName": "Contacts",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Patient Type",
+    "Name": "smvs_patienttype",
+    "OptionSetInfoNameMapping": {
+      "153940000": "Staff / Caregiver",
+      "153940001": "Client"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": true,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "smvs_patienttype",
+        "OptionSetReferenceEntityName": "Contacts"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "smvs_patienttype",
+    "RelatedEntityName": "Contacts",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Relationship with guardian",
+    "Name": "smvs_relationship_with_guardian",
+    "OptionSetInfoNameMapping": {
+      "153940000": "Father",
+      "249790001": "Brother",
+      "249790002": "Foster child",
+      "249790003": "Guardian",
+      "249790004": "Grandparent",
+      "249790005": "Mother",
+      "249790006": "Other",
+      "249790007": "Parent",
+      "249790008": "Stepchild",
+      "249790009": "Self",
+      "249790010": "Sibling",
+      "249790011": "Sister",
+      "249790012": "Spouse",
+      "249790013": "Care giver",
+      "249790014": "Child"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": true,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "smvs_relationship_with_guardian",
+        "OptionSetReferenceEntityName": "Contacts"
+      },
+      "OptionSetReferenceItem1": {
+        "OptionSetReferenceColumnName": "smvs_relationship_with_guardian",
+        "OptionSetReferenceEntityName": "Appointments (EMR)"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "smvs_relationship_with_guardian",
+    "RelatedEntityName": "Contacts",
+    "Type": "OptionSetInfo"
+  }
+]

@@ -1,0 +1,71 @@
+CmpApptStatusUpdateMessage As CanvasComponent:
+    Fill: =Color.White
+    Height: =350
+    Message: ="Patient’s appointment has been successfully updated to"
+    StatusText: ="Booked"
+    Title: ="Appointment Status Changed"
+    Width: =550
+    X: =0
+    Y: =0
+    ZIndex: =4
+
+    CmbMainContainer As groupContainer.verticalAutoLayoutContainer:
+        Height: =Parent.Height
+        LayoutAlignItems: =LayoutAlignItems.Stretch
+        LayoutDirection: =LayoutDirection.Vertical
+        LayoutJustifyContent: =LayoutJustifyContent.Center
+        LayoutMode: =LayoutMode.Auto
+        Width: =Parent.Width
+        ZIndex: =1
+
+        IcoStatusImage As image:
+            Height: =35
+            Image: |-
+                =If(
+                    CmpApptStatusUpdateMessage.StatusText = "Booked" ||
+                    CmpApptStatusUpdateMessage.StatusText = "Fulfilled" || 
+                    CmpApptStatusUpdateMessage.StatusText = "Checked-In",
+                     "data:image/svg+xml;utf8, "&EncodeUrl("<svg width='34' height='33' viewBox='0 0 34 33' fill='none' xmlns='http://www.w3.org/2000/svg'> <circle cx='16.7165' cy='16.321' r='16.321' fill='#00875A'/> <path d='M25.9468 11.643C25.9648 12.2508 25.6744 12.7123 25.2624 13.1243C22.2683 16.1139 19.2878 19.1169 16.2802 22.0907C15.3055 23.0542 14.3217 23.0272 13.3312 22.0502C11.5685 20.3168 9.82385 18.5676 8.0882 16.8095C7.20799 15.918 7.14496 14.7992 7.8856 14.0203C8.65775 13.2076 9.81035 13.2549 10.7581 14.1756C11.8589 15.2449 12.9732 16.3052 14.0043 17.4398C14.6279 18.1264 15.0173 18.0138 15.6094 17.406C17.8831 15.0738 20.1928 12.7776 22.5115 10.4904C23.52 9.4954 24.5353 9.42786 25.3952 10.227C25.8049 10.6075 25.976 11.087 25.9468 11.6408V11.643Z' fill='#EAE9EA'/> </svg> "),
+                    "data:image/svg+xml;utf8, "&EncodeUrl("<svg width='33' height='33' viewBox='0 0 33 33' fill='none' xmlns='http://www.w3.org/2000/svg'>
+                <circle cx='16.321' cy='16.321' r='16.321' fill='#DE350B'/>
+                <path d='M11.001 10.7896L22.3355 22.1241' stroke='#EAE9EA' stroke-width='4.1288' stroke-linecap='round'/>
+                <path d='M22.335 10.7896L11.0004 22.1241' stroke='#EAE9EA' stroke-width='4.1288' stroke-linecap='round'/>
+                </svg>
+                ")
+                )
+            LayoutMinWidth: =35
+            ZIndex: =1
+
+        LblMessageTitle As label:
+            Align: =Align.Center
+            Font: =Font.Lato
+            FontWeight: =FontWeight.Semibold
+            Height: =60
+            Size: =16
+            Text: =CmpApptStatusUpdateMessage.Title
+            Visible: =!IsBlank(CmpApptStatusUpdateMessage.Title)
+            ZIndex: =2
+
+        LblMessage As label:
+            Align: =Align.Center
+            Font: =Font.Lato
+            PaddingBottom: =0
+            Size: =16
+            Text: =CmpApptStatusUpdateMessage.Message
+            Visible: =!IsBlank(CmpApptStatusUpdateMessage.Message)
+            ZIndex: =3
+
+        LblStatusText As label:
+            Align: =Align.Center
+            Font: =Font.Lato
+            FontWeight: =FontWeight.Semibold
+            Height: =25
+            PaddingBottom: =0
+            PaddingLeft: =0
+            PaddingRight: =0
+            PaddingTop: =0
+            Size: =16
+            Text: =CmpApptStatusUpdateMessage.StatusText
+            Visible: =!IsBlank(CmpApptStatusUpdateMessage.StatusText)
+            ZIndex: =4
+

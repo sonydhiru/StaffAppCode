@@ -1,0 +1,100 @@
+[
+  {
+    "CdsFCBContext": "{\"FileType\":true,\"ImageExternalStorage\":true}",
+    "EntitySetName": "smvs_icd_10_codes",
+    "IsHidden": false,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "LogicalName": "smvs_icd_10_code",
+    "MaxGetRowsCount": 500,
+    "Name": "ICD-10 Codes",
+    "NativeCDSDataSourceInfoNameMapping": {
+      "_ownerid_value": "Owner",
+      "createdby": "Created By",
+      "createdon": "Created On",
+      "createdonbehalfby": "Created By (Delegate)",
+      "importsequencenumber": "Import Sequence Number",
+      "modifiedby": "Modified By",
+      "modifiedon": "Modified On",
+      "modifiedonbehalfby": "Modified By (Delegate)",
+      "overriddencreatedon": "Record Created On",
+      "owningbusinessunit": "Owning Business Unit",
+      "owningteam": "Owning Team",
+      "owninguser": "Owning User",
+      "smvs_appointment_icd_10_code_icd_10_code": "Appointment ICD-10 Codes",
+      "smvs_icd_10_code_AsyncOperations": "System Jobs",
+      "smvs_icd_10_code_BulkDeleteFailures": "Bulk Delete Failures",
+      "smvs_icd_10_code_DuplicateBaseRecord": "Duplicate Records (smvs_icd_10_code_DuplicateBaseRecord)",
+      "smvs_icd_10_code_DuplicateMatchingRecord": "Duplicate Records (smvs_icd_10_code_DuplicateMatchingRecord)",
+      "smvs_icd_10_code_MailboxTrackingFolders": "Mailbox Auto Tracking Folders",
+      "smvs_icd_10_code_PrincipalObjectAttributeAccesses": "Field Sharing",
+      "smvs_icd_10_code_ProcessSession": "Process Sessions",
+      "smvs_icd_10_code_service": "Services",
+      "smvs_icd_10_code_SyncErrors": "Sync Errors",
+      "smvs_icd_10_codeid": "ICD 10 Code",
+      "smvs_name": "Name",
+      "smvs_short_description": "Short Description",
+      "statecode": "Status",
+      "statuscode": "Status Reason",
+      "timezoneruleversionnumber": "Time Zone Rule Version Number",
+      "utcconversiontimezonecode": "UTC Conversion Time Zone Code",
+      "versionnumber": "Version Number"
+    },
+    "PreferredName": "ICD-10 Codes",
+    "Type": "NativeCDSDataSourceInfo"
+  },
+  {
+    "DisplayName": "ICD-10 Codes (Views)",
+    "Name": "_smvs_icd_10_code_views",
+    "RelatedEntityName": "ICD-10 Codes",
+    "TrimmedViewName": true,
+    "Type": "ViewInfo",
+    "ViewInfoNameMapping": {
+      "15bcc401-3409-4555-a545-5cdb12ab8dbd": "ICD 10 Code Advanced Find View",
+      "4ff20569-b29c-4712-9ad0-84ac94222012": "Active ICD 10 Codes",
+      "52f39cfd-e658-48bb-9211-fb92b79aa25a": "Inactive ICD 10 Codes",
+      "685d9b6a-daf8-4ba6-bdb2-4c15ae29b3b8": "ICD 10 Code Associated View",
+      "bfa6ed2e-8b0b-4959-8b3b-2c60d417d40d": "ICD 10 Code Lookup View"
+    }
+  },
+  {
+    "DisplayName": "Status (ICD-10 Codes)",
+    "Name": "smvs_icd_10_code_statecode",
+    "OptionSetInfoNameMapping": {
+      "0": "Active",
+      "1": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statecode",
+        "OptionSetReferenceEntityName": "ICD-10 Codes"
+      }
+    },
+    "OptionSetTypeKey": "StateType",
+    "RelatedColumnInvariantName": "statecode",
+    "RelatedEntityName": "ICD-10 Codes",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status Reason (ICD-10 Codes)",
+    "Name": "smvs_icd_10_code_statuscode",
+    "OptionSetInfoNameMapping": {
+      "1": "Active",
+      "2": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statuscode",
+        "OptionSetReferenceEntityName": "ICD-10 Codes"
+      }
+    },
+    "OptionSetTypeKey": "StatusType",
+    "RelatedColumnInvariantName": "statuscode",
+    "RelatedEntityName": "ICD-10 Codes",
+    "Type": "OptionSetInfo"
+  }
+]

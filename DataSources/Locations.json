@@ -1,0 +1,476 @@
+[
+  {
+    "CdsFCBContext": "{\"FileType\":true,\"ImageExternalStorage\":true}",
+    "EntitySetName": "msemr_locations",
+    "IsHidden": false,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "LogicalName": "msemr_location",
+    "MaxGetRowsCount": 500,
+    "Name": "Locations",
+    "NativeCDSDataSourceInfoNameMapping": {
+      "_ownerid_value": "Owner",
+      "createdby": "Created By",
+      "createdon": "Created On",
+      "createdonbehalfby": "Created By (Delegate)",
+      "importsequencenumber": "Import Sequence Number",
+      "modifiedby": "Modified By",
+      "modifiedon": "Modified On",
+      "modifiedonbehalfby": "Modified By (Delegate)",
+      "msemr_addresscity": "Address City",
+      "msemr_addresscountry": "Address Country",
+      "msemr_addressdistinct": "Address Distinct",
+      "msemr_addressline1": "Street 1",
+      "msemr_addressline2": "Street 2",
+      "msemr_addressline3": "Street 3",
+      "msemr_addressperiodend": "Address Period End",
+      "msemr_addressperiodstart": "Address Period Start",
+      "msemr_addresspostalcode": "Address Zip Code (msemr_addresspostalcode)",
+      "msemr_addressstate": "Address State",
+      "msemr_addresstext": "Address Text",
+      "msemr_addresstype": "Address Type",
+      "msemr_addressuse": "Address Use",
+      "msemr_description": "Description",
+      "msemr_location_AsyncOperations": "System Jobs",
+      "msemr_location_BulkDeleteFailures": "Bulk Delete Failures",
+      "msemr_location_DuplicateBaseRecord": "Duplicate Records (msemr_location_DuplicateBaseRecord)",
+      "msemr_location_DuplicateMatchingRecord": "Duplicate Records (msemr_location_DuplicateMatchingRecord)",
+      "msemr_location_MailboxTrackingFolders": "Mailbox Auto Tracking Folders",
+      "msemr_location_PrincipalObjectAttributeAccesses": "Field Sharing",
+      "msemr_location_ProcessSession": "Process Sessions",
+      "msemr_location_SyncErrors": "Sync Errors",
+      "msemr_locationalias1": "Alias 1",
+      "msemr_locationalias2": "Alias 2",
+      "msemr_locationalias3": "Alias 3",
+      "msemr_locationid": "Location",
+      "msemr_locationnumber": "Location Number",
+      "msemr_locationpositionaltitude": "Position Altitude",
+      "msemr_locationpositionlatitude": "Position Latitude",
+      "msemr_locationpositionlongitude": "Position Longitude",
+      "msemr_ManagingOrganization": "Managing Organization",
+      "msemr_mode": "Mode",
+      "msemr_msemr_location_msemr_appointmentemr_ActorLocation": "Appointments (EMR) (msemr_msemr_location_msemr_appointmentemr_ActorLocation)",
+      "msemr_msemr_location_msemr_appointmentemrparticipant_ActorLocation": "Appointment (EMR) Participants",
+      "msemr_msemr_location_msemr_careplanactivity_ActivityLocation": "Care Plan Activities",
+      "msemr_msemr_location_msemr_device_Location": "Devices",
+      "msemr_msemr_location_msemr_devicerequest_SubjectTypeLocation": "Device Requests",
+      "msemr_msemr_location_msemr_encounter_HospitalizationDestination": "Encounters (msemr_msemr_location_msemr_encounter_HospitalizationDestination)",
+      "msemr_msemr_location_msemr_encounter_HospitalizationOrigin": "Encounters (msemr_msemr_location_msemr_encounter_HospitalizationOrigin)",
+      "msemr_msemr_location_msemr_encounterlocation_EncounterLocationIdentifier": "Encounter Locations",
+      "msemr_msemr_location_msemr_healthcareservicecoveragearea_CoverageArea": "Healthcare Service Coverage Areas",
+      "msemr_msemr_location_msemr_healthcareservicelocation_Location": "Healthcare Service Locations",
+      "msemr_msemr_location_msemr_identifiesspecifictimeswhentheeventoccu_location": "Activity Definitions",
+      "msemr_msemr_location_msemr_location_PartOf": "Locations",
+      "msemr_msemr_location_msemr_locationendpoint_Location": "Location End Points",
+      "msemr_msemr_location_msemr_locationtelecom_Location": "Location Telecoms",
+      "msemr_msemr_location_msemr_observation_SubjectTypeLocation": "Observations",
+      "msemr_msemr_location_msemr_practitionerrolelocation_Location": "Practitioner Role Locations",
+      "msemr_msemr_location_msemr_procedure_Location": "Procedures",
+      "msemr_msemr_location_msemr_procedurerequest_SubjectLocation": "Procedure Requests",
+      "msemr_msemr_location_msemr_schedule_ActorHealthCareService": "Schedules (msemr_msemr_location_msemr_schedule_ActorHealthCareService)",
+      "msemr_msemr_location_msemr_scheduleactor_ActorLocation": "Schedule Actors",
+      "msemr_name": "Name",
+      "msemr_operationalstatus": "Operational Status",
+      "msemr_PartOf": "Part Of",
+      "msemr_PhysicalType": "Physical Type",
+      "msemr_status": "Status (msemr_status)",
+      "msemr_Type": "Type",
+      "mvs_msemr_location_smvs_appointment_slot_avai": "Appointment Slots Availability",
+      "overriddencreatedon": "Record Created On",
+      "owningbusinessunit": "Owning Business Unit",
+      "owningteam": "Owning Team",
+      "owninguser": "Owning User",
+      "smvs__location_slot_Location": "Slots",
+      "smvs_Account_msemr_location_msemr_location": "Accounts",
+      "smvs_addresszipcode": "Address Zip Code (smvs_addresszipcode)",
+      "smvs_billable_status": "Billable",
+      "smvs_block_duration_minutes": "Block duration (minutes)",
+      "smvs_block_per_hour": "Block per hour",
+      "smvs_clinic_duration": "Clinic duration",
+      "smvs_clinic_end_time": "Clinic end time",
+      "smvs_clinic_start_time": "Clinic start time",
+      "smvs_clinictype": "Clinic Type",
+      "smvs_county": "County",
+      "smvs_insurance": "Insurance",
+      "smvs_latitude": "Latitude",
+      "smvs_LocationCategory": "Location Category",
+      "smvs_locationstatus": "Location Status",
+      "smvs_locationtype": "Location Type",
+      "smvs_longitude": "Longitude",
+      "smvs_max_patient_at_a_same_time": "Max patient your clinic can handle at a same time",
+      "smvs_msemr_location_msemr_appointmentemr_Location": "Appointments (EMR) (smvs_msemr_location_msemr_appointmentemr_Location)",
+      "smvs_msemr_location_smvs_appointment_date_slot": "Appointment Days",
+      "smvs_no_insurance": "No Insurance",
+      "smvs_pay_at_the_time_of_service": "Pay at the time of Service",
+      "smvs_placeofservice": "Place of Service",
+      "smvs_schedule_location_msemr_location": "Schedules (smvs_schedule_location_msemr_location)",
+      "smvs_state": "State",
+      "smvs_time_gap": "Time Gap",
+      "statecode": "Status (statecode)",
+      "statuscode": "Status Reason",
+      "timezoneruleversionnumber": "Time Zone Rule Version Number",
+      "utcconversiontimezonecode": "UTC Conversion Time Zone Code",
+      "versionnumber": "Version Number"
+    },
+    "PreferredName": "Locations",
+    "Type": "NativeCDSDataSourceInfo"
+  },
+  {
+    "DisplayName": "Locations (Views)",
+    "Name": "_msemr_location_views",
+    "RelatedEntityName": "Locations",
+    "TrimmedViewName": true,
+    "Type": "ViewInfo",
+    "ViewInfoNameMapping": {
+      "1c59c1c3-045a-eb11-a812-000d3a8ca75a": "Locations (to be deleted)",
+      "2b12f13a-fef5-4071-b618-aa8f3ad22232": "Location Advanced Find View",
+      "5dc4ff8c-3450-482d-beba-b3ff23c41ddf": "Inactive Locations",
+      "aa35fed9-4768-4d93-9758-df6c324dfdaa": "Location Associated View",
+      "ce5d473c-6952-40bf-a314-b2c0d08d8c1a": "Active Locations",
+      "e0c832ab-1708-44e2-8dee-48258243adf3": "Location Lookup View",
+      "f97ae64c-3f11-ec11-b6e6-000d3a57036a": "All Locations"
+    }
+  },
+  {
+    "DisplayName": "Place of Service",
+    "Name": "crfb2_placeofservice",
+    "OptionSetInfoNameMapping": {
+      "1": "01 - Pharmacy",
+      "10": "10 - Telehealth Provided in Patient’s Home",
+      "11": "11 - Office",
+      "12": "12 - Home",
+      "15": "15 - Mobile Unit",
+      "2": "02 - Telehealth Provided Other than in Patient’s Home",
+      "3": "03 - School",
+      "4": "04 - Homeless Shelter",
+      "60": "60 - Mass Immunization Center"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": true,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "smvs_placeofservice",
+        "OptionSetReferenceEntityName": "Locations"
+      },
+      "OptionSetReferenceItem1": {
+        "OptionSetReferenceColumnName": "smvs_placeofservice",
+        "OptionSetReferenceEntityName": "App Settings"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "smvs_placeofservice",
+    "RelatedEntityName": "Locations",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Address Type",
+    "Name": "msemr_addresstype",
+    "OptionSetInfoNameMapping": {
+      "935000000": "Postal",
+      "935000001": "Physical",
+      "935000002": "Both"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": true,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "msemr_addresstype",
+        "OptionSetReferenceEntityName": "Locations"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "msemr_addresstype",
+    "RelatedEntityName": "Locations",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Address Use",
+    "Name": "msemr_addressuse",
+    "OptionSetInfoNameMapping": {
+      "935000000": "Home",
+      "935000001": "Work",
+      "935000002": "Temp",
+      "935000003": "Old"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": true,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "msemr_addressuse",
+        "OptionSetReferenceEntityName": "Locations"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "msemr_addressuse",
+    "RelatedEntityName": "Locations",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status (Locations)",
+    "Name": "msemr_location_statecode",
+    "OptionSetInfoNameMapping": {
+      "0": "Active",
+      "1": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statecode",
+        "OptionSetReferenceEntityName": "Locations"
+      }
+    },
+    "OptionSetTypeKey": "StateType",
+    "RelatedColumnInvariantName": "statecode",
+    "RelatedEntityName": "Locations",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status Reason (Locations)",
+    "Name": "msemr_location_statuscode",
+    "OptionSetInfoNameMapping": {
+      "1": "Active",
+      "2": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statuscode",
+        "OptionSetReferenceEntityName": "Locations"
+      }
+    },
+    "OptionSetTypeKey": "StatusType",
+    "RelatedColumnInvariantName": "statuscode",
+    "RelatedEntityName": "Locations",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Location Mode",
+    "Name": "msemr_locationmode",
+    "OptionSetInfoNameMapping": {
+      "935000000": "instance",
+      "935000001": "Kind"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": true,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "msemr_mode",
+        "OptionSetReferenceEntityName": "Locations"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "msemr_mode",
+    "RelatedEntityName": "Locations",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Location Status",
+    "Name": "msemr_locationstatus",
+    "OptionSetInfoNameMapping": {
+      "935000000": "Active",
+      "935000001": "Suspended",
+      "935000002": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": true,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "msemr_status",
+        "OptionSetReferenceEntityName": "Locations"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "msemr_status",
+    "RelatedEntityName": "Locations",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Operational Status",
+    "Name": "msemr_operationalstatus",
+    "OptionSetInfoNameMapping": {
+      "935000000": "Closed",
+      "935000001": "Housekeeping",
+      "935000002": "Isolated",
+      "935000003": "Contaminated",
+      "935000004": "Occupied",
+      "935000005": "Unoccupied"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": true,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "msemr_operationalstatus",
+        "OptionSetReferenceEntityName": "Locations"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "msemr_operationalstatus",
+    "RelatedEntityName": "Locations",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Block per hour",
+    "Name": "smvs_block_per_hour",
+    "OptionSetInfoNameMapping": {
+      "153940000": "1",
+      "153940001": "2",
+      "153940002": "4",
+      "153940003": "6",
+      "153940004": "12"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": true,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "smvs_block_per_hour",
+        "OptionSetReferenceEntityName": "Locations"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "smvs_block_per_hour",
+    "RelatedEntityName": "Locations",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Location Status_1",
+    "Name": "smvs_locationstatus",
+    "OptionSetInfoNameMapping": {
+      "153940000": "Live",
+      "153940001": "Not Live"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": true,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "smvs_locationstatus",
+        "OptionSetReferenceEntityName": "Locations"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "smvs_locationstatus",
+    "RelatedEntityName": "Locations",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Location Type",
+    "Name": "smvs_locationtype",
+    "OptionSetInfoNameMapping": {
+      "153940000": "Public",
+      "153940001": "Private"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": true,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "smvs_locationtype",
+        "OptionSetReferenceEntityName": "Locations"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "smvs_locationtype",
+    "RelatedEntityName": "Locations",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Billable (Locations)",
+    "Name": "smvs_msemr_location_billable_status",
+    "OptionSetInfoNameMapping": {
+      "0": "No",
+      "1": "Yes"
+    },
+    "OptionSetIsBooleanValued": true,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "smvs_billable_status",
+        "OptionSetReferenceEntityName": "Locations"
+      }
+    },
+    "OptionSetTypeKey": "BooleanType",
+    "RelatedColumnInvariantName": "smvs_billable_status",
+    "RelatedEntityName": "Locations",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Insurance (Locations)",
+    "Name": "smvs_msemr_location_insurance",
+    "OptionSetInfoNameMapping": {
+      "0": "No",
+      "1": "Yes"
+    },
+    "OptionSetIsBooleanValued": true,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "smvs_insurance",
+        "OptionSetReferenceEntityName": "Locations"
+      }
+    },
+    "OptionSetTypeKey": "BooleanType",
+    "RelatedColumnInvariantName": "smvs_insurance",
+    "RelatedEntityName": "Locations",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Pay at the time of Service (Locations)",
+    "Name": "smvs_msemr_location_pay_at_the_time_of_service",
+    "OptionSetInfoNameMapping": {
+      "0": "No",
+      "1": "Yes"
+    },
+    "OptionSetIsBooleanValued": true,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "smvs_pay_at_the_time_of_service",
+        "OptionSetReferenceEntityName": "Locations"
+      }
+    },
+    "OptionSetTypeKey": "BooleanType",
+    "RelatedColumnInvariantName": "smvs_pay_at_the_time_of_service",
+    "RelatedEntityName": "Locations",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Clinic Type (Locations)",
+    "Name": "smvs_msemr_location_smvs_clinictype",
+    "OptionSetInfoNameMapping": {
+      "153940000": "General",
+      "153940001": "Organization Specific"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "smvs_clinictype",
+        "OptionSetReferenceEntityName": "Locations"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "smvs_clinictype",
+    "RelatedEntityName": "Locations",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "No Insurance (Locations)",
+    "Name": "smvs_msemr_location_smvs_no_insurance",
+    "OptionSetInfoNameMapping": {
+      "0": "No",
+      "1": "Yes"
+    },
+    "OptionSetIsBooleanValued": true,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "smvs_no_insurance",
+        "OptionSetReferenceEntityName": "Locations"
+      }
+    },
+    "OptionSetTypeKey": "BooleanType",
+    "RelatedColumnInvariantName": "smvs_no_insurance",
+    "RelatedEntityName": "Locations",
+    "Type": "OptionSetInfo"
+  }
+]

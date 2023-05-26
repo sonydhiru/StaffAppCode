@@ -1,0 +1,31 @@
+FullPagePreLoader As CanvasComponent:
+    Fill: =RGBA(0, 0, 0, 0)
+    Height: =640
+    LoadingMessage: ="Text"
+    Width: =640
+    X: =0
+    Y: =0
+    ZIndex: =1
+
+    Rectangle9 As rectangle:
+        Fill: =RGBA(255, 255, 255, 1)
+        Height: =Parent.Height
+        Width: =Parent.Width
+        ZIndex: =1
+
+    Label7 As label:
+        Align: =Align.Center
+        Text: =FullPagePreLoader.LoadingMessage
+        Width: =Parent.Width
+        Y: =(Parent.Height-Self.Height)/2
+        ZIndex: =2
+
+    Image6 As image:
+        Height: =50
+        Image: |-
+            ="https://media.tenor.com/On7kvXhzml4AAAAj/loading-gif.gif"
+        Width: =50
+        X: =(Parent.Width-Self.Width)/2
+        Y: =Label7.Y-Self.Height
+        ZIndex: =3
+

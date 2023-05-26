@@ -1,0 +1,99 @@
+[
+  {
+    "CdsFCBContext": "{\"FileType\":true,\"ImageExternalStorage\":true}",
+    "EntitySetName": "smvs_service_type_compatibilities",
+    "IsHidden": false,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "LogicalName": "smvs_service_type_compatibility",
+    "MaxGetRowsCount": 500,
+    "Name": "Service Type Compatibilities",
+    "NativeCDSDataSourceInfoNameMapping": {
+      "_ownerid_value": "Owner",
+      "createdby": "Created By",
+      "createdon": "Created On",
+      "createdonbehalfby": "Created By (Delegate)",
+      "importsequencenumber": "Import Sequence Number",
+      "modifiedby": "Modified By",
+      "modifiedon": "Modified On",
+      "modifiedonbehalfby": "Modified By (Delegate)",
+      "overriddencreatedon": "Record Created On",
+      "owningbusinessunit": "Owning Business Unit",
+      "owningteam": "Owning Team",
+      "owninguser": "Owning User",
+      "smvs_name": "Name",
+      "smvs_primary_service_type": "Primary Service Type",
+      "smvs_secondary_service_type": "Secondary Service Type",
+      "smvs_service_type_compatibility_AsyncOperations": "System Jobs",
+      "smvs_service_type_compatibility_BulkDeleteFailures": "Bulk Delete Failures",
+      "smvs_service_type_compatibility_DuplicateBaseRecord": "Duplicate Records (smvs_service_type_compatibility_DuplicateBaseRecord)",
+      "smvs_service_type_compatibility_DuplicateMatchingRecord": "Duplicate Records (smvs_service_type_compatibility_DuplicateMatchingRecord)",
+      "smvs_service_type_compatibility_MailboxTrackingFolders": "Mailbox Auto Tracking Folders",
+      "smvs_service_type_compatibility_PrincipalObjectAttributeAccesses": "Field Sharing",
+      "smvs_service_type_compatibility_ProcessSession": "Process Sessions",
+      "smvs_service_type_compatibility_SyncErrors": "Sync Errors",
+      "smvs_service_type_compatibilityid": "Service Type Compatibility",
+      "statecode": "Status",
+      "statuscode": "Status Reason",
+      "timezoneruleversionnumber": "Time Zone Rule Version Number",
+      "utcconversiontimezonecode": "UTC Conversion Time Zone Code",
+      "versionnumber": "Version Number"
+    },
+    "PreferredName": "Service Type Compatibilities",
+    "Type": "NativeCDSDataSourceInfo"
+  },
+  {
+    "DisplayName": "Service Type Compatibilities (Views)",
+    "Name": "_smvs_service_type_compatibility_views",
+    "RelatedEntityName": "Service Type Compatibilities",
+    "TrimmedViewName": true,
+    "Type": "ViewInfo",
+    "ViewInfoNameMapping": {
+      "1aa2c908-0478-43cf-b5a4-bbbbed8d73b9": "Service Type Compatibility Advanced Find View",
+      "6d49ced5-0788-493e-9dbc-e237dc9d9428": "Active Service Type Compatibilities",
+      "7ebc25cd-52b6-44ce-b5c7-e6df5b014ef5": "Service Type Compatibility Associated View",
+      "a9e9a560-6b25-49cb-95ce-de386c73e577": "Inactive Service Type Compatibilities",
+      "b036ae86-5246-4262-a2cb-c823db07fb0e": "Service Type Compatibility Lookup View"
+    }
+  },
+  {
+    "DisplayName": "Status (Service Type Compatibilities)",
+    "Name": "smvs_service_type_compatibility_statecode",
+    "OptionSetInfoNameMapping": {
+      "0": "Active",
+      "1": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statecode",
+        "OptionSetReferenceEntityName": "Service Type Compatibilities"
+      }
+    },
+    "OptionSetTypeKey": "StateType",
+    "RelatedColumnInvariantName": "statecode",
+    "RelatedEntityName": "Service Type Compatibilities",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status Reason (Service Type Compatibilities)",
+    "Name": "smvs_service_type_compatibility_statuscode",
+    "OptionSetInfoNameMapping": {
+      "1": "Active",
+      "2": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statuscode",
+        "OptionSetReferenceEntityName": "Service Type Compatibilities"
+      }
+    },
+    "OptionSetTypeKey": "StatusType",
+    "RelatedColumnInvariantName": "statuscode",
+    "RelatedEntityName": "Service Type Compatibilities",
+    "Type": "OptionSetInfo"
+  }
+]

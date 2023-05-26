@@ -1,0 +1,219 @@
+[
+  {
+    "CdsFCBContext": "{\"FileType\":true,\"ImageExternalStorage\":true}",
+    "EntitySetName": "smvs_patientscreeningquestions",
+    "IsHidden": false,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "LogicalName": "smvs_patientscreeningquestion",
+    "MaxGetRowsCount": 500,
+    "Name": "Patient Screening Questions",
+    "NativeCDSDataSourceInfoNameMapping": {
+      "_ownerid_value": "Owner",
+      "createdby": "Created By",
+      "createdon": "Created On",
+      "createdonbehalfby": "Created By (Delegate)",
+      "importsequencenumber": "Import Sequence Number",
+      "modifiedby": "Modified By",
+      "modifiedon": "Modified On",
+      "modifiedonbehalfby": "Modified By (Delegate)",
+      "overriddencreatedon": "Record Created On",
+      "owningbusinessunit": "Owning Business Unit",
+      "owningteam": "Owning Team",
+      "owninguser": "Owning User",
+      "smvs_additional_information_criteria": "Additional Information Criteria",
+      "smvs_control_type": "Input Type",
+      "smvs_eligibilityfailmessage": "Eligibility Fail Message",
+      "smvs_enable_additional_question": "Enable Additional Question",
+      "smvs_errortype": "Type",
+      "smvs_language_code": "Language ",
+      "smvs_msemr_healthcareservicecategory_smvs_Pati": "Services",
+      "smvs_name": "Name",
+      "smvs_parent_patient_screening_question": "Parent Screening Question",
+      "smvs_passcriteria": "Pass Criteria",
+      "smvs_PatientScreeningAnswers_PatientScree": "Patient Screening Responses",
+      "smvs_patientscreeningquestion_AsyncOperations": "System Jobs",
+      "smvs_patientscreeningquestion_BulkDeleteFailures": "Bulk Delete Failures",
+      "smvs_patientscreeningquestion_DuplicateBaseRecord": "Duplicate Records (smvs_patientscreeningquestion_DuplicateBaseRecord)",
+      "smvs_patientscreeningquestion_DuplicateMatchingRecord": "Duplicate Records (smvs_patientscreeningquestion_DuplicateMatchingRecord)",
+      "smvs_patientscreeningquestion_MailboxTrackingFolders": "Mailbox Auto Tracking Folders",
+      "smvs_PatientScreeningQuestion_msemr_healt": "Sub Services",
+      "smvs_patientscreeningquestion_PrincipalObjectAttributeAccesses": "Field Sharing",
+      "smvs_patientscreeningquestion_ProcessSession": "Process Sessions",
+      "smvs_PatientScreeningQuestion_smvs_parent": "Patient Screening Questions",
+      "smvs_PatientScreeningQuestion_smvs_servic": "Service Types",
+      "smvs_patientscreeningquestion_SyncErrors": "Sync Errors",
+      "smvs_patientscreeningquestionid": "Patient Screening Question",
+      "smvs_question_label": "Question Label",
+      "smvs_question_name": "Question Name",
+      "smvs_questionorder": "Question Order",
+      "smvs_questiontext": "Question Text",
+      "smvs_translation_count": "Translation Count",
+      "smvs_translation_status": "Translation Status",
+      "statecode": "Status",
+      "statuscode": "Status Reason",
+      "timezoneruleversionnumber": "Time Zone Rule Version Number",
+      "utcconversiontimezonecode": "UTC Conversion Time Zone Code",
+      "versionnumber": "Version Number"
+    },
+    "PreferredName": "Patient Screening Questions",
+    "Type": "NativeCDSDataSourceInfo"
+  },
+  {
+    "DisplayName": "Patient Screening Questions (Views)",
+    "Name": "_smvs_patientscreeningquestion_views",
+    "RelatedEntityName": "Patient Screening Questions",
+    "TrimmedViewName": true,
+    "Type": "ViewInfo",
+    "ViewInfoNameMapping": {
+      "02a2e957-f206-4e20-bdfa-3a64c3a2929b": "Active Health Questions",
+      "0f8432a6-5529-4bfa-b1aa-da83e67156d5": "Patient Screening Question  Associated View",
+      "7986097c-bba8-eb11-b1ac-000d3a9bd8ef": "All Translation Patient Screening Questions",
+      "bd2ccc25-5511-ec11-b6e6-000d3a57036a": "All Health Questions",
+      "c074d594-fa11-428a-8613-f39f5561f2aa": "Patient Screening Question  Lookup View",
+      "c45f3df9-46f9-469a-94f1-a06981745055": "Patient Screening Question  Advanced Find View",
+      "fa8530dd-e839-4aa7-a6e3-222cd6e054be": "Inactive Health Questions"
+    }
+  },
+  {
+    "DisplayName": "Additional Information Criteria",
+    "Name": "smvs_additional_information_criteria",
+    "OptionSetInfoNameMapping": {
+      "153940000": "Yes",
+      "153940001": "No"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": true,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "smvs_additional_information_criteria",
+        "OptionSetReferenceEntityName": "Patient Screening Questions"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "smvs_additional_information_criteria",
+    "RelatedEntityName": "Patient Screening Questions",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Control Type",
+    "Name": "smvs_control_type",
+    "OptionSetInfoNameMapping": {
+      "153940000": "Text",
+      "153940001": "Date"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": true,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "smvs_control_type",
+        "OptionSetReferenceEntityName": "Patient Screening Questions"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "smvs_control_type",
+    "RelatedEntityName": "Patient Screening Questions",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Eligibility Criteria",
+    "Name": "smvs_eligibilitycriteria",
+    "OptionSetInfoNameMapping": {
+      "153940000": "Yes",
+      "153940001": "No",
+      "153940002": "None"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": true,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "smvs_passcriteria",
+        "OptionSetReferenceEntityName": "Patient Screening Questions"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "smvs_passcriteria",
+    "RelatedEntityName": "Patient Screening Questions",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Enable Additional Question",
+    "Name": "smvs_enable_additional_question",
+    "OptionSetInfoNameMapping": {
+      "153940000": "Yes",
+      "153940001": "No"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": true,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "smvs_enable_additional_question",
+        "OptionSetReferenceEntityName": "Patient Screening Questions"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "smvs_enable_additional_question",
+    "RelatedEntityName": "Patient Screening Questions",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Error Type",
+    "Name": "smvs_errortype",
+    "OptionSetInfoNameMapping": {
+      "153940000": "Warning",
+      "153940001": "Error"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": true,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "smvs_errortype",
+        "OptionSetReferenceEntityName": "Patient Screening Questions"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "smvs_errortype",
+    "RelatedEntityName": "Patient Screening Questions",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status (Patient Screening Questions)",
+    "Name": "smvs_patientscreeningquestion_statecode",
+    "OptionSetInfoNameMapping": {
+      "0": "Active",
+      "1": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statecode",
+        "OptionSetReferenceEntityName": "Patient Screening Questions"
+      }
+    },
+    "OptionSetTypeKey": "StateType",
+    "RelatedColumnInvariantName": "statecode",
+    "RelatedEntityName": "Patient Screening Questions",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status Reason (Patient Screening Questions)",
+    "Name": "smvs_patientscreeningquestion_statuscode",
+    "OptionSetInfoNameMapping": {
+      "1": "Active",
+      "2": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statuscode",
+        "OptionSetReferenceEntityName": "Patient Screening Questions"
+      }
+    },
+    "OptionSetTypeKey": "StatusType",
+    "RelatedColumnInvariantName": "statuscode",
+    "RelatedEntityName": "Patient Screening Questions",
+    "Type": "OptionSetInfo"
+  }
+]

@@ -1,0 +1,101 @@
+[
+  {
+    "CdsFCBContext": "{\"FileType\":true,\"ImageExternalStorage\":true}",
+    "EntitySetName": "smvs_test_performeds",
+    "IsHidden": false,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "LogicalName": "smvs_test_performed",
+    "MaxGetRowsCount": 500,
+    "Name": "Test Performeds",
+    "NativeCDSDataSourceInfoNameMapping": {
+      "_ownerid_value": "Owner",
+      "createdby": "Created By",
+      "createdon": "Created On",
+      "createdonbehalfby": "Created By (Delegate)",
+      "importsequencenumber": "Import Sequence Number",
+      "modifiedby": "Modified By",
+      "modifiedon": "Modified On",
+      "modifiedonbehalfby": "Modified By (Delegate)",
+      "overriddencreatedon": "Record Created On",
+      "owningbusinessunit": "Owning Business Unit",
+      "owningteam": "Owning Team",
+      "owninguser": "Owning User",
+      "smvs_appointmentemr_PerformedTestName": "Appointments (EMR)",
+      "smvs_loincversionid": "LOINC Version ID",
+      "smvs_test_performed_AsyncOperations": "System Jobs",
+      "smvs_test_performed_BulkDeleteFailures": "Bulk Delete Failures",
+      "smvs_test_performed_code": "Test Performed Code",
+      "smvs_test_performed_DuplicateBaseRecord": "Duplicate Records (smvs_test_performed_DuplicateBaseRecord)",
+      "smvs_test_performed_DuplicateMatchingRecord": "Duplicate Records (smvs_test_performed_DuplicateMatchingRecord)",
+      "smvs_test_performed_MailboxTrackingFolders": "Mailbox Auto Tracking Folders",
+      "smvs_test_performed_name": "Test Performed Name",
+      "smvs_test_performed_PrincipalObjectAttributeAccesses": "Field Sharing",
+      "smvs_test_performed_ProcessSession": "Process Sessions",
+      "smvs_test_performed_smvs_device_setup_smv": "Device Setups",
+      "smvs_test_performed_SyncErrors": "Sync Errors",
+      "smvs_test_performedid": "Test Performed",
+      "statecode": "Status",
+      "statuscode": "Status Reason",
+      "timezoneruleversionnumber": "Time Zone Rule Version Number",
+      "utcconversiontimezonecode": "UTC Conversion Time Zone Code",
+      "versionnumber": "Version Number"
+    },
+    "PreferredName": "Test Performeds",
+    "Type": "NativeCDSDataSourceInfo"
+  },
+  {
+    "DisplayName": "Test Performeds (Views)",
+    "Name": "_smvs_test_performed_views",
+    "RelatedEntityName": "Test Performeds",
+    "TrimmedViewName": true,
+    "Type": "ViewInfo",
+    "ViewInfoNameMapping": {
+      "6a315cc8-9e96-4319-8cdc-be0af3d000c1": "Test Performed Advanced Find View",
+      "6ee5e953-1cf2-4b6b-aec2-a11bf995aea9": "Inactive Test Performed",
+      "7f5ce9fe-a837-4f91-b00e-1c71e5bbba00": "Test Performed Lookup View",
+      "e22b9c06-76f7-4d69-921a-a14dc3dff1d7": "Test Performed Associated View",
+      "e30ce75f-5f08-4515-8f89-4068d8801783": "Active Test Performed"
+    }
+  },
+  {
+    "DisplayName": "Status (Test Performeds)",
+    "Name": "smvs_test_performed_statecode",
+    "OptionSetInfoNameMapping": {
+      "0": "Active",
+      "1": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statecode",
+        "OptionSetReferenceEntityName": "Test Performeds"
+      }
+    },
+    "OptionSetTypeKey": "StateType",
+    "RelatedColumnInvariantName": "statecode",
+    "RelatedEntityName": "Test Performeds",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status Reason (Test Performeds)",
+    "Name": "smvs_test_performed_statuscode",
+    "OptionSetInfoNameMapping": {
+      "1": "Active",
+      "2": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statuscode",
+        "OptionSetReferenceEntityName": "Test Performeds"
+      }
+    },
+    "OptionSetTypeKey": "StatusType",
+    "RelatedColumnInvariantName": "statuscode",
+    "RelatedEntityName": "Test Performeds",
+    "Type": "OptionSetInfo"
+  }
+]

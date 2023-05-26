@@ -1,0 +1,132 @@
+MultiserviceViewComponent As CanvasComponent:
+    AdditionalServiceRemoved: ="Text"
+    AdditionalServiceVisible: =true
+    ClearAdditionalService: ="Text"
+    EditAdditionalService: ="Text"
+    Fill: =RGBA(244, 248, 255, 1)
+    FirstService: ="Moderna"
+    Height: =145
+    SecondService: ="Covid Test"
+    Width: =969
+    X: =0
+    Y: =0
+    ZIndex: =1
+
+    BtnMultiserviceViewEdit As button:
+        BorderColor: =
+        BorderStyle: =BorderStyle.None
+        BorderThickness: =0
+        Color: =RGBA(56, 96, 178, 1)
+        DisabledBorderColor: =RGBA(0, 0, 0, 0)
+        Fill: =RGBA(0, 0, 0, 0)
+        Font: =Font.Lato
+        HoverBorderColor: =
+        HoverColor: =RGBA(56, 96, 178, 1)
+        HoverFill: =
+        OnSelect: |-
+            =//Navigate(MultiserviceViewComponent.RedirectTo)
+            MultiserviceViewComponent.EditAdditionalService();
+        PressedBorderColor: =
+        PressedColor: =
+        PressedFill: =
+        RadiusBottomLeft: =0
+        RadiusBottomRight: =0
+        RadiusTopLeft: =0
+        RadiusTopRight: =0
+        Size: =14
+        Text: ="Edit Service"
+        Width: =178
+        X: =220
+        Y: =17
+        ZIndex: =1
+
+    ImgMultiserviceViewEdit As image:
+        Height: =16
+        Image: |-
+            ="data:image/svg+xml;utf8, "&EncodeUrl("<svg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'> <path d='M10.9203 0.873168C12.1027 -0.309226 14.0271 -0.284951 15.1794 0.926893C16.2913 2.09631 16.2681 3.93899 15.1271 5.08003L14.4581 5.74902L10.2512 1.54217L10.9203 0.873168ZM9.54411 2.24927L1.54545 10.2475C1.21763 10.5754 0.990085 10.9899 0.889529 11.4424L0.0119121 15.3923C-0.0251689 15.5592 0.02559 15.7335 0.146489 15.8544C0.267387 15.9753 0.441665 16.026 0.608549 15.9889L4.53494 15.1157C5.00237 15.0118 5.43048 14.7767 5.76907 14.4381L13.751 6.45613L9.54411 2.24927Z' fill='#0052CC'/> </svg> ")
+        Width: =16
+        X: =231
+        Y: =29
+        ZIndex: =2
+
+    BtnMultiserviceViewRemove As button:
+        BorderColor: =
+        BorderStyle: =BorderStyle.None
+        BorderThickness: =0
+        Color: =RGBA(209, 52, 56, 1)
+        DisabledBorderColor: =RGBA(0, 0, 0, 0)
+        Fill: =RGBA(0, 0, 0, 0)
+        Font: =Font.Lato
+        HoverBorderColor: =
+        HoverColor: =RGBA(209, 52, 56, 1)
+        HoverFill: =
+        OnSelect: =MultiserviceViewComponent.ClearAdditionalService();
+        PressedBorderColor: =
+        PressedColor: =RGBA(209, 52, 56, 1)
+        PressedFill: =
+        RadiusBottomLeft: =0
+        RadiusBottomRight: =0
+        RadiusTopLeft: =0
+        RadiusTopRight: =0
+        Size: =12
+        Text: ="Remove Additional Service"
+        Underline: =true
+        Visible: |-
+            =//If(MultiserviceViewComponent.AdditionalServiceVisible,true,false)
+            true
+        Width: =250
+        X: =322
+        Y: =87
+        ZIndex: =3
+
+    LblMultiserviceViewSubService2 As label:
+        Font: =Font.Lato
+        Height: =35
+        Size: =14
+        Text: =MultiserviceViewComponent.SecondService
+        Visible: |-
+            =//If(MultiserviceViewComponent.AdditionalServiceVisible,true,false)
+            true
+        Width: =304
+        Wrap: =false
+        X: =42
+        Y: =LblMultiserviceViewSubService.Y+LblMultiserviceViewSubService.Height
+        ZIndex: =4
+
+    IcnBulletSubService2 As circle:
+        Fill: =RGBA(0, 0, 0, 1)
+        Height: =8
+        Width: =8
+        X: =29
+        Y: =106
+        ZIndex: =5
+
+    LblMultiserviceViewSubService As label:
+        Font: =Font.Lato
+        Height: =35
+        Size: =14
+        Text: =MultiserviceViewComponent.FirstService
+        Width: =450
+        X: =42
+        Y: =LblMultiserviceViewHEader.Y+LblMultiserviceViewHEader.Height
+        ZIndex: =6
+
+    IcnBulletMultiserviceView As circle:
+        Fill: =RGBA(0, 0, 0, 1)
+        Height: =8
+        Width: =8
+        X: =29
+        Y: =70
+        ZIndex: =7
+
+    LblMultiserviceViewHEader As label:
+        Font: =Font.Lato
+        FontWeight: =FontWeight.Bold
+        Height: =41
+        Size: =16
+        Text: ="Selected Service(s)"
+        Width: =250
+        X: =16
+        Y: =16
+        ZIndex: =8
+

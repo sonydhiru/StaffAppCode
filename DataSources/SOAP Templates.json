@@ -1,0 +1,393 @@
+[
+  {
+    "CdsFCBContext": "{\"FileType\":true,\"ImageExternalStorage\":true}",
+    "EntitySetName": "smvs_soaptemplates",
+    "IsHidden": false,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "LogicalName": "smvs_soaptemplate",
+    "MaxGetRowsCount": 500,
+    "Name": "SOAP Templates",
+    "NativeCDSDataSourceInfoNameMapping": {
+      "_ownerid_value": "Owner",
+      "createdby": "Created By",
+      "createdon": "Created On",
+      "createdonbehalfby": "Created By (Delegate)",
+      "importsequencenumber": "Import Sequence Number",
+      "modifiedby": "Modified By",
+      "modifiedon": "Modified On",
+      "modifiedonbehalfby": "Modified By (Delegate)",
+      "overriddencreatedon": "Record Created On",
+      "owningbusinessunit": "Owning Business Unit",
+      "owningteam": "Owning Team",
+      "owninguser": "Owning User",
+      "smvs_allergyhistory": "Allergy History",
+      "smvs_assessmentsummary": "Assessment Summary",
+      "smvs_educationandcounseling": "Education and Counseling",
+      "smvs_familyhistory": "Family History",
+      "smvs_followup": "Followup",
+      "smvs_immunizationhistory": "Immunization History",
+      "smvs_labresult": "Lab Result",
+      "smvs_medicalhistory": "Medical History",
+      "smvs_medicationhistory": "Medication History",
+      "smvs_msemr_healthcareservice_SOAPTemplate_smvs": "Sub Services",
+      "smvs_name": "Name",
+      "smvs_obstetric_history": "Obstetric History",
+      "smvs_referrals": "Referrals",
+      "smvs_smvs_soaptemplatequestionassignment_Templ": "SOAP Template Question Assignments",
+      "smvs_soaptemplate_AsyncOperations": "System Jobs",
+      "smvs_soaptemplate_BulkDeleteFailures": "Bulk Delete Failures",
+      "smvs_soaptemplate_DuplicateBaseRecord": "Duplicate Records (smvs_soaptemplate_DuplicateBaseRecord)",
+      "smvs_soaptemplate_DuplicateMatchingRecord": "Duplicate Records (smvs_soaptemplate_DuplicateMatchingRecord)",
+      "smvs_soaptemplate_MailboxTrackingFolders": "Mailbox Auto Tracking Folders",
+      "smvs_soaptemplate_PrincipalObjectAttributeAccesses": "Field Sharing",
+      "smvs_soaptemplate_ProcessSession": "Process Sessions",
+      "smvs_soaptemplate_SyncErrors": "Sync Errors",
+      "smvs_soaptemplateid": "SOAP Template",
+      "smvs_socialhistory": "Social History",
+      "smvs_surgicalhistory": "Surgical History",
+      "smvs_treatmentplan": "Treatment Plan",
+      "statecode": "Status",
+      "statuscode": "Status Reason",
+      "timezoneruleversionnumber": "Time Zone Rule Version Number",
+      "utcconversiontimezonecode": "UTC Conversion Time Zone Code",
+      "versionnumber": "Version Number"
+    },
+    "PreferredName": "SOAP Templates",
+    "Type": "NativeCDSDataSourceInfo"
+  },
+  {
+    "DisplayName": "SOAP Templates (Views)",
+    "Name": "_smvs_soaptemplate_views",
+    "RelatedEntityName": "SOAP Templates",
+    "TrimmedViewName": true,
+    "Type": "ViewInfo",
+    "ViewInfoNameMapping": {
+      "56b3c367-b121-4289-bc85-a61668f0e9c8": "Inactive SOAP Templates",
+      "5d9066e3-246a-464d-918e-01bd6c3f2b0c": "SOAP Template Lookup View",
+      "a7cd995c-dd64-4948-bbe8-6ccba0c5eafe": "Active SOAP Templates",
+      "aedee65e-b977-4ddb-bcc9-3f515d75d56c": "SOAP Template Associated View",
+      "f2839d99-92bc-44a9-9940-5906cf4fa188": "SOAP Template Advanced Find View"
+    }
+  },
+  {
+    "DisplayName": "Allergy History (SOAP Templates)",
+    "Name": "smvs_soaptemplate_smvs_allergyhistory",
+    "OptionSetInfoNameMapping": {
+      "0": "No",
+      "1": "Yes"
+    },
+    "OptionSetIsBooleanValued": true,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "smvs_allergyhistory",
+        "OptionSetReferenceEntityName": "SOAP Templates"
+      }
+    },
+    "OptionSetTypeKey": "BooleanType",
+    "RelatedColumnInvariantName": "smvs_allergyhistory",
+    "RelatedEntityName": "SOAP Templates",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Assessment Summary (SOAP Templates)",
+    "Name": "smvs_soaptemplate_smvs_assessmentsummary",
+    "OptionSetInfoNameMapping": {
+      "0": "No",
+      "1": "Yes"
+    },
+    "OptionSetIsBooleanValued": true,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "smvs_assessmentsummary",
+        "OptionSetReferenceEntityName": "SOAP Templates"
+      }
+    },
+    "OptionSetTypeKey": "BooleanType",
+    "RelatedColumnInvariantName": "smvs_assessmentsummary",
+    "RelatedEntityName": "SOAP Templates",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Education and Counseling (SOAP Templates)",
+    "Name": "smvs_soaptemplate_smvs_educationandcounseling",
+    "OptionSetInfoNameMapping": {
+      "0": "No",
+      "1": "Yes"
+    },
+    "OptionSetIsBooleanValued": true,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "smvs_educationandcounseling",
+        "OptionSetReferenceEntityName": "SOAP Templates"
+      }
+    },
+    "OptionSetTypeKey": "BooleanType",
+    "RelatedColumnInvariantName": "smvs_educationandcounseling",
+    "RelatedEntityName": "SOAP Templates",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Family History (SOAP Templates)",
+    "Name": "smvs_soaptemplate_smvs_familyhistory",
+    "OptionSetInfoNameMapping": {
+      "0": "No",
+      "1": "Yes"
+    },
+    "OptionSetIsBooleanValued": true,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "smvs_familyhistory",
+        "OptionSetReferenceEntityName": "SOAP Templates"
+      }
+    },
+    "OptionSetTypeKey": "BooleanType",
+    "RelatedColumnInvariantName": "smvs_familyhistory",
+    "RelatedEntityName": "SOAP Templates",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Followup (SOAP Templates)",
+    "Name": "smvs_soaptemplate_smvs_followup",
+    "OptionSetInfoNameMapping": {
+      "0": "No",
+      "1": "Yes"
+    },
+    "OptionSetIsBooleanValued": true,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "smvs_followup",
+        "OptionSetReferenceEntityName": "SOAP Templates"
+      }
+    },
+    "OptionSetTypeKey": "BooleanType",
+    "RelatedColumnInvariantName": "smvs_followup",
+    "RelatedEntityName": "SOAP Templates",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Immunization History (SOAP Templates)",
+    "Name": "smvs_soaptemplate_smvs_immunizationhistory",
+    "OptionSetInfoNameMapping": {
+      "0": "No",
+      "1": "Yes"
+    },
+    "OptionSetIsBooleanValued": true,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "smvs_immunizationhistory",
+        "OptionSetReferenceEntityName": "SOAP Templates"
+      }
+    },
+    "OptionSetTypeKey": "BooleanType",
+    "RelatedColumnInvariantName": "smvs_immunizationhistory",
+    "RelatedEntityName": "SOAP Templates",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Lab Result (SOAP Templates)",
+    "Name": "smvs_soaptemplate_smvs_labresult",
+    "OptionSetInfoNameMapping": {
+      "0": "No",
+      "1": "Yes"
+    },
+    "OptionSetIsBooleanValued": true,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "smvs_labresult",
+        "OptionSetReferenceEntityName": "SOAP Templates"
+      }
+    },
+    "OptionSetTypeKey": "BooleanType",
+    "RelatedColumnInvariantName": "smvs_labresult",
+    "RelatedEntityName": "SOAP Templates",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Medical History (SOAP Templates)",
+    "Name": "smvs_soaptemplate_smvs_medicalhistory",
+    "OptionSetInfoNameMapping": {
+      "0": "No",
+      "1": "Yes"
+    },
+    "OptionSetIsBooleanValued": true,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "smvs_medicalhistory",
+        "OptionSetReferenceEntityName": "SOAP Templates"
+      }
+    },
+    "OptionSetTypeKey": "BooleanType",
+    "RelatedColumnInvariantName": "smvs_medicalhistory",
+    "RelatedEntityName": "SOAP Templates",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Medication History (SOAP Templates)",
+    "Name": "smvs_soaptemplate_smvs_medicationhistory",
+    "OptionSetInfoNameMapping": {
+      "0": "No",
+      "1": "Yes"
+    },
+    "OptionSetIsBooleanValued": true,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "smvs_medicationhistory",
+        "OptionSetReferenceEntityName": "SOAP Templates"
+      }
+    },
+    "OptionSetTypeKey": "BooleanType",
+    "RelatedColumnInvariantName": "smvs_medicationhistory",
+    "RelatedEntityName": "SOAP Templates",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Obstetric History (SOAP Templates)",
+    "Name": "smvs_soaptemplate_smvs_obstetric_history",
+    "OptionSetInfoNameMapping": {
+      "0": "No",
+      "1": "Yes"
+    },
+    "OptionSetIsBooleanValued": true,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "smvs_obstetric_history",
+        "OptionSetReferenceEntityName": "SOAP Templates"
+      }
+    },
+    "OptionSetTypeKey": "BooleanType",
+    "RelatedColumnInvariantName": "smvs_obstetric_history",
+    "RelatedEntityName": "SOAP Templates",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Referrals (SOAP Templates)",
+    "Name": "smvs_soaptemplate_smvs_referrals",
+    "OptionSetInfoNameMapping": {
+      "0": "No",
+      "1": "Yes"
+    },
+    "OptionSetIsBooleanValued": true,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "smvs_referrals",
+        "OptionSetReferenceEntityName": "SOAP Templates"
+      }
+    },
+    "OptionSetTypeKey": "BooleanType",
+    "RelatedColumnInvariantName": "smvs_referrals",
+    "RelatedEntityName": "SOAP Templates",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Social History (SOAP Templates)",
+    "Name": "smvs_soaptemplate_smvs_socialhistory",
+    "OptionSetInfoNameMapping": {
+      "0": "No",
+      "1": "Yes"
+    },
+    "OptionSetIsBooleanValued": true,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "smvs_socialhistory",
+        "OptionSetReferenceEntityName": "SOAP Templates"
+      }
+    },
+    "OptionSetTypeKey": "BooleanType",
+    "RelatedColumnInvariantName": "smvs_socialhistory",
+    "RelatedEntityName": "SOAP Templates",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Surgical History (SOAP Templates)",
+    "Name": "smvs_soaptemplate_smvs_surgicalhistory",
+    "OptionSetInfoNameMapping": {
+      "0": "No",
+      "1": "Yes"
+    },
+    "OptionSetIsBooleanValued": true,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "smvs_surgicalhistory",
+        "OptionSetReferenceEntityName": "SOAP Templates"
+      }
+    },
+    "OptionSetTypeKey": "BooleanType",
+    "RelatedColumnInvariantName": "smvs_surgicalhistory",
+    "RelatedEntityName": "SOAP Templates",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Treatment Plan (SOAP Templates)",
+    "Name": "smvs_soaptemplate_smvs_treatmentplan",
+    "OptionSetInfoNameMapping": {
+      "0": "No",
+      "1": "Yes"
+    },
+    "OptionSetIsBooleanValued": true,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "smvs_treatmentplan",
+        "OptionSetReferenceEntityName": "SOAP Templates"
+      }
+    },
+    "OptionSetTypeKey": "BooleanType",
+    "RelatedColumnInvariantName": "smvs_treatmentplan",
+    "RelatedEntityName": "SOAP Templates",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status (SOAP Templates)",
+    "Name": "smvs_soaptemplate_statecode",
+    "OptionSetInfoNameMapping": {
+      "0": "Active",
+      "1": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statecode",
+        "OptionSetReferenceEntityName": "SOAP Templates"
+      }
+    },
+    "OptionSetTypeKey": "StateType",
+    "RelatedColumnInvariantName": "statecode",
+    "RelatedEntityName": "SOAP Templates",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status Reason (SOAP Templates)",
+    "Name": "smvs_soaptemplate_statuscode",
+    "OptionSetInfoNameMapping": {
+      "1": "Active",
+      "2": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statuscode",
+        "OptionSetReferenceEntityName": "SOAP Templates"
+      }
+    },
+    "OptionSetTypeKey": "StatusType",
+    "RelatedColumnInvariantName": "statuscode",
+    "RelatedEntityName": "SOAP Templates",
+    "Type": "OptionSetInfo"
+  }
+]

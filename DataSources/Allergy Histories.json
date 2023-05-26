@@ -1,0 +1,148 @@
+[
+  {
+    "CdsFCBContext": "{\"FileType\":true,\"ImageExternalStorage\":true}",
+    "EntitySetName": "smvs_allergyhistories",
+    "IsHidden": false,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "LogicalName": "smvs_allergyhistory",
+    "MaxGetRowsCount": 500,
+    "Name": "Allergy Histories",
+    "NativeCDSDataSourceInfoNameMapping": {
+      "_ownerid_value": "Owner",
+      "createdby": "Created By",
+      "createdon": "Created On",
+      "createdonbehalfby": "Created By (Delegate)",
+      "importsequencenumber": "Import Sequence Number",
+      "modifiedby": "Modified By",
+      "modifiedon": "Modified On",
+      "modifiedonbehalfby": "Modified By (Delegate)",
+      "overriddencreatedon": "Record Created On",
+      "owningbusinessunit": "Owning Business Unit",
+      "owningteam": "Owning Team",
+      "owninguser": "Owning User",
+      "smvs_adverseeffect": "Adverse effect",
+      "smvs_adversereactions": "Adverse Reactions",
+      "smvs_allergen": "Allergen",
+      "smvs_allergyhistory_AsyncOperations": "System Jobs",
+      "smvs_allergyhistory_BulkDeleteFailures": "Bulk Delete Failures",
+      "smvs_allergyhistory_DuplicateBaseRecord": "Duplicate Records (smvs_allergyhistory_DuplicateBaseRecord)",
+      "smvs_allergyhistory_DuplicateMatchingRecord": "Duplicate Records (smvs_allergyhistory_DuplicateMatchingRecord)",
+      "smvs_allergyhistory_MailboxTrackingFolders": "Mailbox Auto Tracking Folders",
+      "smvs_allergyhistory_PrincipalObjectAttributeAccesses": "Field Sharing",
+      "smvs_allergyhistory_ProcessSession": "Process Sessions",
+      "smvs_allergyhistory_SyncErrors": "Sync Errors",
+      "smvs_allergyhistoryid": "Allergy History",
+      "smvs_allergyhistorystatus": "Allergy History Status",
+      "smvs_allergyname": "Allergy Name",
+      "smvs_dateadded": "Date Added",
+      "smvs_name": "Name",
+      "smvs_onsetdate": "Onset Date",
+      "smvs_Patient": "Patient",
+      "smvs_severity": "Severity",
+      "smvs_SOAPNote": "SOAP Note",
+      "statecode": "Status",
+      "statuscode": "Status Reason",
+      "timezoneruleversionnumber": "Time Zone Rule Version Number",
+      "utcconversiontimezonecode": "UTC Conversion Time Zone Code",
+      "versionnumber": "Version Number"
+    },
+    "PreferredName": "Allergy Histories",
+    "Type": "NativeCDSDataSourceInfo"
+  },
+  {
+    "DisplayName": "Allergy Histories (Views)",
+    "Name": "_smvs_allergyhistory_views",
+    "RelatedEntityName": "Allergy Histories",
+    "TrimmedViewName": true,
+    "Type": "ViewInfo",
+    "ViewInfoNameMapping": {
+      "2776e646-8fb4-409b-ae69-047a1849f528": "Allergy History Associated View",
+      "58981241-963d-46eb-a25d-91632c629354": "Inactive Allergy Histories",
+      "8aff2501-b265-4454-abfe-ec38535d2d89": "Allergy History Advanced Find View",
+      "9cf3fa1a-15db-4d54-80cb-656ca43da47a": "Allergy History Lookup View",
+      "bf6d76fb-54f9-4a35-8702-bc9ce1ce580d": "Active Allergy Histories"
+    }
+  },
+  {
+    "DisplayName": "Allergy History Status (Allergy Histories)",
+    "Name": "smvs_allergyhistory_smvs_allergyhistorystatus",
+    "OptionSetInfoNameMapping": {
+      "0": "Inactive",
+      "1": "Active"
+    },
+    "OptionSetIsBooleanValued": true,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "smvs_allergyhistorystatus",
+        "OptionSetReferenceEntityName": "Allergy Histories"
+      }
+    },
+    "OptionSetTypeKey": "BooleanType",
+    "RelatedColumnInvariantName": "smvs_allergyhistorystatus",
+    "RelatedEntityName": "Allergy Histories",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status (Allergy Histories)",
+    "Name": "smvs_allergyhistory_statecode",
+    "OptionSetInfoNameMapping": {
+      "0": "Active",
+      "1": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statecode",
+        "OptionSetReferenceEntityName": "Allergy Histories"
+      }
+    },
+    "OptionSetTypeKey": "StateType",
+    "RelatedColumnInvariantName": "statecode",
+    "RelatedEntityName": "Allergy Histories",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status Reason (Allergy Histories)",
+    "Name": "smvs_allergyhistory_statuscode",
+    "OptionSetInfoNameMapping": {
+      "1": "Active",
+      "2": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statuscode",
+        "OptionSetReferenceEntityName": "Allergy Histories"
+      }
+    },
+    "OptionSetTypeKey": "StatusType",
+    "RelatedColumnInvariantName": "statuscode",
+    "RelatedEntityName": "Allergy Histories",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Allergy Severity",
+    "Name": "smvs_allergyseverity",
+    "OptionSetInfoNameMapping": {
+      "153940000": "Major",
+      "153940001": "Mild",
+      "153940002": "Minor"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": true,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "smvs_severity",
+        "OptionSetReferenceEntityName": "Allergy Histories"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "smvs_severity",
+    "RelatedEntityName": "Allergy Histories",
+    "Type": "OptionSetInfo"
+  }
+]

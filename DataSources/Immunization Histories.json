@@ -1,0 +1,100 @@
+[
+  {
+    "CdsFCBContext": "{\"FileType\":true,\"ImageExternalStorage\":true}",
+    "EntitySetName": "smvs_immunizationhistories",
+    "IsHidden": false,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "LogicalName": "smvs_immunizationhistory",
+    "MaxGetRowsCount": 500,
+    "Name": "Immunization Histories",
+    "NativeCDSDataSourceInfoNameMapping": {
+      "_ownerid_value": "Owner",
+      "createdby": "Created By",
+      "createdon": "Created On",
+      "createdonbehalfby": "Created By (Delegate)",
+      "importsequencenumber": "Import Sequence Number",
+      "modifiedby": "Modified By",
+      "modifiedon": "Modified On",
+      "modifiedonbehalfby": "Modified By (Delegate)",
+      "overriddencreatedon": "Record Created On",
+      "owningbusinessunit": "Owning Business Unit",
+      "owningteam": "Owning Team",
+      "owninguser": "Owning User",
+      "smvs_dateofadministered": "Date of administered",
+      "smvs_immunizationhistory_AsyncOperations": "System Jobs",
+      "smvs_immunizationhistory_BulkDeleteFailures": "Bulk Delete Failures",
+      "smvs_immunizationhistory_DuplicateBaseRecord": "Duplicate Records (smvs_immunizationhistory_DuplicateBaseRecord)",
+      "smvs_immunizationhistory_DuplicateMatchingRecord": "Duplicate Records (smvs_immunizationhistory_DuplicateMatchingRecord)",
+      "smvs_immunizationhistory_MailboxTrackingFolders": "Mailbox Auto Tracking Folders",
+      "smvs_immunizationhistory_PrincipalObjectAttributeAccesses": "Field Sharing",
+      "smvs_immunizationhistory_ProcessSession": "Process Sessions",
+      "smvs_immunizationhistory_SyncErrors": "Sync Errors",
+      "smvs_immunizationhistoryid": "Immunization history",
+      "smvs_Patient": "Patient",
+      "smvs_SOAPNote": "SOAP Note",
+      "smvs_vaccine": "Vaccine",
+      "statecode": "Status",
+      "statuscode": "Status Reason",
+      "timezoneruleversionnumber": "Time Zone Rule Version Number",
+      "utcconversiontimezonecode": "UTC Conversion Time Zone Code",
+      "versionnumber": "Version Number"
+    },
+    "PreferredName": "Immunization Histories",
+    "Type": "NativeCDSDataSourceInfo"
+  },
+  {
+    "DisplayName": "Immunization Histories (Views)",
+    "Name": "_smvs_immunizationhistory_views",
+    "RelatedEntityName": "Immunization Histories",
+    "TrimmedViewName": true,
+    "Type": "ViewInfo",
+    "ViewInfoNameMapping": {
+      "1e652e9a-6a19-4868-a741-f9dd5174c893": "Active Immunization histories",
+      "3893a826-a97c-4085-9cba-fc8478df035f": "Inactive Immunization histories",
+      "b3f7ef09-37c3-4e90-8ef5-82d275d08c40": "Immunization history Associated View",
+      "c89c472e-dd79-47e4-a7ed-cd157cc7d44f": "Immunization history Lookup View",
+      "f4ff3cd1-ab05-4018-a07c-ca6107b49a06": "Immunization history Advanced Find View"
+    }
+  },
+  {
+    "DisplayName": "Status (Immunization Histories)",
+    "Name": "smvs_immunizationhistory_statecode",
+    "OptionSetInfoNameMapping": {
+      "0": "Active",
+      "1": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statecode",
+        "OptionSetReferenceEntityName": "Immunization Histories"
+      }
+    },
+    "OptionSetTypeKey": "StateType",
+    "RelatedColumnInvariantName": "statecode",
+    "RelatedEntityName": "Immunization Histories",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status Reason (Immunization Histories)",
+    "Name": "smvs_immunizationhistory_statuscode",
+    "OptionSetInfoNameMapping": {
+      "1": "Active",
+      "2": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statuscode",
+        "OptionSetReferenceEntityName": "Immunization Histories"
+      }
+    },
+    "OptionSetTypeKey": "StatusType",
+    "RelatedColumnInvariantName": "statuscode",
+    "RelatedEntityName": "Immunization Histories",
+    "Type": "OptionSetInfo"
+  }
+]

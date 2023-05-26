@@ -1,0 +1,121 @@
+[
+  {
+    "CdsFCBContext": "{\"FileType\":true,\"ImageExternalStorage\":true}",
+    "EntitySetName": "smvs_patientscreeninganswerses",
+    "IsHidden": false,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "LogicalName": "smvs_patientscreeninganswers",
+    "MaxGetRowsCount": 500,
+    "Name": "Patient Screening Responses",
+    "NativeCDSDataSourceInfoNameMapping": {
+      "_ownerid_value": "Owner",
+      "createdby": "Created By",
+      "createdon": "Created On",
+      "createdonbehalfby": "Created By (Delegate)",
+      "importsequencenumber": "Import Sequence Number",
+      "modifiedby": "Modified By",
+      "modifiedon": "Modified On",
+      "modifiedonbehalfby": "Modified By (Delegate)",
+      "overriddencreatedon": "Record Created On",
+      "owningbusinessunit": "Owning Business Unit",
+      "owningteam": "Owning Team",
+      "owninguser": "Owning User",
+      "smvs_additional_info": "Additional Info",
+      "smvs_Appointment": "Appointment",
+      "smvs_name": "Name",
+      "smvs_patientscreeninganswers_AsyncOperations": "System Jobs",
+      "smvs_patientscreeninganswers_BulkDeleteFailures": "Bulk Delete Failures",
+      "smvs_patientscreeninganswers_DuplicateBaseRecord": "Duplicate Records (smvs_patientscreeninganswers_DuplicateBaseRecord)",
+      "smvs_patientscreeninganswers_DuplicateMatchingRecord": "Duplicate Records (smvs_patientscreeninganswers_DuplicateMatchingRecord)",
+      "smvs_patientscreeninganswers_MailboxTrackingFolders": "Mailbox Auto Tracking Folders",
+      "smvs_patientscreeninganswers_PrincipalObjectAttributeAccesses": "Field Sharing",
+      "smvs_patientscreeninganswers_ProcessSession": "Process Sessions",
+      "smvs_patientscreeninganswers_SyncErrors": "Sync Errors",
+      "smvs_patientscreeninganswersid": "Patient Screening Response",
+      "smvs_PatientScreeningQuestion": "Question",
+      "smvs_response": "Response",
+      "statecode": "Status",
+      "statuscode": "Status Reason",
+      "timezoneruleversionnumber": "Time Zone Rule Version Number",
+      "utcconversiontimezonecode": "UTC Conversion Time Zone Code",
+      "versionnumber": "Version Number"
+    },
+    "PreferredName": "Patient Screening Responses",
+    "Type": "NativeCDSDataSourceInfo"
+  },
+  {
+    "DisplayName": "Patient Screening Responses (Views)",
+    "Name": "_smvs_patientscreeninganswers_views",
+    "RelatedEntityName": "Patient Screening Responses",
+    "TrimmedViewName": true,
+    "Type": "ViewInfo",
+    "ViewInfoNameMapping": {
+      "67ccc89d-f6f6-409a-befb-14735d94b0d5": "Patient Screening Answers Associated View",
+      "981767b3-bb6d-426f-a0d5-64b40ac50b7e": "Inactive Patient Screening Answers",
+      "b53099c2-3090-4be5-b942-7d637bfaacd2": "Patient Screening Answers Advanced Find View",
+      "f51b894a-8529-46c8-9767-43fecf478b0e": "Patient Screening Answers Lookup View",
+      "fe304464-1cbd-4c76-815d-99a7b21977d9": "Active Patient Screening Answers"
+    }
+  },
+  {
+    "DisplayName": "Status (Patient Screening Responses)",
+    "Name": "smvs_patientscreeninganswers_statecode",
+    "OptionSetInfoNameMapping": {
+      "0": "Active",
+      "1": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statecode",
+        "OptionSetReferenceEntityName": "Patient Screening Responses"
+      }
+    },
+    "OptionSetTypeKey": "StateType",
+    "RelatedColumnInvariantName": "statecode",
+    "RelatedEntityName": "Patient Screening Responses",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status Reason (Patient Screening Responses)",
+    "Name": "smvs_patientscreeninganswers_statuscode",
+    "OptionSetInfoNameMapping": {
+      "1": "Active",
+      "2": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statuscode",
+        "OptionSetReferenceEntityName": "Patient Screening Responses"
+      }
+    },
+    "OptionSetTypeKey": "StatusType",
+    "RelatedColumnInvariantName": "statuscode",
+    "RelatedEntityName": "Patient Screening Responses",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Response (Patient Screening Responses)",
+    "Name": "smvs_smvs_patientscreeninganswers_response",
+    "OptionSetInfoNameMapping": {
+      "0": "No",
+      "1": "Yes"
+    },
+    "OptionSetIsBooleanValued": true,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "smvs_response",
+        "OptionSetReferenceEntityName": "Patient Screening Responses"
+      }
+    },
+    "OptionSetTypeKey": "BooleanType",
+    "RelatedColumnInvariantName": "smvs_response",
+    "RelatedEntityName": "Patient Screening Responses",
+    "Type": "OptionSetInfo"
+  }
+]

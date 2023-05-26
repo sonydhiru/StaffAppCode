@@ -1,0 +1,1233 @@
+"ScnPrescriptionPDF As screen.'tabletAutoLayout_HeaderMainFooter_ver1.0'":
+    OnVisible: |-
+        =Set(
+            VarAppointmentDetailHealthService,
+            LookUp(
+                'Sub Services',
+                'Healthcare Service (msemr_healthcareserviceid)' = gblSelectedAppointmentPatient.'Healthcare Service'.'Healthcare Service (msemr_healthcareserviceid)'
+            )
+        );
+        Set(
+            VarEligibilityHeight,
+            false
+        );
+        //UpdateContext({varPrescriptionPDFVisible: false});
+        Set(
+            varPrescriptionPDFVisible,
+            false
+        );
+        /*Set(
+            varPrescriptionPDF,
+            PDF(
+                ConPrescriptionPreviewBody,
+                {
+                    Orientation: PaperOrientation.Portrait,
+                    Size: PaperSize.A4,
+                    ExpandContainers: true
+                }
+            )
+        );
+        Set(
+            varBasePrescription,
+            Substitute(
+                JSON(
+                    varPrescriptionPDF,
+                    JSONFormat.IncludeBinaryData
+                ),
+                """",
+                ""
+            )
+        )*/
+
+    CmbExistingAppointmentService_Prescription As dropdown:
+        Items: =Filter(Services,'Healthcare Service Category (msemr_healthcareservicecategoryid)'=VarAppointmentDetailHealthService.Service.'Healthcare Service Category (msemr_healthcareservicecategoryid)')
+        Visible: =false
+        X: =438
+        ZIndex: =1
+
+    CmbexistingAppointmentSubService_Prescription As dropdown:
+        Items: =VarAppointmentDetailHealthService
+        Visible: =false
+        X: =438
+        ZIndex: =2
+
+    ConPrescriptionPreviewBody As groupContainer.manualLayoutContainer:
+        Height: =Parent.Height-ConPrescriptionPreviewHeader.Height
+        Width: =Parent.Width
+        Y: =ConPrescriptionPreviewHeader.Y+ConPrescriptionPreviewHeader.Height
+        ZIndex: =3
+
+        CnvPreview As fluidGrid.fluidGridWithBlankCard:
+            BorderThickness: =0
+            Height: =Parent.Height
+            Width: =Parent.Width - 26
+            X: =26
+            Y: =
+            ZIndex: =1
+
+            DcMedicalResponsePreview As dataCard.blankCard:
+                BorderColor: =RGBA(0, 0, 0, 1)
+                BorderStyle: =BorderStyle.Solid
+                DisplayMode: =DisplayMode.Edit
+                Fill: =RGBA(0, 0, 0, 0)
+                Height: =GalEligibilityPreview.TemplateHeight * CountRows(GalEligibilityPreview.AllItems)+LblMedicalResponseHeaderPreview.Height
+                Visible: =CountRows(GalEligibilityPreview.AllItems)>0 
+                Width: =Parent.Width-26
+                X: =0
+                Y: =2
+                ZIndex: =3
+
+                LblMedicalResponseHeaderPreview As label:
+                    Font: =VarTheme.Font
+                    FontWeight: =FontWeight.Semibold
+                    Height: =60
+                    Size: =20
+                    Text: ="Eligibility Questions"
+                    Width: =500
+                    ZIndex: =1
+
+                BgMedicalResponsePreview As rectangle:
+                    Fill: =VarTheme.InputBackground
+                    Height: =52
+                    Width: =Parent.Width
+                    Y: =68
+                    ZIndex: =2
+
+                "GalEligibilityPreview As gallery.'BrowseLayout_Vertical_TwoTextOneImageVariant_ver4.0'":
+                    Fill: =VarTheme.InputBackground
+                    Height: =GalEligibilityPreview.TemplateHeight * CountRows(GalEligibilityPreview.AllItems)
+                    Items: |-
+                        =If(
+                            !IsBlank(gblSelectedAppointmentPatient),
+                            SortByColumns(Filter(CmbexistingAppointmentSubService_Prescription.Selected.'Eligibility Questions',Status='Status (Eligibility Questions)'.Active && Language.Code="en"),"smvs_questionorder",
+                                SortOrder.Ascending
+                            )
+                        )
+                    Layout: =Layout.Vertical
+                    TemplatePadding: =0
+                    TemplateSize: =79
+                    Width: =Parent.Width
+                    Y: =60
+                    ZIndex: =10
+
+                    LblEligibilityQuestionPreview As label:
+                        AutoHeight: =true
+                        Height: =61
+                        Size: =16
+                        Text: =ThisItem.'Question Title'
+                        Width: =750
+                        X: =44
+                        ZIndex: =1
+
+                    ChkEligibilityPreview As checkbox:
+                        Default: |-
+                            =If(LookUp(
+                                'Eligibility Responses',
+                                Appointment.Activity = gblSelectedAppointmentPatient.Activity && 'Eligibility Question'.'Eligibility Question' = ThisItem.'Eligibility Question',
+                                Response
+                            ) = 'Response (Eligibility Responses)'.Yes, true)
+                        OnSelect: =Select(Parent)
+                        Text: =
+                        Visible: =false
+                        Width: =46
+                        X: =925
+                        ZIndex: =2
+
+                    LblEligibilityResponsePreview As label:
+                        OnSelect: =Select(Parent)
+                        Text: =Text(ThisItem.Response) = Text(ChkEligibilityPreview.Value)
+                        Visible: =false
+                        X: =413
+                        Y: =1
+                        ZIndex: =3
+
+                    LblEligibilityBoolenPreview As label:
+                        Font: =VarTheme.Font
+                        FontWeight: =FontWeight.Bold
+                        OnSelect: =Select(Parent)
+                        Size: =16
+                        Text: =If(Text(ChkEligibilityPreview)="true","Yes","No")
+                        X: =820
+                        ZIndex: =4
+
+                    IcnCircleEligibilityPreview As circle:
+                        Fill: =RGBA(0, 0, 0, 1)
+                        Height: =8
+                        OnSelect: =Select(Parent)
+                        Width: =8
+                        X: =29
+                        Y: =LblEligibilityQuestionPreview.Height/2-5
+                        ZIndex: =5
+
+                    BgEligibilityPreview As rectangle:
+                        Fill: =VarTheme.InputBackground
+                        Height: =0
+                        Width: =972
+                        Y: =83
+                        ZIndex: =6
+
+            DcPaymentInfoPreview As dataCard.blankCard:
+                BorderColor: =RGBA(227, 234, 243, 1)
+                BorderStyle: =BorderStyle.Solid
+                BorderThickness: =0
+                DisplayMode: =DisplayMode.Edit
+                Fill: =VarTheme.InputBackground
+                Height: |-
+                    =LblPaymentDetailsPreview.Height+
+                    HtmlPaymentDetailsPrescription.Height
+                Visible: =!IsBlank(gblSelectedAppointmentPatient.'Payment Type')
+                Width: =Parent.Width-26
+                X: =0
+                Y: =1
+                ZIndex: =4
+
+                LblPharmaInsurancePewview As label:
+                    Text: |
+                        =If(!IsBlank(LookUp(CmbExistingAppointmentService_Prescription.Selected.'Insurance Organizations (smvs_msemr_service_pharmacy_insurance)','Insurance Organization'=gblSelectedAppointmentPatient.'Insurance Organization'.'Insurance Organization')),"On","Off")
+                    Visible: =false
+                    X: =822
+                    ZIndex: =1
+
+                LblMedicareInsurancePreview As label:
+                    Text: =If(("Medicare" in gblSelectedAppointmentPatient.'Insurance Organization'.Name),true,false)
+                    Visible: =false
+                    Wrap: =false
+                    X: =822
+                    ZIndex: =2
+
+                HtmlPaymentDetailsPrescription As htmlViewer:
+                    AutoHeight: =true
+                    Color: =VarTheme.InputTextDark
+                    Fill: =VarTheme.InputBackground
+                    Font: =VarTheme.Font
+                    Height: =300
+                    HtmlText: |-
+                        ="
+                        <div style='line-height: 1.8;'>
+                        <div style='display: flex;padding-bottom:20px;'><label style='color: #000000; min-width: 250px;'><strong>Payment Type:</strong></label> " & If(
+                            gblSelectedAppointmentPatient.'Payment Type' = 'Payment Type (Appointments (EMR))'.Insurance,
+                            "Insurance",
+                            gblSelectedAppointmentPatient.'Payment Type' = 'Payment Type (Appointments (EMR))'.'No Insurance',
+                            "No Insurance",
+                            "Out of Pocket"
+                        ) & "</div>
+                        " & If(
+                            gblSelectedAppointmentPatient.'Payment Type' = 'Payment Type (Appointments (EMR))'.'Out of Pocket',
+                            "
+                        <div style='display: flex;padding-bottom:20px;'><label style='color: #000000; min-width: 250px;'><strong>Price:</strong></label> " & existingAppointmentSubService.Selected.Pricing
+                        ) & "</div>
+                        " & If(
+                            gblSelectedAppointmentPatient.'Payment Type' = 'Payment Type (Appointments (EMR))'.'No Insurance' && !IsBlank(gblSelectedAppointmentPatient.'ID Type'),
+                            "
+                        <div style='display: flex;padding-bottom:20px;'><label style='color: #000000; min-width: 250px;'><strong>ID Type:</strong></label> " & gblSelectedAppointmentPatient.'ID Type'
+                        ) & "</div>
+                        " & If(
+                            gblSelectedAppointmentPatient.'Payment Type' = 'Payment Type (Appointments (EMR))'.'No Insurance' && !IsBlank(gblSelectedAppointmentPatient.'Identification Number'),
+                            "
+                        <div style='display: flex;padding-bottom:20px;'><label style='color: #000000; min-width: 250px;'><strong>Identification Number:</strong></label> " & gblSelectedAppointmentPatient.'Identification Number'
+                        ) & "</div>
+                        " & If(
+                            gblSelectedAppointmentPatient.'Payment Type' = 'Payment Type (Appointments (EMR))'.'No Insurance' && !IsBlank(gblSelectedAppointmentPatient.'ID State'),
+                            "
+                        <div style='display: flex;padding-bottom:20px;'><label style='color: #000000; min-width: 250px;'><strong>ID State:</strong></label> " & gblSelectedAppointmentPatient.'ID State'
+                        ) & "</div>
+                        " & If(
+                            gblSelectedAppointmentPatient.'Payment Type' = 'Payment Type (Appointments (EMR))'.Insurance,
+                            "
+                        <div style='display: flex;padding-bottom:20px;'><label style='color: #000000; min-width: 250px;'><strong>Insurance Organization:</strong></label> " & gblSelectedAppointmentPatient.'Insurance Organization'.Name
+                        ) & "</div>
+                        " & If(
+                            gblSelectedAppointmentPatient.'Payment Type' = 'Payment Type (Appointments (EMR))'.Insurance,
+                            "
+                        <div style='display: flex;padding-bottom:20px;'><label style='color: #000000; min-width: 250px;'><strong>
+                        " & If(
+                                LblMedicareInsurancePreview.Text = "false",
+                                "Member ID Number:",
+                                "Member ID Number (MBI):"
+                            ) & "
+                        </strong></label> " & gblSelectedAppointmentPatient.'Member ID#'
+                        ) & "</div>
+                        " & If(
+                            gblSelectedAppointmentPatient.'Payment Type' = 'Payment Type (Appointments (EMR))'.Insurance && !IsBlank(gblSelectedAppointmentPatient.'Group Number'),
+                            "
+                        <div style='display: flex;padding-bottom:20px;'><label style='color: #000000; min-width: 250px;'><strong>Group Number:</strong></label> " & gblSelectedAppointmentPatient.'Group Number'
+                        ) & "</div>
+                        " & If(
+                            !IsBlank(gblSelectedAppointmentPatient.'Insurance Plan Type') && gblSelectedAppointmentPatient.'Payment Type' = 'Payment Type (Appointments (EMR))'.Insurance,
+                            "
+                        <div style='display: flex;padding-bottom:20px;'><label style='color: #000000; min-width: 250px;'><strong>Insurance plan type:</strong></label> " & gblSelectedAppointmentPatient.'Insurance Plan Type'
+                        ) & "</div>
+                        " & If(
+                            gblSelectedAppointmentPatient.'Payment Type' = 'Payment Type (Appointments (EMR))'.Insurance && !IsBlank(gblSelectedAppointmentPatient.'Rx Bin'),
+                            "
+                        <div style='display: flex;padding-bottom:20px;'><label style='color: #000000; min-width: 250px;'><strong>RxBin:</strong></label> " & gblSelectedAppointmentPatient.'Rx Bin'
+                        ) & "</div>
+                        " & If(
+                            gblSelectedAppointmentPatient.'Payment Type' = 'Payment Type (Appointments (EMR))'.Insurance && !IsBlank(gblSelectedAppointmentPatient.'Rx PCN'),
+                            "
+                        <div style='display: flex;padding-bottom:20px;'><label style='color: #000000; min-width: 250px;'><strong>RxPCN:</strong></label> " & gblSelectedAppointmentPatient.'Rx PCN'
+                        ) & "</div>
+                        " & If(
+                            gblSelectedAppointmentPatient.'Payment Type' = 'Payment Type (Appointments (EMR))'.Insurance && !IsBlank(gblSelectedAppointmentPatient.'Rx Group'),
+                            "
+                        <div style='display: flex;padding-bottom:20px;'><label style='color: #000000; min-width: 250px;'><strong>RxGroup:</strong></label> " & gblSelectedAppointmentPatient.'Rx Group'
+                        ) & "</div>
+                        " & If(
+                            gblSelectedAppointmentPatient.'Payment Type' = 'Payment Type (Appointments (EMR))'.Insurance && !IsBlank(gblSelectedAppointmentPatient.'Other Insurance Company'),
+                            "
+                        <div style='display: flex;padding-bottom:20px;'><label style='color: #000000; min-width: 250px;'><strong>Other Insurance:</strong></label> " & gblSelectedAppointmentPatient.'Other Insurance Company'
+                        ) & "</div>
+                        " & If(
+                            gblSelectedAppointmentPatient.'Payment Type' = 'Payment Type (Appointments (EMR))'.Insurance && !IsBlank(gblSelectedAppointmentPatient.'Member ID Prefix'),
+                            "
+                        <div style='display: flex;padding-bottom:20px;'><label style='color: #000000; min-width: 250px;'><strong>Member ID Prefix:</strong></label> " & gblSelectedAppointmentPatient.'Member ID Prefix'
+                        ) & "</div>
+                        " & If(
+                            gblSelectedAppointmentPatient.'Payment Type' = 'Payment Type (Appointments (EMR))'.Insurance && !IsBlank(gblSelectedAppointmentPatient.'Member ID Suffix'),
+                            "
+                        <div style='display: flex;padding-bottom:20px;'><label style='color: #000000; min-width: 250px;'><strong>Member ID Suffix:</strong></label> " & gblSelectedAppointmentPatient.'Member ID Suffix'
+                        ) & "</div>
+                        " & If(
+                            gblSelectedAppointmentPatient.'Payment Type' = 'Payment Type (Appointments (EMR))'.Insurance && !IsBlank(gblSelectedAppointmentPatient.'Medicare Issuer'),
+                            "
+                        <div style='display: flex;padding-bottom:20px;'><label style='color: #000000; min-width: 250px;'><strong>Issuer:</strong></label> " & gblSelectedAppointmentPatient.'Medicare Issuer'
+                        ) & "</div>
+                        " & If(
+                            gblSelectedAppointmentPatient.'Payment Type' = 'Payment Type (Appointments (EMR))'.Insurance && !IsBlank(gblSelectedAppointmentPatient.'Medicare ID'),
+                            "
+                        <div style='display: flex;padding-bottom:20px;'><label style='color: #000000; min-width: 250px;'><strong>ID:</strong></label> " & gblSelectedAppointmentPatient.'Medicare ID'
+                        ) & "</div>
+                        " & If(
+                            gblSelectedAppointmentPatient.'Payment Type' = 'Payment Type (Appointments (EMR))'.Insurance,
+                            "
+                        <div style='display: flex;padding-bottom:20px;'><label style='color: #000000; min-width: 250px;'><strong>Patient's Relationship<br> to Insured:</strong></label> " & gblSelectedAppointmentPatient.'Relationship  Subscriber'
+                        ) & "</div>
+                        " & If(
+                            gblSelectedAppointmentPatient.'Payment Type' = 'Payment Type (Appointments (EMR))'.Insurance && !IsBlank(gblSelectedAppointmentPatient.'Card Holder First Name'),
+                            "
+                        <div style='display: flex;padding-bottom:20px;'><label style='color: #000000; min-width: 250px;'><strong>Cardholder full name:</strong></label> " & gblSelectedAppointmentPatient.'Card Holder First Name' & " " & gblSelectedAppointmentPatient.'Card Holder Middle Name' & " " & gblSelectedAppointmentPatient.'Card Holder Last Name'
+                        ) & "</div>
+                        </div>
+                        "
+                    PaddingLeft: =20
+                    Size: =16
+                    Width: =Parent.Width
+                    Y: =LblPaymentDetailsPreview.Y+LblPaymentDetailsPreview.Height
+                    ZIndex: =3
+
+                LblPaymentDetailsPreview As label:
+                    Fill: =Color.White
+                    Font: =VarTheme.Font
+                    FontWeight: =FontWeight.Semibold
+                    Height: =70
+                    Size: =20
+                    Text: ="Payment Details"
+                    Width: =Parent.Width
+                    ZIndex: =4
+
+            DcScreeningPreview As dataCard.blankCard:
+                BorderColor: =RGBA(0, 0, 0, 1)
+                BorderStyle: =BorderStyle.Solid
+                DisplayMode: =DisplayMode.Edit
+                Fill: =RGBA(0, 0, 0, 0)
+                Height: |-
+                    =//GalScreeningPreview.Height+LblMedicalQuestionHeaderPreview.Height
+                    Sum(Sum(GalScreeningPreview.AllItems,IcnSeperatorScreeningMain_2.Tooltip+25), txtEditAdditionalInputPreview.Height+15)
+                Visible: =CountRows(GalScreeningPreview.AllItems)>0 
+                Width: =Parent.Width
+                X: =0
+                Y: =3
+                ZIndex: =9
+
+                LblMedicalQuestionHeaderPreview As label:
+                    Color: =VarTheme.InputTextDark
+                    Font: =VarTheme.Font
+                    FontWeight: =FontWeight.Semibold
+                    Height: =60
+                    Size: =20
+                    Text: ="Medical Questions"
+                    Width: =500
+                    ZIndex: =5
+
+                GalScreeningPreview As gallery.variableTemplateHeightGallery:
+                    DelayItemLoading: =true
+                    Fill: =VarTheme.InputBackground
+                    Height: |-
+                        =//GalScreeningPreview.TemplateHeight * CountRows(GalScreeningPreview.AllItems)
+                        Sum(Sum(GalScreeningPreview.AllItems,IcnSeperatorScreeningMain_2.Tooltip+25), txtEditAdditionalInputPreview.Height+15)
+                    Items: |-
+                        =If(
+                            !IsBlank(gblSelectedAppointmentPatient),
+                           SortByColumns(Filter(CmbexistingAppointmentSubService_Prescription.Selected.'Patient Screening Questions',Status='Status (Patient Screening Questions)'.Active && 'Language '.Code="en"),
+                           "smvs_questionorder",
+                                SortOrder.Ascending
+                            )
+                        )
+                    Layout: =Layout.Vertical
+                    LoadingSpinner: =LoadingSpinner.Data
+                    TemplatePadding: =4
+                    TemplateSize: =100
+                    Width: =Parent.Width-26
+                    Y: =LblMedicalQuestionHeaderPreview.Y+LblMedicalQuestionHeaderPreview.Height
+                    ZIndex: =9
+
+                    IcnSeperatorScreeningMain_2 As rectangle:
+                        BorderThickness: =1
+                        Fill: =Color.Black
+                        Height: =1
+                        OnSelect: =Select(Parent)
+                        Tooltip: =Self.Y+Self.Height
+                        Visible: =false
+                        Width: =962
+                        Y: =99
+                        ZIndex: =1
+
+                    IcnCircleScreeningPreview As circle:
+                        Fill: =RGBA(0, 0, 0, 1)
+                        Height: =8
+                        OnSelect: =Select(Parent)
+                        Width: =8
+                        X: =29
+                        Y: =LblScreeningQuestionPreview.Height/2
+                        ZIndex: =2
+
+                    RdoScreeningResponsePreview As radio:
+                        Color: =VarTheme.InputTextDark
+                        Default: |-
+                            =LookUp(
+                                    'Patient Screening Responses',
+                                    Appointment.Activity = gblSelectedAppointmentPatient.Activity && Question.'Patient Screening Question' = ThisItem.'Patient Screening Question'
+                                ).Response
+                        Font: =VarTheme.Font
+                        Height: =51
+                        Items: =Choices('Response (Patient Screening Responses)')
+                        Layout: =Layout.Horizontal
+                        OnSelect: =Select(Parent)
+                        RadioSize: =20
+                        Size: =10
+                        Visible: =false
+                        Width: =168
+                        X: =764
+                        ZIndex: =3
+
+                    txtEditAdditionalInputPreview As label:
+                        Color: =VarTheme.InputTextDark
+                        DisabledBorderColor: =
+                        Font: =VarTheme.Font
+                        Height: =If(Text(ThisItem.'Enable Additional Question')="Yes" && !IsBlank(RdoScreeningResponsePreview.Selected.Value) && Text(RdoScreeningResponsePreview.Selected.Value)=Text(LookUp('Patient Screening Questions','Patient Screening Question' = ThisItem.'Patient Screening Question' && ('Input Type'='Control Type'.Text || 'Input Type'='Control Type'.Date)).'Additional Information Criteria'), 45,0)
+                        OnSelect: =Select(Parent)
+                        Size: =16
+                        Text: |-
+                            =LookUp(
+                                    'Patient Screening Responses',
+                                    Appointment.Activity = gblSelectedAppointmentPatient.Activity && Question.'Patient Screening Question' = ThisItem.'Patient Screening Question'
+                                ).'Additional Info'
+                        Width: =800
+                        X: =49
+                        Y: =lblQuestionLabelPreview.Y+lblQuestionLabelPreview.Height
+                        ZIndex: =4
+
+                    lblQuestionLabelPreview As label:
+                        AutoHeight: =true
+                        Color: =VarTheme.InputTextDark
+                        Font: =VarTheme.Font
+                        Height: =If((Text(ThisItem.'Enable Additional Question')="Yes" && !IsBlank(RdoScreeningResponsePreview.Selected.Value) && Text(RdoScreeningResponsePreview.Selected.Value)=Text(LookUp('Patient Screening Questions','Patient Screening Question' = ThisItem.'Patient Screening Question').'Additional Information Criteria')),40,0)
+                        OnSelect: =Select(Parent)
+                        Size: =16
+                        Text: =ThisItem.'Question Label'
+                        Visible: =Text(ThisItem.'Enable Additional Question')="Yes" && !IsBlank(RdoScreeningResponsePreview.Selected.Value) && Text(RdoScreeningResponsePreview.Selected.Value)=Text(LookUp('Patient Screening Questions','Patient Screening Question' = ThisItem.'Patient Screening Question').'Additional Information Criteria')
+                        Width: =800
+                        X: =48
+                        Y: =100
+                        ZIndex: =5
+
+                    LblScreeningPreview As label:
+                        Color: =VarTheme.InputTextDark
+                        Font: =VarTheme.Font
+                        OnSelect: =Select(Parent)
+                        Text: =Text(ThisItem.'Pass Criteria') = Text(RdoScreeningResponsePreview.Selected.Value)
+                        Visible: =false
+                        X: =515
+                        ZIndex: =6
+
+                    LblScreeningBooleanPreview As label:
+                        Color: =VarTheme.InputTextDark
+                        Font: =VarTheme.Font
+                        FontWeight: =FontWeight.Bold
+                        Height: =43
+                        OnSelect: =Select(Parent)
+                        Size: =16
+                        Text: |-
+                            =//If(Text(LblScreeningPreview)="true","No","Yes")
+                            Text(RdoScreeningResponsePreview.Selected.Value)
+                        Width: =111
+                        X: =821
+                        ZIndex: =7
+
+                    LblScreeningQuestionPreview As label:
+                        AutoHeight: =true
+                        Color: =VarTheme.InputTextDark
+                        Font: =VarTheme.Font
+                        Height: =100
+                        PaddingTop: =10
+                        Size: =16
+                        Text: =ThisItem.'Question Text'
+                        Width: =760
+                        X: =48
+                        ZIndex: =8
+
+            DcFulfillDetailsPreview As dataCard.blankCard:
+                BorderColor: =RGBA(0, 0, 0, 1)
+                BorderStyle: =BorderStyle.Solid
+                DisplayMode: =DisplayMode.Edit
+                Fill: =RGBA(0, 0, 0, 0)
+                Height: =HtmlText3.Height
+                Width: =Parent.Width
+                X: =0
+                Y: =5
+                ZIndex: =10
+
+                HtmlText3 As htmlViewer:
+                    AutoHeight: =true
+                    Fill: =RGBA(255, 255, 255, 1)
+                    Font: =Font.Lato
+                    Height: =659
+                    HtmlText: |-
+                        ="<table style='border-collapse: collapse;padding: 0;cellpadding: 0;rowpadding: 0;width: 100%;'>
+                           
+                        <!-- Patient Information Start -->
+                            <tr>
+                              <td style='padding: 8px 16px;vertical-align: top;'>
+                                <div class='font-14 font-bold pt-16' style='font-weight: bold;font-size: 27px;padding-top: 16px;'>
+                                  " & If(
+                            gblSelectedAppointmentPatient.'Appointment Status' = 'Appointment Status'.Fulfilled,
+                            "Fulfill Details",
+                            "Booked Details"
+                        ) & "
+                                </div>
+                              </td>
+                            </tr>
+                            <tr class='form-content'>
+                              <td style='padding: 8px 16px;vertical-align: top;background-color: #F6F6F6;'>
+                        <div style='line-height: 1.8;'>
+                        <div style='display: flex;padding-bottom:14px;'><label style='color: #000000; min-width: 250px;'><strong>Location:</strong></label> " & gblSelectedAppointmentPatient.Location.Name & "</div>
+                        " & If(
+                            !IsBlank(ValManufacturerPreview),
+                            "
+                        <div style='display: flex;padding-bottom:14px;'><label style='color: #000000; min-width: 250px;'><strong>Manufacturer:</strong></label> " & First(
+                                ForAll(
+                                    Split(
+                                        Text(LblManufacturerSeperator2),
+                                        "^"
+                                    ),
+                                    {Result: ThisRecord.Value}
+                                )
+                            ).Result
+                        ) & "</div>
+                        " & If(
+                            !IsBlank(gblSelectedAppointmentPatient.'Fulfilled Date'),
+                            "
+                        <div style='display: flex;padding-bottom:14px;'><label style='color: #000000; min-width: 250px;'><strong>Fulfilled Date and Time:</strong></label> " & gblSelectedAppointmentPatient.'Fulfilled Date'
+                        ) & "</div>
+                        <hr>
+                        <div style='display: flex;padding-bottom:14px;'><label style='color: #000000; min-width: 250px;'><strong>Service:</strong></label> " & LookUp(
+                            'Sub Services',
+                            'Healthcare Service (msemr_healthcareserviceid)' = gblSelectedAppointmentPatient.'Healthcare Service'.'Healthcare Service (msemr_healthcareserviceid)'
+                        ).Service.Name & "</div>
+                        <div style='display: flex;padding-bottom:14px;'><label style='color: #000000; min-width: 250px;'><strong>Service Administered:</strong></label>  " & gblSelectedAppointmentPatient.'Healthcare Service'.Name & "</div>
+                        <hr>
+                        </div>
+                              </td>
+                            </tr>
+                        " & If(
+                            !IsBlank(gblSelectedAppointmentPatient.'Shot administered'),
+                            "
+                        <!-- Vaccine Information Start -->
+                            <tr><td style='padding: 8px 16px;vertical-align: top;background-color: #F6F6F6;'>
+                            
+                        <div style='line-height: 1.8;'>
+                        " & If(
+                                !IsBlank(gblSelectedAppointmentPatient.'Shot administered'),
+                                "
+                        <div style='display: flex;padding-bottom:14px;'><label style='color: #000000; min-width: 100px;'><strong style='padding-right:10px;'>Shot Administered On:</strong></label> " & gblSelectedAppointmentPatient.'Shot administered'
+                            ) & "</div>
+                        <div style='display: flex;padding-bottom:14px;'><label style='color: #000000; min-width: 100px;'><strong style='padding-right:80px;'>Vaccine Lot No:</strong></label> " & LookUp(
+                                'Codeable Concepts',
+                                'Codeable Concept' = CmbVaccineCodeApptDetails.Selected.'Codeable Concept'
+                            ).Lot & "</div>
+                        <div style='display: flex;padding-bottom:14px;'><label style='color: #000000; min-width: 100px;'><strong style='padding-right:104px;'>Practitioner:</strong></label> " & gblSelectedAppointmentPatient.'Actor (Practitioner)'.'Full Name' & "</div>
+                        <div style='display: flex;padding-bottom:14px;'><label style='color: #000000; min-width: 100px;'><strong style='padding-right:58px;'>Per Dose Volume:</strong></label>  " & LookUp(
+                                'Codeable Concepts',
+                                'Codeable Concept' = CmbVaccineCodeApptDetails.Selected.'Codeable Concept'
+                            ).'Vaccine Type'.'Volume (IIS)' & "</div>
+                        </div>
+                            </td></tr>
+                            <!-- Vaccine Information End -->"
+                        ) & "
+                        " & If(
+                            !IsBlank(gblSelectedAppointmentPatient.'Testing Facility'.Name),
+                            "
+                        <!-- Test Information Start -->
+                          <tr><td style='padding: 8px 16px;vertical-align: top;background-color: #F6F6F6;'>
+                        <div style='line-height: 1.8;'>
+                        <div style='display: flex;padding-bottom:14px;'><label style='color: #000000; min-width: 250px;'><strong style='padding-right:47px;'>Testing Facility:</strong></label> " & gblSelectedAppointmentPatient.'Testing Facility'.Name & "</div>
+                        <div style='display: flex;padding-bottom:14px;'><label style='color: #000000; min-width: 250px;'><strong style='padding-right:80px;'>Test Device:</strong></label> " & gblSelectedAppointmentPatient.'Test Device'.'Test Model Name' & "</div>
+                        <div style='display: flex;padding-bottom:14px;'><label style='color: #000000; min-width: 250px;'><strong style='padding-right:27px;'>Specimen Source:</strong></label> " & gblSelectedAppointmentPatient.'Specimen Source '.Name & "</div>
+                        <div style='display: flex;padding-bottom:14px;'><label style='color: #000000; min-width: 250px;'><strong style='padding-right:100px;'>Test Date:</strong></label>  " & Text(
+                                gblSelectedAppointmentPatient.'Specimen Collected On',
+                                "mm/dd/yyyy"
+                            ) & "</div>
+                        <div style='display: flex;padding-bottom:14px;'><label style='color: #000000; min-width: 250px;'><strong style='padding-right:12px;'>Test Performed Name:</strong></label>  " & gblSelectedAppointmentPatient.'Performed Test Name'.'Test Performed Name' & "</div>
+                        " & If(
+                                !IsBlank(gblSelectedAppointmentPatient.'Test Result'),
+                                "
+                        <div style='display: flex;padding-bottom:14px;'><label style='color: #000000; min-width: 250px;padding-right:85px;'><strong>Test Result:</strong></label> " & gblSelectedAppointmentPatient.'Test Result'
+                            ) & "</div>
+                        " & If(
+                                !IsBlank(gblSelectedAppointmentPatient.'Test Result Date'),
+                                "
+                        <div style='display: flex;padding-bottom:14px;'><label style='color: #000000; min-width: 250px;padding-right:35px;'><strong>Test Result Date:</strong></label> " & Text(
+                                    gblSelectedAppointmentPatient.'Test Result Date',
+                                    "mm/dd/yyyy"
+                                )
+                            ) & "</div>
+                        </div>
+                          </td></tr>
+                        <!-- Test Information End -->
+                        "
+                        ) & "
+                            </table>"
+                    Size: =16
+                    Width: =972
+                    ZIndex: =1
+
+                LblManufacturerSeperator As label:
+                    Font: =VarTheme.Font
+                    PaddingBottom: =7
+                    Size: =16
+                    Text: =LookUp('Codeable Concepts', 'Codeable Concept' = CmbVaccineCodeApptDetails.Selected.'Codeable Concept').'Vaccine Type'.Manufacturer
+                    Visible: =false
+                    Width: =245
+                    Wrap: =false
+                    X: =710
+                    ZIndex: =2
+
+                LblManufacturerSeperator2 As label:
+                    Color: =VarTheme.InputTextDark
+                    Height: =37
+                    Text: =Mid(Text(LblManufacturerSeperator), Find("^",Text(LblManufacturerSeperator))+1)
+                    Visible: =false
+                    Width: =200
+                    X: =798
+                    ZIndex: =3
+
+                ValManufacturerPreview As label:
+                    Color: =VarTheme.InputText
+                    Height: =42
+                    Size: =16
+                    Text: |-
+                        =First(ForAll(Split(Text(LblManufacturerSeperator2),"^"), {Result: ThisRecord.Value})).Result
+                    Visible: =false
+                    Width: =500
+                    Wrap: =false
+                    X: =327
+                    ZIndex: =4
+
+            DcTermsAndCondition As dataCard.blankCard:
+                BorderColor: =RGBA(0, 0, 0, 1)
+                BorderStyle: =BorderStyle.Solid
+                DisplayMode: =DisplayMode.Edit
+                Fill: =VarTheme.InputBackground
+                Height: |-
+                    =LblPatientConsent.Height+
+                    HtmlTermsConditionsPrescription.Height+
+                    ImgPatientSignaturePreview.Height
+                Width: =Parent.Width
+                X: =0
+                Y: =6
+                ZIndex: =11
+
+                ImgPatientSignaturePreview As image:
+                    Fill: =VarTheme.InputBackground
+                    Height: =166
+                    Image: =gblSelectedAppointmentPatient.'Patient’s Signature'
+                    Width: =280
+                    X: =16
+                    Y: =HtmlTermsConditionsPrescription.Y+HtmlTermsConditionsPrescription.Height
+                    ZIndex: =1
+
+                HtmlTermsConditionsPrescription As htmlViewer:
+                    AutoHeight: =true
+                    Color: =VarTheme.InputTextDark
+                    Fill: =VarTheme.InputBackground
+                    Font: =VarTheme.Font
+                    Height: =146
+                    HtmlText: |-
+                        ="
+                        <table><tr><td>
+                        <div style='line-height: 1.8;'>
+                        <div style='display: flex;padding-bottom:14px;font-size:27px;'><label style='color: #000000; min-width: 100px;'><strong style='padding-right:10px;'>Terms and Conditions:</strong></label></div>
+                        <div style='display: flex;padding-bottom:14px;'><label style='color: #000000; min-width: 100px;'>
+                        <div style='display: flex;padding-bottom:14px;font-size:21px;'><label style='color: #000000; min-width: 100px;'>1. I have read, or have had read to me, the written information regarding the vaccine(s) being administered.</div>
+                        <div style='display: flex;padding-bottom:14px;font-size:21px;'><label style='color: #000000; min-width: 100px;'>2. I have had the opportunity to ask questions thatwere answered to my satisfaction. </div>
+                        <div style='display: flex;padding-bottom:14px;font-size:21px;'><label style='color: #000000; min-width: 100px;'>3. I understand the benefits and risks of the vaccine(s) being administered and have received a copy of a current Vaccine Information Sheet.
+                        </div>
+                        <div style='display: flex;padding-bottom:14px;font-size:21px;'><label style='color: #000000; min-width: 100px;'>4. I, on behalf of myself, my heirs, executors, personal representatives, agents, successors, and assigns hereby agree to release,indemnify, and hold harmless this Pharmacy, its subsidiaries, divisions, affiliates, agents, officers, directors, contractors, and employees from any and all claims arising out of, in connection with, or in any way related to the administration of the vaccine(s).
+                        </div>
+                        <div style='display: flex;padding-bottom:14px;font-size:21px;'><label style='color: #000000; min-width: 100px;'>5. I certify that I am at least 18 years old and hereby give my consent to the pharmacists of this Pharmacy to administer the vaccine(s). If under 18 years old signature by parent or guardian isrequired.
+                        </div>
+                        <div style='display: flex;padding-bottom:14px;font-size:21px;'><label style='color: #000000; min-width: 100px;'>6. I agree to wait near the vaccination location for approximately 15 minutes for observation by the pharmacist.</label></div>
+                        <hr></td></tr><tr><td>
+                        <div style='display: flex;padding-bottom:30px;'><label style='color: #000000; min-width: 100px;'><strong style='padding-right:80px;'>I agree that all the information provided above is correct and give my consent to use for insurance purpose.</strong></label></div>
+                        <div style='display: flex;padding-bottom:14px;'><label style='color: #000000; min-width: 100px;'><strong style='padding-right:104px;'>Patient's Signature:</strong></label></div>
+                        </div></td></tr></table>
+                        "
+                    PaddingLeft: =20
+                    Size: =16
+                    Width: =Parent.Width-26
+                    Y: =LblPatientConsent.Y+LblPatientConsent.Height
+                    ZIndex: =2
+
+                LblPatientConsent As label:
+                    Fill: =Color.White
+                    Font: =VarTheme.Font
+                    FontWeight: =FontWeight.Semibold
+                    Height: =70
+                    Size: =20
+                    Text: ="Patient Consent"
+                    Width: =Parent.Width
+                    ZIndex: =3
+
+            DcPatientConsent As dataCard.blankCard:
+                BorderColor: =RGBA(0, 0, 0, 1)
+                BorderStyle: =BorderStyle.Solid
+                DisplayMode: =DisplayMode.Edit
+                Fill: =VarTheme.InputBackground
+                Height: =280
+                Width: =Parent.Width
+                X: =0
+                Y: =7
+                ZIndex: =12
+
+                Label13_22 As label:
+                    Font: =VarTheme.Font
+                    FontWeight: =FontWeight.Bold
+                    Height: =50
+                    PaddingLeft: =15
+                    Size: =16
+                    Text: |-
+                        ="Pharmacist's Signature:"
+                    Width: =400
+                    ZIndex: =3
+
+                Image2_6 As image:
+                    Fill: =VarTheme.InputBackground
+                    Height: =143
+                    Image: |-
+                        =//If(!IsEmpty(gblSelectedAppointmentPatient.'Pharmacist Signature') && !IsBlank(gblSelectedAppointmentPatient.'Pharmacist Signature'),gblSelectedAppointmentPatient.'Pharmacist Signature',PenDefaultPharmacistSignature.Image)
+                        gblSelectedAppointmentPatient.'Pharmacist Signature'
+                    Width: =485
+                    Y: =Label13_22.Y+Label13_22.Height
+                    ZIndex: =4
+
+                LblConsentDateTime As label:
+                    Font: =VarTheme.Font
+                    FontWeight: =FontWeight.Bold
+                    Height: =50
+                    PaddingLeft: =15
+                    Size: =16
+                    Text: |-
+                        ="Date and Time:"
+                    Width: =250
+                    X: =Parent.Width-Self.Width-50
+                    ZIndex: =5
+
+                ValConsentDateTime As label:
+                    Font: =VarTheme.Font
+                    PaddingLeft: =15
+                    Size: =16
+                    Text: =Now()
+                    Width: =LblConsentDateTime.Width+50
+                    X: =LblConsentDateTime.X
+                    Y: =LblConsentDateTime.Y+LblConsentDateTime.Height+10
+                    ZIndex: =6
+
+            DcPDFHeader As dataCard.blankCard:
+                BorderColor: =RGBA(0, 0, 0, 1)
+                BorderStyle: =BorderStyle.Solid
+                DisplayMode: =DisplayMode.Edit
+                Fill: =VarTheme.InputBackground
+                Height: =181
+                Width: =Parent.Width-26
+                X: =0
+                Y: =0
+                ZIndex: =13
+
+                HtmlPatientInfoPrescription As htmlViewer:
+                    AutoHeight: =true
+                    Fill: =RGBA(255, 255, 255, 1)
+                    Font: =Font.Lato
+                    Height: =705
+                    HtmlText: |-
+                        ="<table style='border-collapse: collapse;padding: 0;cellpadding: 0;rowpadding: 0;width: 100%;'>
+                            <tr class='header'>
+                              <td style='padding: 8px 16px;vertical-align: top;background-color: #F6F6F6;'>
+                                <span class='font-bold font-14' style='font-weight: bold;font-size: 27px;'>
+                                 "&First('App Settings').'Organization Name'&"
+                                </span>
+                              </td>
+                              <td class='text-right font-16' style='padding: 8px 16px;vertical-align: top;text-align: right;font-size: 27px;background-color: #F6F6F6;'>Prescription</td>
+                            </tr>
+                            <tr class='address-info header'>
+                              <td colspan='2' style='padding: 8px 16px;vertical-align: top;background-color: #F6F6F6;border-bottom: 1px solid rgba(0, 0, 0, 0.25);'>
+                                <span class='location mr-32' style='margin-right: 32px;'>
+                                  "&First('App Settings').'Billing Address' & ", " & First('App Settings').'Billing City' & ", " & First('App Settings').'Billing State'
+                        &"
+                                </span>
+                                <span class='number'>
+                                 " & gblSelectedPatient.'Mobile Phone' & "
+                                </span>
+                              </td>
+                            </tr>
+                        <!-- Patient Information Start -->
+                            <tr>
+                              <td colspan='2' style='padding: 8px 16px;vertical-align: top;'>
+                                <div class='font-14 font-bold pt-16' style='font-weight: bold;font-size: 27px;padding-top: 16px;'>
+                                  Patient Information
+                                </div>
+                              </td>
+                            </tr>
+                            <tr class='form-content'>
+                              <td style='padding: 8px 16px;vertical-align: top;background-color: #F6F6F6;'>
+                            <div style='display: flex;padding-bottom:14px;'><label style='color: #000000; min-width: 100px;'><strong>Name:</strong></label> " & gblSelectedPatient.'Full Name' & "</div>
+                              </td>
+                              <td style='padding: 8px 16px;vertical-align: top;background-color: #F6F6F6;'>
+                        <div style='display: flex;padding-bottom:14px;'><label style='color: #000000; min-width: 100px;'> <strong>Birthdate:</strong></label>" & gblSelectedPatient.Birthday & " (" & RoundDown(
+                            DateDiff(
+                                gblSelectedPatient.Birthday,
+                                Now(),
+                                TimeUnit.Days
+                            ) / 365.25,
+                            0
+                        ) & " years old)</div>
+                              </td>
+                            </tr>
+                            <tr class='form-content'>
+                              <td style='padding: 8px 16px;vertical-align: top;background-color: #F6F6F6;'>
+                          <div style='display: flex;padding-bottom:14px;'><label style='color: #000000; min-width: 100px;'><strong>Email:</strong></label> " & gblSelectedPatient.Email & "</div>
+                              </td>
+                              <td style='padding: 8px 16px;vertical-align: top;background-color: #F6F6F6;'>
+                        <div style='display: flex;padding-bottom:14px;'><label style='color: #000000; min-width: 100px;'><strong>Gender:</strong></label> " & gblSelectedPatient.Gender & "</div>
+                              </td>
+                            </tr>
+                            <tr class='form-content'>
+                              <td style='padding: 8px 16px;vertical-align: top;background-color: #F6F6F6;'>
+                        <div style='display: flex;padding-bottom:14px;'><label style='color: #000000; min-width: 100px;'><strong>Phone:</strong></label> " & gblSelectedPatient.'Mobile Phone' & "</div>
+                              </td>
+                              <td style='padding: 8px 16px;vertical-align: top;background-color: #F6F6F6;'>
+                                <div style='display: flex;padding-bottom:14px;'><label style='color: #000000; min-width: 100px;'><strong>Race:</strong></label> " & gblSelectedPatient.Race & "</div>
+                              </td>
+                            </tr>
+                                <tr class='form-content'>
+                              <td style='padding: 8px 16px;vertical-align: top;background-color: #F6F6F6;'>
+                        <div style='display: flex;padding-bottom:14px;'><label style='color: #000000; min-width: 100px;'><strong>Address:</strong></label>  " & gblSelectedPatient.'Address 1' & ", " & gblSelectedPatient.County & "</div>
+                              </td>
+                              <td style='padding: 8px 16px;vertical-align: top;background-color: #F6F6F6;'>
+                        <div style='display: flex;'><label style='color: #000000; min-width: 100px;'><strong>Language:</strong></label> " & gblSelectedPatient.Language & "</div>
+                              </td>
+                            </tr>
+                        	<tr class='form-content'>
+                              <td style='padding: 8px 16px;vertical-align: top;background-color: #F6F6F6;'>
+                                <div style='display: flex;padding-bottom:14px;'><label style='color: #000000; min-width: 100px;'><strong>Ethnicity:</strong></label> " & gblSelectedPatient.Ethnicity & "</div>
+                              </td>
+                              <td style='padding: 8px 16px;vertical-align: top;background-color: #F6F6F6;'>" & If(
+                            !IsBlank(gblSelectedAppointmentPatient.'Guardian First Name'),
+                            "<div style='display: flex;'><label style='color: #000000; min-width: 100px;'><strong>Guardian:</strong></label> " & gblSelectedAppointmentPatient.'Guardian First Name' & " " & gblSelectedAppointmentPatient.'Guardian Middle Name' & " " & gblSelectedAppointmentPatient.'Guardian Last Name' & "</div>"
+                        ) & "</td>
+                            </tr>
+                        	<tr class='form-content'>
+                              <td style='padding: 8px 16px; height:200px; vertical-align: top;background-color: #F6F6F6;'>
+                                <div style='display: flex;'><label style='color: #000000; min-width: 100px;'><strong>Patient’s Signature:</strong></label></div>
+                              </td>
+                              <td style='padding: 8px 16px;vertical-align: top;background-color: #F6F6F6;'>
+                        
+                              </td>
+                            </tr>
+                        	"&If(!IsBlank(gblSelectedAppointmentPatient.'Primary Care Physician Name'),"
+                            <!-- Primary Physican Content -->
+                            <tr>
+                              <td colspan='2' style='padding: 8px 16px;vertical-align: top;'>
+                                <div class='font-14 font-bold pt-16' style='font-weight: bold;font-size: 27px;padding-top: 16px;'>
+                                  Primary Care Physician Information
+                                </div>
+                              </td>
+                            </tr>
+                            <tr class='form-content'>
+                              <td colspan='2' style='padding: 8px 16px;vertical-align: top;background-color: #F6F6F6;'>
+                        <div style='display: flex;padding-bottom:14px;'><label style='color: #000000; min-width: 250px;'><strong>Name:</strong></label> " & gblSelectedAppointmentPatient.'Primary Care Physician Name' & "</div>
+                              </td>
+                            </tr>
+                            <tr class='form-content'>
+                              <td colspan='2' style='padding: 8px 16px;vertical-align: top;background-color: #F6F6F6;'>
+                        <div style='display: flex;padding-bottom:14px;'><label style='color: #000000; min-width: 250px;'><strong>Phone number:</strong></label>" & "&nbsp;" & gblSelectedAppointmentPatient.'Primary Care Physician Phone Number' & "</div>
+                              </td>
+                            </tr>")&"
+                            <!-- Primary Physican Content -->
+                        <!-- Patient Information End -->"
+                        /*
+                        <!-- Eligibility Question Start -->
+                            <tr>
+                              <td colspan='2' style='padding: 8px 16px;vertical-align: top;'>
+                                <div class='font-14 font-bold pt-16' style='font-weight: bold;font-size: 14px;padding-top: 16px;'>
+                                  Eligibility Question Response
+                                </div>
+                              </td>
+                            </tr>
+                            <tr class='form-content'>
+                              <td colspan='2' style='padding: 8px 16px;vertical-align: top;background-color: #F6F6F6;'>
+                                <span>Are you having COVID-19 Symptoms? </span>
+                              </td>
+                            </tr>
+                            <tr class='form-content'>
+                              <td colspan='2' style='padding: 8px 16px;vertical-align: top;background-color: #F6F6F6;'>
+                                <span class='font-bold' style='font-weight: bold;'>YES </span>
+                              </td>
+                            </tr>
+                            <tr class='form-content'>
+                              <td colspan='2' style='padding: 8px 16px;vertical-align: top;background-color: #F6F6F6;'>
+                                <span>Are you having COVID-19 Symptoms? </span>
+                              </td>
+                            </tr>
+                            <tr class='form-content'>
+                              <td colspan='2' style='padding: 8px 16px;vertical-align: top;background-color: #F6F6F6;'>
+                                <span class='font-bold' style='font-weight: bold;'>YES </span>
+                              </td>
+                            </tr>
+                            <tr class='form-content'>
+                              <td colspan='2' style='padding: 8px 16px;vertical-align: top;background-color: #F6F6F6;'>
+                                <span>Are you having COVID-19 Symptoms? </span>
+                              </td>
+                            </tr>
+                            <tr class='form-content'>
+                              <td colspan='2' style='padding: 8px 16px;vertical-align: top;background-color: #F6F6F6;'>
+                                <span class='font-bold' style='font-weight: bold;'>YES </span>
+                              </td>
+                            </tr>
+                            <!-- Eligibility Question Start -->
+                            <!-- Health screening Question Starts -->
+                            <tr>
+                              <td colspan='2' style='padding: 8px 16px;vertical-align: top;'>
+                                <div class='font-14 font-bold pt-16' style='font-weight: bold;font-size: 14px;padding-top: 16px;'>
+                                  Health Screening Question Response
+                                </div>
+                              </td>
+                            </tr>
+                            <tr class='form-content'>
+                              <td colspan='2' style='padding: 8px 16px;vertical-align: top;background-color: #F6F6F6;'>
+                                <span>Are you having COVID-19 Symptoms? </span>
+                              </td>
+                            </tr>
+                            <tr class='form-content'>
+                              <td colspan='2' style='padding: 8px 16px;vertical-align: top;background-color: #F6F6F6;'>
+                                <span class='font-bold' style='font-weight: bold;'>YES </span>
+                              </td>
+                            </tr>
+                            <tr class='form-content'>
+                              <td colspan='2' style='padding: 8px 16px;vertical-align: top;background-color: #F6F6F6;'>
+                                <span>Are you having COVID-19 Symptoms? </span>
+                              </td>
+                            </tr>
+                            <tr class='form-content'>
+                              <td colspan='2' style='padding: 8px 16px;vertical-align: top;background-color: #F6F6F6;'>
+                                <span class='font-bold' style='font-weight: bold;'>YES </span>
+                              </td>
+                            </tr>
+                            <tr class='form-content'>
+                              <td colspan='2' style='padding: 8px 16px;vertical-align: top;background-color: #F6F6F6;'>
+                                <span>Are you having COVID-19 Symptoms? </span>
+                              </td>
+                            </tr>
+                            <tr class='form-content'>
+                              <td colspan='2' style='padding: 8px 16px;vertical-align: top;background-color: #F6F6F6;'>
+                                <span class='font-bold' style='font-weight: bold;'>YES </span>
+                              </td>
+                            </tr>
+                            <!-- Health screening Question Ends -->
+                            
+                            
+                            <!-- Payment Information Start -->
+                            <tr>
+                              <td colspan='2' style='padding: 8px 16px;vertical-align: top;'>
+                                <div class='font-14 font-bold pt-16' style='font-weight: bold;font-size: 14px;padding-top: 16px;'>
+                                  Payment Information
+                                </div>
+                              </td>
+                            </tr>
+                            <tr class='form-content'>
+                              <td style='padding: 8px 16px;vertical-align: top;background-color: #F6F6F6;'>
+                                <span class='label mr-32' style='margin-right: 32px;width: 120px;display: inline-block;'>Payment Type: </span>
+                                <span class='font-bold' style='font-weight: bold;'>Insurance</span>
+                              </td>
+                              <td style='padding: 8px 16px;vertical-align: top;background-color: #F6F6F6;'>
+                                <span class='label mr-32' style='margin-right: 32px;width: 120px;display: inline-block;'>Rx Bin: </span>
+                                <span class='font-bold' style='font-weight: bold;'>478362</span>
+                              </td>
+                            </tr>
+                            <tr class='form-content'>
+                              <td style='padding: 8px 16px;vertical-align: top;background-color: #F6F6F6;'>
+                                <span class='label mr-32' style='margin-right: 32px;width: 120px;display: inline-block;'>Insurance Organization: </span>
+                                <span class='font-bold' style='font-weight: bold;'>Priemera</span>
+                              </td>
+                              <td style='padding: 8px 16px;vertical-align: top;background-color: #F6F6F6;'>
+                                <span class='label mr-32' style='margin-right: 32px;width: 120px;display: inline-block;'>RxPCN: </span>
+                                <span class='font-bold' style='font-weight: bold;'>345345</span>
+                              </td>
+                            </tr>
+                            <tr class='form-content'>
+                              <td colspan='2' style='padding: 8px 16px;vertical-align: top;background-color: #F6F6F6;'>
+                                <span class='label mr-32' style='margin-right: 32px;width: 120px;display: inline-block;'>Group Number: </span>
+                                <span class='font-bold' style='font-weight: bold;'>234234</span>
+                              </td>
+                            </tr>
+                              <!-- Payment Information End -->
+                            
+                            
+                             <!-- Fulfill Information Start -->
+                            <tr>
+                              <td colspan='2' style='padding: 8px 16px;vertical-align: top;'>
+                                <div class='font-14 font-bold pt-16' style='font-weight: bold;font-size: 14px;padding-top: 16px;'>
+                                  Fulfill Information
+                                </div>
+                              </td>
+                            </tr>
+                            <tr class='form-content'>
+                              <td style='padding: 8px 16px;vertical-align: top;background-color: #F6F6F6;'>
+                                <span class='label mr-32' style='margin-right: 32px;width: 120px;display: inline-block;'>Location: </span>
+                                <span class='font-bold' style='font-weight: bold;'>" & gblSelectedAppointmentPatient.Location.Name & "</span>
+                              </td>
+                              <td style='padding: 8px 16px;vertical-align: top;background-color: #F6F6F6;'>
+                                <span class='label mr-32' style='margin-right: 32px;width: 120px;display: inline-block;'>Shot Administered On: </span>
+                                <span class='font-bold' style='font-weight: bold;'>Left Hand</span>
+                              </td>
+                            </tr>
+                            <tr class='form-content'>
+                              <td style='padding: 8px 16px;vertical-align: top;background-color: #F6F6F6;'>
+                                <span class='label mr-32' style='margin-right: 32px;width: 120px;display: inline-block;'>Fulfilled Date & Time:</span>
+                                <span class='font-bold' style='font-weight: bold;'>"&If(
+                            !IsBlank(gblSelectedAppointmentPatient.'Fulfilled Date'),gblSelectedAppointmentPatient.'Fulfilled Date',"-")&"</span>
+                              </td>
+                              <td style='padding: 8px 16px;vertical-align: top;background-color: #F6F6F6;'>
+                                <span class='label mr-32' style='margin-right: 32px;width: 120px;display: inline-block;'>Practitioner: </span>
+                                <span class='font-bold' style='font-weight: bold;'>Clark Griffin</span>
+                              </td>
+                            </tr>
+                            <tr class='form-content'>
+                              <td colspan='2' style='padding: 8px 16px;vertical-align: top;background-color: #F6F6F6;'>
+                                <span class='label mr-32' style='margin-right: 32px;width: 120px;display: inline-block;'>Manufacturer: </span>
+                                <span class='font-bold' style='font-weight: bold;'> " & Text(ValManufacturerPreview)
+                         & "</span>
+                              </td>
+                            </tr>
+                              <!-- Fulfill Information End -->
+                            
+                              <!-- Patient Consent Information End -->
+                            <tr>
+                              <td colspan='2' style='padding: 8px 16px;vertical-align: top;'>
+                                <div class='font-14 font-bold pt-16' style='font-weight: bold;font-size: 14px;padding-top: 16px;'>
+                                  Patient Consent
+                                </div>
+                              </td>
+                            </tr>
+                            <tr><td colspan='2'>
+                            <div style='line-height: 1.8;'>
+                        <div style='display: flex;padding-bottom:14px;font-size:27px;'><label style='color: #000000; min-width: 100px;'><strong style='padding-right:10px;'>Terms and Conditions:</strong></label></div>
+                        <div style='display: flex;padding-bottom:14px;'><label style='color: #000000; min-width: 100px;'>
+                        <div style='display: flex;padding-bottom:14px;font-size:21px;'><label style='color: #000000; min-width: 100px;'>1. I have read, or have had read to me, the written information regarding the vaccine(s) being administered.</div>
+                        <div style='display: flex;padding-bottom:14px;font-size:21px;'><label style='color: #000000; min-width: 100px;'>2. I have had the opportunity to ask questions thatwere answered to my satisfaction. </div>
+                        <div style='display: flex;padding-bottom:14px;font-size:21px;'><label style='color: #000000; min-width: 100px;'>3. I understand the benefits and risks of the vaccine(s) being administered and have received a copy of a current Vaccine Information Sheet.
+                        </div>
+                        <div style='display: flex;padding-bottom:14px;font-size:21px;'><label style='color: #000000; min-width: 100px;'>4. I, on behalf of myself, my heirs, executors, personal representatives, agents, successors, and assigns hereby agree to release,indemnify, and hold harmless this Pharmacy, its subsidiaries, divisions, affiliates, agents, officers, directors, contractors, and employees from any and all claims arising out of, in connection with, or in any way related to the administration of the vaccine(s).
+                        </div>
+                        <div style='display: flex;padding-bottom:14px;font-size:21px;'><label style='color: #000000; min-width: 100px;'>5. I certify that I am at least 18 years old and hereby give my consent to the pharmacists of this Pharmacy to administer the vaccine(s). If under 18 years old signature by parent or guardian isrequired.
+                        </div>
+                        <div style='display: flex;padding-bottom:14px;font-size:21px;'><label style='color: #000000; min-width: 100px;'>6. I agree to wait near the vaccination location for approximately 15 minutes for observation by the pharmacist.</label></div>
+                        <hr>
+                        <div style='display: flex;padding-bottom:30px;'><label style='color: #000000; min-width: 100px;'><strong style='padding-right:80px;'>I agree that all the information provided above is correct and give my consent to use for insurance purpose.</strong></label></div>
+                        <div style='display: flex;padding-bottom:14px;'><label style='color: #000000; min-width: 100px;'><strong style='padding-right:104px;'>Patient's Signature:</strong></label></div>
+                        </div>
+                            </td></tr>
+                            <tr class='form-content'>
+                              <td colspan='2' style='padding: 8px 16px;vertical-align: top;background-color: #F6F6F6;'>
+                                <span class='font-bold' style='font-weight: bold;'>I agree that all the information provided above is correct and give my consent to use for insurance purpose.</span>
+                              </td>
+                            </tr>
+                            <tr class='form-content'>
+                              <td colspan='2' style='padding: 8px 16px;vertical-align: top;background-color: #F6F6F6;'>
+                                <span class='mr-32' style='margin-right: 32px;'>Date & Time:</span> "&Now()&"
+                              </td>
+                            </tr>
+                            <tr class='form-content'>
+                              <td colspan='2' style='padding: 8px 16px;vertical-align: top;background-color: #F6F6F6;'>
+                                Signature Image here
+                              </td>
+                            </tr>
+                              <!-- Patient Consent Information End -->*/
+                          &"</table>"
+                    PaddingBottom: =0
+                    PaddingLeft: =0
+                    PaddingRight: =0
+                    PaddingTop: =0
+                    Size: =16
+                    Width: =969
+                    ZIndex: =1
+
+                ImgSignaturePatientPrescription As image:
+                    Image: =gblSelectedAppointmentPatient.'Patient’s Signature'
+                    Width: =300
+                    X: =18
+                    Y: =564
+                    ZIndex: =2
+
+            DcPrescriptionFooter As dataCard.blankCard:
+                BorderColor: =RGBA(0, 0, 0, 1)
+                BorderStyle: =BorderStyle.Solid
+                DisplayMode: =DisplayMode.Edit
+                Fill: =RGBA(0, 0, 0, 1)
+                Height: =70
+                Width: =Parent.Width-26
+                X: =0
+                Y: =8
+                ZIndex: =14
+
+                ImgLogoPrescription As image:
+                    Height: =40
+                    Image: |-
+                        ="data:image/svg+xml;utf8, "&EncodeUrl("<svg width='60' height='20' viewBox='0 0 60 20' fill='none' xmlns='http://www.w3.org/2000/svg'>
+                        <path fill-rule='evenodd' clip-rule='evenodd' d='M6.14777 17.75C7.1489 17.75 7.95536 17.4541 8.56716 16.8624C9.26239 16.1697 9.61 15.2244 9.61 14.0265V13.074C9.61 11.6885 9.09553 10.5196 8.0666 9.56704C7.78851 9.30726 7.28794 8.97533 6.56491 8.57123C6.16168 8.34032 5.89054 8.16713 5.75149 8.05168C5.23703 7.57542 4.97979 7.00535 4.97979 6.34148V5.97346C4.97979 5.45391 5.08408 5.09311 5.29265 4.89106C5.4734 4.71788 5.75845 4.63128 6.14777 4.63128C6.551 4.63128 6.83605 4.71788 7.0029 4.89106C7.21147 5.07868 7.31575 5.43948 7.31575 5.97346V7.29399H9.61V5.97346C9.61 4.7756 9.26239 3.83031 8.56716 3.13757C7.95536 2.54586 7.1489 2.25 6.14777 2.25C5.14665 2.25 4.34019 2.54586 3.72839 3.13757C3.03316 3.83031 2.68555 4.7756 2.68555 5.97346V6.34148C2.68555 7.01979 2.81764 7.65479 3.08183 8.24651C3.34601 8.83822 3.72839 9.36499 4.22895 9.82682C4.53485 10.101 5.01455 10.4185 5.66807 10.7793C6.14082 11.0535 6.43282 11.2412 6.54405 11.3422C7.05852 11.8329 7.31575 12.4101 7.31575 13.074V14.0265C7.31575 14.5605 7.21147 14.9213 7.0029 15.1089C6.83605 15.2821 6.551 15.3687 6.14777 15.3687C5.75845 15.3687 5.4734 15.2821 5.29265 15.1089C5.08408 14.9069 4.97979 14.5461 4.97979 14.0265V12.0566H2.68555V14.0265C2.68555 15.2244 3.03316 16.1697 3.72839 16.8624C4.34019 17.4541 5.14665 17.75 6.14777 17.75ZM13.2366 2.42318H10.9424V17.5768H13.2366V2.42318ZM28.8576 17.5768H30.1924V2.42318H27.8981V10.0866L24.3942 2.42318H23.0594V17.5768H25.3536V9.89176L28.8576 17.5768ZM34.0731 4.80447V8.61453H36.6593V10.9958H34.0731V15.1955H37.8273V17.5768H31.7788V2.42318H37.8273V4.80447H34.0731ZM43.2584 4.80447H45.5943V2.42318H38.6281V4.80447H40.9641V17.5768H43.2584V4.80447ZM48.9009 2.42318H46.6067V17.5768H48.9009V2.42318ZM56.2723 16.8624C55.6605 17.4541 54.8541 17.75 53.8529 17.75C52.8796 17.75 52.0732 17.4541 51.4336 16.8624C50.7383 16.1408 50.3907 15.1955 50.3907 14.0265V5.97346C50.3907 4.80447 50.7383 3.85917 51.4336 3.13757C52.0732 2.54586 52.8796 2.25 53.8529 2.25C54.8541 2.25 55.6605 2.54586 56.2723 3.13757C56.9676 3.83031 57.3152 4.7756 57.3152 5.97346V7.31564H55.0209V5.97346C55.0209 5.43948 54.9236 5.07868 54.7289 4.89106C54.5482 4.71788 54.2562 4.63128 53.8529 4.63128C53.4636 4.63128 53.1786 4.71788 52.9978 4.89106C52.7892 5.09311 52.685 5.45391 52.685 5.97346V14.0265C52.685 14.5461 52.7892 14.9069 52.9978 15.1089C53.1786 15.2821 53.4636 15.3687 53.8529 15.3687C54.2562 15.3687 54.5482 15.2821 54.7289 15.1089C54.9236 14.9213 55.0209 14.5605 55.0209 14.0265V12.0782H57.3152V14.0265C57.3152 15.2244 56.9676 16.1697 56.2723 16.8624ZM20.608 16.8624C19.9962 17.4541 19.1898 17.75 18.1887 17.75C17.2153 17.75 16.4089 17.4541 15.7693 16.8624C15.074 16.1408 14.7264 15.1955 14.7264 14.0265V5.97346C14.7264 4.80447 15.074 3.85917 15.7693 3.13757C16.4089 2.54586 17.2153 2.25 18.1887 2.25C19.1898 2.25 19.9962 2.54586 20.608 3.13757C21.3033 3.83031 21.6509 4.7756 21.6509 5.97346V7.31564H19.3566V5.97346C19.3566 5.43948 19.2593 5.07868 19.0646 4.89106C18.8839 4.71788 18.5919 4.63128 18.1887 4.63128C17.7993 4.63128 17.5143 4.71788 17.3335 4.89106C17.125 5.09311 17.0207 5.45391 17.0207 5.97346V14.0265C17.0207 14.5461 17.125 14.9069 17.3335 15.1089C17.5143 15.2821 17.7993 15.3687 18.1887 15.3687C18.5919 15.3687 18.8839 15.2821 19.0646 15.1089C19.2593 14.9213 19.3566 14.5605 19.3566 14.0265V11.1906H17.3151L18.6155 8.80936H21.6509V14.0265C21.6509 15.2244 21.3033 16.1697 20.608 16.8624Z' fill='white'/>
+                        </svg>
+                         ")
+                    Width: =150
+                    X: =411
+                    Y: =15
+                    ZIndex: =1
+
+    ConPrescriptionPreviewHeader As groupContainer.manualLayoutContainer:
+        Height: =VarTheme.HeaderSize
+        Width: =Parent.Width
+        ZIndex: =4
+
+        IcoBorderHeaderPrescriptionPreview As rectangle:
+            Fill: =RGBA(230, 230, 230, 1)
+            Height: =3
+            Width: =Parent.Width
+            Y: =106
+            ZIndex: =1
+
+        ImgBackPreview As image:
+            Height: =40
+            Image: |-
+                ="data:image/svg+xml;utf8, "&EncodeUrl("<svg width='28' height='28' viewBox='0 0 28 28' fill='none' xmlns='http://www.w3.org/2000/svg'> <path d='M14 28C10.287 28 6.72602 26.525 4.10051 23.8995C1.475 21.274 3.04044e-06 17.713 3.20274e-06 14C3.36504e-06 10.287 1.475 6.72601 4.10051 4.1005C6.72602 1.475 10.287 -7.74261e-07 14 -6.11959e-07C17.713 -4.49658e-07 21.274 1.475 23.8995 4.10051C26.525 6.72601 28 10.287 28 14C28 17.713 26.525 21.274 23.8995 23.8995C21.274 26.525 17.713 28 14 28ZM20.125 14.875C20.3571 14.875 20.5796 14.7828 20.7437 14.6187C20.9078 14.4546 21 14.2321 21 14C21 13.7679 20.9078 13.5454 20.7437 13.3813C20.5796 13.2172 20.3571 13.125 20.125 13.125L9.98725 13.125L13.7445 9.3695C13.9088 9.2052 14.0011 8.98236 14.0011 8.75C14.0011 8.51764 13.9088 8.2948 13.7445 8.1305C13.5802 7.9662 13.3574 7.87389 13.125 7.87389C12.8926 7.87389 12.6698 7.9662 12.5055 8.1305L7.2555 13.3805C7.17402 13.4618 7.10937 13.5583 7.06526 13.6646C7.02114 13.7709 6.99844 13.8849 6.99844 14C6.99844 14.1151 7.02114 14.2291 7.06526 14.3354C7.10937 14.4417 7.17402 14.5382 7.2555 14.6195L12.5055 19.8695C12.6698 20.0338 12.8926 20.1261 13.125 20.1261C13.3574 20.1261 13.5802 20.0338 13.7445 19.8695C13.9088 19.7052 14.0011 19.4824 14.0011 19.25C14.0011 19.0176 13.9088 18.7948 13.7445 18.6305L9.98725 14.875L20.125 14.875Z' fill='#0052CC'/> </svg> ")
+            OnSelect: |-
+                =Navigate(VarNavigatePrevious);
+                UpdateContext({varPrescriptionPDFLoader: false});
+                UpdateContext({varPrescriptionPDFVisible: false})
+            Width: =40
+            X: =28
+            Y: =32
+            ZIndex: =2
+
+        LblMedicalPrescriptionHeader As label:
+            Color: =VarTheme.InputTextDark
+            Font: =VarTheme.Font
+            FontWeight: =FontWeight.Bold
+            Size: =VarTheme.FontSize24
+            Text: ="Prescription"
+            Width: =500
+            X: =102
+            Y: =32
+            ZIndex: =3
+
+        BtnPrintPrescription As button:
+            BorderColor: =VarTheme.PrimaryColor
+            BorderThickness: =1
+            Color: =VarTheme.PrimaryColor
+            Fill: =Color.White
+            Font: =VarTheme.Font
+            HoverFill: =VarTheme.PrimaryColorDark
+            OnSelect: |-
+                =If(
+                    BtnPrintPrescription.Text="Print PDF",
+                    UpdateContext({varPrescriptionPDFLoader: true}) && UpdateContext(
+                        {
+                            varPrescriptionPDF: PDF(
+                                ConPrescriptionPreviewBody,
+                                {   DPI: 72,
+                                    Margin: "10mm",
+                                    Orientation: PaperOrientation.Portrait,
+                                    Size: PaperSize.A4,
+                                    ExpandContainers: true
+                                }
+                            )
+                        }
+                    )&& UpdateContext(
+                        {
+                            varBasePrescription: Substitute(
+                                JSON(
+                                    varPrescriptionPDF,
+                                    JSONFormat.IncludeBinaryData
+                                ),
+                                """",
+                                ""
+                            )
+                        }
+                    ) && UpdateContext({varPrescriptionPDFVisible: true}),
+                    UpdateContext({varPrescriptionPDFLoader: false});
+                    UpdateContext({varPrescriptionPDFVisible: false})
+                );
+                
+                /*If(
+                    BtnPrintPrescription.Text = "Print PDF",
+                    Set(
+                        varPrescriptionPDFVisible,
+                        true
+                    ),
+                    Set(
+                        varPrescriptionPDFVisible,
+                        false
+                    )
+                );*/
+            PressedBorderColor: =
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Size: =18
+            Text: |-
+                =If(
+                    varPrescriptionPDFVisible,
+                    "Close PDF",
+                    "Print PDF"
+                )
+            Width: =170
+            X: =826
+            Y: =32
+            ZIndex: =4
+
+    FullPagePreLoader_1 As FullPagePreLoader:
+        Height: =1257
+        LoadingMessage: ="Generating PDF please wait."
+        Visible: =varPrescriptionPDFLoader
+        Width: =1024
+        Y: =109
+        ZIndex: =5
+
+    "'PDF Viewer Prescription' As pcfpdfbase64viewercontrol":
+        DisplayMode: =DisplayMode.Edit
+        Height: =Parent.Height-ConPrescriptionPreviewHeader.Height
+        sourceProperty: =varBasePrescription
+        Visible: =varPrescriptionPDFVisible
+        Width: =Parent.Width
+        X: =0
+        Y: =ConPrescriptionPreviewHeader.Height
+        ZIndex: =6
+

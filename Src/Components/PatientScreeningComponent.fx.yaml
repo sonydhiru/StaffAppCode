@@ -1,0 +1,86 @@
+PatientScreeningComponent As CanvasComponent:
+    Fill: =RGBA(0, 0, 0, 0)
+    GalleryHeight: =ScreeningGallery.Height
+    Height: =640
+    Items: |-
+        =Table({QuestionText: "SampleText", Answer: "Yes", ScreeningQuestionId: "233",AdditionalQuestionText:"additional",AdditionalQuestion:"Yes"},
+        {QuestionText: "SampleText1", Answer: "Yes", ScreeningQuestionId: "233",AdditionalQuestionText:"additional",AdditionalQuestion:"No"},
+        {QuestionText: "SampleText2", Answer: "Yes", ScreeningQuestionId: "233",AdditionalQuestionText:"additional",AdditionalQuestion:"No"}
+        )
+    Width: =1024
+    X: =0
+    Y: =0
+    ZIndex: =1
+
+    ScreeningGallery As gallery.variableTemplateHeightGallery:
+        DelayItemLoading: =true
+        Height: =Sum(Sum(ScreeningGallery.AllItems,Rectangle1_1.Tooltip+15),additionalText.Height)
+        Items: =PatientScreeningComponent.Items
+        Layout: =Layout.Vertical
+        LoadingSpinner: =LoadingSpinner.Data
+        ShowScrollbar: =false
+        TemplateSize: =85
+        Width: =Parent.Width
+        Y: =62
+        ZIndex: =1
+
+        AnswerText_1 As label:
+            OnSelect: =Select(Parent)
+            Text: =ThisItem.Answer
+            Width: =87
+            X: =915
+            Y: =3
+            ZIndex: =1
+
+        QuestionText_1 As label:
+            AutoHeight: =true
+            Height: =38
+            OnSelect: =Select(Parent)
+            Text: =ThisItem.QuestionText
+            Width: =900
+            Y: =2
+            ZIndex: =2
+
+        Rectangle1_1 As rectangle:
+            Height: =1
+            OnSelect: =Select(Parent)
+            Tooltip: =Self.Y+Self.Height
+            Width: =1000
+            Y: =84
+            ZIndex: =3
+
+        additionalText As label:
+            AutoHeight: =true
+            Color: =RGBA(116, 116, 116, 1)
+            Height: =If(ThisItem.AdditionalQuestion="Yes",QuestionText_1.Height+additionalText.LineHeight+20,0)
+            OnSelect: =Select(Parent)
+            PaddingTop: =20
+            Size: =11
+            Text: =ThisItem.AdditionalQuestionText
+            Visible: =ThisItem.AdditionalQuestion="Yes"
+            Width: =750
+            X: =16
+            Y: =25.799999999999997
+            ZIndex: =4
+
+        additionalAnswer As label:
+            Color: =RGBA(149, 149, 149, 1)
+            Height: =If(ThisItem.AdditionalQuestion="Yes",QuestionText_1.Height+additionalText.LineHeight+20,0)
+            OnSelect: =Select(Parent)
+            Text: =ThisItem.Answer
+            Visible: =ThisItem.AdditionalQuestion="Yes"
+            Width: =104
+            X: =788
+            Y: =25.799999999999997
+            ZIndex: =5
+
+    Label3_1 As label:
+        Font: =Font.'Segoe UI'
+        FontWeight: =FontWeight.Bold
+        Height: =49
+        Size: =18
+        Text: ="Patient Screening"
+        Width: =455
+        Y: =2
+        ZIndex: =2
+

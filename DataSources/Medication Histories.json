@@ -1,0 +1,135 @@
+[
+  {
+    "CdsFCBContext": "{\"FileType\":true,\"ImageExternalStorage\":true}",
+    "EntitySetName": "smvs_medicationhistories",
+    "IsHidden": false,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "LogicalName": "smvs_medicationhistory",
+    "MaxGetRowsCount": 500,
+    "Name": "Medication Histories",
+    "NativeCDSDataSourceInfoNameMapping": {
+      "_ownerid_value": "Owner",
+      "createdby": "Created By",
+      "createdon": "Created On",
+      "createdonbehalfby": "Created By (Delegate)",
+      "importsequencenumber": "Import Sequence Number",
+      "modifiedby": "Modified By",
+      "modifiedon": "Modified On",
+      "modifiedonbehalfby": "Modified By (Delegate)",
+      "overriddencreatedon": "Record Created On",
+      "owningbusinessunit": "Owning Business Unit",
+      "owningteam": "Owning Team",
+      "owninguser": "Owning User",
+      "smvs_adverseeffect": "Adverse effect",
+      "smvs_compliancetomedication": "Compliance to medication",
+      "smvs_datestarted": "Date started",
+      "smvs_drugname": "Drug Name",
+      "smvs_durationoftreatment": "Duration of treatment",
+      "smvs_frequency": "Frequency",
+      "smvs_medicationhistory_AsyncOperations": "System Jobs",
+      "smvs_medicationhistory_BulkDeleteFailures": "Bulk Delete Failures",
+      "smvs_medicationhistory_DuplicateBaseRecord": "Duplicate Records (smvs_medicationhistory_DuplicateBaseRecord)",
+      "smvs_medicationhistory_DuplicateMatchingRecord": "Duplicate Records (smvs_medicationhistory_DuplicateMatchingRecord)",
+      "smvs_medicationhistory_MailboxTrackingFolders": "Mailbox Auto Tracking Folders",
+      "smvs_medicationhistory_PrincipalObjectAttributeAccesses": "Field Sharing",
+      "smvs_medicationhistory_ProcessSession": "Process Sessions",
+      "smvs_medicationhistory_SyncErrors": "Sync Errors",
+      "smvs_medicationhistoryid": "Medication History",
+      "smvs_medicationname": "Medication Name",
+      "smvs_Patient": "Patient",
+      "smvs_route": "Route",
+      "smvs_SOAPNote": "SOAP Note",
+      "statecode": "Status",
+      "statuscode": "Status Reason",
+      "timezoneruleversionnumber": "Time Zone Rule Version Number",
+      "utcconversiontimezonecode": "UTC Conversion Time Zone Code",
+      "versionnumber": "Version Number"
+    },
+    "PreferredName": "Medication Histories",
+    "Type": "NativeCDSDataSourceInfo"
+  },
+  {
+    "DisplayName": "Medication Histories (Views)",
+    "Name": "_smvs_medicationhistory_views",
+    "RelatedEntityName": "Medication Histories",
+    "TrimmedViewName": true,
+    "Type": "ViewInfo",
+    "ViewInfoNameMapping": {
+      "6f9057cc-1355-4738-95e4-b6a6170b9d86": "Medication History Lookup View",
+      "84e9ab5b-3985-4b1d-ad24-2191ef9323e4": "Medication History Advanced Find View",
+      "d9c0e329-a9f7-411e-b304-3c75a236d257": "Medication History Associated View",
+      "e44ac9fa-4808-4f9d-8e29-7c884565e8a5": "Inactive Medication Histories",
+      "ec78926a-9644-4146-bc49-a11f2f39c1c6": "Active Medication Histories"
+    }
+  },
+  {
+    "DisplayName": "Frequency",
+    "Name": "smvs_frequency",
+    "OptionSetInfoNameMapping": {
+      "153940000": "Daily",
+      "153940001": "every other day (no abbreviation)",
+      "153940002": "BID/b.i.d. (twice a day)",
+      "153940003": "TID/t.id. (three times a day)",
+      "153940004": "QID/q.i.d. (four times a day)",
+      "153940005": "QHS (every bedtime)",
+      "153940006": "Q4h (every 4 hours)",
+      "153940007": "Q4-6h (every 4 to 6 hours)",
+      "153940008": "QWK (every week)",
+      "153940009": "Nightly",
+      "153940010": "Every other day "
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": true,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "smvs_frequency",
+        "OptionSetReferenceEntityName": "Medication Histories"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "smvs_frequency",
+    "RelatedEntityName": "Medication Histories",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status (Medication Histories)",
+    "Name": "smvs_medicationhistory_statecode",
+    "OptionSetInfoNameMapping": {
+      "0": "Active",
+      "1": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statecode",
+        "OptionSetReferenceEntityName": "Medication Histories"
+      }
+    },
+    "OptionSetTypeKey": "StateType",
+    "RelatedColumnInvariantName": "statecode",
+    "RelatedEntityName": "Medication Histories",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status Reason (Medication Histories)",
+    "Name": "smvs_medicationhistory_statuscode",
+    "OptionSetInfoNameMapping": {
+      "1": "Active",
+      "2": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statuscode",
+        "OptionSetReferenceEntityName": "Medication Histories"
+      }
+    },
+    "OptionSetTypeKey": "StatusType",
+    "RelatedColumnInvariantName": "statuscode",
+    "RelatedEntityName": "Medication Histories",
+    "Type": "OptionSetInfo"
+  }
+]

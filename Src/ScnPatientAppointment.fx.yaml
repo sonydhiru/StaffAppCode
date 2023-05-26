@@ -1,0 +1,904 @@
+"ScnPatientAppointment As screen.'tabletAutoLayout_HeaderMainFooter_ver1.0'":
+    OnVisible: |
+        =UpdateContext({showbtnappointments: true});
+        UpdateContext({showbtnSOAPNotes: false});
+        If(
+            VarSOAPHistory = true,
+            Select(BtnSOAPList)
+        );
+
+    BottomMenuPatientAppointment As BottonMenuContainer:
+        ActionNeededActiveMenu: =false
+        FindAppointmentAction: =ScnFindAppointment
+        FindApptActiveMenu: =false
+        FindPatientAction: =ScnFindPatient
+        HomeAction: =ScnLanding
+        HomeActiveMenu: =false
+        NeededAction: =ScnActionNeeded
+        NewAppointmentAction: =ScnNewAppointment
+        NewApptActiveMenu: =false
+        Width: =Parent.Width
+        Y: =Parent.Height-Self.Height
+
+    ConAddNewApptPatient As groupContainer.manualLayoutContainer:
+        Height: =63
+        Width: =Parent.Width
+        Y: =ContButtonsPatient.Y+ContButtonsPatient.Height
+        ZIndex: =3
+
+        ImgNewApptAddPatient As image:
+            Height: =25
+            Image: |-
+                ="data:image/svg+xml;utf8, "&EncodeUrl("<svg width='28' height='28' viewBox='0 0 28 28' fill='none' xmlns='http://www.w3.org/2000/svg'> <path d='M14 0C10.3008 0.0446294 6.76575 1.53395 4.14985 4.14985C1.53395 6.76575 0.0446294 10.3008 0 14C0.0446294 17.6992 1.53395 21.2343 4.14985 23.8501C6.76575 26.466 10.3008 27.9554 14 28C17.6992 27.9554 21.2343 26.466 23.8501 23.8501C26.466 21.2343 27.9554 17.6992 28 14C27.9554 10.3008 26.466 6.76575 23.8501 4.14985C21.2343 1.53395 17.6992 0.0446294 14 0ZM22 15H15V22H13V15H6V13H13V6H15V13H22V15Z' fill='#0052CC'/> </svg> ")
+            OnSelect: |-
+                =Set(VarPatientProfileMode,"New");
+                Set(VarPatientAppoinmentMode,"New");
+                Set(
+                    gblSelectedPatient,
+                    Blank()
+                );
+                ResetForm(FrmPatientProfile);
+                
+                Navigate(ScnLocation);
+            Width: =25
+            X: =BtnNewApptAddPatient.X-Self.Width
+            Y: =32
+            ZIndex: =1
+
+        BtnNewApptAddPatient As button:
+            BorderThickness: =0
+            Color: =RGBA(0, 82, 204, 1)
+            DisabledBorderColor: =RGBA(0, 0, 0, 0)
+            DisabledFill: =RGBA(0, 0, 0, 0)
+            Fill: =RGBA(0, 0, 0, 0)
+            Font: =VarTheme.Font
+            HoverColor: =VarTheme.PrimaryColor
+            HoverFill: =
+            OnSelect: |
+                =Set(
+                    VarPatientProfileMode,
+                    "Edit"
+                );
+                Set(
+                    VarPatientAppoinmentMode,
+                    "New"
+                );
+                Set(
+                    VarNewAppointmentValidationChk,
+                    false
+                );
+                Set(
+                    gblSelectedAppointmentPatient,
+                    Blank()
+                );
+                Set(
+                    VarReturningPatient,
+                    true
+                );
+                Set(
+                    VarNewPatient,
+                    false
+                );
+                Set(
+                    VarConfirmationScreen,
+                    true
+                );
+                Set(
+                    VarExistingPatient,
+                    true
+                );
+                Set(
+                    existingPaymentInfo,
+                    First(
+                        Sort(
+                            Filter(
+                                'Appointments (EMR)',
+                                Patient.Contact = gblSelectedPatient.Contact && 'Payment Type' = 'Payment Type (Appointments (EMR))'.Insurance
+                            ),
+                            'Date Created',
+                            SortOrder.Descending
+                        )
+                    )
+                );
+                If(
+                    IsBlank(
+                        LookUp(
+                            'Insurance Organizations',
+                            'Insurance Organization' = existingPaymentInfo.'Insurance Organization'.'Insurance Organization' && Status = 'Status (Insurance Organizations)'.Active
+                        )
+                    ),
+                    Set(
+                        existingPaymentInfo,
+                        Blank()
+                    )
+                );
+                ResetForm(FrmPayment);
+                Reset([@CmbSiteLocation]);
+                Reset([@CmbServiceType]);
+                Reset([@CmbService]);
+                Reset([@CmbSubService]);
+                Set(
+                    VarOpenFulfill,
+                    false
+                );
+                Navigate(
+                    ScnPatientType,
+                    ScreenTransition.None
+                );
+            PressedColor: =VarTheme.PrimaryColor
+            PressedFill: =
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Size: =16
+            Text: ="Add New Appointment"
+            Width: =270
+            X: =Parent.Width-Self.Width-26
+            Y: =25
+            ZIndex: =2
+
+    ContButtonsPatient As groupContainer.manualLayoutContainer:
+        Height: =75
+        Width: =Parent.Width-52
+        X: =26
+        Y: =HtmlPatientInfo.Y+HtmlPatientInfo.Height
+        ZIndex: =4
+
+        BtnAppointmentsPatient As button:
+            AutoDisableOnSelect: =false
+            BorderStyle: =BorderStyle.None
+            BorderThickness: =0
+            Color: =If(showbtnappointments,VarTheme.InputTextDark,RGBA(121, 132, 150, 1))
+            DisabledBorderColor: =RGBA(0, 0, 0, 0)
+            DisabledColor: =
+            Fill: =Color.White
+            Font: =VarTheme.Font
+            Height: =Parent.Height-IcnSeperatorPatientButtons.Height
+            HoverBorderColor: =
+            HoverColor: =VarTheme.FontColorBold
+            HoverFill: =
+            OnSelect: |-
+                =UpdateContext({showbtnappointments:true});
+                UpdateContext({showbtnSOAPNotes:false});
+            PressedBorderColor: =
+            PressedColor: =VarTheme.FontColorBold
+            PressedFill: =
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Size: =20
+            Text: ="Appointments"
+            Width: =250
+            ZIndex: =1
+
+        PatientActiveMenuSeparaterAppointment As rectangle:
+            Fill: |
+                =//If(BottonMenuContainer.HomeActiveMenu,RGBA(0, 82, 204, 1),White)
+                RGBA(0, 82, 204, 1)
+            Height: =7
+            Visible: =showbtnappointments
+            Width: =250
+            Y: =Parent.Height-Self.Height
+            ZIndex: =2
+
+        BtnSOAPList As button:
+            AutoDisableOnSelect: =false
+            BorderStyle: =BorderStyle.None
+            BorderThickness: =0
+            Color: =If(showbtnSOAPNotes,VarTheme.InputTextDark,RGBA(121, 132, 150, 1))
+            DisabledBorderColor: =RGBA(0, 0, 0, 0)
+            DisabledColor: =
+            Fill: =Color.White
+            Font: =VarTheme.Font
+            Height: =Parent.Height-IcnSeperatorPatientButtons.Height
+            HoverBorderColor: =
+            HoverColor: =VarTheme.FontColorBold
+            HoverFill: =
+            OnSelect: |-
+                =UpdateContext({showbtnappointments:false});
+                UpdateContext({showbtnSOAPNotes:true});
+            PressedBorderColor: =
+            PressedColor: =VarTheme.FontColorBold
+            PressedFill: =
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Size: =20
+            Text: ="SOAP Notes"
+            Width: =250
+            X: =BtnAppointmentsPatient.Width+BtnAppointmentsPatient.X
+            ZIndex: =3
+
+        PatientActiveMenuSeparaterSOAP As rectangle:
+            Fill: |
+                =//If(BottonMenuContainer.HomeActiveMenu,RGBA(0, 82, 204, 1),White)
+                RGBA(0, 82, 204, 1)
+            Height: =7
+            Visible: =showbtnSOAPNotes
+            Width: =250
+            X: =BtnSOAPList.X
+            Y: =Parent.Height-Self.Height
+            ZIndex: =4
+
+        IcnSeperatorPatientButtons As icon.HorizontalLine:
+            Color: =RGBA(179, 179, 179, 1)
+            Fill: =RGBA(179, 179, 179, 1)
+            Height: =2
+            Icon: =Icon.HorizontalLine
+            Width: =Parent.Width
+            Y: =Parent.Height-Self.Height
+            ZIndex: =5
+
+    HtmlPatientInfo As htmlViewer:
+        AutoHeight: =true
+        BorderColor: =RGBA(179, 179, 179, 1)
+        BorderStyle: =BorderStyle.Solid
+        BorderThickness: =1
+        Font: =VarTheme.Font
+        Height: =280
+        HtmlText: |-
+            ="<div style='display: flex; width: 968px; padding: 20px;'>
+              <div style='width: 50%; padding-right: 20px;'>
+                <div style='line-height: 1.8;'>
+                  <div style='display: flex;padding-bottom:14px;'><label style='color: #000000; min-width: 100px;'>Email:</label><label style='font-weight: 700;width:70%;'> " & gblSelectedPatient.Email & "</label></div>
+                  <div style='display: flex;padding-bottom:14px;'><label style='color: #000000; min-width: 100px;'>Phone:</label> <label style='font-weight: 700;'>" & gblSelectedPatient.'Mobile Phone' & "</label></div>
+                  <div style='display: flex;padding-bottom:14px;'><label style='color: #000000; min-width: 100px;'>Address:</label> <label style='font-weight: 700;'> " & gblSelectedPatient.'Address 1' & ", " & gblSelectedPatient.County & "</label></div>
+                  <div style='display: flex;padding-bottom:14px;'><label style='color: #000000; min-width: 100px;'>Ethnicity:</label><label style='font-weight: 700;'> " & gblSelectedPatient.Ethnicity & "</label></div>
+                </div>
+              </div>
+              <div style='width: 50%; padding-left: 20px;'>
+                <div style='line-height: 1.8;'>
+                  <div style='display: flex;padding-bottom:14px;'><label style='color: #000000; min-width: 100px;'> Birthdate:</label><label style='font-weight: 700;'>" & gblSelectedPatient.birthdate & " (" & RoundDown(
+                DateDiff(
+                    gblSelectedPatient.birthdate,
+                    Now(),
+                    TimeUnit.Days
+                ) / 365.25,
+                0
+            ) & " years old)</label></div>
+                    <div style='display: flex;padding-bottom:14px;'><label style='color: #000000; min-width: 100px;'>Gender:</label><label style='font-weight: 700;'> " & gblSelectedPatient.gendercode & "</label></div>
+                    <div style='display: flex;padding-bottom:14px;'><label style='color: #000000; min-width: 100px;'>Race:</label><label style='font-weight: 700;'> " & gblSelectedPatient.smvs_race & "</label></div>
+                    <div style='display: flex;'><label style='color: #000000; min-width: 100px;'>Language:</label><label style='font-weight: 700;'> " & gblSelectedPatient.smvs_language & "</label></div>
+                </div>
+            </div>
+            "
+        Size: =14
+        Width: =973
+        X: =24
+        Y: =ConPatientAppointmentHeader.Y+ConPatientAppointmentHeader.Height
+        ZIndex: =5
+
+    ConPatientAppointmentHeader As groupContainer.manualLayoutContainer:
+        Height: =109
+        Width: =Parent.Width
+        ZIndex: =6
+
+        LblPatientAppointmentHeader As label:
+            Font: =VarTheme.Font
+            FontWeight: =FontWeight.Bold
+            Size: =24
+            Text: =glbPatientPersonalInfo.'Full Name'
+            Width: =600
+            X: =90
+            Y: =32
+            ZIndex: =1
+
+        ImgBackPatientAppointment As image:
+            Height: =40
+            Image: |-
+                ="data:image/svg+xml;utf8, "&EncodeUrl("<svg width='28' height='28' viewBox='0 0 28 28' fill='none' xmlns='http://www.w3.org/2000/svg'> <path d='M14 28C10.287 28 6.72602 26.525 4.10051 23.8995C1.475 21.274 3.04044e-06 17.713 3.20274e-06 14C3.36504e-06 10.287 1.475 6.72601 4.10051 4.1005C6.72602 1.475 10.287 -7.74261e-07 14 -6.11959e-07C17.713 -4.49658e-07 21.274 1.475 23.8995 4.10051C26.525 6.72601 28 10.287 28 14C28 17.713 26.525 21.274 23.8995 23.8995C21.274 26.525 17.713 28 14 28ZM20.125 14.875C20.3571 14.875 20.5796 14.7828 20.7437 14.6187C20.9078 14.4546 21 14.2321 21 14C21 13.7679 20.9078 13.5454 20.7437 13.3813C20.5796 13.2172 20.3571 13.125 20.125 13.125L9.98725 13.125L13.7445 9.3695C13.9088 9.2052 14.0011 8.98236 14.0011 8.75C14.0011 8.51764 13.9088 8.2948 13.7445 8.1305C13.5802 7.9662 13.3574 7.87389 13.125 7.87389C12.8926 7.87389 12.6698 7.9662 12.5055 8.1305L7.2555 13.3805C7.17402 13.4618 7.10937 13.5583 7.06526 13.6646C7.02114 13.7709 6.99844 13.8849 6.99844 14C6.99844 14.1151 7.02114 14.2291 7.06526 14.3354C7.10937 14.4417 7.17402 14.5382 7.2555 14.6195L12.5055 19.8695C12.6698 20.0338 12.8926 20.1261 13.125 20.1261C13.3574 20.1261 13.5802 20.0338 13.7445 19.8695C13.9088 19.7052 14.0011 19.4824 14.0011 19.25C14.0011 19.0176 13.9088 18.7948 13.7445 18.6305L9.98725 14.875L20.125 14.875Z' fill='#0052CC'/> </svg> ")
+            OnSelect: |
+                =If(
+                    VarNavigateProfileAppointment = true,
+                    Navigate(ScnAppointmentDetails),
+                    Navigate(ScnFindPatient)
+                );
+                Set(
+                    VarNavigateProfileAppointment,
+                    false
+                );
+            Width: =40
+            X: =28
+            Y: =34
+            ZIndex: =2
+
+        IcoTopBorderAppointments As rectangle:
+            Fill: =RGBA(148, 148, 148, 1)
+            Height: =1
+            Width: =Parent.Width
+            Y: =108
+            ZIndex: =3
+
+        BtnViewProfilePatient As button:
+            BorderStyle: =BorderStyle.None
+            BorderThickness: =0
+            Color: =VarTheme.PrimaryColor
+            Fill: =Color.White
+            Font: =VarTheme.Font
+            HoverFill: =VarTheme.PrimaryColorDark
+            OnSelect: |
+                =Set(
+                    VarHidePatientVerificationCard,
+                    true
+                );
+                Set(
+                    VarNewAppointmentValidationChk,
+                    false
+                );
+                EditForm([@FrmPatientProfile]);
+                Set(
+                    VarPatientProfileMode,
+                    "Edit"
+                );
+                Set(
+                    VarPatientAppoinmentMode,
+                    "New"
+                );
+                Set(
+                    VarTermsAndCondition,
+                    false
+                );
+                Set(
+                    VarNavigateProfilePatient,
+                    true
+                );
+                Reset([@CmbSiteLocation]);
+                Navigate(ScnPatientProfile);
+            PressedBorderColor: =
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Size: =16
+            Text: ="Edit Profile"
+            Width: =146
+            X: =853
+            Y: =34
+            ZIndex: =4
+
+    CnvAppointmentList As fluidGrid.fluidGridWithBlankCard:
+        BorderThickness: =0
+        Height: =624
+        Width: =Parent.Width-52
+        X: =24
+        Y: =ConAddNewApptPatient.Y+ConAddNewApptPatient.Height
+        ZIndex: =7
+
+        DcAppointmentList As dataCard.blankCard:
+            BorderColor: =RGBA(0, 0, 0, 1)
+            BorderStyle: =BorderStyle.Solid
+            DisplayMode: =DisplayMode.Edit
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =Parent.Height
+            Visible: =showbtnappointments
+            Width: =Parent.Width
+            X: =0
+            Y: =1
+            ZIndex: =2
+
+            GalAppointmentList As gallery.galleryVertical:
+                Height: =Parent.Height
+                Items: |-
+                    =    SortByColumns(
+                            Filter(
+                                'Appointments (EMR)',
+                                Patient.Contact=glbPatientPersonalInfo.Contact
+                            ),
+                            "createdon",
+                            SortOrder.Descending
+                        )
+                Layout: =Layout.Vertical
+                TemplatePadding: =25
+                TemplateSize: =300
+                Width: =Parent.Width
+                WrapCount: =2
+                ZIndex: =5
+
+                BtnSelectPatientFindPatient As button:
+                    BorderColor: =RGBA(0, 0, 0, 0)
+                    BorderStyle: =BorderStyle.None
+                    BorderThickness: =0
+                    Color: =RGBA(0, 0, 0, 0)
+                    DisabledBorderColor: =RGBA(0, 0, 0, 0)
+                    DisabledColor: =RGBA(0, 0, 0, 0)
+                    DisabledFill: =RGBA(0, 0, 0, 0)
+                    Fill: =RGBA(0, 0, 0, 0)
+                    Font: =Font.Lato
+                    Height: =GalAppointmentList.TemplateHeight
+                    HoverBorderColor: =RGBA(0, 0, 0, 0)
+                    HoverColor: =RGBA(0, 0, 0, 0)
+                    HoverFill: =RGBA(0, 0, 0, 0)
+                    OnSelect: |
+                        =Select(Parent);
+                        Set(
+                            existingPaymentInfo,
+                            Blank()
+                        );
+                        Set(
+                            gblSelectedPatient,
+                            LookUp(
+                                Contacts,
+                                Contact = ThisItem.Patient.Contact
+                            )
+                        );
+                        Set(
+                            gblSelectedAppointmentPatient,
+                            LookUp(
+                                'Appointments (EMR)',
+                                Activity = ThisItem.Activity
+                            )
+                        );
+                        //checking primary / secondary service tab variable for multiservice
+                        If(
+                            ThisItem.'Appointment Booking Type Options' = 'Appointment Booking Type'.Multiservice && !IsBlank(ThisItem.'Parent Appointment'),
+                            Set(
+                                varSelectPrimaryAppt,
+                                false
+                            ) && Set(
+                                varSelectSecondaryAppt,
+                                true
+                            ),
+                            ThisItem.'Appointment Booking Type Options' = 'Appointment Booking Type'.Multiservice && IsBlank(ThisItem.'Parent Appointment'),
+                            Set(
+                                varSelectPrimaryAppt,
+                                true
+                            ) && Set(
+                                varSelectSecondaryAppt,
+                                false
+                            )
+                        );
+                        //checking primary / secondary service tab variable for multiservice end
+                        Set(
+                            VarOpenFulfill,
+                            false
+                        );
+                        Reset(GalServiceInfoApptDetails);
+                        Set(
+                            VarPatientAppoinmentMode,
+                            "Edit"
+                        );
+                        Set(
+                            VarDdlFullfilled,
+                            Blank()
+                        );
+                        Set(
+                            VarIISConsent,
+                            First('App Settings').'Enable IIS Consent'
+                        );
+                        Set(
+                            VarDetailHealthCategory,
+                            LookUp(
+                                Services,
+                                'Healthcare Service Category (msemr_healthcareservicecategoryid)' = gblSelectedAppointmentPatient.'Healthcare Service'.'Healthcare Service (msemr_healthcareserviceid)'
+                            )
+                        );
+                        Set(
+                            VarSelectedLocationRecordAppointments,
+                            gblSelectedAppointmentPatient.Location
+                        );
+                        Set(
+                            VarIncludeInsuranceAppointments,
+                            VarSelectedLocationRecordAppointments.Insurance
+                        );
+                        Set(
+                            VarIncludeNoInsuranceAppointments,
+                            VarSelectedLocationRecordAppointments.'No Insurance'
+                        );
+                        Set(
+                            VarIncludePayAtServiceAppointments,
+                            VarSelectedLocationRecordAppointments.'Pay at the time of Service'
+                        );
+                        Set(
+                            VarStatusPopUp,
+                            false
+                        );
+                        Set(
+                            VarPopUpFulfill,
+                            false
+                        );
+                        Set(
+                            VarConfirmationPopUp,
+                            false
+                        );
+                        Set(
+                            VarRescheduleSelectedDate,
+                            Blank()
+                        );
+                        Set(
+                            VarNavigateFindPatientAppointment,
+                            true
+                        );
+                        Navigate(ScnAppointmentDetails);
+                    PressedBorderColor: =RGBA(0, 0, 0, 0)
+                    PressedColor: =RGBA(0, 0, 0, 0)
+                    PressedFill: =RGBA(0, 0, 0, 0)
+                    Text: =""
+                    Width: =GalAppointmentList.TemplateWidth
+                    ZIndex: =5
+
+                HtmlDataCardPatient As htmlViewer:
+                    BorderColor: =RGBA(148, 148, 148, 1)
+                    BorderStyle: =BorderStyle.Solid
+                    BorderThickness: =1
+                    Font: =Font.Lato
+                    Height: =300
+                    HtmlText: |-
+                        ="            <!-- CARD DESIGN -->
+                                    <div style='width: 100%;overflow:hidden;padding:0px'>
+                                        <div style='position: relative;'>
+                                            <!-- NEXT ARROW ICON -->
+                                            <div style='position: absolute; top: 38px; right: 24px;'>
+                                                <svg width='32' height='32' viewBox='0 0 32 32' fill='none' xmlns='http://www.w3.org/2000/svg'>
+                        <path d='M17.3333 25.332L26.6666 15.9987L17.3333 6.66536M26.6666 15.9987L5.33329 15.9987' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/>
+                        </svg>
+                                            </div>
+                        
+                                            <div style='padding: 24px;padding-top:40px'>
+                                                <!-- APPOINTMENT INFO -->
+                                                <div style='display: flex; margin-bottom: 26px;'>
+                                                    <!-- PCR TEST ICON -->
+                                                    <div style='height:100px;width:100px'>
+                                                    " &
+                            //Text(LblServiceGroup) = "true",
+                         If(
+                            ThisItem.'Appointment Test Type' = 'Service Group'.'Point of Care Testing',
+                            "<svg width='100' height='100' viewBox='0 0 100 100' fill='none' xmlns='http://www.w3.org/2000/svg'>
+                        <rect width='100' height='100' fill='#F3F3F4'/>
+                        <path fill-rule='evenodd' clip-rule='evenodd' d='M59.4642 27.8539C60.4084 26.9741 61.6721 26.4564 63.0057 26.403C64.3394 26.3496 65.6461 26.7644 66.6677 27.5655L67.0064 27.8539L68.892 29.6144C69.8352 30.4943 70.3905 31.6719 70.4483 32.9148C70.506 34.1577 70.0621 35.3756 69.204 36.3283L68.8947 36.6466L67.0064 38.4046C66.8439 38.5557 66.671 38.6969 66.489 38.8274C66.7224 39.6074 66.7479 40.4287 66.5634 41.22C66.3788 42.0113 65.9899 42.7486 65.4302 43.3679L65.1209 43.6788L62.4805 46.1405C64.3168 47.6558 65.7865 49.5178 66.7921 51.6031C67.7977 53.6883 68.3162 55.9491 68.3133 58.2354C68.3133 62.3234 66.6864 66.0558 64.0034 68.903L63.486 69.4252H70.9802C71.66 69.4259 72.3138 69.6686 72.8081 70.1037C73.3024 70.5388 73.5999 71.1334 73.6397 71.7661C73.6795 72.3988 73.4588 73.0218 73.0225 73.5078C72.5862 73.9938 71.9673 74.3062 71.2923 74.381L70.9802 74.3984H28.3083C27.6286 74.3977 26.9747 74.1551 26.4805 73.72C25.9862 73.2849 25.6887 72.6903 25.6489 72.0575C25.609 71.4249 25.8298 70.8018 26.2661 70.3158C26.7024 69.8298 27.3213 69.5175 27.9963 69.4426L28.3083 69.4252H50.9778C53.3856 69.4255 55.7378 68.7505 57.7287 67.488C59.7197 66.2254 61.2573 64.4338 62.1417 62.3458C63.0262 60.2578 63.2166 57.97 62.6882 55.7798C62.1598 53.5895 60.937 51.5982 59.1788 50.0644L58.6987 49.6665L50.0337 57.748C49.0896 58.6271 47.8264 59.1444 46.4934 59.1978C45.1603 59.2512 43.8543 58.8368 42.8328 58.0365L42.4914 57.7456L36.8347 52.4714C35.8907 51.5914 35.335 50.4133 35.2772 49.1699C35.2194 47.9264 35.6638 46.7079 36.5227 45.7551L36.8347 45.4393L51.9219 31.3725C52.5899 30.7494 53.4234 30.303 54.3372 30.0789C55.251 29.8547 56.2122 29.8609 57.1225 30.0968L57.3412 29.8482L57.5786 29.6144L59.4642 27.8539ZM34.9491 54.232L40.6032 59.5061C40.8581 59.7353 41.0614 60.0095 41.2014 60.3128C41.3414 60.6161 41.4153 60.9424 41.4186 61.2725C41.4219 61.6027 41.3547 61.9302 41.2208 62.2359C41.0869 62.5415 40.8891 62.8193 40.6389 63.0529C40.3887 63.2866 40.091 63.4714 39.7634 63.5966C39.4357 63.7219 39.0846 63.785 38.7304 63.7824C38.3763 63.7798 38.0263 63.7114 37.7008 63.5813C37.3753 63.4512 37.0809 63.262 36.8347 63.0246L31.1753 57.748C30.9277 57.517 30.7313 57.2428 30.5974 56.941C30.4635 56.6392 30.3946 56.3157 30.3947 55.9891C30.3948 55.6625 30.464 55.3391 30.5981 55.0374C30.7323 54.7357 30.9289 54.4616 31.1767 54.2307C31.4245 53.9998 31.7186 53.8167 32.0423 53.6919C32.366 53.567 32.7129 53.5028 33.0632 53.5029C33.4135 53.503 33.7603 53.5674 34.0839 53.6925C34.4075 53.8176 34.7015 54.0009 34.9491 54.232ZM63.2353 31.375L61.3497 33.133L63.2353 34.891L65.1209 33.133L63.2353 31.375Z' fill='#0052CC'/>
+                        </svg> ",
+                            //LblMTM.Text = "true",
+                            ThisItem.'Appointment Test Type' = 'Service Group'.'Assessment and Intervention',
+                            "<svg width='100' height='100' viewBox='0 0 100 100' fill='none' xmlns='http://www.w3.org/2000/svg'>
+                        <rect width='100' height='100' fill='#F3F3F4'/>
+                        <path d='M51.4729 29.7788C51.2796 29.5852 51.05 29.4315 50.7973 29.3267C50.5445 29.2219 50.2736 29.168 50 29.168C49.7264 29.168 49.4555 29.2219 49.2027 29.3267C48.95 29.4315 48.7204 29.5852 48.5271 29.7788L29.7771 48.5288C29.4858 48.8202 29.2875 49.1913 29.2071 49.5954C29.1268 49.9995 29.168 50.4183 29.3257 50.7989C29.4833 51.1795 29.7503 51.5049 30.0928 51.7338C30.4353 51.9627 30.838 52.085 31.25 52.0851H33.3333V66.6684C33.3333 68.9663 35.2021 70.8351 37.5 70.8351H62.5C64.7979 70.8351 66.6667 68.9663 66.6667 66.6684V52.0851H68.75C69.1624 52.086 69.5658 51.9643 69.909 51.7356C70.2522 51.5068 70.5196 51.1812 70.6774 50.8002C70.8353 50.4192 70.8763 49.9998 70.7954 49.5954C70.7145 49.191 70.5152 48.8198 70.2229 48.5288L51.4729 29.7788ZM62.5021 66.6684H37.5V46.6976L50 34.1976L62.5 46.6976V56.2517L62.5021 66.6684Z' fill='#0052CC'/>
+                        <path d='M52.0834 45.832H47.9167V52.082H41.6667V56.2487H47.9167V62.4987H52.0834V56.2487H58.3334V52.082H52.0834V45.832Z' fill='#0259A8'/>
+                        </svg>
+                         ",
+                            "<svg width='100' height='100' viewBox='0 0 100 100' fill='none' xmlns='http://www.w3.org/2000/svg'>
+                        <rect width='100' height='100' fill='#F3F3F4'/>
+                        <path d='M50 37.5317L44.6146 42.878L51.0732 49.3366L49.0049 51.4049L42.5463 44.9463L39.0927 48.4L45.5512 54.8585L43.4829 56.9268L37.0244 50.4683L33.122 54.3707C32.5018 54.9714 32.0984 55.7607 31.9748 56.6152C31.8513 57.4696 32.0145 58.3409 32.439 59.0927L34.3902 62.7805L30 67.2488L32.7512 70L37.2195 65.6098L40.9073 67.561C41.5021 67.8981 42.1749 68.073 42.8585 68.0683C43.3735 68.0687 43.8834 67.9672 44.359 67.7696C44.8345 67.572 45.2662 67.2823 45.6293 66.9171L62.4683 50L50 37.5317ZM65.2195 44.5366L61.7268 41.0244L64.4976 38.2732L67.2488 41.0244L70 38.2732L61.7268 30L58.9756 32.7512L61.7268 35.522L58.9756 38.2732L55.4634 34.7805L52.0683 31.3659L49.3171 34.1366L51.3268 36.1463V36.1659L63.8341 48.6732H63.8537L65.8634 50.6829L68.6341 47.9317L65.239 44.5366H65.2195V44.5366Z' fill='#0052CC'/>
+                        </svg>
+                        "
+                        ) & "
+                        </div>
+                                                    <div style='margin-left: 20px;'>
+                                                        <div style='font-size: 21.3px; font-weight: 700;height:45px;width:300px; overflow: hidden;text-overflow: ellipsis;white-space: nowrap'>" & If(
+                            (ThisItem.'Healthcare Service'.Name = "I'm not sure" || ThisItem.'Healthcare Service'.Name = "I am not sure"),
+                            Text(
+                                LookUp(
+                                    'Sub Services',
+                                    'Healthcare Service (msemr_healthcareserviceid)' = ThisItem.'Healthcare Service'.'Healthcare Service (msemr_healthcareserviceid)'
+                                ).Service.Name
+                            ),
+                            ThisItem.'Healthcare Service'.Name
+                        ) & "
+                                                        </div>
+                                                        <div style='margin: 12px 0; display: flex; align-items: center;'>
+                                                            <svg width='20' height='20' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'>
+                        <path d='M17.9995 4H5.99951C3.79037 4 1.99951 5.79086 1.99951 8V18C1.99951 20.2091 3.79037 22 5.99951 22H17.9995C20.2087 22 21.9995 20.2091 21.9995 18V8C21.9995 5.79086 20.2087 4 17.9995 4Z' stroke='#091E42' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/>
+                        <path d='M7.99951 2V6M15.9995 2V6M1.99951 10H21.9995' stroke='#091E42' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/>
+                        </svg>
+                                                            <span style='color: #2A2A2A; margin-left: 8px;font-size: 18.6px;'>" & Text(
+                            ThisItem.'Appointment Date Time',
+                            DateTimeFormat.ShortDate
+                        ) & "</span>
+                                                        </div>
+                                                        <div style='display: flex; align-items: center;'>
+                                                            <svg width='21' height='21' viewBox='0 0 13 17' fill='none' xmlns='http://www.w3.org/2000/svg'>
+                                                                <path d='M6.33301 9.16406C7.43758 9.16406 8.33301 8.26863 8.33301 7.16406C8.33301 6.05949 7.43758 5.16406 6.33301 5.16406C5.22844 5.16406 4.33301 6.05949 4.33301 7.16406C4.33301 8.26863 5.22844 9.16406 6.33301 9.16406Z' stroke='#091E42' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/>
+                                                                <path d='M6.33333 1.83203C4.91885 1.83203 3.56229 2.39393 2.5621 3.39413C1.5619 4.39432 1 5.75088 1 7.16536C1 8.4267 1.268 9.25203 2 10.1654L6.33333 15.1654L10.6667 10.1654C11.3987 9.25203 11.6667 8.4267 11.6667 7.16536C11.6667 5.75088 11.1048 4.39432 10.1046 3.39413C9.10438 2.39393 7.74782 1.83203 6.33333 1.83203V1.83203Z' stroke='#091E42' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/>
+                                                            </svg>
+                                                            <span style='color: #2A2A2A;width:250px; margin-left: 8px;font-size: 18.6px;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;'>" & ThisItem.Location.Name & "</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- STATUS SECTION -->
+                                                <div style='display: flex; align-items: center;'>
+                                                    <div style='display: flex; align-items: center;'>
+                                                        <div style='font-size: 18.6px; font-weight: 600; width: 120px; padding: 10px; text-align: center; 
+                                                        background-color: " & If(
+                            ThisItem.'Appointment Status' = 'Appointment Status'.Booked,
+                            "rgba(0, 82, 204, 1)",
+                            ThisItem.'Appointment Status' = 'Appointment Status'.Fulfilled,
+                            "rgba(108, 170, 149, 1)",
+                            ThisItem.'Appointment Status' = 'Appointment Status'.'No Show',
+                            "rgba(222, 53, 11, 1)",
+                            "rgba(255, 153, 31, 1)"
+                        ) & "; 
+                                                        color: #ffffff; box-sizing: border-box;'>" & ThisItem.'Appointment Status' & "</div>
+                                                         " & If(ThisItem.'Appointment Booking Type Options'='Appointment Booking Type'.Multiservice,"
+                                                        <!-- MULTI-SERVICE ICON -->
+                                                        <div style='font-size: 18.6px; font-weight: 600; width: 140px; margin-left: 8px; padding: 10px; text-align: center; background-color: #6CAA95; color: #ffffff; box-sizing: border-box;'>Multi-service</div>
+                        "
+                        ) & "
+                                                    </div>
+                                                    <span style='margin-left: auto; color: #091E42; font-size: 24px; font-weight: 700;'>" & ThisItem.Patient.'Confirmation Code' & "</span>
+                                                </div>
+                                            </div>
+                                            <!-- BOTTOM SECTION -->
+                                            <div style='display: flex; align-items: center; border-top: 1px solid #949494;'>
+                                            " & If(
+                            !IsBlank(ThisItem.'Test Result'),
+                            "
+                                                <!-- TEST RESULT -->
+                                                <div style='margin-left: 24px;'>
+                                                    <div style='display: flex; align-items: center;font-size: 18.6px;'>
+                                                        Test Result: <span style='font-weight: 600; margin-left: 4px;
+                                                        color:" & If(
+                                ThisItem.'Test Result' = 'Test Result'.Positive,
+                                "rgba(222, 53, 11, 1)",
+                                ThisItem.'Test Result' = 'Test Result'.Negative,
+                                "rgba(108, 170, 149, 1)",
+                                "rgba(255, 153, 31, 1)"
+                            ) & "'> " & ThisItem.'Test Result' & "</span>
+                                                        <!-- Test Result: <span style='color:#6CAA95; font-weight: 600; margin-left: 4px;'>Negative</span> -->
+                                                    </div>
+                                                </div>
+                        "
+                        ) & "
+                                            </div>
+                                        </div>
+                        "
+                    PaddingBottom: =0
+                    PaddingLeft: =0
+                    PaddingRight: =0
+                    PaddingTop: =0
+                    Width: =448.5
+                    ZIndex: =7
+
+        DcSOAPNoteListPatient As dataCard.blankCard:
+            BorderColor: =RGBA(0, 0, 0, 1)
+            BorderStyle: =BorderStyle.Solid
+            DisplayMode: =DisplayMode.Edit
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =Parent.Height
+            Visible: =showbtnSOAPNotes
+            Width: =972
+            X: =0
+            Y: =2
+            ZIndex: =3
+
+            NoRecordFoundSOAP As NoRecordFoundComponent:
+                Height: =288
+                Icon: |-
+                    ="data:image/svg+xml;utf8, " & EncodeUrl(
+                        "<svg width='72' height='72' viewBox='0 0 72 72' fill='none' xmlns='http://www.w3.org/2000/svg'>
+                    <path d='M57 12H48V6H42V12H30V6H24V12H15C11.691 12 9 14.691 9 18V60C9 63.309 11.691 66 15 66H57C60.309 66 63 63.309 63 60V18C63 14.691 60.309 12 57 12ZM36 42H21V36H36V42ZM51 30H21V24H51V30Z' fill='#0052CC'/>
+                    </svg>
+                    
+                    
+                     "
+                    )
+                Subtitle: =""
+                Title: ="There are no notes created yet"
+                Visible: =CountRows(galSOAPHistories.AllItems)=0
+                X: =116
+                Y: =175
+
+            conPatientSOAPTable As groupContainer.verticalAutoLayoutContainer:
+                BorderColor: =RGBA(230, 230, 230, 1)
+                BorderThickness: =1
+                Height: =ConSOAPList.Height+galSOAPHistories.Height
+                LayoutDirection: =LayoutDirection.Vertical
+                LayoutMode: =LayoutMode.Auto
+                Width: =Parent.Width-Self.X*2
+                Y: =30
+                ZIndex: =1
+
+                ConSOAPList As groupContainer.manualLayoutContainer:
+                    FillPortions: =0
+                    Height: =70
+                    LayoutMinHeight: =100
+                    LayoutMinWidth: =250
+                    ZIndex: =1
+
+                    LblSoapApptName As label:
+                        Color: =VarTheme.InputTextDark
+                        Font: =VarTheme.Font
+                        FontWeight: =FontWeight.Bold
+                        Height: =70
+                        OnSelect: =
+                        PaddingLeft: =15
+                        Size: =16
+                        Text: ="Appointment Name"
+                        Width: =300
+                        ZIndex: =1
+
+                    LblSoapListDate As label:
+                        Color: =VarTheme.InputTextDark
+                        Font: =VarTheme.Font
+                        FontWeight: =FontWeight.Bold
+                        Height: =70
+                        OnSelect: =
+                        PaddingLeft: =15
+                        Size: =16
+                        Text: ="Date"
+                        Width: =300
+                        X: =LblSoapApptName.X+LblSoapApptName.Width
+                        ZIndex: =2
+
+                    LblSoapListStatus As label:
+                        Color: =VarTheme.InputTextDark
+                        Font: =VarTheme.Font
+                        FontWeight: =FontWeight.Bold
+                        Height: =70
+                        OnSelect: =
+                        PaddingLeft: =15
+                        Size: =16
+                        Text: ="Status"
+                        Width: =180
+                        X: =LblSoapListDate.X+LblSoapListDate.Width
+                        ZIndex: =3
+
+                "galSOAPHistories As gallery.'BrowseLayout_Vertical_ThreeTextVariant_ver4.0'":
+                    AlignInContainer: =AlignInContainer.SetByContainer
+                    BorderStyle: =BorderStyle.None
+                    Fill: =RGBA(0,0,0,0)
+                    FillPortions: =0
+                    Height: =70*CountRows(galSOAPHistories.AllItems)
+                    Items: |-
+                        =SortByColumns(
+                            Filter(
+                                'SOAP Notes',
+                                Patient.Contact = glbPatientPersonalInfo.Contact
+                            ),
+                            "createdon",
+                            SortOrder.Descending
+                        )
+                    Layout: =Layout.Vertical
+                    LayoutMinHeight: =40
+                    LayoutMinWidth: =320
+                    TemplatePadding: =0
+                    TemplateSize: =70
+                    Width: =Parent.Width
+                    X: =40
+                    Y: =88
+                    ZIndex: =3
+
+                    Label13_1 As label:
+                        Color: =VarTheme.InputTextDark
+                        Font: =VarTheme.Font
+                        Height: =70
+                        PaddingLeft: =22
+                        Size: =16
+                        Text: |-
+                            =LookUp(
+                                'Appointments (EMR)',
+                                Activity = ThisItem.Encounter.Activity,
+                                'Healthcare Service'
+                            ).Name
+                        Width: =LblSoapApptName.Width
+                        X: =1
+                        ZIndex: =1
+
+                    Label14_3 As label:
+                        Color: =VarTheme.InputTextDark
+                        Font: =VarTheme.Font
+                        Height: =70
+                        PaddingLeft: =18
+                        Size: =16
+                        Text: =ThisItem.Encounter.'Appointment Date Time'
+                        Width: =300
+                        X: =LblSoapListDate.Width
+                        ZIndex: =2
+
+                    Label15_4 As label:
+                        Color: =VarTheme.InputTextDark
+                        Font: =VarTheme.Font
+                        Height: =70
+                        PaddingLeft: =18
+                        Size: =16
+                        Text: |-
+                            =//ThisItem.'Appointment Status'
+                            ThisItem.'SOAP Status'
+                        Width: =180
+                        X: =Label14_3.X+Label14_3.Width
+                        ZIndex: =3
+
+                    BtnViewPatientSOAPNotes As button:
+                        Align: =Align.Left
+                        BorderStyle: =BorderStyle.None
+                        BorderThickness: =0
+                        Color: =VarTheme.PrimaryColor
+                        Fill: =Color.White
+                        Font: =VarTheme.Font
+                        Height: =70
+                        HoverColor: =VarTheme.PrimaryColor
+                        HoverFill: =Color.White
+                        OnSelect: |
+                            =Select(Parent);
+                            Set(
+                                gblSelectedPatient,
+                                LookUp(
+                                    Contacts,
+                                    Contact = ThisItem.Patient.Contact
+                                )
+                            );
+                            Set(
+                                gblSelectedAppointmentPatient,
+                                LookUp(
+                                    'Appointments (EMR)',
+                                    Activity = ThisItem.Encounter.Activity
+                                )
+                            );
+                            Reset(GalServiceInfoApptDetails);
+                            Set(
+                                VarPatientAppoinmentMode,
+                                "Edit"
+                            );
+                            Set(
+                                VarDdlFullfilled,
+                                Blank()
+                            );
+                            Set(
+                                VarIISConsent,
+                                First('App Settings').'Enable IIS Consent'
+                            );
+                            Set(
+                                VarDetailHealthCategory,
+                                LookUp(
+                                    Services,
+                                    'Healthcare Service Category (msemr_healthcareservicecategoryid)' = gblSelectedAppointmentPatient.'Healthcare Service'.'Healthcare Service (msemr_healthcareserviceid)'
+                                )
+                            );
+                            Set(
+                                VarSelectedLocationRecordAppointments,
+                                gblSelectedAppointmentPatient.Location
+                            );
+                            Set(
+                                VarIncludeInsuranceAppointments,
+                                VarSelectedLocationRecordAppointments.Insurance
+                            );
+                            Set(
+                                VarIncludeNoInsuranceAppointments,
+                                VarSelectedLocationRecordAppointments.'No Insurance'
+                            );
+                            Set(
+                                VarIncludePayAtServiceAppointments,
+                                VarSelectedLocationRecordAppointments.'Pay at the time of Service'
+                            );
+                            Set(
+                                VarStatusPopUp,
+                                false
+                            );
+                            Set(
+                                VarPopUpFulfill,
+                                false
+                            );
+                            Set(
+                                VarConfirmationPopUp,
+                                false
+                            );
+                            Set(
+                                VarRescheduleSelectedDate,
+                                Blank()
+                            );
+                            Set(
+                                VarDirectSoapNote,
+                                true
+                            );
+                            Set(
+                                VarNavigateFindPatientAppointment,
+                                true
+                            );
+                            Set(
+                                VarSOAPHistory,
+                                false
+                            );
+                            Navigate(ScnAppointmentDetails);
+                        PressedBorderColor: =
+                        PressedColor: =VarTheme.PrimaryColor
+                        PressedFill: =Color.White
+                        RadiusBottomLeft: =0
+                        RadiusBottomRight: =0
+                        RadiusTopLeft: =0
+                        RadiusTopRight: =0
+                        Size: =16
+                        Text: ="View"
+                        Width: =146
+                        X: =776
+                        ZIndex: =4
+

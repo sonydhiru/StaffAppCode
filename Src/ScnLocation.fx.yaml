@@ -1,0 +1,1501 @@
+"ScnLocation As screen.'tabletAutoLayout_HeaderMainFooter_ver1.0'":
+    OnVisible: |-
+        =Set(
+            VarHealthServices,
+            LookUp(
+                'Sub Services',
+                'Healthcare Service (msemr_healthcareserviceid)' = gblSelectedAppointmentPatient.'Healthcare Service'.'Healthcare Service (msemr_healthcareserviceid)'
+            )
+        );
+
+    LblPaymentCheckCombined As label:
+        Text: |-
+            =If(LblPaymentCheck.Text = "true" && LblPaymentCheckSecondary.Text="true",
+            true,
+            LblPaymentCheck.Text = "false" && LblPaymentCheckSecondary.Text="true",
+            true,
+            LblPaymentCheck.Text = "true" && LblPaymentCheckSecondary.Text="false",
+            true,
+            LblPaymentCheck.Text = "false" && LblPaymentCheckSecondary.Text="false",
+            false,
+            false)
+        Visible: =false
+        X: =874
+        Y: =1279
+        ZIndex: =1
+
+    LblServiceGroup_Location As label:
+        Text: =(LookUp('Service Types','Service Type'=CmbServiceType.Selected.'Service Type').'Service Group'= 'Service Group'.'Point of Care Testing')
+        Visible: =false
+        X: =841
+        Y: =1260
+        ZIndex: =2
+
+    LblServiceGroup_NameNewAppt As label:
+        Height: =49
+        Text: =(LookUp('Service Types','Service Type'=CmbServiceType.Selected.'Service Type').'Service Group')
+        Visible: =false
+        Width: =232
+        X: =759
+        Y: =1260
+        ZIndex: =3
+
+    LblPaymentCheckSecondary As label:
+        Text: =((Text(VarPrepaidByOrganization) = "No" || IsBlank(VarPrepaidByOrganization)) && Text(CmbAdditionalService.Selected.'Out of Pocket') = "On" && Text(VarShowPayment) = "On" && (Text(VarIncludePayAtService) <> "No")) || ((Text(VarPrepaidByOrganization) = "No" || IsBlank(VarPrepaidByOrganization)) && Text(VarShowPayment) = "On" && Text(CmbAdditionalService.Selected.'Collect Insurance') = "On" && Text(VarIncludeInsurance) <> "No") || ((Text(VarPrepaidByOrganization) = "No" || IsBlank(VarPrepaidByOrganization)) && Text(VarShowPayment) = "On" && Text(CmbAdditionalService.Selected.'Collect Id’s') = "On" && (Text(VarIncludeNoInsurance) <> "No"))
+        Visible: =false
+        X: =861
+        Y: =1259
+        ZIndex: =4
+
+    LblPaymentCheck As label:
+        Text: =((Text(VarPrepaidByOrganization) = "No" || IsBlank(VarPrepaidByOrganization)) && Text(CmbService.Selected.'Out of Pocket') = "On" && Text(VarShowPayment) = "On" && (Text(VarIncludePayAtService) <> "No")) || ((Text(VarPrepaidByOrganization) = "No" || IsBlank(VarPrepaidByOrganization)) && Text(VarShowPayment) = "On" && Text(CmbService.Selected.'Collect Insurance') = "On" && Text(VarIncludeInsurance) <> "No") || ((Text(VarPrepaidByOrganization) = "No" || IsBlank(VarPrepaidByOrganization)) && Text(VarShowPayment) = "On" && Text(CmbService.Selected.'Collect Id’s') = "On" && (Text(VarIncludeNoInsurance) <> "No"))
+        Visible: =false
+        X: =841
+        Y: =1239
+        ZIndex: =5
+
+    ConContinueLocation As groupContainer.manualLayoutContainer:
+        Height: =150
+        Width: =Parent.Width
+        Y: =ConAdditionalSubServiceLocation.Y+ConAdditionalSubServiceLocation.Height
+        ZIndex: =6
+
+        BtnAddService As button:
+            BorderColor: =VarTheme.PrimaryColor
+            BorderThickness: =1
+            Color: =VarTheme.PrimaryColor
+            DisplayMode: |-
+                =If(
+                    IsBlank(CmbSubService.Selected) || IsBlank(CmbSiteLocation.Selected) || IsBlank(CmbServiceType.Selected) || IsBlank(CmbService.Selected) || CmbSubService.Selected.'Regimen Dose' = 'Regimen Dose Options'.'Both Doses',
+                    DisplayMode.Disabled,
+                    DisplayMode.Edit
+                )
+            Fill: =Color.White
+            Font: =VarTheme.Font
+            Height: =50
+            HoverFill: =VarTheme.PrimaryColorDark
+            OnSelect: =Set(varAdditionalService,true);
+            PaddingBottom: =14
+            PaddingTop: =14
+            PressedBorderColor: =
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Size: =16
+            Text: ="Add additional service"
+            Visible: =varAdditionalService=false
+            Width: =625
+            X: =200
+            Y: =BtnContinueLocation.Y+BtnContinueLocation.Height+10
+            ZIndex: =1
+
+        BtnContinueLocation As button:
+            BorderStyle: =BorderStyle.None
+            BorderThickness: =0
+            Fill: =VarTheme.PrimaryColor
+            Height: =50
+            HoverFill: =VarTheme.PrimaryColorDark
+            OnSelect: |
+                =Reset(InputSignaturePatient);
+                Reset(GalEligibilityMain);
+                Reset(GalScreeningMain);
+                Set(
+                    VarNavigateProfilePatient,
+                    false
+                );
+                Set(
+                    VarSelectedLocationRecord,
+                    LookUp(
+                        Locations,
+                        Location = CmbSiteLocation.Selected.Location
+                    )
+                );
+                Set(
+                    VarSlotDurationInterval,
+                    //VarSelectedLocationRecord.'Block duration (minutes)'
+                    VarDefaultDuration
+                );
+                Set(
+                    startTime,
+                    DateTimeValue(
+                        Text(
+                            Text(
+                                Today(),
+                                "mm/dd/yyyy"
+                            ) & " " & VarSelectedLocationRecord.'Clinic start time'
+                        )
+                    )
+                );
+                Set(
+                    endTime,
+                    DateTimeValue(
+                        Text(
+                            Text(
+                                Today(),
+                                "mm/dd/yyyy"
+                            ) & " " & VarSelectedLocationRecord.'Clinic end time'
+                        )
+                    )
+                );
+                Set(
+                    VarBlockDuration,
+                    (/*VarSelectedLocationRecord.'Block duration (minutes)'*/VarDefaultDuration / (60 * 24))
+                );
+                Set(
+                    VarClinicDuration,
+                    Value(VarSelectedLocationRecord.'Clinic duration')
+                );
+                Set(
+                    VarClinicPerHour,
+                    Value(Text(VarSelectedLocationRecord.'Block per hour'))
+                );
+                Set(
+                    VarIncludeInsurance,
+                    VarSelectedLocationRecord.Insurance
+                );
+                Set(
+                    VarIncludeNoInsurance,
+                    VarSelectedLocationRecord.'No Insurance'
+                );
+                Set(
+                    VarIncludePayAtService,
+                    VarSelectedLocationRecord.'Pay at the time of Service'
+                );
+                Set(
+                    VarTotalSlotBlock,
+                    VarClinicDuration * VarClinicPerHour
+                );
+                Set(
+                    VarServiceGroupNew,
+                    Text(LblServiceGroup_Location)
+                );
+                Set(
+                    VarPrepaidByOrganization,
+                    First(CmbSiteLocation.Selected.Accounts).'Pre-paid by Organization'
+                );
+                Set(
+                    VarHidePatientVerificationCard,
+                    false
+                );
+                Set(
+                    VarIISConsent,
+                    First('App Settings').'Enable IIS Consent'
+                );
+                Clear(defaultAppointmentSlotCollection);
+                If(
+                    CountRows(defaultAppointmentSlotCollection) < VarTotalSlotBlock,
+                    ClearCollect(
+                        defaultAppointmentSlotCollection,
+                        ForAll(
+                            Sequence(VarTotalSlotBlock),
+                            {StartTime: startTime + VarBlockDuration * Value}
+                        )
+                    )
+                );
+                Set(
+                    VarResetEligibility,
+                    true
+                );
+                Set(
+                    VarPatientScreeningCount,
+                    0
+                );
+                //Vaccine day gap for primary service
+                Set(
+                    VarVaccineDayGap,
+                    LookUp(
+                        'Sub Services',
+                        'Healthcare Service (msemr_healthcareserviceid)' = CmbSubService.Selected.'Healthcare Service (msemr_healthcareserviceid)'
+                    ).VaccineDayGap
+                );
+                //Factsheet URL for primary service
+                Set(
+                    VarFactSheetUrl,
+                    LookUp(
+                        Services,
+                        'Healthcare Service Category (msemr_healthcareservicecategoryid)' = CmbService.Selected.'Healthcare Service Category (msemr_healthcareservicecategoryid)'
+                    ).'Factsheet URL'
+                );
+                //Sub service for primary service
+                Set(
+                    VarHealthCaresubcategoryInfo,
+                    LookUp(
+                        'Sub Services',
+                        'Healthcare Service (msemr_healthcareserviceid)' = CmbSubService.Selected.'Healthcare Service (msemr_healthcareserviceid)'
+                    )
+                );
+                //Collection for start and end time for primary service
+                ClearCollect(
+                    ServiceDataSlot,
+                    AddColumns(
+                        CmbSubService.Selected.'Slots (smvs_msemr_healthcareservice_msemr_slot_msemr_)',
+                        "Date",
+                        Start,
+                        "Time",
+                        End,
+                        "Title",
+                        End,
+                        "SlotId",
+                        Slot,
+                        "Dose",
+                        'Appointment Type'
+                    )
+                );
+                ClearCollect(
+                    ColCalendarFirstDose,
+                    Filter(
+                        ServiceDataSlot,
+                        SlotId in CmbSiteLocation.Selected.Slots.Slot && Date >= Now() && Dose = 'Appointment Type (Slots)'.'First Appointment'
+                    )
+                );
+                ClearCollect(
+                    ColFirstDoseData,
+                    ShowColumns(
+                        ColCalendarFirstDose,
+                        "Date",
+                        "Time",
+                        "Title"
+                    )
+                );
+                ClearCollect(
+                    ColCalendarSecondDose,
+                    Filter(
+                        ServiceDataSlot,
+                        SlotId in CmbSiteLocation.Selected.Slots.Slot && Date >= Now() && Dose = 'Appointment Type (Slots)'.'Second Appointment'
+                    )
+                );
+                ClearCollect(
+                    ColSecondDoseData,
+                    ShowColumns(
+                        ColCalendarSecondDose,
+                        "Date",
+                        "Time",
+                        "Title"
+                    )
+                );
+                //Collection end for start and end time for primary service
+                //Vaccine day gap for secondary service
+                Set(
+                    VarVaccineDayGapSecondary,
+                    LookUp(
+                        'Sub Services',
+                        'Healthcare Service (msemr_healthcareserviceid)' = CmbAdditionalSubService.Selected.'Healthcare Service (msemr_healthcareserviceid)'
+                    ).VaccineDayGap
+                );
+                //Factsheet URL for primary service
+                Set(
+                    VarFactSheetUrlSecondary,
+                    LookUp(
+                        Services,
+                        'Healthcare Service Category (msemr_healthcareservicecategoryid)' = CmbAdditionalService.Selected.'Healthcare Service Category (msemr_healthcareservicecategoryid)'
+                    ).'Factsheet URL'
+                );
+                //Sub service for secondary service
+                Set(
+                    VarHealthCaresubcategoryInfoSecondary,
+                    LookUp(
+                        'Sub Services',
+                        'Healthcare Service (msemr_healthcareserviceid)' = CmbAdditionalSubService.Selected.'Healthcare Service (msemr_healthcareserviceid)'
+                    )
+                );
+                //Collection for start and end time for secondary service
+                ClearCollect(
+                    SecondaryServiceDataSlot,
+                    AddColumns(
+                        CmbAdditionalSubService.Selected.'Slots (smvs_msemr_healthcareservice_msemr_slot_msemr_)',
+                        "Date",
+                        Start,
+                        "Time",
+                        End,
+                        "Title",
+                        End,
+                        "SlotId",
+                        Slot,
+                        "Dose",
+                        'Appointment Type'
+                    )
+                );
+                ClearCollect(
+                    ColSecondaryCalendarFirstDose,
+                    Filter(
+                        SecondaryServiceDataSlot,
+                        SlotId in CmbSiteLocation.Selected.Slots.Slot && Date >= Now() && Dose = 'Appointment Type (Slots)'.'First Appointment'
+                    )
+                );
+                ClearCollect(
+                    ColSecondaryFirstDoseData,
+                    ShowColumns(
+                        ColSecondaryCalendarFirstDose,
+                        "Date",
+                        "Time",
+                        "Title"
+                    )
+                );
+                ClearCollect(
+                    ColSecondaryCalendarSecondDose,
+                    Filter(
+                        SecondaryServiceDataSlot,
+                        SlotId in CmbSiteLocation.Selected.Slots.Slot && Date >= Now() && Dose = 'Appointment Type (Slots)'.'Second Appointment'
+                    )
+                );
+                ClearCollect(
+                    ColSecondarySecondDoseData,
+                    ShowColumns(
+                        ColSecondaryCalendarSecondDose,
+                        "Date",
+                        "Time",
+                        "Title"
+                    )
+                );
+                //Collection end for start and end time for secondary service
+                If(
+                    (varAdditionalService = false && !IsBlank(CmbSubService.Selected) && !IsBlank(CmbSiteLocation.Selected) && !IsBlank(CmbServiceType.Selected) && !IsBlank(CmbService.Selected) && (CountRows(VarFilterRowsScreening) = 0 && CountRows(VarFilterRowsEligibility) = 0)),
+                    Navigate(
+                        ScnPatientProfile,
+                        ScreenTransition.None
+                    ) && Set(
+                        VarScreeningQuestionCheck,
+                        false
+                    ),
+                    (varAdditionalService = false && !IsBlank(CmbSubService.Selected) && !IsBlank(CmbSiteLocation.Selected) && !IsBlank(CmbServiceType.Selected) && !IsBlank(CmbService.Selected)),
+                    Navigate(
+                        ScnQuestions,
+                        ScreenTransition.None
+                    ),
+                    (varAdditionalService && !IsBlank(CmbSubService.Selected) && !IsBlank(CmbSiteLocation.Selected) && !IsBlank(CmbServiceType.Selected) && !IsBlank(CmbService.Selected) && !IsBlank(CmbAdditionalServiceType.Selected) && !IsBlank(CmbAdditionalService.Selected) && !IsBlank(CmbAdditionalSubService.Selected) && (CountRows(VarFilterRowsScreening) = 0 && CountRows(VarFilterRowsEligibility) = 0) && (CountRows(VarFilterRowsScreeningSecondary) = 0 && CountRows(VarFilterRowsEligibilitySecondary) = 0)),
+                    Navigate(
+                        ScnPatientProfile,
+                        ScreenTransition.None
+                    ) && Set(
+                        VarScreeningQuestionCheckSecondary,
+                        false
+                    ),
+                    (varAdditionalService && !IsBlank(CmbSubService.Selected) && !IsBlank(CmbSiteLocation.Selected) && !IsBlank(CmbServiceType.Selected) && !IsBlank(CmbService.Selected) && !IsBlank(CmbAdditionalServiceType.Selected) && !IsBlank(CmbAdditionalService.Selected) && !IsBlank(CmbAdditionalSubService.Selected)),
+                    Navigate(
+                        ScnQuestions,
+                        ScreenTransition.None
+                    ),
+                    Set(
+                        VarNewAppointmentValidationChk,
+                        true
+                    )
+                );
+            PaddingBottom: =14
+            PaddingTop: =14
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Size: =16
+            Text: ="Continue"
+            Width: =625
+            X: =200
+            Y: =20
+            ZIndex: =2
+
+    ConAdditionalSubServiceLocation As groupContainer.manualLayoutContainer:
+        Height: |-
+            =If(
+                IsBlank(CmbAdditionalSubService.Selected) && VarNewAppointmentValidationChk && varAdditionalService,
+                140,
+                varAdditionalService,
+                100,
+                0
+            )
+        Width: =Parent.Width
+        Y: =ConAdditionalServiceLocation.Y+ConAdditionalServiceLocation.Height
+        ZIndex: =7
+
+        LblAdditionalSubServiceLocationError As label:
+            Color: =VarTheme.Error
+            Font: =VarTheme.Font
+            FontWeight: =FontWeight.Bold
+            Size: =16
+            Text: ="Please select sub service"
+            Visible: =IsBlank(CmbAdditionalSubService.Selected) && VarNewAppointmentValidationChk
+            Width: =625
+            X: =200
+            Y: =CmbAdditionalSubService.Y+CmbAdditionalSubService.Height
+            ZIndex: =1
+
+        CmbAdditionalSubService As combobox:
+            BorderColor: =VarTheme.PrimaryColor
+            BorderStyle: =BorderStyle.None
+            BorderThickness: =0
+            ChevronBackground: =VarTheme.InputBackground
+            ChevronFill: =Color.Black
+            ChevronHoverBackground: =RGBA(186, 202, 226, 1)
+            Color: =VarTheme.InputText
+            DisplayFields: =["msemr_name"]
+            Fill: =VarTheme.InputBackground
+            Font: =VarTheme.Font
+            FontWeight: =FontWeight.Semibold
+            IsSearchable: =false
+            Items: |-
+                =Filter(
+                    'Sub Services',
+                    (Service.'Healthcare Service Category (msemr_healthcareservicecategoryid)' = CmbAdditionalService.Selected.'Healthcare Service Category (msemr_healthcareservicecategoryid)' && IsBlank('Parent Health Service') && Status = 'Status (Sub Services)'.Active && Language.Code = "en" 
+                    &&
+                    'Regimen Dose'<>'Regimen Dose Options'.'Both Doses'
+                
+                     )
+                )
+            OnChange: |
+                =Set(
+                    VarFilterRowsScreeningSecondary,
+                    Filter(
+                        CmbAdditionalSubService.Selected.'Patient Screening Questions',
+                        Status = 'Status (Patient Screening Questions)'.Active && 'Language '.Code = "en"
+                    )
+                );
+                CountRows(VarFilterRowsScreeningSecondary);
+                Set(
+                    VarFilterRowsEligibilitySecondary,
+                    Filter(
+                        CmbAdditionalSubService.Selected.'Eligibility Questions',
+                        Status = 'Status (Eligibility Questions)'.Active && Language.Code = "en"
+                    )
+                );
+                CountRows(VarFilterRowsEligibilitySecondary);
+                
+                //Check screening and eligibility count for secondary service
+                If(
+                    (!IsBlank(CmbAdditionalSubService.Selected) && !IsBlank(CmbSiteLocation.Selected) && !IsBlank(CmbAdditionalServiceType.Selected) && !IsBlank(CmbAdditionalService.Selected) && (CountRows(VarFilterRowsScreeningSecondary) = 0 && CountRows(VarFilterRowsEligibilitySecondary) = 0)),
+                    Set(
+                        VarScreeningQuestionCheckSecondary,
+                        false
+                    )
+                );
+                
+                Set(
+                    VarRegimenDoseSecondary,
+                    LookUp(
+                        'Sub Services',
+                        'Healthcare Service (msemr_healthcareserviceid)' = CmbAdditionalSubService.Selected.'Healthcare Service (msemr_healthcareserviceid)'
+                    ).'Regimen Dose'
+                );
+                //Store secondary service screening question in collection
+                ClearCollect(
+                    ColSecondaryServiceScreening,
+                    AddColumns(
+                        Filter(
+                            CmbAdditionalSubService.Selected.'Patient Screening Questions',
+                            Status = 'Status (Patient Screening Questions)'.Active && 'Language '.Code = "en"
+                        ),
+                        "SecondaryServiceScreeningID",
+                        'Patient Screening Question'
+                    )
+                );
+                ClearCollect(
+                    ColSecondaryServiceScreeningList,
+                    ShowColumns(
+                        ColSecondaryServiceScreening,
+                        "SecondaryServiceScreeningID"
+                    )
+                );
+                //Store secondary service eligibility question in collection
+                ClearCollect(
+                    ColSecondaryServiceEligibility,
+                    AddColumns(
+                        Filter(
+                            CmbAdditionalSubService.Selected.'Eligibility Questions',
+                            Status = 'Status (Eligibility Questions)'.Active && Language.Code = "en"
+                        ),
+                        "SecondaryServiceEligibilityID",
+                        'Eligibility Question'
+                    )
+                );
+                ClearCollect(
+                    ColSecondaryServiceEligibilityList,
+                    ShowColumns(
+                        ColSecondaryServiceEligibility,
+                        "SecondaryServiceEligibilityID"
+                    )
+                );
+            PaddingLeft: =20
+            PressedColor: =Color.Black
+            PressedFill: =VarTheme.InputBackground
+            SearchFields: =["msemr_name"]
+            SearchItems: =[]
+            SelectionFill: =RGBA(186, 202, 226, 1)
+            SelectMultiple: =false
+            Size: =VarTheme.FontSize16
+            Width: =625
+            X: =200
+            Y: =LblAdditionalSubServiceLocation.Y+LblAdditionalSubServiceLocation.Height
+            ZIndex: =2
+
+        LblAdditionalSubServiceLocation As label:
+            Color: =VarTheme.InputTextDark
+            Font: =VarTheme.Font
+            FontWeight: =FontWeight.Bold
+            Height: =50
+            Size: =16
+            Text: ="Dose / Specify-service"
+            Width: =625
+            X: =200
+            ZIndex: =3
+
+    ConAdditionalServiceLocation As groupContainer.manualLayoutContainer:
+        Height: |-
+            =If(
+                IsBlank(CmbAdditionalService.Selected) && VarNewAppointmentValidationChk && varAdditionalService,
+                140,
+                varAdditionalService,
+                100,
+                0
+            )
+        Width: =Parent.Width
+        Y: =ConAdditionalServiceType.Y+ConAdditionalServiceType.Height
+        ZIndex: =8
+
+        LblAdditionalServiceLocationError As label:
+            Color: =VarTheme.Error
+            Font: =VarTheme.Font
+            FontWeight: =FontWeight.Bold
+            Size: =16
+            Text: ="Please select service"
+            Visible: =IsBlank(CmbAdditionalService.Selected) && VarNewAppointmentValidationChk
+            Width: =625
+            X: =200
+            Y: =CmbAdditionalService.Y+CmbAdditionalService.Height
+            ZIndex: =1
+
+        CmbAdditionalService As combobox:
+            BorderColor: =VarTheme.PrimaryColor
+            BorderStyle: =BorderStyle.None
+            BorderThickness: =0
+            ChevronBackground: =VarTheme.InputBackground
+            ChevronFill: =Color.Black
+            ChevronHoverBackground: =RGBA(186, 202, 226, 1)
+            Color: =VarTheme.InputText
+            DefaultSelectedItems: =If(VarClearDefaultSelectedData=false, VarDefaultService)
+            DisplayFields: =["msemr_name"]
+            Fill: =VarTheme.InputBackground
+            Font: =VarTheme.Font
+            FontWeight: =FontWeight.Semibold
+            IsSearchable: =false
+            Items: =Filter(Services, ('Service Type'.'Service Type' = CmbAdditionalServiceType.Selected.'Service Type' &&  Status='Status (Services)'.Active && Language.Code="en"))
+            OnChange: |-
+                =Reset([@CmbAdditionalSubService]);
+                Set(VarScreeningQuestionCheckSecondary,true);
+                Set(
+                    VarFilterRowsScreeningSecondary,
+                    Filter(
+                        CmbAdditionalService.Selected.'Patient Screening Questions',
+                        Status = 'Status (Patient Screening Questions)'.Active
+                    )
+                );
+                CountRows(VarFilterRowsScreeningSecondary);
+                Set(
+                    VarFilterRowsEligibilitySecondary,
+                    Filter(
+                        CmbAdditionalService.Selected.'Eligibility Questions',
+                        Status = 'Status (Eligibility Questions)'.Active
+                    )
+                );
+                CountRows(VarFilterRowsEligibilitySecondary);
+                
+                ClearCollect(ColSecondaryInsuracnceData,AddColumns(CmbAdditionalService.Selected.'Insurance Organizations (smvs_msemr_healthcareservicecategory_smvs_insu)',"secondaryInsuranceId",'Insurance Organization'));
+                ClearCollect(ColSecondaryInsuranceValue,ShowColumns(ColSecondaryInsuracnceData,"secondaryInsuranceId"));
+            PaddingLeft: =20
+            PressedColor: =Color.Black
+            PressedFill: =VarTheme.InputBackground
+            SearchFields: =["msemr_name"]
+            SearchItems: =[]
+            SelectionFill: =RGBA(186, 202, 226, 1)
+            SelectMultiple: =false
+            Size: =VarTheme.FontSize16
+            Width: =625
+            X: =200
+            Y: =LblAdditionalServiceLocation.Y+LblAdditionalServiceLocation.Height
+            ZIndex: =2
+
+        LblAdditionalServiceLocation As label:
+            Color: =VarTheme.InputTextDark
+            Font: =VarTheme.Font
+            FontWeight: =FontWeight.Bold
+            Height: =50
+            Size: =16
+            Text: ="Service"
+            Width: =625
+            X: =200
+            ZIndex: =3
+
+    ConAdditionalServiceType As groupContainer.manualLayoutContainer:
+        Height: |-
+            =If(
+                IsBlank(CmbAdditionalServiceType.Selected) && VarNewAppointmentValidationChk && varAdditionalService,
+                140,
+                varAdditionalService,
+                100,
+                0
+            )
+        Width: =Parent.Width
+        Y: =ConAddServiceText.Y+ConAddServiceText.Height
+        ZIndex: =9
+
+        LblAdditionalServiceTypeError As label:
+            Color: =VarTheme.Error
+            Font: =VarTheme.Font
+            FontWeight: =FontWeight.Bold
+            Size: =16
+            Text: ="Please select service type"
+            Visible: =IsBlank(CmbAdditionalServiceType.Selected) && VarNewAppointmentValidationChk
+            Width: =625
+            X: =200
+            Y: =CmbAdditionalServiceType.Y+CmbAdditionalServiceType.Height
+            ZIndex: =1
+
+        CmbAdditionalServiceType As combobox:
+            BorderColor: =VarTheme.PrimaryColor
+            BorderStyle: =BorderStyle.None
+            BorderThickness: =0
+            ChevronBackground: =VarTheme.InputBackground
+            ChevronFill: =Color.Black
+            ChevronHoverBackground: =RGBA(186, 202, 226, 1)
+            Color: =VarTheme.InputText
+            DefaultSelectedItems: |-
+                =If(!IsBlank(gblSelectedAppointmentPatient),
+                LookUp(Services,'Healthcare Service Category (msemr_healthcareservicecategoryid)'=VarHealthServices.Service.'Healthcare Service Category (msemr_healthcareservicecategoryid)').'Service Type',VarDefaultServiceType)
+            DisplayFields: =["smvs_name"]
+            DisplayMode: =If(IsBlank(gblSelectedAppointmentPatient), DisplayMode.Edit,DisplayMode.Disabled)
+            Fill: =VarTheme.InputBackground
+            Font: =VarTheme.Font
+            FontWeight: =FontWeight.Semibold
+            IsSearchable: =false
+            Items: =Filter('Service Types', 'Service Type' in ColSecondaryServiceTypeValue)
+            OnChange: |-
+                =Reset([@CmbAdditionalService]);
+                Set(VarClearDefaultSelectedData,true);
+                Set(VarScreeningQuestionCheckSecondary,true);
+            PaddingLeft: =20
+            PressedColor: =Color.Black
+            PressedFill: =VarTheme.InputBackground
+            SearchFields: =["smvs_name"]
+            SearchItems: =[]
+            SelectionFill: =RGBA(186, 202, 226, 1)
+            SelectMultiple: =false
+            Size: =VarTheme.FontSize16
+            Width: =625
+            X: =200
+            Y: =LblAdditionalServiceType.Y+LblAdditionalServiceType.Height
+            ZIndex: =2
+
+        LblAdditionalServiceType As label:
+            Color: =VarTheme.InputTextDark
+            Font: =VarTheme.Font
+            FontWeight: =FontWeight.Bold
+            Height: =50
+            Size: =16
+            Text: ="Appointment Type"
+            Width: =625
+            X: =200
+            ZIndex: =3
+
+    ConAddServiceText As groupContainer.manualLayoutContainer:
+        Height: =If(varAdditionalService,100,0)
+        Width: =Parent.Width
+        Y: =ConSubServiceLocation.Y+ConSubServiceLocation.Height
+        ZIndex: =10
+
+        LblAdditionalService As label:
+            Color: =VarTheme.InputTextDark
+            Font: =VarTheme.Font
+            FontWeight: =FontWeight.Bold
+            Height: =50
+            Size: =24
+            Text: ="Additional Service"
+            Width: =500
+            X: =200
+            Y: =35
+            ZIndex: =1
+
+        IcnSeperatorService As icon.HorizontalLine:
+            BorderStyle: =BorderStyle.None
+            Color: =RGBA(217, 217, 217, 1)
+            Fill: =RGBA(217, 217, 217, 1)
+            FocusedBorderThickness: =0
+            Height: =2
+            HoverColor: =
+            Icon: =Icon.HorizontalLine
+            Width: =625
+            X: =200
+            Y: =20
+            ZIndex: =2
+
+        BtnRemoveService As button:
+            Align: =Align.Right
+            BorderStyle: =BorderStyle.None
+            BorderThickness: =0
+            Color: =VarTheme.Error
+            Fill: =RGBA(0,0,0,0)
+            Font: =VarTheme.Font
+            Height: =46
+            HoverBorderColor: =
+            HoverColor: =VarTheme.Error
+            HoverFill: =
+            OnSelect: |-
+                =Set(
+                    varAdditionalService,
+                    false
+                );
+                Reset(CmbAdditionalServiceType);
+                Reset(CmbAdditionalService);
+                Reset(CmbAdditionalSubService);
+                Clear(ColSecondaryServiceScreening);
+                Clear(ColSecondaryServiceScreeningList);
+                Clear(ColSecondaryServiceEligibility);
+                Clear(ColSecondaryServiceEligibilityList);
+                Clear(ColSecondaryInsuracnceData);
+                Clear(ColSecondaryInsuranceValue);
+            PaddingBottom: =14
+            PaddingTop: =14
+            PressedBorderColor: =
+            PressedColor: =VarTheme.Error
+            PressedFill: =
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Size: =14
+            Text: ="Remove Additional Service"
+            Underline: =true
+            Width: =271
+            X: =560
+            Y: =39
+            ZIndex: =3
+
+    ConSubServiceLocation As groupContainer.manualLayoutContainer:
+        Height: =If(IsBlank(CmbSubService.Selected) && VarNewAppointmentValidationChk=true,140,100)
+        Width: =Parent.Width
+        Y: =ConServiceLocation.Y+ConServiceLocation.Height
+        ZIndex: =11
+
+        LblSubServiceLocationError As label:
+            Color: =VarTheme.Error
+            Font: =VarTheme.Font
+            FontWeight: =FontWeight.Bold
+            Size: =16
+            Text: ="Please select sub service"
+            Visible: =IsBlank(CmbSubService.Selected) && VarNewAppointmentValidationChk=true
+            Width: =625
+            X: =200
+            Y: =CmbSubService.Y+CmbSubService.Height
+            ZIndex: =1
+
+        CmbSubService As combobox:
+            BorderColor: =VarTheme.PrimaryColor
+            BorderStyle: =BorderStyle.None
+            BorderThickness: =0
+            ChevronBackground: =VarTheme.InputBackground
+            ChevronFill: =Color.Black
+            ChevronHoverBackground: =RGBA(186, 202, 226, 1)
+            Color: =VarTheme.InputText
+            DisplayFields: =["msemr_name"]
+            Fill: =VarTheme.InputBackground
+            Font: =VarTheme.Font
+            FontWeight: =FontWeight.Semibold
+            IsSearchable: =false
+            Items: |-
+                =Filter(
+                    'Sub Services',
+                    (Service.'Healthcare Service Category (msemr_healthcareservicecategoryid)' = CmbService.Selected.'Healthcare Service Category (msemr_healthcareservicecategoryid)' && IsBlank('Parent Health Service') && Status = 'Status (Sub Services)'.Active && Language.Code = "en")
+                )
+            OnChange: |
+                =Select(BtnRemoveService);
+                
+                Set(
+                    VarFilterRowsScreening,
+                    Filter(
+                        CmbSubService.Selected.'Patient Screening Questions',
+                        Status = 'Status (Patient Screening Questions)'.Active && 'Language '.Code = "en"
+                    )
+                );
+                CountRows(VarFilterRowsScreening);
+                Set(
+                    VarFilterRowsEligibility,
+                    Filter(
+                        CmbSubService.Selected.'Eligibility Questions',
+                        Status = 'Status (Eligibility Questions)'.Active && Language.Code = "en"
+                    )
+                );
+                CountRows(VarFilterRowsEligibility);
+                Set(
+                    VarRegimenDose,
+                    LookUp(
+                        'Sub Services',
+                        'Healthcare Service (msemr_healthcareserviceid)' = CmbSubService.Selected.'Healthcare Service (msemr_healthcareserviceid)'
+                    ).'Regimen Dose'
+                );
+                If(
+                    (!IsBlank(CmbSubService.Selected) && !IsBlank(CmbSiteLocation.Selected) && !IsBlank(CmbServiceType.Selected) && !IsBlank(CmbService.Selected) && (CountRows(VarFilterRowsScreening) = 0 && CountRows(VarFilterRowsEligibility) = 0)),
+                    Set(
+                        VarScreeningQuestionCheck,
+                        false
+                    )
+                );
+                If(
+                    CmbSubService.Selected.'Regimen Dose' = 'Regimen Dose Options'.'Both Doses',
+                    Select(BtnRemoveService)
+                );
+                
+                //Store primary service screening questions in collection
+                ClearCollect(
+                    ColPrimaryServiceScreening,
+                    AddColumns(
+                        CmbSubService.Selected.'Patient Screening Questions',
+                        "PrimaryServiceScreeningID",
+                        'Patient Screening Question'
+                    )
+                );
+                ClearCollect(
+                    ColPrimaryServiceScreeningList,
+                    ShowColumns(
+                        ColPrimaryServiceScreening,
+                        "PrimaryServiceScreeningID"
+                    )
+                );
+                
+                //Store primary service eligibility question in collection
+                ClearCollect(
+                    ColPrimaryServiceEligibility,
+                    AddColumns(
+                        CmbSubService.Selected.'Eligibility Questions',
+                        "PrimaryServiceEligibilityID",
+                        'Eligibility Question'
+                    )
+                );
+                ClearCollect(
+                    ColPrimaryServiceEligibilityList,
+                    ShowColumns(
+                        ColPrimaryServiceEligibility,
+                        "PrimaryServiceEligibilityID"
+                    )
+                );
+            PaddingLeft: =20
+            PressedColor: =Color.Black
+            PressedFill: =VarTheme.InputBackground
+            SearchFields: =["msemr_name"]
+            SearchItems: =[]
+            SelectionFill: =RGBA(186, 202, 226, 1)
+            SelectMultiple: =false
+            Size: =VarTheme.FontSize16
+            Width: =625
+            X: =200
+            Y: =LblSubServiceLocation.Y+LblSubServiceLocation.Height
+            ZIndex: =2
+
+        LblSubServiceLocation As label:
+            Color: =VarTheme.InputTextDark
+            Font: =VarTheme.Font
+            FontWeight: =FontWeight.Bold
+            Height: =50
+            Size: =16
+            Text: ="Dose / Specify-service"
+            Width: =625
+            X: =200
+            ZIndex: =3
+
+    ConServiceLocation As groupContainer.manualLayoutContainer:
+        Height: =If(IsBlank(CmbService.Selected) && VarNewAppointmentValidationChk=true,140,100)
+        Width: =Parent.Width
+        Y: =ConServiceType.Y+ConServiceType.Height
+        ZIndex: =12
+
+        LblServiceLocationError As label:
+            Color: =VarTheme.Error
+            Font: =VarTheme.Font
+            FontWeight: =FontWeight.Bold
+            Size: =16
+            Text: ="Please select service"
+            Visible: =IsBlank(CmbService.Selected) && VarNewAppointmentValidationChk=true
+            Width: =625
+            X: =200
+            Y: =CmbService.Y+CmbService.Height
+            ZIndex: =1
+
+        CmbService As combobox:
+            BorderColor: =VarTheme.PrimaryColor
+            BorderStyle: =BorderStyle.None
+            BorderThickness: =0
+            ChevronBackground: =VarTheme.InputBackground
+            ChevronFill: =Color.Black
+            ChevronHoverBackground: =RGBA(186, 202, 226, 1)
+            Color: =VarTheme.InputText
+            DefaultSelectedItems: =If(VarClearDefaultSelectedData=false, VarDefaultService)
+            DisplayFields: =["msemr_name"]
+            Fill: =VarTheme.InputBackground
+            Font: =VarTheme.Font
+            FontWeight: =FontWeight.Semibold
+            IsSearchable: =false
+            Items: =Filter(Services, ('Service Type'.'Service Type' = CmbServiceType.Selected.'Service Type' &&  Status='Status (Services)'.Active && Language.Code="en"))
+            OnChange: |-
+                =Select(BtnRemoveService);
+                Reset([@CmbSubService]);
+                Set(
+                    VarScreeningQuestionCheck,
+                    true
+                );
+                Set(
+                    VarFilterRowsScreening,
+                    Filter(
+                        CmbService.Selected.'Patient Screening Questions',
+                        Status = 'Status (Patient Screening Questions)'.Active
+                    )
+                );
+                CountRows(VarFilterRowsScreening);
+                Set(
+                    VarFilterRowsEligibility,
+                    Filter(
+                        CmbService.Selected.'Eligibility Questions',
+                        Status = 'Status (Eligibility Questions)'.Active
+                    )
+                );
+                CountRows(VarFilterRowsScreening);
+                ClearCollect(
+                    ColPrimaryInsuracnceData,
+                    AddColumns(
+                        CmbService.Selected.'Insurance Organizations (smvs_msemr_healthcareservicecategory_smvs_insu)',
+                        "primaryInsuranceId",
+                        'Insurance Organization'
+                    )
+                );
+                ClearCollect(
+                    ColPrimaryInsuranceValue,
+                    ShowColumns(
+                        ColPrimaryInsuracnceData,
+                        "primaryInsuranceId"
+                    )
+                );
+            PaddingLeft: =20
+            PressedColor: =Color.Black
+            PressedFill: =VarTheme.InputBackground
+            SearchFields: =["msemr_name"]
+            SearchItems: =[]
+            SelectionFill: =RGBA(186, 202, 226, 1)
+            SelectMultiple: =false
+            Size: =VarTheme.FontSize16
+            Width: =625
+            X: =200
+            Y: =LblServiceLocation.Y+LblServiceLocation.Height
+            ZIndex: =2
+
+        LblServiceLocation As label:
+            Color: =VarTheme.InputTextDark
+            Font: =VarTheme.Font
+            FontWeight: =FontWeight.Bold
+            Height: =50
+            Size: =16
+            Text: ="Service"
+            Width: =625
+            X: =200
+            ZIndex: =3
+
+    ConServiceType As groupContainer.manualLayoutContainer:
+        Height: =If(IsBlank(CmbServiceType.Selected) && VarNewAppointmentValidationChk=true,140,100)
+        Width: =Parent.Width
+        Y: =ConSite.Y+ConSite.Height
+        ZIndex: =13
+
+        LblServiceTypeError As label:
+            Color: =VarTheme.Error
+            Font: =VarTheme.Font
+            FontWeight: =FontWeight.Bold
+            Size: =16
+            Text: ="Please select service type"
+            Visible: =IsBlank(CmbServiceType.Selected) && VarNewAppointmentValidationChk=true
+            Width: =625
+            X: =200
+            Y: =CmbServiceType.Y+CmbServiceType.Height
+            ZIndex: =1
+
+        CmbServiceType As combobox:
+            BorderColor: =VarTheme.PrimaryColor
+            BorderStyle: =BorderStyle.None
+            BorderThickness: =0
+            ChevronBackground: =VarTheme.InputBackground
+            ChevronFill: =Color.Black
+            ChevronHoverBackground: =RGBA(186, 202, 226, 1)
+            Color: =VarTheme.InputText
+            DefaultSelectedItems: |-
+                =If(!IsBlank(gblSelectedAppointmentPatient),
+                LookUp(Services,'Healthcare Service Category (msemr_healthcareservicecategoryid)'=VarHealthServices.Service.'Healthcare Service Category (msemr_healthcareservicecategoryid)').'Service Type',VarDefaultServiceType)
+            DisplayFields: =["smvs_name"]
+            DisplayMode: =If(IsBlank(gblSelectedAppointmentPatient), DisplayMode.Edit,DisplayMode.Disabled)
+            Fill: =VarTheme.InputBackground
+            Font: =VarTheme.Font
+            FontWeight: =FontWeight.Semibold
+            IsSearchable: =false
+            Items: |-
+                =Filter(
+                    'Service Types',
+                    Status = 'Status (Service Types)'.Active && 'Service Type Status' = 'Service Type Status Code'.Live
+                )
+            OnChange: |
+                =Select(BtnRemoveService);
+                Reset([@CmbService]);
+                
+                ClearCollect(ColSecondaryServiceTypeData,AddColumns(Filter('Service Type Compatibilities', 'Primary Service Type'.'Service Type'=CmbServiceType.Selected.'Service Type'),"secondaryServiceTypeId",'Secondary Service Type'.'Service Type'));
+                
+                ClearCollect(ColSecondaryServiceTypeValue,ShowColumns(ColSecondaryServiceTypeData,"secondaryServiceTypeId"));
+                Reset(CmbAdditionalServiceType);
+                
+                Set(
+                    VarClearDefaultSelectedData,
+                    true
+                );
+                Set(
+                    VarScreeningQuestionCheck,
+                    true
+                );
+            PaddingLeft: =20
+            PressedColor: =Color.Black
+            PressedFill: =VarTheme.InputBackground
+            SearchFields: =["smvs_name"]
+            SearchItems: =[]
+            SelectionFill: =RGBA(186, 202, 226, 1)
+            SelectMultiple: =false
+            Size: =VarTheme.FontSize16
+            Width: =625
+            X: =200
+            Y: =LblServiceType.Y+LblServiceType.Height
+            ZIndex: =2
+
+        LblServiceType As label:
+            Color: =VarTheme.InputTextDark
+            Font: =VarTheme.Font
+            FontWeight: =FontWeight.Bold
+            Height: =50
+            Size: =16
+            Text: ="Appointment Type"
+            Width: =625
+            X: =200
+            ZIndex: =3
+
+    ConSite As groupContainer.manualLayoutContainer:
+        Height: =If(IsBlank(CmbSiteLocation.Selected) && VarNewAppointmentValidationChk=true,140,100)
+        Width: =Parent.Width
+        Y: =ConLocationText.Y+ConLocationText.Height
+        ZIndex: =14
+
+        LblSiteError As label:
+            Color: =VarTheme.StatusCancelled
+            Font: =VarTheme.Font
+            FontWeight: =FontWeight.Bold
+            Size: =16
+            Text: ="Please select location"
+            Visible: =IsBlank(CmbSiteLocation.Selected) && VarNewAppointmentValidationChk=true
+            Width: =625
+            X: =200
+            Y: =CmbSiteLocation.Y+CmbSiteLocation.Height
+            ZIndex: =1
+
+        CmbSiteLocation As combobox:
+            BorderColor: =VarTheme.PrimaryColor
+            BorderStyle: =BorderStyle.None
+            BorderThickness: =0
+            ChevronBackground: =VarTheme.InputBackground
+            ChevronFill: =Color.Black
+            ChevronHoverBackground: =RGBA(186, 202, 226, 1)
+            Color: =VarTheme.InputText
+            DefaultSelectedItems: =If(!IsBlank(gblSelectedAppointmentPatient),gblSelectedAppointmentPatient.Location,VarDefaultSiteLocation)
+            DisplayFields: =["msemr_name"]
+            Fill: =VarTheme.InputBackground
+            Font: =VarTheme.Font
+            FontWeight: =FontWeight.Semibold
+            InputTextPlaceholder: ="Set Your Site Location"
+            IsSearchable: =false
+            Items: |-
+                =Filter(
+                    Locations,
+                    'Location Status' = 'Location Status_1'.Live && 'Status (statecode)' = 'Status (Locations)'.Active
+                )
+            PaddingLeft: =20
+            PressedColor: =Color.Black
+            PressedFill: =VarTheme.InputBackground
+            SearchFields: =["msemr_name"]
+            SearchItems: =[]
+            SelectionFill: =RGBA(186, 202, 226, 1)
+            SelectMultiple: =false
+            Size: =VarTheme.FontSize16
+            Width: =625
+            X: =200
+            Y: =LblSite.Y+LblSite.Height
+            ZIndex: =2
+
+        LblSite As label:
+            Color: =VarTheme.InputTextDark
+            Font: =VarTheme.Font
+            FontWeight: =FontWeight.Bold
+            Height: =50
+            Size: =16
+            Text: ="Site Location"
+            Width: =625
+            X: =200
+            ZIndex: =3
+
+    ConLocationText As groupContainer.manualLayoutContainer:
+        Height: =70
+        Width: =Parent.Width
+        Y: =NavigationLocation.Y+NavigationLocation.Height
+        ZIndex: =15
+
+        "'LblLocation&Services' As label":
+            Align: =Align.Center
+            Color: =VarTheme.InputTextDark
+            Font: =VarTheme.Font
+            FontWeight: =FontWeight.Bold
+            Height: =50
+            Size: =24
+            Text: ="Location & Services"
+            Width: =Parent.Width
+            Y: =10
+            ZIndex: =1
+
+    NavigationLocation As BreadCrumbNavigationComponent:
+        Items: |-
+            =If(
+                ((VarWalkIn && VarRegimenDose = 'Regimen Dose Options'.'Both Doses') || VarForLater) && VarScreeningQuestionCheck && LblPaymentCheck.Text = "true",
+                Table(
+                    {
+                        StageNumber: 1,
+                        Label: "Location & Services"
+                    },
+                    {
+                        StageNumber: 2,
+                        Label: "Screening Questions"
+                    },
+                    {
+                        StageNumber: 3,
+                        Label: "Patient Information"
+                    },
+                    {
+                        StageNumber: 4,
+                        Label: "Payment Information"
+                    },
+                    {
+                        StageNumber: 5,
+                        Label: "Schedule Appointment"
+                    },
+                    {
+                        StageNumber: 6,
+                        Label: "Confirmation"
+                    }
+                ),
+                VarWalkIn && LblPaymentCheck.Text = "true" && VarRegimenDose <> 'Regimen Dose Options'.'Both Doses' && VarScreeningQuestionCheck && varAdditionalService=false,
+                Table(
+                    {
+                        StageNumber: 1,
+                        Label: "Location & Services"
+                    },
+                    {
+                        StageNumber: 2,
+                        Label: "Screening Questions"
+                    },
+                    {
+                        StageNumber: 3,
+                        Label: "Patient Information"
+                    },
+                    {
+                        StageNumber: 4,
+                        Label: "Payment Information"
+                    },
+                    {
+                        StageNumber: 5,
+                        Label: "Confirmation"
+                    }
+                ),
+                    VarWalkIn && LblPaymentCheckCombined.Text="true" && VarRegimenDose <> 'Regimen Dose Options'.'Both Doses' && (VarScreeningQuestionCheck || VarScreeningQuestionCheckSecondary) && varAdditionalService,
+                Table(
+                    {
+                        StageNumber: 1,
+                        Label: "Location & Services"
+                    },
+                    {
+                        StageNumber: 2,
+                        Label: "Screening Questions"
+                    },
+                    {
+                        StageNumber: 3,
+                        Label: "Patient Information"
+                    },
+                    {
+                        StageNumber: 4,
+                        Label: "Payment Information"
+                    },
+                    {
+                        StageNumber: 5,
+                        Label: "Confirmation"
+                    }
+                ),
+                        VarWalkIn && LblPaymentCheckCombined.Text="true" && VarRegimenDose <> 'Regimen Dose Options'.'Both Doses' && (VarScreeningQuestionCheck || VarScreeningQuestionCheckSecondary) && varAdditionalService,
+                Table(
+                    {
+                        StageNumber: 1,
+                        Label: "Location & Services"
+                    },
+                    {
+                        StageNumber: 2,
+                        Label: "Screening Questions"
+                    },
+                    {
+                        StageNumber: 3,
+                        Label: "Patient Information"
+                    },
+                    {
+                        StageNumber: 4,
+                        Label: "Payment Information"
+                    },
+                    {
+                        StageNumber: 5,
+                        Label: "Confirmation"
+                    }
+                ),
+                ((VarWalkIn  && VarRegimenDose = 'Regimen Dose Options'.'Both Doses') || VarForLater) && LblPaymentCheck.Text = "false" && VarScreeningQuestionCheck,
+                Table(
+                    {
+                        StageNumber: 1,
+                        Label: "Location & Services"
+                    },
+                    {
+                        StageNumber: 2,
+                        Label: "Screening Questions"
+                    },
+                    {
+                        StageNumber: 3,
+                        Label: "Patient Information"
+                    },
+                    {
+                        StageNumber: 4,
+                        Label: "Schedule Appointment"
+                    },
+                    {
+                        StageNumber: 5,
+                        Label: "Confirmation"
+                    }
+                ),
+                VarWalkIn && LblPaymentCheck.Text = "false" && (VarRegimenDose = 'Regimen Dose Options'.'1st Dose only' || VarRegimenDose = 'Regimen Dose Options'.'2nd Dose only') && VarScreeningQuestionCheck && varAdditionalService=false,
+                Table(
+                    {
+                        StageNumber: 1,
+                        Label: "Location & Services"
+                    },
+                    {
+                        StageNumber: 2,
+                        Label: "Screening Questions"
+                    },
+                    {
+                        StageNumber: 3,
+                        Label: "Patient Information"
+                    },
+                    {
+                        StageNumber: 4,
+                        Label: "Confirmation"
+                    }
+                ),
+                 VarWalkIn && LblPaymentCheckCombined.Text="false" && (VarRegimenDose = 'Regimen Dose Options'.'1st Dose only' || VarRegimenDose = 'Regimen Dose Options'.'2nd Dose only') &&(VarScreeningQuestionCheck || VarScreeningQuestionCheckSecondary) && varAdditionalService,
+                Table(
+                    {
+                        StageNumber: 1,
+                        Label: "Location & Services"
+                    },
+                    {
+                        StageNumber: 2,
+                        Label: "Screening Questions"
+                    },
+                    {
+                        StageNumber: 3,
+                        Label: "Patient Information"
+                    },
+                    {
+                        StageNumber: 4,
+                        Label: "Confirmation"
+                    }
+                ),
+                ((VarWalkIn && VarRegimenDose = 'Regimen Dose Options'.'Both Doses') || VarForLater) && VarScreeningQuestionCheck = false && LblPaymentCheck.Text = "true",
+                Table(
+                    {
+                        StageNumber: 1,
+                        Label: "Location & Services"
+                    },
+            
+                    {
+                        StageNumber: 2,
+                        Label: "Patient Information"
+                    },
+                    {
+                        StageNumber: 3,
+                        Label: "Payment Information"
+                    },
+                    {
+                        StageNumber: 4,
+                        Label: "Schedule Appointment"
+                    },
+                    {
+                        StageNumber: 5,
+                        Label: "Confirmation"
+                    }
+                ),
+                VarWalkIn && LblPaymentCheck.Text = "true" && VarRegimenDose <> 'Regimen Dose Options'.'Both Doses' && VarScreeningQuestionCheck = false && varAdditionalService=false,
+                Table(
+                    {
+                        StageNumber: 1,
+                        Label: "Location & Services"
+                    },
+                    {
+                        StageNumber: 2,
+                        Label: "Patient Information"
+                    },
+                    {
+                        StageNumber: 3,
+                        Label: "Payment Information"
+                    },
+                    {
+                        StageNumber: 4,
+                        Label: "Confirmation"
+                    }
+                ),
+                    VarWalkIn && LblPaymentCheckCombined.Text="true" && VarRegimenDose <> 'Regimen Dose Options'.'Both Doses' && VarScreeningQuestionCheck = false &&VarScreeningQuestionCheckSecondary=false && varAdditionalService,
+                Table(
+                    {
+                        StageNumber: 1,
+                        Label: "Location & Services"
+                    },
+                    {
+                        StageNumber: 2,
+                        Label: "Patient Information"
+                    },
+                    {
+                        StageNumber: 3,
+                        Label: "Payment Information"
+                    },
+                    {
+                        StageNumber: 4,
+                        Label: "Confirmation"
+                    }
+                ),
+                ((VarWalkIn && VarRegimenDose = 'Regimen Dose Options'.'Both Doses') || VarForLater) && VarScreeningQuestionCheck = false && LblPaymentCheck.Text = "false",
+                Table(
+                    {
+                        StageNumber: 1,
+                        Label: "Location & Services"
+                    },
+                    {
+                        StageNumber: 2,
+                        Label: "Patient Information"
+                    },
+                    {
+                        StageNumber: 3,
+                        Label: "Schedule Appointment"
+                    },
+                    {
+                        StageNumber: 4,
+                        Label: "Confirmation"
+                    }
+                ),
+                VarWalkIn && LblPaymentCheckCombined.Text="false" && (VarRegimenDose = 'Regimen Dose Options'.'1st Dose only' || VarRegimenDose = 'Regimen Dose Options'.'2nd Dose only') && VarScreeningQuestionCheck = false && VarScreeningQuestionCheckSecondary=false && varAdditionalService,
+                Table(
+                    {
+                        StageNumber: 1,
+                        Label: "Location & Services"
+                    },
+                    {
+                        StageNumber: 2,
+                        Label: "Patient Information"
+                    },
+                    {
+                        StageNumber: 3,
+                        Label: "Confirmation"
+                    }
+                ), 
+                VarWalkIn && LblPaymentCheck.Text = "false" && (VarRegimenDose = 'Regimen Dose Options'.'1st Dose only' || VarRegimenDose = 'Regimen Dose Options'.'2nd Dose only') && VarScreeningQuestionCheck = false && varAdditionalService=false,
+                Table(
+                    {
+                        StageNumber: 1,
+                        Label: "Location & Services"
+                    },
+                    {
+                        StageNumber: 2,
+                        Label: "Patient Information"
+                    },
+                    {
+                        StageNumber: 3,
+                        Label: "Confirmation"
+                    }
+                ),
+                Table(
+                    {
+                        StageNumber: 1,
+                        Label: "Location & Services"
+                    },
+                    {
+                        StageNumber: 2,
+                        Label: "Screening Questions"
+                    },
+                    {
+                        StageNumber: 3,
+                        Label: "Patient Information"
+                    },
+                    {
+                        StageNumber: 4,
+                        Label: "Payment Information"
+                    },
+                    {
+                        StageNumber: 5,
+                        Label: "Schedule Appointment"
+                    },
+                    {
+                        StageNumber: 6,
+                        Label: "Confirmation"
+                    }
+                )
+            )
+        Visible: =VarForLater || VarWalkIn
+        Width: =Parent.Width
+        Y: =ConLocationHeader.Y+ConLocationHeader.Height
+        ZIndex: =16
+
+    ConLocationHeader As groupContainer.manualLayoutContainer:
+        Height: =VarTheme.HeaderSize
+        Width: =Parent.Width
+        ZIndex: =17
+
+        ImgLocatoinBack As image:
+            Height: =40
+            Image: |-
+                ="data:image/svg+xml;utf8, "&EncodeUrl("<svg width='28' height='28' viewBox='0 0 28 28' fill='none' xmlns='http://www.w3.org/2000/svg'> <path d='M14 28C10.287 28 6.72602 26.525 4.10051 23.8995C1.475 21.274 3.04044e-06 17.713 3.20274e-06 14C3.36504e-06 10.287 1.475 6.72601 4.10051 4.1005C6.72602 1.475 10.287 -7.74261e-07 14 -6.11959e-07C17.713 -4.49658e-07 21.274 1.475 23.8995 4.10051C26.525 6.72601 28 10.287 28 14C28 17.713 26.525 21.274 23.8995 23.8995C21.274 26.525 17.713 28 14 28ZM20.125 14.875C20.3571 14.875 20.5796 14.7828 20.7437 14.6187C20.9078 14.4546 21 14.2321 21 14C21 13.7679 20.9078 13.5454 20.7437 13.3813C20.5796 13.2172 20.3571 13.125 20.125 13.125L9.98725 13.125L13.7445 9.3695C13.9088 9.2052 14.0011 8.98236 14.0011 8.75C14.0011 8.51764 13.9088 8.2948 13.7445 8.1305C13.5802 7.9662 13.3574 7.87389 13.125 7.87389C12.8926 7.87389 12.6698 7.9662 12.5055 8.1305L7.2555 13.3805C7.17402 13.4618 7.10937 13.5583 7.06526 13.6646C7.02114 13.7709 6.99844 13.8849 6.99844 14C6.99844 14.1151 7.02114 14.2291 7.06526 14.3354C7.10937 14.4417 7.17402 14.5382 7.2555 14.6195L12.5055 19.8695C12.6698 20.0338 12.8926 20.1261 13.125 20.1261C13.3574 20.1261 13.5802 20.0338 13.7445 19.8695C13.9088 19.7052 14.0011 19.4824 14.0011 19.25C14.0011 19.0176 13.9088 18.7948 13.7445 18.6305L9.98725 14.875L20.125 14.875Z' fill='#0052CC'/> </svg> ")
+            OnSelect: |-
+                =If(VarChangeServiceDetails=true, Navigate(ScnAppointmentDetails) && Set(VarChangeServiceDetails,false),
+                VarChangeServiceHome=true,Navigate(ScnLanding) && Set(VarChangeServiceHome,false),
+                VarNewPatient=true,Navigate(ScnPatientType),
+                VarExistingPatient=true,Navigate(ScnPatientType),
+                VarChangeServiceHome=true,Navigate(ScnLanding),
+                Navigate(ScnNewAppointment));
+            Width: =40
+            X: =40
+            Y: =40
+            ZIndex: =1
+
+        LblLocation As label:
+            Font: =VarTheme.Font
+            FontWeight: =FontWeight.Bold
+            PaddingLeft: =30
+            Size: =24
+            Text: ="Select Location & Service"
+            Width: =500
+            X: =86
+            Y: =40
+            ZIndex: =2
+
+        IcnSeperatorLocation As icon.HorizontalLine:
+            Color: =RGBA(217, 217, 217, 1)
+            Fill: =RGBA(202, 202, 202, 1)
+            FocusedBorderThickness: =0
+            Height: =1
+            Icon: =Icon.HorizontalLine
+            Width: =Parent.Width
+            Y: =Parent.Height-Self.Height
+            ZIndex: =3
+

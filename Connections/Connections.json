@@ -1,0 +1,83 @@
+{
+  "0a31fc4b-aa90-4f58-8e69-c351d4d789af": {
+    "connectionRef": {
+      "apiTier": "Standard",
+      "displayName": "Logic flows",
+      "iconUri": "https://connectoricons-prod.azureedge.net/u/shgogna/logicflows-specialbuild/1.0.1633.3284/logicflows/icon.png",
+      "id": "/providers/microsoft.powerapps/apis/shared_logicflows",
+      "parameterHints": {
+        "workflowEntityId": {},
+        "workflowName": {
+          "value": "9f078723-42a1-4134-91be-b298b5d86d4a"
+        }
+      },
+      "parameterHintsV2": {
+        "workflowEntityId": {},
+        "workflowName": {
+          "value": "9f078723-42a1-4134-91be-b298b5d86d4a"
+        }
+      }
+    },
+    "datasets": {},
+    "dataSources": [
+      "EligibilityVerify"
+    ],
+    "dependencies": {},
+    "dependents": [],
+    "id": "0a31fc4b-aa90-4f58-8e69-c351d4d789af"
+  },
+  "25c7bae2-003f-46ce-8b7e-41b0dd02c0b4": {
+    "connectionRef": {
+      "apiTier": "Standard",
+      "displayName": "SMTP",
+      "iconUri": "https://connectoricons-prod.azureedge.net/releases/v1.0.1626/1.0.1626.3238/smtp/icon.png",
+      "id": "/providers/microsoft.powerapps/apis/shared_smtp",
+      "parameterHints": {},
+      "parameterHintsV2": {},
+      "sharedConnectionId": "/providers/microsoft.powerapps/apis/shared_smtp/connections/shared-smtp-2af4ed75-369d-4d44-bc16-a6b748fbe126",
+      "xrmConnectionReferenceLogicalName": "new_sharedsmtp_f3afe"
+    },
+    "datasets": {},
+    "dataSources": [],
+    "dependencies": {},
+    "dependents": [
+      "b6093f60-2027-4612-87ef-ac64494e8fe2"
+    ],
+    "id": "25c7bae2-003f-46ce-8b7e-41b0dd02c0b4"
+  },
+  "b6093f60-2027-4612-87ef-ac64494e8fe2": {
+    "connectionRef": {
+      "apiTier": "Standard",
+      "displayName": "Logic flows",
+      "iconUri": "https://connectoricons-prod.azureedge.net/u/shgogna/logicflows-specialbuild/1.0.1633.3284/logicflows/icon.png",
+      "id": "/providers/microsoft.powerapps/apis/shared_logicflows",
+      "parameterHints": {
+        "25c7bae2-003f-46ce-8b7e-41b0dd02c0b4": {
+          "value": "shared_smtp"
+        },
+        "workflowEntityId": {},
+        "workflowName": {
+          "value": "ab2f74b3-296c-4e57-b394-fb95678562aa"
+        }
+      },
+      "parameterHintsV2": {
+        "shared_smtp": {
+          "value": "25c7bae2-003f-46ce-8b7e-41b0dd02c0b4"
+        },
+        "workflowEntityId": {},
+        "workflowName": {
+          "value": "ab2f74b3-296c-4e57-b394-fb95678562aa"
+        }
+      }
+    },
+    "datasets": {},
+    "dataSources": [
+      "EmailPDFSOAP"
+    ],
+    "dependencies": {
+      "shared_smtp": "25c7bae2-003f-46ce-8b7e-41b0dd02c0b4"
+    },
+    "dependents": [],
+    "id": "b6093f60-2027-4612-87ef-ac64494e8fe2"
+  }
+}

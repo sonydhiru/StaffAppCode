@@ -1,0 +1,555 @@
+[
+  {
+    "CdsFCBContext": "{\"FileType\":true,\"ImageExternalStorage\":true}",
+    "EntitySetName": "smvs_appsettings",
+    "IsHidden": false,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "LogicalName": "smvs_appsetting",
+    "MaxGetRowsCount": 500,
+    "Name": "App Settings",
+    "NativeCDSDataSourceInfoNameMapping": {
+      "_ownerid_value": "Owner",
+      "createdby": "Created By",
+      "createdon": "Created On",
+      "createdonbehalfby": "Created By (Delegate)",
+      "crf7e_facilityid": "Facility ID",
+      "crf7e_fundingsource": "Funding Source",
+      "crf7e_vfceligibility": "Vfc Eligibility",
+      "crfb2_x12emailgroup": "X12 Email Group",
+      "importsequencenumber": "Import Sequence Number",
+      "modifiedby": "Modified By",
+      "modifiedon": "Modified On",
+      "modifiedonbehalfby": "Modified By (Delegate)",
+      "overriddencreatedon": "Record Created On",
+      "owningbusinessunit": "Owning Business Unit",
+      "owningteam": "Owning Team",
+      "owninguser": "Owning User",
+      "smvs_aboutorganization": "About Organization",
+      "smvs_api_base_url": "API Base URL",
+      "smvs_appid": "App ID",
+      "smvs_appointment_success_message": "Appointment Success Message",
+      "smvs_appsetting_AsyncOperations": "System Jobs",
+      "smvs_appsetting_BulkDeleteFailures": "Bulk Delete Failures",
+      "smvs_appsetting_DuplicateBaseRecord": "Duplicate Records (smvs_appsetting_DuplicateBaseRecord)",
+      "smvs_appsetting_DuplicateMatchingRecord": "Duplicate Records (smvs_appsetting_DuplicateMatchingRecord)",
+      "smvs_appsetting_MailboxTrackingFolders": "Mailbox Auto Tracking Folders",
+      "smvs_appsetting_PrincipalObjectAttributeAccesses": "Field Sharing",
+      "smvs_appsetting_ProcessSession": "Process Sessions",
+      "smvs_appsetting_SyncErrors": "Sync Errors",
+      "smvs_appsettingid": "App Setting",
+      "smvs_auth_api_url": "Auth API URL",
+      "smvs_authorization_key_eligibility": "Authorization Key Eligibility",
+      "smvs_baseurl": "Base URL",
+      "smvs_batch_prefix_name": "Batch Prefix Name",
+      "smvs_billing_address": "Billing Address",
+      "smvs_billing_address_lock": "Billing Address Lock",
+      "smvs_billing_city": "Billing City",
+      "smvs_billing_first_name": "Billing First Name",
+      "smvs_billing_last_name": "Billing Last Name",
+      "smvs_billing_state": "Billing State",
+      "smvs_billing_zip": "Billing Zip",
+      "smvs_billingdashboardlink": "Billing Dashboard Link",
+      "smvs_client": "Client",
+      "smvs_contactemail": "Contact Email",
+      "smvs_contactphone": "Contact Phone",
+      "smvs_dashboardlink": "Operations Dashboard Link",
+      "smvs_default_shot_duration": "Default Shot duration",
+      "smvs_defaultemailfooter": "Default Email Footer",
+      "smvs_defaultstatusforsecondappt": "Default Status for Second Appt",
+      "smvs_demo_video_link": "Demo Video Link",
+      "smvs_dynamic_base_url": "Dynamic Base URL",
+      "smvs_edi_parser_api_url": "EDI Parser API URL",
+      "smvs_eligibilitytext": "Eligibility Text",
+      "smvs_enable_eligibility_check": "Enable Eligibility Check",
+      "smvs_enable_iis_consent": "Enable IIS Consent",
+      "smvs_eua_fact_sheet": "EUA Fact Sheet",
+      "smvs_faviconurl": "Favicon URL",
+      "smvs_flow_status": "Flow Status",
+      "smvs_global_service_status": "Global Service Status",
+      "smvs_headerimage": "Header Image",
+      "smvs_headerimageid": "smvs_HeaderImageId",
+      "smvs_image_height": "Image Height",
+      "smvs_image_width": "Image Width",
+      "smvs_immunocompromised_link": "Immunocompromised Link",
+      "smvs_is_credit_card_accepted": "Is Credit Card Accepted",
+      "smvs_is_single_use_code_enabled": "Is single use code enabled",
+      "smvs_isnoinsuranceallowed": "Is no Insurance Allowed",
+      "smvs_issiteunderconstruction": "Is Site Under Construction",
+      "smvs_knowbeforeurl": "Know Before Url",
+      "smvs_logo": "Logo",
+      "smvs_logoid": "smvs_LogoId",
+      "smvs_logourl": "Logo URL",
+      "smvs_managerportallink": "Manager Portal Link",
+      "smvs_map_visibility": "Map Visibility",
+      "smvs_name": "Name",
+      "smvs_no_clinic_message": "No Clinic Message",
+      "smvs_nodashboardmessage": "No Dashboard Message",
+      "smvs_noshow_email_notification": "No-Show Email Notification  ",
+      "smvs_noshow_text_notification": "No-Show Text Notification",
+      "smvs_notificationemail": "Notification Email",
+      "smvs_npi": "NPI#",
+      "smvs_organizationname": "Organization Name",
+      "smvs_pagetitle": "Page Title",
+      "smvs_physicians_first_name": "Physician's First Name.",
+      "smvs_physicians_last_name": "Physician's Last Name",
+      "smvs_placeofservice": "Place of Service",
+      "smvs_plugin_status": "Plugin Status",
+      "smvs_practice_name_eligibility": "Practice Name Eligibility",
+      "smvs_pubcon_certificate": "PubCon Certificate",
+      "smvs_pubcon_key": "PubCon Key",
+      "smvs_pubcon_status": "PubCon Status",
+      "smvs_pubconurl": "Pubcon Url",
+      "smvs_refresh_token": "Refresh Token",
+      "smvs_renderingprovidernpi": "Rendering Provider NPI",
+      "smvs_reportstream": "Report Stream URL",
+      "smvs_scheduling_api_url": "Scheduling API URL",
+      "smvs_screening_information": "Screening Information",
+      "smvs_show_payment": "Show Payment",
+      "smvs_showpatienttype": "Show Patient Type",
+      "smvs_smvs_defaultnoofpeopleperslot": "Default No of People Per Slot",
+      "smvs_ssn_or_federal_tax_id": "SSN or Federal Tax ID",
+      "smvs_ssn_or_federal_tax_id_number": "SSN or Federal Tax ID Number",
+      "smvs_staff_app_link": "Staff App Link",
+      "smvs_survey_link": "Survey Link",
+      "smvs_taxonomy_code": "Taxonomy Code",
+      "smvs_tenant": "Tenant",
+      "smvs_termsandcondition": "Terms and Condition",
+      "smvs_time_zone": "Time Zone",
+      "smvs_trainingmanuallink": "Training Manual Link",
+      "smvs_uptime": "Up Time",
+      "smvs_vaccine_facility": "Vaccine Facility",
+      "smvs_x12appserviceurl": "X12 App Service Url",
+      "smvs_x12fileurl": "X12 File Url",
+      "smvs_x12servicecode": "X12 Service Code",
+      "statecode": "Status",
+      "statuscode": "Status Reason",
+      "timezoneruleversionnumber": "Time Zone Rule Version Number",
+      "utcconversiontimezonecode": "UTC Conversion Time Zone Code",
+      "versionnumber": "Version Number"
+    },
+    "PreferredName": "App Settings",
+    "Type": "NativeCDSDataSourceInfo"
+  },
+  {
+    "DisplayName": "App Settings (Views)",
+    "Name": "_smvs_appsetting_views",
+    "RelatedEntityName": "App Settings",
+    "TrimmedViewName": true,
+    "Type": "ViewInfo",
+    "ViewInfoNameMapping": {
+      "717c56ff-51a9-4f17-ba94-bbc26b047c4a": "App Setting Advanced Find View",
+      "8181d70d-2d32-4498-980b-842b97558d64": "App Setting Associated View",
+      "88c20649-04fc-4bd6-b423-55f7c9b0ec00": "Inactive App Settings",
+      "8a000ca3-a166-47ed-b2f7-0e7ef71a5085": "Active App Settings",
+      "c17c7bb2-ed6a-4ea8-853d-9b1e3989463a": "App Setting Lookup View"
+    }
+  },
+  {
+    "DisplayName": "Vfc Eligibility (App Settings)",
+    "Name": "crf7e_smvs_appsetting_vfceligibility",
+    "OptionSetInfoNameMapping": {
+      "0": "No",
+      "1": "Yes"
+    },
+    "OptionSetIsBooleanValued": true,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "crf7e_vfceligibility",
+        "OptionSetReferenceEntityName": "App Settings"
+      }
+    },
+    "OptionSetTypeKey": "BooleanType",
+    "RelatedColumnInvariantName": "crf7e_vfceligibility",
+    "RelatedEntityName": "App Settings",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Enable Eligibility Check (App Settings)",
+    "Name": "smvs_appsetting_smvs_enable_eligibility_check",
+    "OptionSetInfoNameMapping": {
+      "0": "No",
+      "1": "Yes"
+    },
+    "OptionSetIsBooleanValued": true,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "smvs_enable_eligibility_check",
+        "OptionSetReferenceEntityName": "App Settings"
+      }
+    },
+    "OptionSetTypeKey": "BooleanType",
+    "RelatedColumnInvariantName": "smvs_enable_eligibility_check",
+    "RelatedEntityName": "App Settings",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Flow Status (App Settings)",
+    "Name": "smvs_appsetting_smvs_flow_status",
+    "OptionSetInfoNameMapping": {
+      "0": "Off",
+      "1": "On"
+    },
+    "OptionSetIsBooleanValued": true,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "smvs_flow_status",
+        "OptionSetReferenceEntityName": "App Settings"
+      }
+    },
+    "OptionSetTypeKey": "BooleanType",
+    "RelatedColumnInvariantName": "smvs_flow_status",
+    "RelatedEntityName": "App Settings",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Is Credit Card Accepted (App Settings)",
+    "Name": "smvs_appsetting_smvs_is_credit_card_accepted",
+    "OptionSetInfoNameMapping": {
+      "0": "No",
+      "1": "Yes"
+    },
+    "OptionSetIsBooleanValued": true,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "smvs_is_credit_card_accepted",
+        "OptionSetReferenceEntityName": "App Settings"
+      }
+    },
+    "OptionSetTypeKey": "BooleanType",
+    "RelatedColumnInvariantName": "smvs_is_credit_card_accepted",
+    "RelatedEntityName": "App Settings",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Is no Insurance Allowed (App Settings)",
+    "Name": "smvs_appsetting_smvs_isnoinsuranceallowed",
+    "OptionSetInfoNameMapping": {
+      "0": "No",
+      "1": "Yes"
+    },
+    "OptionSetIsBooleanValued": true,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "smvs_isnoinsuranceallowed",
+        "OptionSetReferenceEntityName": "App Settings"
+      }
+    },
+    "OptionSetTypeKey": "BooleanType",
+    "RelatedColumnInvariantName": "smvs_isnoinsuranceallowed",
+    "RelatedEntityName": "App Settings",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Is Site Under Construction (App Settings)",
+    "Name": "smvs_appsetting_smvs_issiteunderconstruction",
+    "OptionSetInfoNameMapping": {
+      "0": "No",
+      "1": "Yes"
+    },
+    "OptionSetIsBooleanValued": true,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "smvs_issiteunderconstruction",
+        "OptionSetReferenceEntityName": "App Settings"
+      }
+    },
+    "OptionSetTypeKey": "BooleanType",
+    "RelatedColumnInvariantName": "smvs_issiteunderconstruction",
+    "RelatedEntityName": "App Settings",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Plugin Status (App Settings)",
+    "Name": "smvs_appsetting_smvs_plugin_status",
+    "OptionSetInfoNameMapping": {
+      "0": "Off",
+      "1": "On"
+    },
+    "OptionSetIsBooleanValued": true,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "smvs_plugin_status",
+        "OptionSetReferenceEntityName": "App Settings"
+      }
+    },
+    "OptionSetTypeKey": "BooleanType",
+    "RelatedColumnInvariantName": "smvs_plugin_status",
+    "RelatedEntityName": "App Settings",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "PubCon Status (App Settings)",
+    "Name": "smvs_appsetting_smvs_pubcon_status",
+    "OptionSetInfoNameMapping": {
+      "0": "Off",
+      "1": "On"
+    },
+    "OptionSetIsBooleanValued": true,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "smvs_pubcon_status",
+        "OptionSetReferenceEntityName": "App Settings"
+      }
+    },
+    "OptionSetTypeKey": "BooleanType",
+    "RelatedColumnInvariantName": "smvs_pubcon_status",
+    "RelatedEntityName": "App Settings",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status (App Settings)",
+    "Name": "smvs_appsetting_statecode",
+    "OptionSetInfoNameMapping": {
+      "0": "Active",
+      "1": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statecode",
+        "OptionSetReferenceEntityName": "App Settings"
+      }
+    },
+    "OptionSetTypeKey": "StateType",
+    "RelatedColumnInvariantName": "statecode",
+    "RelatedEntityName": "App Settings",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status Reason (App Settings)",
+    "Name": "smvs_appsetting_statuscode",
+    "OptionSetInfoNameMapping": {
+      "1": "Active",
+      "2": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statuscode",
+        "OptionSetReferenceEntityName": "App Settings"
+      }
+    },
+    "OptionSetTypeKey": "StatusType",
+    "RelatedColumnInvariantName": "statuscode",
+    "RelatedEntityName": "App Settings",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Waitlist Behavior",
+    "Name": "smvs_global_service_status",
+    "OptionSetInfoNameMapping": {
+      "153940000": "No waitlist",
+      "153940001": "Waitlist only",
+      "153940002": "Enable waitlist if there are no appointments"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": true,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "smvs_global_service_status",
+        "OptionSetReferenceEntityName": "App Settings"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "smvs_global_service_status",
+    "RelatedEntityName": "App Settings",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Map Visibility",
+    "Name": "smvs_map_visibility",
+    "OptionSetInfoNameMapping": {
+      "153940000": "Show",
+      "153940001": "Hide",
+      "153940002": "Allow Toggle"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": true,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "smvs_map_visibility",
+        "OptionSetReferenceEntityName": "App Settings"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "smvs_map_visibility",
+    "RelatedEntityName": "App Settings",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Show Payment",
+    "Name": "smvs_show_payment",
+    "OptionSetInfoNameMapping": {
+      "153940000": "On",
+      "153940001": "Off"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": true,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "smvs_show_payment",
+        "OptionSetReferenceEntityName": "App Settings"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "smvs_show_payment",
+    "RelatedEntityName": "App Settings",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Enable IIS Consent (App Settings)",
+    "Name": "smvs_smvs_appsetting_enable_iis_consent",
+    "OptionSetInfoNameMapping": {
+      "0": "No",
+      "1": "Yes"
+    },
+    "OptionSetIsBooleanValued": true,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "smvs_enable_iis_consent",
+        "OptionSetReferenceEntityName": "App Settings"
+      }
+    },
+    "OptionSetTypeKey": "BooleanType",
+    "RelatedColumnInvariantName": "smvs_enable_iis_consent",
+    "RelatedEntityName": "App Settings",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Is single use code enabled (App Settings)",
+    "Name": "smvs_smvs_appsetting_is_single_use_code_enabled",
+    "OptionSetInfoNameMapping": {
+      "0": "No",
+      "1": "Yes"
+    },
+    "OptionSetIsBooleanValued": true,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "smvs_is_single_use_code_enabled",
+        "OptionSetReferenceEntityName": "App Settings"
+      }
+    },
+    "OptionSetTypeKey": "BooleanType",
+    "RelatedColumnInvariantName": "smvs_is_single_use_code_enabled",
+    "RelatedEntityName": "App Settings",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "No-Show Email Notification   (App Settings)",
+    "Name": "smvs_smvs_appsetting_noshow_email_notification",
+    "OptionSetInfoNameMapping": {
+      "0": "Off",
+      "1": "On"
+    },
+    "OptionSetIsBooleanValued": true,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "smvs_noshow_email_notification",
+        "OptionSetReferenceEntityName": "App Settings"
+      }
+    },
+    "OptionSetTypeKey": "BooleanType",
+    "RelatedColumnInvariantName": "smvs_noshow_email_notification",
+    "RelatedEntityName": "App Settings",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Show Patient Type (App Settings)",
+    "Name": "smvs_smvs_appsetting_showpatienttype",
+    "OptionSetInfoNameMapping": {
+      "0": "No",
+      "1": "Yes"
+    },
+    "OptionSetIsBooleanValued": true,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "smvs_showpatienttype",
+        "OptionSetReferenceEntityName": "App Settings"
+      }
+    },
+    "OptionSetTypeKey": "BooleanType",
+    "RelatedColumnInvariantName": "smvs_showpatienttype",
+    "RelatedEntityName": "App Settings",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Billing Address Lock (App Settings)",
+    "Name": "smvs_smvs_appsetting_smvs_billing_address_lock",
+    "OptionSetInfoNameMapping": {
+      "0": "No",
+      "1": "Yes"
+    },
+    "OptionSetIsBooleanValued": true,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "smvs_billing_address_lock",
+        "OptionSetReferenceEntityName": "App Settings"
+      }
+    },
+    "OptionSetTypeKey": "BooleanType",
+    "RelatedColumnInvariantName": "smvs_billing_address_lock",
+    "RelatedEntityName": "App Settings",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "No-Show Text Notification (App Settings)",
+    "Name": "smvs_smvs_appsetting_smvs_noshow_text_notification",
+    "OptionSetInfoNameMapping": {
+      "0": "Off",
+      "1": "On"
+    },
+    "OptionSetIsBooleanValued": true,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "smvs_noshow_text_notification",
+        "OptionSetReferenceEntityName": "App Settings"
+      }
+    },
+    "OptionSetTypeKey": "BooleanType",
+    "RelatedColumnInvariantName": "smvs_noshow_text_notification",
+    "RelatedEntityName": "App Settings",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Time Zone",
+    "Name": "smvs_time_zone",
+    "OptionSetInfoNameMapping": {
+      "153940000": "Pacific Standard Time (America/Los_Angeles)",
+      "153940001": "Eastern Standard Time (America/NewYork)",
+      "153940002": "Central Standard Time",
+      "153940003": "Nepal Standard Time",
+      "153940004": "Aleutian Standard Time",
+      "153940005": "Mountain Standard Time (America/Denver)",
+      "153940006": "Alaskan Standard Time"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": true,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "smvs_time_zone",
+        "OptionSetReferenceEntityName": "App Settings"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "smvs_time_zone",
+    "RelatedEntityName": "App Settings",
+    "Type": "OptionSetInfo"
+  }
+]

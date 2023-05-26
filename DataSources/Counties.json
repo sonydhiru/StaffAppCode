@@ -1,0 +1,102 @@
+[
+  {
+    "CdsFCBContext": "{\"FileType\":true,\"ImageExternalStorage\":true}",
+    "EntitySetName": "smvs_counties",
+    "IsHidden": false,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "LogicalName": "smvs_county",
+    "MaxGetRowsCount": 500,
+    "Name": "Counties",
+    "NativeCDSDataSourceInfoNameMapping": {
+      "_ownerid_value": "Owner",
+      "createdby": "Created By",
+      "createdon": "Created On",
+      "createdonbehalfby": "Created By (Delegate)",
+      "importsequencenumber": "Import Sequence Number",
+      "modifiedby": "Modified By",
+      "modifiedon": "Modified On",
+      "modifiedonbehalfby": "Modified By (Delegate)",
+      "overriddencreatedon": "Record Created On",
+      "owningbusinessunit": "Owning Business Unit",
+      "owningteam": "Owning Team",
+      "owninguser": "Owning User",
+      "smvs_county_AsyncOperations": "System Jobs",
+      "smvs_county_BulkDeleteFailures": "Bulk Delete Failures",
+      "smvs_county_DuplicateBaseRecord": "Duplicate Records (smvs_county_DuplicateBaseRecord)",
+      "smvs_county_DuplicateMatchingRecord": "Duplicate Records (smvs_county_DuplicateMatchingRecord)",
+      "smvs_county_MailboxTrackingFolders": "Mailbox Auto Tracking Folders",
+      "smvs_county_name": "County Name",
+      "smvs_county_PrincipalObjectAttributeAccesses": "Field Sharing",
+      "smvs_county_ProcessSession": "Process Sessions",
+      "smvs_county_SyncErrors": "Sync Errors",
+      "smvs_countyid": "County",
+      "smvs_msemr_location_county_smvs_county": "Locations",
+      "smvs_name": "Name",
+      "smvs_state": "State",
+      "smvs_state_code": "State Code",
+      "smvs_state_name": "State Name",
+      "statecode": "Status",
+      "statuscode": "Status Reason",
+      "timezoneruleversionnumber": "Time Zone Rule Version Number",
+      "utcconversiontimezonecode": "UTC Conversion Time Zone Code",
+      "versionnumber": "Version Number"
+    },
+    "PreferredName": "Counties",
+    "Type": "NativeCDSDataSourceInfo"
+  },
+  {
+    "DisplayName": "Counties (Views)",
+    "Name": "_smvs_county_views",
+    "RelatedEntityName": "Counties",
+    "TrimmedViewName": true,
+    "Type": "ViewInfo",
+    "ViewInfoNameMapping": {
+      "318ce066-7c6c-4f97-b5af-e9068cf1e73a": "County Associated View",
+      "47bcc392-03b0-4367-802b-383ca5c21f94": "Active Counties",
+      "ab982210-776f-4c0d-8dca-c655814651d5": "County Advanced Find View",
+      "bd7d0f50-8439-4a69-994e-6a85e94c0d85": "Inactive Counties",
+      "e8d126d7-cd36-43c7-b55a-77e1ee1fd612": "County Lookup View"
+    }
+  },
+  {
+    "DisplayName": "Status (Counties)",
+    "Name": "smvs_county_statecode",
+    "OptionSetInfoNameMapping": {
+      "0": "Active",
+      "1": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statecode",
+        "OptionSetReferenceEntityName": "Counties"
+      }
+    },
+    "OptionSetTypeKey": "StateType",
+    "RelatedColumnInvariantName": "statecode",
+    "RelatedEntityName": "Counties",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status Reason (Counties)",
+    "Name": "smvs_county_statuscode",
+    "OptionSetInfoNameMapping": {
+      "1": "Active",
+      "2": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statuscode",
+        "OptionSetReferenceEntityName": "Counties"
+      }
+    },
+    "OptionSetTypeKey": "StatusType",
+    "RelatedColumnInvariantName": "statuscode",
+    "RelatedEntityName": "Counties",
+    "Type": "OptionSetInfo"
+  }
+]

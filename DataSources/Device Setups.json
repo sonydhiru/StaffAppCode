@@ -1,0 +1,155 @@
+[
+  {
+    "CdsFCBContext": "{\"FileType\":true,\"ImageExternalStorage\":true}",
+    "EntitySetName": "smvs_device_setups",
+    "IsHidden": false,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "LogicalName": "smvs_device_setup",
+    "MaxGetRowsCount": 500,
+    "Name": "Device Setups",
+    "NativeCDSDataSourceInfoNameMapping": {
+      "_ownerid_value": "Owner",
+      "createdby": "Created By",
+      "createdon": "Created On",
+      "createdonbehalfby": "Created By (Delegate)",
+      "importsequencenumber": "Import Sequence Number",
+      "modifiedby": "Modified By",
+      "modifiedon": "Modified On",
+      "modifiedonbehalfby": "Modified By (Delegate)",
+      "overriddencreatedon": "Record Created On",
+      "owningbusinessunit": "Owning Business Unit",
+      "owningteam": "Owning Team",
+      "owninguser": "Owning User",
+      "smvs_device_setup_AsyncOperations": "System Jobs",
+      "smvs_device_setup_BulkDeleteFailures": "Bulk Delete Failures",
+      "smvs_device_setup_DuplicateBaseRecord": "Duplicate Records (smvs_device_setup_DuplicateBaseRecord)",
+      "smvs_device_setup_DuplicateMatchingRecord": "Duplicate Records (smvs_device_setup_DuplicateMatchingRecord)",
+      "smvs_device_setup_MailboxTrackingFolders": "Mailbox Auto Tracking Folders",
+      "smvs_device_setup_PrincipalObjectAttributeAccesses": "Field Sharing",
+      "smvs_device_setup_ProcessSession": "Process Sessions",
+      "smvs_device_setup_smvs_specimen_source_type": "Specimen Source Types",
+      "smvs_device_setup_SyncErrors": "Sync Errors",
+      "smvs_device_setupid": "Device Setup",
+      "smvs_equipment_uid": "Equipment UID",
+      "smvs_equipment_uid_type": "Equipment UID Type",
+      "smvs_facility_smvs_device_setup_smvs_device": "Facilities",
+      "smvs_manufacturer": "Manufacturer",
+      "smvs_msemr_appointmentemr_test_device_smvs_dev": "Appointments (EMR)",
+      "smvs_msemr_healthcareservicecategory_device": "Services",
+      "smvs_name": "Test Model Name",
+      "smvs_test_kit_id_type": "Test Kit ID Type",
+      "smvs_test_kit_name": "Test Kit Name",
+      "smvs_test_model_name": "Test Model Name (Not Used)",
+      "smvs_test_ordered_loinc_code": "Test Ordered LOINC Code",
+      "smvs_test_ordered_name": "Test Ordered Name",
+      "smvs_test_performed_loinc_code": "Test Performed LOINC Code",
+      "smvs_test_performed_name": "Test Performed Name",
+      "smvs_test_performed_smvs_device_setup_smv": "Test Performeds",
+      "statecode": "Status",
+      "statuscode": "Status Reason",
+      "timezoneruleversionnumber": "Time Zone Rule Version Number",
+      "utcconversiontimezonecode": "UTC Conversion Time Zone Code",
+      "versionnumber": "Version Number"
+    },
+    "PreferredName": "Device Setups",
+    "Type": "NativeCDSDataSourceInfo"
+  },
+  {
+    "DisplayName": "Device Setups (Views)",
+    "Name": "_smvs_device_setup_views",
+    "RelatedEntityName": "Device Setups",
+    "TrimmedViewName": true,
+    "Type": "ViewInfo",
+    "ViewInfoNameMapping": {
+      "108b7cfc-75f5-4f32-a112-0bbd6161ebb5": "Device Setup Lookup View",
+      "492807f3-f8a3-4720-b895-4c6c9c40be6d": "Inactive Device Setups",
+      "a4434093-6f76-4f1e-8a7b-0ff5bcbcaab7": "Active Device Setups",
+      "a9d9d098-b7ca-ec11-a7b5-6045bd00dd66": "Device Setup Appointment View",
+      "cb69d548-f697-4574-80d6-d0675dfd8ed0": "Device Setup Advanced Find View",
+      "fa521d72-6a15-4168-a773-495eea29e690": "Device Setup Associated View"
+    }
+  },
+  {
+    "DisplayName": "Status (Device Setups)",
+    "Name": "smvs_device_setup_statecode",
+    "OptionSetInfoNameMapping": {
+      "0": "Active",
+      "1": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statecode",
+        "OptionSetReferenceEntityName": "Device Setups"
+      }
+    },
+    "OptionSetTypeKey": "StateType",
+    "RelatedColumnInvariantName": "statecode",
+    "RelatedEntityName": "Device Setups",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status Reason (Device Setups)",
+    "Name": "smvs_device_setup_statuscode",
+    "OptionSetInfoNameMapping": {
+      "1": "Active",
+      "2": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statuscode",
+        "OptionSetReferenceEntityName": "Device Setups"
+      }
+    },
+    "OptionSetTypeKey": "StatusType",
+    "RelatedColumnInvariantName": "statuscode",
+    "RelatedEntityName": "Device Setups",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Equipment UID Type",
+    "Name": "smvs_equipment_uid_type",
+    "OptionSetInfoNameMapping": {
+      "153940000": "Manufacturer Name(MNI)",
+      "153940001": "Device Identifier(DII)"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": true,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "smvs_equipment_uid_type",
+        "OptionSetReferenceEntityName": "Device Setups"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "smvs_equipment_uid_type",
+    "RelatedEntityName": "Device Setups",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Test Kit ID Type",
+    "Name": "smvs_test_kit_id_type",
+    "OptionSetInfoNameMapping": {
+      "153940000": "Emergency Use Authorization(EUA)",
+      "153940001": "Manufacturer Name(MNT)",
+      "153940002": "Device Identifier(DIT)",
+      "153940003": "Manual Test Kit(MNM)"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": true,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "smvs_test_kit_id_type",
+        "OptionSetReferenceEntityName": "Device Setups"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "smvs_test_kit_id_type",
+    "RelatedEntityName": "Device Setups",
+    "Type": "OptionSetInfo"
+  }
+]

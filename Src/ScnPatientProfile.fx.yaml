@@ -1,0 +1,3973 @@
+"ScnPatientProfile As screen.'tabletAutoLayout_HeaderMainFooter_ver1.0'":
+    Fill: =
+    OnVisible: |-
+        =Set(
+            VarHealthServices,
+            LookUp(
+                'Sub Services',
+                'Healthcare Service (msemr_healthcareserviceid)' = gblSelectedAppointmentPatient.'Healthcare Service'.'Healthcare Service (msemr_healthcareserviceid)'
+            )
+        );
+        
+        Reset(InputSignaturePatient);
+
+    LblMultiServiceWebsiteContent As label:
+        Height: =51
+        Text: =First(CmbService.Selected.'Localize Website Contents').'Website Text' = First(CmbAdditionalService.Selected.'Localize Website Contents').'Website Text'
+        Visible: =false
+        Width: =88
+        X: =770
+        Y: =25
+        ZIndex: =1
+
+    acceptedTermsAndCondition As label:
+        Height: =58
+        Text: |-
+            =If(
+                (varAdditionalService = false || (varAdditionalService && Text(LblMultiServiceWebsiteContent) = "true")) && CountRows(
+                    Filter(
+                        GalTermsAndCondition.AllItems,
+                        Text(chkSelectedTermsAndCondition) = "true"
+                    )
+                ) = CountRows(GalTermsAndCondition.AllItems),
+                true,
+                varAdditionalService && Text(LblMultiServiceWebsiteContent) = "false" && CountRows(
+                    Filter(
+                        GalTermsAndCondition.AllItems,
+                        Text(chkSelectedTermsAndCondition) = "true"
+                    )
+                ) = CountRows(GalTermsAndCondition.AllItems) && CountRows(
+                    Filter(
+                        GalTermsAndConditionSecondary.AllItems,
+                        Text(chkSelectedTermsAndConditionSecondary) = "true"
+                    )
+                ) = CountRows(GalTermsAndConditionSecondary.AllItems),
+                true,
+                false
+            )
+        Visible: =false
+        Width: =116
+        X: =880
+        Y: =25
+        ZIndex: =2
+
+    LblAgeValidation As label:
+        Text: |-
+            =If(
+                Round(
+                    (DateDiff(
+                        Date(
+                            Year(DateBirthday.SelectedDate),
+                            Month(DateBirthday.SelectedDate),
+                            Day(DateBirthday.SelectedDate)
+                        ),
+                        Today(),
+                        "Days"
+                    ) / 365.25),
+                    4
+                ) < 19,
+                true,
+                false
+            )
+        Visible: =false
+        X: =796
+        Y: =58
+        ZIndex: =3
+
+    ConContinuePatientProfile As groupContainer.manualLayoutContainer:
+        Height: =100
+        Width: =Parent.Width
+        Y: =Parent.Height-Self.Height
+        ZIndex: =4
+
+        BtnContinuePatientProfile As button:
+            BorderStyle: =BorderStyle.None
+            BorderThickness: =0
+            Fill: =VarTheme.PrimaryColor
+            Font: =VarTheme.Font
+            Height: =60
+            HoverFill: =VarTheme.PrimaryColorDark
+            OnSelect: |
+                =Reset(CalendarComponentFirstDose);
+                Reset(CalendarComponentSecondDose);
+                Set(
+                    VarFirstDoseSelectedDate,
+                    Blank()
+                );
+                Set(
+                    VarSecondDoseSelectedDate,
+                    Blank()
+                );
+                //---start--Eligibility variable---
+                Set(
+                    showEligibilityBtn,
+                    true
+                );
+                Set(
+                    eligibilityResponseData,
+                    Blank()
+                );
+                //--end----Eligibility variable---
+                Set(
+                    varGuardianFirstName,
+                    Trim(InputGuardianFirstName.Text)
+                );
+                Set(
+                    varGuardianMiddleName,
+                    Trim(InputGuardianMiddleName.Text)
+                );
+                Set(
+                    varGuardianLastName,
+                    Trim(InputGuardianLastName.Text)
+                );
+                Set(varConsentedBy,CmbConsentedBy.Selected.Value);
+                Reset(GalFirstDoseDefaultSlot);
+                Reset(GalSecondDoseDefaultSlot);
+                Set(
+                    VarSelectedItem,
+                    false
+                );
+                Set(
+                    VarSecondDoseSelectedItem,
+                    false
+                );
+                Set(
+                    VarChkFormValidation,
+                    false
+                );
+                If(
+                    ChkEmailHide.Value = true && (IsBlank(Trim(InputEmail.Text)) || IsEmpty(Trim(InputEmail.Text))),
+                    Set(
+                        VarEmailValidate,
+                        false
+                    ),
+                    Set(
+                        VarEmailValidate,
+                        true
+                    )
+                );
+                If(
+                    (!IsBlank(InputMobilePhone.Text) && !IsBlank(InputFirstName.Text) && !IsBlank(InputLastName.Text) && Len(InputMobilePhone.Text) = 10 && Len(InputZipCode.Text) = 5 && IsMatch(
+                        InputMobilePhone.Text,
+                        "\d{10}"
+                    ) && CmbEthnicity.Selected.Value <> Blank() && VarPenInputData = InputSignaturePatient.Image && CmbGender.Selected.Value <> Blank() && CmbRace.Selected.Value <> Blank() && !IsBlank(DateBirthday.SelectedDate) && !IsBlank(InputStreet.Text) && !IsBlank(InputCity.Text) && !IsBlank(CmbProvince.Selected.Name) && !IsBlank(InputZipCode.Text) && ChkPatientConsentPatientProfile.Value = true && Text(acceptedTermsAndCondition) = "true" && !IsBlank(CmbCounty.SelectedText.Value)),
+                    Set(
+                        VarChkFormValidation,
+                        true
+                    ),
+                    Set(
+                        VarNewAppointmentValidationChk,
+                        true
+                    )
+                );
+                If(
+                    (VarChkFormValidation = true && ChkEmailHide.Value = false && !IsBlank(Trim(InputEmail.Text)) && IsMatch(
+                        InputEmail.Text,
+                        Match.Email
+                    )) || (VarChkFormValidation = true && ChkEmailHide.Value = false && IsBlank(Trim(InputEmail.Text))) || (VarChkFormValidation = true && ChkEmailHide.Value = true && !IsBlank(Trim(InputEmail.Text)) && IsMatch(
+                        InputEmail.Text,
+                        Match.Email
+                    )),
+                    Set(
+                        VarEmailValidate,
+                        true
+                    ) && Set(
+                        VarChkFormValidation,
+                        true
+                    ),
+                    Set(
+                        VarEmailValidate,
+                        false
+                    ) && Set(
+                        VarChkFormValidation,
+                        false
+                    ) && Set(
+                        VarNewAppointmentValidationChk,
+                        true
+                    )
+                );
+                /*If(
+                    (VarChkFormValidation = true && !IsBlank(TxtPhysicianPhone.Text) && Len(TxtPhysicianPhone.Text) = 10 && IsMatch(
+                        TxtPhysicianPhone.Text,
+                        "\d{10}"
+                    )) || IsBlank(TxtPhysicianPhone.Text),
+                    Set(
+                        VarChkFormValidation,
+                        true
+                    ),
+                    Set(
+                        VarChkFormValidation,
+                        false
+                    ) && Set(
+                        VarNewAppointmentValidationChk,
+                        true
+                    )
+                );*/
+                If(
+                    VarChkFormValidation = true && chkSendToIIS.Value = true,
+                    Set(
+                        VarChkFormValidation,
+                        true
+                    ),
+                    Set(
+                        VarChkFormValidation,
+                        false
+                    ) && Set(
+                        VarNewAppointmentValidationChk,
+                        true
+                    )
+                );
+                If(
+                    VarChkFormValidation = true && ((LblAgeValidation.Text = "true" && !IsBlank(InputGuardianFirstName.Text) && !IsBlank(InputGuardianLastName.Text)) || LblAgeValidation.Text = "false"),
+                    Set(
+                        VarChkFormValidation,
+                        true
+                    ),
+                    Set(
+                        VarChkFormValidation,
+                        false
+                    ) && Set(
+                        VarNewAppointmentValidationChk,
+                        true
+                    )
+                );
+                If(
+                    VarChkFormValidation = true && LblMinorAge.Text = "false" && Text(LblPaymentCheck) = "true",
+                    Set(
+                        VarChkFormValidation,
+                        true
+                    ) && Set(
+                        VarPaymentMode,
+                        "New"
+                    ) && Navigate(ScnPayment),
+                    VarChkFormValidation = true && LblMinorAge.Text = "false" && Text(LblPaymentCheck) = "false" && VarWalkIn = true && VarRegimenDose = 'Regimen Dose Options'.'2nd Dose only',
+                    Set(
+                        VarChkFormValidation,
+                        true
+                    ) && Navigate(ScnConfirmation),
+                    VarChkFormValidation = true && LblMinorAge.Text = "false" && Text(LblPaymentCheck) = "false" && VarWalkIn = true && (VarRegimenDose = 'Regimen Dose Options'.'Both Doses'),
+                    Set(
+                        VarChkFormValidation,
+                        true
+                    ) && Navigate(ScnCalendar),
+                    VarChkFormValidation = true && LblMinorAge.Text = "false" && Text(LblPaymentCheck) = "false" && VarWalkIn = true && (VarRegimenDose = 'Regimen Dose Options'.'1st Dose only'),
+                    Set(
+                        VarChkFormValidation,
+                        true
+                    ) && Navigate(ScnConfirmation),
+                    VarChkFormValidation = true && LblMinorAge.Text = "false" && Text(LblPaymentCheck) = "false" && VarWalkIn = false,
+                    Set(
+                        VarChkFormValidation,
+                        true
+                    ) && Navigate(ScnCalendar),
+                    Set(
+                        VarChkFormValidation,
+                        false
+                    ) && Set(
+                        VarNewAppointmentValidationChk,
+                        true
+                    )
+                );
+            PaddingBottom: =14
+            PaddingTop: =14
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Size: =16
+            Text: ="Continue"
+            Visible: =VarHidePatientVerificationCard=false
+            Width: =625
+            X: =200
+            Y: =20
+            ZIndex: =1
+
+        BtnSavePatientProfile As button:
+            BorderStyle: =BorderStyle.None
+            BorderThickness: =0
+            Fill: =VarTheme.PrimaryColor
+            Font: =VarTheme.Font
+            Height: =60
+            HoverFill: =VarTheme.PrimaryColorDark
+            OnSelect: |
+                =Set(
+                    VarChkFormValidation,
+                    false
+                );
+                If(
+                    ChkEmailHide.Value = true && (IsBlank(Trim(InputEmail.Text)) || IsEmpty(Trim(InputEmail.Text))),
+                    Set(
+                        VarEmailValidate,
+                        false
+                    ),
+                    Set(
+                        VarEmailValidate,
+                        true
+                    )
+                );
+                If(
+                    (!IsBlank(TxtPhysicianPhone.Text) && Len(TxtPhysicianPhone.Text) = 10 && IsMatch(
+                        TxtPhysicianPhone.Text,
+                        "\d{10}"
+                    ) && !IsBlank(InputMobilePhone.Text) && !IsBlank(Trim(InputFirstName.Text)) && !IsBlank(Trim(InputLastName.Text)) && Len(InputMobilePhone.Text) = 10 && Len(InputZipCode.Text) = 5 && IsMatch(
+                        InputMobilePhone.Text,
+                        "\d{10}"
+                    ) && CmbEthnicity.Selected.Value <> Blank() && CmbEthnicity.Selected.Value <> Blank() && CmbRace.Selected.Value <> Blank() && !IsBlank(DateBirthday.SelectedDate) && !IsBlank(InputStreet.Text) && !IsBlank(InputCity.Text) && !IsBlank(CmbProvince.Selected) && !IsBlank(CmbCounty.Selected) && !IsBlank(InputZipCode.Text) && ChkPatientConsentPatientProfile.Value = true),
+                    Set(
+                        VarChkFormValidation,
+                        true
+                    ),
+                    Set(
+                        VarNewAppointmentValidationChk,
+                        true
+                    );
+                    
+                );
+                If(
+                    (VarChkFormValidation = true && ChkEmailHide.Value = false && !IsBlank(Trim(InputEmail.Text)) && IsMatch(
+                        InputEmail.Text,
+                        Match.Email
+                    )) || (VarChkFormValidation = true && ChkEmailHide.Value = false && IsBlank(Trim(InputEmail.Text))) || (VarChkFormValidation = true && ChkEmailHide.Value = true && !IsBlank(Trim(InputEmail.Text)) && IsMatch(
+                        InputEmail.Text,
+                        Match.Email
+                    )),
+                    Set(
+                        VarEmailValidate,
+                        true
+                    ) && Set(
+                        VarChkFormValidation,
+                        true
+                    ),
+                    Set(
+                        VarEmailValidate,
+                        false
+                    ) && Set(
+                        VarChkFormValidation,
+                        false
+                    ) && Set(
+                        VarNewAppointmentValidationChk,
+                        true
+                    )
+                );
+                If(
+                    VarChkFormValidation = true,
+                    SubmitForm(FrmPatientProfile) && Navigate(ScnPatientAppointment) && Set(
+                        VarTermsAndCondition,
+                        true
+                    ) && Set(
+                        VarNavigateProfilePatient,
+                        false
+                    ) && Set(
+                        glbPatientPersonalInfo,
+                        LookUp(
+                            Contacts,
+                            Contact = gblSelectedPatient.contactid
+                        )
+                    )
+                );
+            PaddingBottom: =14
+            PaddingTop: =14
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Size: =16
+            Text: ="Save"
+            Visible: =VarHidePatientVerificationCard=true
+            Width: =625
+            X: =200
+            Y: =20
+            ZIndex: =2
+
+    CnvPatientProfile As fluidGrid.fluidGridWithBlankCard:
+        BorderThickness: =0
+        Height: =Parent.Height - Self.Y - ConContinuePatientProfile.Height
+        Width: =Parent.Width-26
+        X: =26
+        Y: =ConsentPatientInfoVerify.Y+ConsentPatientInfoVerify.Height
+        ZIndex: =5
+
+        DcPatientProfileMain As dataCard.blankCard:
+            BorderColor: =RGBA(0, 0, 0, 1)
+            BorderStyle: =BorderStyle.Solid
+            DisplayMode: =DisplayMode.Edit
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =1090
+            Width: =998
+            X: =0
+            Y: =0
+            ZIndex: =2
+
+            ConPatientProfileMain As groupContainer.manualLayoutContainer:
+                Height: =1460
+                Width: =Parent.Width
+                ZIndex: =2
+
+                FrmPatientProfile As form:
+                    DataSource: =Contacts
+                    DefaultMode: =If(VarPatientProfileMode="Edit" && !IsBlank(gblSelectedPatient),FormMode.Edit,FormMode.New)
+                    Fill: =RGBA(243, 243, 244, 1)
+                    Height: =1460
+                    Item: =LookUp(Contacts, Contact = gblSelectedPatient.contactid)
+                    Width: =Parent.Width
+                    ZIndex: =1
+
+                    DcPatientDetailsHeader As typedDataCard.blankCard:
+                        BorderStyle: =BorderStyle.Solid
+                        DisplayMode: =DisplayMode.Edit
+                        Fill: =RGBA(255, 255, 255, 1)
+                        Height: =100
+                        Width: =Parent.Width
+                        X: =0
+                        Y: =0
+                        ZIndex: =1
+
+                        LblPatientDetailsHeader As label:
+                            Color: =VarTheme.InputTextDark
+                            Font: =VarTheme.Font
+                            FontWeight: =FontWeight.Bold
+                            Height: =50
+                            Size: =20
+                            Text: ="Patient Details"
+                            Width: =Parent.Width
+                            Y: =24
+                            ZIndex: =1
+
+                    DcFirstName As typedDataCard.textualEditCard:
+                        BorderStyle: =BorderStyle.Solid
+                        DataField: ="firstname"
+                        Default: =ThisItem.'First Name'
+                        DisplayMode: =Parent.DisplayMode
+                        DisplayName: =DataSourceInfo([@Contacts],DataSourceInfo.DisplayName,"firstname")
+                        Fill: =RGBA(0, 0, 0, 0)
+                        Height: =110
+                        MaxLength: =DataSourceInfo([@Contacts], DataSourceInfo.MaxLength, "firstname")
+                        Required: =false
+                        Update: =InputFirstName.Text
+                        Width: =324
+                        X: =0
+                        Y: =1
+                        ZIndex: =1
+
+                        LblFirstName As label:
+                            AutoHeight: =true
+                            Color: =VarTheme.InputText
+                            Font: =VarTheme.Font
+                            FontWeight: =FontWeight.Semibold
+                            Height: =34
+                            Size: =16
+                            Text: =Parent.DisplayName
+                            Width: =Parent.Width - 60
+                            Wrap: =false
+                            X: =20
+                            ZIndex: =1
+
+                        InputFirstName As text:
+                            BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                            BorderStyle: =BorderStyle.None
+                            BorderThickness: =0
+                            Color: =VarTheme.InputText
+                            Default: =If(VarNavigateProfilePatient || (VarNewPatient=false && VarReturningPatient=true),Parent.Default,VarNewPatient=true && VarReturningPatient=false,TxtFirstNameSearch.Text)
+                            DelayOutput: =true
+                            DisplayMode: =Parent.DisplayMode
+                            Font: =VarTheme.Font
+                            FontWeight: =FontWeight.Semibold
+                            MaxLength: =Parent.MaxLength
+                            OnChange: =//Reset(TxtFirstNameSearch);
+                            PaddingLeft: =5
+                            RadiusBottomLeft: =0
+                            RadiusBottomRight: =0
+                            RadiusTopLeft: =0
+                            RadiusTopRight: =0
+                            Size: =16
+                            Tooltip: =Parent.DisplayName
+                            Width: =Parent.Width - 20
+                            X: =16
+                            Y: =LblFirstName.Y + LblFirstName.Height + 5
+                            ZIndex: =2
+
+                        LblErrorFirstName As label:
+                            Color: =VarTheme.Error
+                            Font: =VarTheme.Font
+                            Height: =29
+                            Live: =Live.Assertive
+                            PaddingBottom: =0
+                            PaddingLeft: =0
+                            PaddingRight: =0
+                            PaddingTop: =0
+                            Text: ="First Name cannot be empty"
+                            Visible: =IsBlank(InputFirstName.Text) && VarNewAppointmentValidationChk=true
+                            Width: =Parent.Width - 60
+                            X: =16
+                            Y: =InputFirstName.Y + InputFirstName.Height
+                            ZIndex: =3
+
+                        StarVisible2_2 As label:
+                            Align: =Align.Center
+                            Color: =RGBA(9, 30, 66, 1)
+                            Font: =VarTheme.Font
+                            FontWeight: =FontWeight.Semibold
+                            Height: =LblFirstName.Height
+                            Size: =16
+                            Text: ="*"
+                            Width: =30
+                            Wrap: =false
+                            ZIndex: =4
+
+                    DcMiddleName As typedDataCard.textualEditCard:
+                        BorderStyle: =BorderStyle.Solid
+                        DataField: ="middlename"
+                        Default: =ThisItem.'Middle Name'
+                        DisplayMode: =Parent.DisplayMode
+                        DisplayName: =DataSourceInfo([@Contacts],DataSourceInfo.DisplayName,"middlename")
+                        Fill: =RGBA(0, 0, 0, 0)
+                        Height: =110
+                        MaxLength: =DataSourceInfo([@Contacts], DataSourceInfo.MaxLength, "middlename")
+                        Required: =false
+                        Update: =InputMiddleName.Text
+                        Width: =324
+                        X: =1
+                        Y: =1
+                        ZIndex: =1
+
+                        LblMiddleName As label:
+                            AutoHeight: =true
+                            Color: =VarTheme.InputText
+                            Font: =VarTheme.Font
+                            FontWeight: =FontWeight.Semibold
+                            Height: =34
+                            Size: =16
+                            Text: =Parent.DisplayName
+                            Width: =Parent.Width - 60
+                            Wrap: =false
+                            X: =16
+                            ZIndex: =1
+
+                        InputMiddleName As text:
+                            BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                            BorderStyle: =BorderStyle.None
+                            BorderThickness: =0
+                            Color: =VarTheme.InputText
+                            Default: =Parent.Default
+                            DelayOutput: =true
+                            DisplayMode: =Parent.DisplayMode
+                            Font: =VarTheme.Font
+                            FontWeight: =FontWeight.Semibold
+                            MaxLength: =Parent.MaxLength
+                            PaddingLeft: =5
+                            RadiusBottomLeft: =0
+                            RadiusBottomRight: =0
+                            RadiusTopLeft: =0
+                            RadiusTopRight: =0
+                            Size: =16
+                            Tooltip: =Parent.DisplayName
+                            Width: =Parent.Width - 20
+                            X: =16
+                            Y: =LblMiddleName.Y + LblMiddleName.Height + 5
+                            ZIndex: =2
+
+                        LblErrorMiddleName As label:
+                            Font: =VarTheme.Font
+                            Height: =29
+                            Live: =Live.Assertive
+                            PaddingBottom: =0
+                            PaddingLeft: =0
+                            PaddingRight: =0
+                            PaddingTop: =0
+                            Text: =Parent.Error
+                            Visible: =Parent.DisplayMode=DisplayMode.Edit
+                            Width: =Parent.Width - 60
+                            X: =2
+                            Y: =InputMiddleName.Y + InputMiddleName.Height
+                            ZIndex: =3
+
+                        StarVisible3_2 As label:
+                            Align: =Align.Center
+                            Color: =RGBA(9, 30, 66, 1)
+                            Font: =VarTheme.Font
+                            FontWeight: =FontWeight.Semibold
+                            Height: =LblMiddleName.Height
+                            Size: =16
+                            Text: ="*"
+                            Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                            Width: =30
+                            Wrap: =false
+                            Y: =LblMiddleName.Y
+                            ZIndex: =4
+
+                    DcLastName As typedDataCard.textualEditCard:
+                        BorderStyle: =BorderStyle.Solid
+                        DataField: ="lastname"
+                        Default: =ThisItem.'Last Name'
+                        DisplayMode: =Parent.DisplayMode
+                        DisplayName: =DataSourceInfo([@Contacts],DataSourceInfo.DisplayName,"lastname")
+                        Fill: =RGBA(0, 0, 0, 0)
+                        Height: =110
+                        MaxLength: =DataSourceInfo([@Contacts], DataSourceInfo.MaxLength, "lastname")
+                        Required: =true
+                        Update: =InputLastName.Text
+                        Width: =324
+                        X: =2
+                        Y: =1
+                        ZIndex: =1
+
+                        LblLastName As label:
+                            AutoHeight: =true
+                            Color: =VarTheme.InputText
+                            Font: =VarTheme.Font
+                            FontWeight: =FontWeight.Bold
+                            Height: =34
+                            Size: =16
+                            Text: =Parent.DisplayName
+                            Width: =Parent.Width - 60
+                            Wrap: =false
+                            X: =20
+                            ZIndex: =1
+
+                        InputLastName As text:
+                            BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                            BorderStyle: =BorderStyle.None
+                            BorderThickness: =0
+                            Color: =VarTheme.InputText
+                            Default: =If(VarNavigateProfilePatient,Parent.Default,VarNewPatient=false && VarReturningPatient=true,Parent.Default,VarNewPatient=true && VarReturningPatient=false,TxtLastNameSearch.Text)
+                            DelayOutput: =true
+                            DisplayMode: =Parent.DisplayMode
+                            Font: =VarTheme.Font
+                            FontWeight: =FontWeight.Bold
+                            MaxLength: =Parent.MaxLength
+                            OnChange: =//Reset(TxtLastNameSearch);
+                            PaddingLeft: =5
+                            RadiusBottomLeft: =0
+                            RadiusBottomRight: =0
+                            RadiusTopLeft: =0
+                            RadiusTopRight: =0
+                            Size: =16
+                            Tooltip: =Parent.DisplayName
+                            Width: =Parent.Width - 20
+                            X: =16
+                            Y: =LblLastName.Y + LblLastName.Height + 5
+                            ZIndex: =2
+
+                        LblErrorLastName As label:
+                            Color: =VarTheme.Error
+                            Font: =VarTheme.Font
+                            Height: =29
+                            Live: =Live.Assertive
+                            PaddingBottom: =0
+                            PaddingLeft: =0
+                            PaddingRight: =0
+                            PaddingTop: =0
+                            Text: ="Last name cannot be empty"
+                            Visible: =IsBlank(InputLastName.Text) && VarNewAppointmentValidationChk=true
+                            Width: =Parent.Width - 60
+                            X: =16
+                            Y: =InputLastName.Y + InputLastName.Height
+                            ZIndex: =3
+
+                        StarVisible4_2 As label:
+                            Align: =Align.Center
+                            Color: =RGBA(9, 30, 66, 1)
+                            Font: =VarTheme.Font
+                            FontWeight: =FontWeight.Bold
+                            Height: =LblLastName.Height
+                            Size: =16
+                            Text: ="*"
+                            Width: =30
+                            Wrap: =false
+                            Y: =LblLastName.Y
+                            ZIndex: =4
+
+                    DcBirthday As typedDataCard.dateEditCard:
+                        BorderStyle: =BorderStyle.Solid
+                        DataField: ="birthdate"
+                        Default: =ThisItem.Birthday
+                        DisplayMode: =Parent.DisplayMode
+                        DisplayName: =DataSourceInfo([@Contacts],DataSourceInfo.DisplayName,"birthdate")
+                        Fill: =RGBA(0, 0, 0, 0)
+                        Height: =130
+                        Required: =false
+                        Update: =DateBirthday.SelectedDate
+                        Width: =324
+                        X: =0
+                        Y: =2
+                        ZIndex: =1
+
+                        LblBirthday As label:
+                            AutoHeight: =true
+                            Color: =RGBA(9, 30, 66, 1)
+                            Font: =VarTheme.Font
+                            FontWeight: =FontWeight.Semibold
+                            Height: =34
+                            Size: =16
+                            Text: ="Birth Date"
+                            Width: =Parent.Width - 60
+                            Wrap: =false
+                            X: =20
+                            ZIndex: =1
+
+                        DateBirthday As datepicker:
+                            BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                            BorderStyle: =BorderStyle.None
+                            BorderThickness: =0
+                            Color: =VarTheme.InputText
+                            DefaultDate: =If(VarNavigateProfilePatient || (VarNewPatient=false && VarReturningPatient=true),Parent.Default,VarNewPatient=true && VarReturningPatient=false,TextDOBSearch.SelectedDate)
+                            DisplayMode: =Parent.DisplayMode
+                            EndYear: =Year(Today())+100
+                            Font: =VarTheme.Font
+                            FontWeight: =FontWeight.Semibold
+                            IconBackground: =RGBA(255, 255, 255, 1)
+                            IconFill: =Color.Black
+                            IsEditable: =true
+                            PaddingBottom: =0
+                            PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
+                            Size: =16
+                            StartYear: =1899
+                            Tooltip: =Parent.DisplayName
+                            Width: =Parent.Width - 20
+                            X: =16
+                            Y: =39
+                            ZIndex: =2
+
+                        LblErrorBirthday As label:
+                            Color: =VarTheme.Error
+                            Font: =Font.Lato
+                            Height: =51
+                            Live: =Live.Assertive
+                            PaddingBottom: =0
+                            PaddingLeft: =0
+                            PaddingRight: =0
+                            PaddingTop: =0
+                            Text: |-
+                                =If(
+                                    !IsBlank(DateBirthday.SelectedDate) && VarNewAppointmentValidationChk = true && 
+                                    (Round(
+                                        (DateDiff(
+                                            Date(
+                                                Year(DateBirthday.SelectedDate),
+                                                Month(DateBirthday.SelectedDate),
+                                                Day(DateBirthday.SelectedDate)
+                                            ),
+                                            Today(),
+                                            "Days"
+                                        ) / 365.25),
+                                        4
+                                    ) < (VarHealthCaresubcategoryInfo).'Minimum Age Limit'
+                                    ||
+                                    Round(
+                                        (DateDiff(
+                                            Date(
+                                                Year(DateBirthday.SelectedDate),
+                                                Month(DateBirthday.SelectedDate),
+                                                Day(DateBirthday.SelectedDate)
+                                            ),
+                                            Today(),
+                                            "Days"
+                                        ) / 365.25),
+                                        4
+                                    ) > (VarHealthCaresubcategoryInfo).'Maximum Age Limit'),
+                                    VarHealthCaresubcategoryInfo.'Age Limit Validation Info',
+                                    "Birthdate format MM/DD/YYYY"
+                                )
+                                /*If(
+                                    !IsBlank(DateBirthday.SelectedDate) && VarNewAppointmentValidationChk = true && Text(
+                                        If(
+                                            Round(
+                                                (DateDiff(
+                                                    Date(
+                                                        Year(DateBirthday.SelectedDate),
+                                                        Month(DateBirthday.SelectedDate),
+                                                        Day(DateBirthday.SelectedDate)
+                                                    ),
+                                                    Today(),
+                                                    "Days"
+                                                ) / 365.25),
+                                                4
+                                            ) < VarHealthCaresubcategoryInfo.'Minimum Age Limit',
+                                            true,
+                                            false
+                                        )
+                                    ),
+                                    VarHealthCaresubcategoryInfo.'Age Limit Validation Info',
+                                    "Birthdate format MM/DD/YYYY"
+                                )*/
+                            Tooltip: |-
+                                =If(!IsBlank(DateBirthday.SelectedDate) && VarNewAppointmentValidationChk=true 
+                                && Text(If(Round((DateDiff(Date(Year(DateBirthday.SelectedDate), Month(DateBirthday.SelectedDate), Day(DateBirthday.SelectedDate)), Today(), "Days")/365.25),4) < VarHealthCaresubcategoryInfo.'Minimum Age Limit',true,false)),VarHealthCaresubcategoryInfo.'Age Limit Validation Info',"Birthdate format MM/DD/YYYY")
+                            Visible: =VarNewAppointmentValidationChk=true && (IsBlank(DateBirthday) || LblMinorAge.Text="true")
+                            Width: =308
+                            Wrap: =false
+                            X: =16
+                            Y: =DateBirthday.Y + DateBirthday.Height
+                            ZIndex: =3
+
+                        StarVisible5_2 As label:
+                            Align: =Align.Center
+                            Color: =RGBA(9, 30, 66, 1)
+                            Font: =VarTheme.Font
+                            FontWeight: =FontWeight.Semibold
+                            Height: =LblBirthday.Height
+                            Size: =16
+                            Text: ="*"
+                            Width: =30
+                            Wrap: =false
+                            Y: =LblBirthday.Y
+                            ZIndex: =4
+
+                        LblMinorAge As label:
+                            Font: =Font.Lato
+                            Size: =14
+                            Text: |-
+                                =If(
+                                    Round(
+                                        (DateDiff(
+                                            Date(
+                                                Year(DateBirthday.SelectedDate),
+                                                Month(DateBirthday.SelectedDate),
+                                                Day(DateBirthday.SelectedDate)
+                                            ),
+                                            Today(),
+                                            "Days"
+                                        ) / 365.25),
+                                        4
+                                    ) < (VarHealthCaresubcategoryInfo).'Minimum Age Limit'
+                                    ||
+                                    Round(
+                                        (DateDiff(
+                                            Date(
+                                                Year(DateBirthday.SelectedDate),
+                                                Month(DateBirthday.SelectedDate),
+                                                Day(DateBirthday.SelectedDate)
+                                            ),
+                                            Today(),
+                                            "Days"
+                                        ) / 365.25),
+                                        4
+                                    ) > (VarHealthCaresubcategoryInfo).'Maximum Age Limit',
+                                    true,
+                                    false
+                                )
+                            Visible: =false
+                            X: =174
+                            ZIndex: =5
+
+                    DcEthnicity As typedDataCard.comboBoxOptionSetSingleEditCard:
+                        BorderStyle: =BorderStyle.Solid
+                        DataField: ="smvs_ethnicity"
+                        Default: =ThisItem.Ethnicity
+                        DisplayMode: =Parent.DisplayMode
+                        DisplayName: =DataSourceInfo([@Contacts],DataSourceInfo.DisplayName,"smvs_ethnicity")
+                        Fill: =RGBA(0, 0, 0, 0)
+                        Height: =130
+                        Required: =false
+                        Update: =CmbEthnicity.Selected.Value
+                        Width: =324
+                        X: =1
+                        Y: =2
+                        ZIndex: =1
+
+                        LblEthnicity As label:
+                            AutoHeight: =true
+                            Color: =RGBA(9, 30, 66, 1)
+                            Font: =VarTheme.Font
+                            FontWeight: =FontWeight.Bold
+                            Height: =34
+                            Size: =16
+                            Text: =Parent.DisplayName
+                            Width: =Parent.Width - 60
+                            Wrap: =false
+                            X: =20
+                            ZIndex: =1
+
+                        CmbEthnicity As combobox:
+                            BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                            BorderStyle: =BorderStyle.None
+                            BorderThickness: =0
+                            ChevronBackground: =RGBA(255, 255, 255, 1)
+                            ChevronFill: =Color.Black
+                            Color: =VarTheme.InputText
+                            DefaultSelectedItems: =[Parent.Default]
+                            DisplayFields: =["Value"]
+                            DisplayMode: =Parent.DisplayMode
+                            Font: =VarTheme.Font
+                            FontWeight: =FontWeight.Bold
+                            IsSearchable: =false
+                            Items: =Choices('Ethnicity (Contacts)')
+                            PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
+                            SearchFields: =["Value"]
+                            SearchItems: =[]
+                            SelectMultiple: =false
+                            Size: =16
+                            Tooltip: =Parent.DisplayName
+                            Width: =Parent.Width - 20
+                            X: =16
+                            Y: =LblEthnicity.Y + LblEthnicity.Height + 5
+                            ZIndex: =2
+
+                        LblErrorEthnicity As label:
+                            Color: =VarTheme.Error
+                            Font: =VarTheme.Font
+                            Height: =29
+                            Live: =Live.Assertive
+                            PaddingBottom: =0
+                            PaddingLeft: =0
+                            PaddingRight: =0
+                            PaddingTop: =0
+                            Text: ="Ethnicity cannot be empty"
+                            Visible: =CmbEthnicity.Selected.Value=Blank() && VarNewAppointmentValidationChk=true
+                            Width: =Parent.Width - 60
+                            X: =16
+                            Y: =CmbEthnicity.Y + CmbEthnicity.Height
+                            ZIndex: =3
+
+                        StarVisible10_2 As label:
+                            Align: =Align.Center
+                            Color: =RGBA(9, 30, 66, 1)
+                            Font: =VarTheme.Font
+                            FontWeight: =FontWeight.Bold
+                            Height: =LblEthnicity.Height
+                            Size: =16
+                            Text: ="*"
+                            Width: =30
+                            Wrap: =false
+                            Y: =LblEthnicity.Y
+                            ZIndex: =4
+
+                    DcMobilePhone As typedDataCard.textualEditCard:
+                        BorderStyle: =BorderStyle.Solid
+                        DataField: ="mobilephone"
+                        Default: =ThisItem.'Mobile Phone'
+                        DisplayMode: =Parent.DisplayMode
+                        DisplayName: =DataSourceInfo([@Contacts],DataSourceInfo.DisplayName,"mobilephone")
+                        Fill: =RGBA(0, 0, 0, 0)
+                        Height: =130
+                        MaxLength: =DataSourceInfo([@Contacts], DataSourceInfo.MaxLength, "mobilephone")
+                        Required: =false
+                        Update: =InputMobilePhone.Text
+                        Width: =324
+                        X: =2
+                        Y: =2
+                        ZIndex: =1
+
+                        LblMobilePhone As label:
+                            AutoHeight: =true
+                            Color: =RGBA(9, 30, 66, 1)
+                            Font: =VarTheme.Font
+                            FontWeight: =FontWeight.Bold
+                            Height: =34
+                            Size: =16
+                            Text: =Parent.DisplayName
+                            Width: =Parent.Width - 60
+                            Wrap: =false
+                            X: =20
+                            ZIndex: =1
+
+                        InputMobilePhone As text:
+                            BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                            BorderStyle: =BorderStyle.None
+                            BorderThickness: =0
+                            Color: =VarTheme.InputText
+                            Default: =Parent.Default
+                            DelayOutput: =true
+                            DisplayMode: =Parent.DisplayMode
+                            Font: =VarTheme.Font
+                            FontWeight: =FontWeight.Bold
+                            MaxLength: =10
+                            PaddingLeft: =5
+                            RadiusBottomLeft: =0
+                            RadiusBottomRight: =0
+                            RadiusTopLeft: =0
+                            RadiusTopRight: =0
+                            Size: =16
+                            Tooltip: =Parent.DisplayName
+                            Width: =Parent.Width - 20
+                            X: =16
+                            Y: =LblMobilePhone.Y + LblMobilePhone.Height + 5
+                            ZIndex: =2
+
+                        LblErrorMobilePhone As label:
+                            Color: =VarTheme.Error
+                            Font: =VarTheme.Font
+                            Height: =25
+                            Live: =Live.Assertive
+                            PaddingBottom: =0
+                            PaddingLeft: =0
+                            PaddingRight: =0
+                            PaddingTop: =0
+                            Text: =If(IsBlank(InputMobilePhone.Text),"Phone cannot be blank.",Len(InputMobilePhone.Text)<10 || Len(InputMobilePhone.Text)>10 || Not(IsMatch(InputMobilePhone.Text, "\d{10}")), "Phone should be number and 10 digits.")
+                            Visible: |-
+                                =VarNewAppointmentValidationChk && !IsBlank(InputMobilePhone.Text) && Len(InputMobilePhone.Text) <> 10 && !IsMatch(
+                                        InputMobilePhone.Text,
+                                        "\d{10}"
+                                    )
+                            Width: =322
+                            X: =16
+                            Y: =InputMobilePhone.Y + InputMobilePhone.Height
+                            ZIndex: =3
+
+                        StarVisible11_2 As label:
+                            Align: =Align.Center
+                            Color: =RGBA(9, 30, 66, 1)
+                            Font: =VarTheme.Font
+                            FontWeight: =FontWeight.Bold
+                            Height: =LblMobilePhone.Height
+                            Size: =16
+                            Text: ="*"
+                            Width: =30
+                            Wrap: =false
+                            Y: =LblMobilePhone.Y
+                            ZIndex: =4
+
+                    ValRace As typedDataCard.comboBoxOptionSetSingleEditCard:
+                        BorderStyle: =BorderStyle.Solid
+                        DataField: ="smvs_race"
+                        Default: =ThisItem.Race
+                        DisplayMode: =Parent.DisplayMode
+                        DisplayName: =DataSourceInfo([@Contacts],DataSourceInfo.DisplayName,"smvs_race")
+                        Fill: =RGBA(0, 0, 0, 0)
+                        Height: =110
+                        Required: =false
+                        Update: =CmbRace.Selected.Value
+                        Width: =324
+                        X: =0
+                        Y: =3
+                        ZIndex: =1
+
+                        LblRace As label:
+                            AutoHeight: =true
+                            Color: =RGBA(9, 30, 66, 1)
+                            Font: =VarTheme.Font
+                            FontWeight: =FontWeight.Bold
+                            Height: =34
+                            Size: =16
+                            Text: =Parent.DisplayName
+                            Width: =Parent.Width - 60
+                            Wrap: =false
+                            X: =20
+                            ZIndex: =1
+
+                        CmbRace As combobox:
+                            BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                            BorderStyle: =BorderStyle.None
+                            BorderThickness: =0
+                            ChevronBackground: =RGBA(255, 255, 255, 1)
+                            ChevronFill: =Color.Black
+                            Color: =VarTheme.InputText
+                            DefaultSelectedItems: =[Parent.Default]
+                            DisplayFields: =["Value"]
+                            DisplayMode: =Parent.DisplayMode
+                            Font: =VarTheme.Font
+                            FontWeight: =FontWeight.Bold
+                            IsSearchable: =false
+                            Items: =Choices('Race (Contacts)')
+                            PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
+                            SearchFields: =["Value"]
+                            SearchItems: =[]
+                            SelectMultiple: =false
+                            Size: =16
+                            Tooltip: =Parent.DisplayName
+                            Width: =Parent.Width - 20
+                            X: =16
+                            Y: =LblRace.Y + LblRace.Height + 5
+                            ZIndex: =2
+
+                        LblErrorRace As label:
+                            Color: =VarTheme.Error
+                            Font: =VarTheme.Font
+                            Height: =29
+                            Live: =Live.Assertive
+                            PaddingBottom: =0
+                            PaddingLeft: =0
+                            PaddingRight: =0
+                            PaddingTop: =0
+                            Text: ="Race cannot be empty"
+                            Visible: =CmbRace.Selected.Value=Blank() && VarNewAppointmentValidationChk=true
+                            Width: =Parent.Width - 60
+                            X: =16
+                            Y: =CmbRace.Y + CmbRace.Height
+                            ZIndex: =3
+
+                        StarVisible12_2 As label:
+                            Align: =Align.Center
+                            Color: =RGBA(9, 30, 66, 1)
+                            Font: =VarTheme.Font
+                            FontWeight: =FontWeight.Bold
+                            Height: =LblRace.Height
+                            Size: =16
+                            Text: ="*"
+                            Width: =30
+                            Wrap: =false
+                            Y: =LblRace.Y
+                            ZIndex: =4
+
+                    DcGender As typedDataCard.comboBoxOptionSetSingleEditCard:
+                        BorderStyle: =BorderStyle.Solid
+                        DataField: ="gendercode"
+                        Default: =ThisItem.Gender
+                        DisplayMode: =Parent.DisplayMode
+                        DisplayName: =DataSourceInfo([@Contacts],DataSourceInfo.DisplayName,"gendercode")
+                        Fill: =RGBA(0, 0, 0, 0)
+                        Height: =110
+                        Required: =false
+                        Update: =CmbGender.Selected.Value
+                        Width: =324
+                        X: =1
+                        Y: =3
+                        ZIndex: =1
+
+                        LblGender As label:
+                            AutoHeight: =true
+                            Color: =RGBA(9, 30, 66, 1)
+                            Font: =VarTheme.Font
+                            FontWeight: =FontWeight.Bold
+                            Height: =34
+                            Size: =16
+                            Text: =Parent.DisplayName
+                            Width: =Parent.Width - 60
+                            Wrap: =false
+                            X: =20
+                            ZIndex: =1
+
+                        CmbGender As combobox:
+                            BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                            BorderStyle: =BorderStyle.None
+                            BorderThickness: =0
+                            ChevronBackground: =RGBA(255, 255, 255, 1)
+                            ChevronFill: =Color.Black
+                            ChevronHoverBackground: =VarTheme.InputBackground
+                            Color: =RGBA(9, 30, 66, 1)
+                            DefaultSelectedItems: =[Parent.Default]
+                            DisplayFields: =["Value"]
+                            DisplayMode: =Parent.DisplayMode
+                            Font: =VarTheme.Font
+                            FontWeight: =FontWeight.Bold
+                            IsSearchable: =false
+                            Items: =Choices('Gender (Contacts)')
+                            PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
+                            SearchFields: =["Value"]
+                            SearchItems: =[]
+                            SelectMultiple: =false
+                            Size: =16
+                            Tooltip: =Parent.DisplayName
+                            Width: =Parent.Width - 20
+                            X: =16
+                            Y: =LblGender.Y + LblGender.Height + 5
+                            ZIndex: =2
+
+                        LblErrorGender As label:
+                            Color: =VarTheme.Error
+                            Font: =VarTheme.Font
+                            Height: =29
+                            Live: =Live.Assertive
+                            PaddingBottom: =0
+                            PaddingLeft: =0
+                            PaddingRight: =0
+                            PaddingTop: =0
+                            Text: ="Gender cannot be empty"
+                            Visible: =CmbGender.Selected.Value=Blank() && VarNewAppointmentValidationChk=true
+                            Width: =Parent.Width - 60
+                            X: =16
+                            Y: =CmbGender.Y + CmbGender.Height
+                            ZIndex: =3
+
+                        StarVisible13_2 As label:
+                            Align: =Align.Center
+                            Color: =RGBA(9, 30, 66, 1)
+                            Font: =VarTheme.Font
+                            FontWeight: =FontWeight.Bold
+                            Height: =LblGender.Height
+                            Size: =16
+                            Text: ="*"
+                            Width: =30
+                            Wrap: =false
+                            Y: =LblGender.Y
+                            ZIndex: =4
+
+                    DcLanguage As typedDataCard.comboBoxOptionSetSingleEditCard:
+                        BorderStyle: =BorderStyle.Solid
+                        DataField: ="smvs_language"
+                        Default: =ThisItem.Language
+                        DisplayMode: =Parent.DisplayMode
+                        DisplayName: =DataSourceInfo([@Contacts],DataSourceInfo.DisplayName,"smvs_language")
+                        Fill: =RGBA(0, 0, 0, 0)
+                        Height: =110
+                        Required: =false
+                        Update: =CmbLanguage.Selected.Value
+                        Width: =324
+                        X: =2
+                        Y: =3
+                        ZIndex: =1
+
+                        LblLanguage As label:
+                            AutoHeight: =true
+                            Color: =RGBA(9, 30, 66, 1)
+                            Font: =VarTheme.Font
+                            FontWeight: =FontWeight.Bold
+                            Height: =34
+                            Size: =16
+                            Text: =Parent.DisplayName
+                            Width: =Parent.Width - 60
+                            Wrap: =false
+                            X: =16
+                            ZIndex: =1
+
+                        CmbLanguage As combobox:
+                            BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                            BorderStyle: =BorderStyle.None
+                            BorderThickness: =0
+                            ChevronBackground: =RGBA(255, 255, 255, 1)
+                            ChevronFill: =Color.Black
+                            Color: =VarTheme.InputText
+                            DefaultSelectedItems: =If(IsBlank(gblSelectedPatient), [Language.English],[Parent.Default])
+                            DisplayFields: =["Value"]
+                            DisplayMode: =Parent.DisplayMode
+                            Font: =VarTheme.Font
+                            FontWeight: =FontWeight.Bold
+                            IsSearchable: =false
+                            Items: =Choices(Language)
+                            PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
+                            SearchFields: =["Value"]
+                            SearchItems: =[]
+                            SelectMultiple: =false
+                            Size: =16
+                            Tooltip: =Parent.DisplayName
+                            Width: =Parent.Width - 20
+                            X: =16
+                            Y: =LblLanguage.Y + LblLanguage.Height + 5
+                            ZIndex: =2
+
+                        LblErrorLanguage As label:
+                            Color: =VarTheme.Error
+                            Font: =VarTheme.Font
+                            Height: =29
+                            Live: =Live.Assertive
+                            PaddingBottom: =0
+                            PaddingLeft: =0
+                            PaddingRight: =0
+                            PaddingTop: =0
+                            Text: =Parent.Error
+                            Visible: =Parent.DisplayMode=DisplayMode.Edit
+                            Width: =Parent.Width - 60
+                            X: =16
+                            Y: =CmbLanguage.Y + CmbLanguage.Height
+                            ZIndex: =3
+
+                        StarVisible14_2 As label:
+                            Align: =Align.Center
+                            Color: =RGBA(9, 30, 66, 1)
+                            Font: =VarTheme.Font
+                            FontWeight: =FontWeight.Bold
+                            Height: =LblLanguage.Height
+                            Size: =16
+                            Text: ="*"
+                            Visible: =false
+                            Width: =30
+                            Wrap: =false
+                            Y: =LblLanguage.Y
+                            ZIndex: =4
+
+                    DcEmail As typedDataCard.textualEditCard:
+                        BorderStyle: =BorderStyle.Solid
+                        DataField: ="emailaddress1"
+                        Default: =ThisItem.Email
+                        DisplayMode: =Parent.DisplayMode
+                        DisplayName: =DataSourceInfo([@Contacts],DataSourceInfo.DisplayName,"emailaddress1")
+                        Fill: =RGBA(0, 0, 0, 0)
+                        Height: =110
+                        MaxLength: =DataSourceInfo([@Contacts], DataSourceInfo.MaxLength, "emailaddress1")
+                        Required: =false
+                        Update: =InputEmail.Text
+                        Width: =Parent.Width
+                        X: =0
+                        Y: =4
+                        ZIndex: =1
+
+                        LblEmail As label:
+                            AutoHeight: =true
+                            Color: =RGBA(9, 30, 66, 1)
+                            Font: =VarTheme.Font
+                            FontWeight: =FontWeight.Bold
+                            Height: =34
+                            Size: =16
+                            Text: =Parent.DisplayName
+                            Width: =Parent.Width - 60
+                            Wrap: =false
+                            X: =16
+                            ZIndex: =1
+
+                        InputEmail As text:
+                            BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                            BorderStyle: =BorderStyle.None
+                            BorderThickness: =0
+                            Color: =VarTheme.InputText
+                            Default: =Parent.Default
+                            DelayOutput: =true
+                            DisplayMode: =Parent.DisplayMode
+                            Font: =VarTheme.Font
+                            FontWeight: =FontWeight.Bold
+                            MaxLength: =Parent.MaxLength
+                            PaddingLeft: =5
+                            RadiusBottomLeft: =0
+                            RadiusBottomRight: =0
+                            RadiusTopLeft: =0
+                            RadiusTopRight: =0
+                            Size: =16
+                            Tooltip: =Parent.DisplayName
+                            Width: =637
+                            X: =16
+                            Y: =LblEmail.Y + LblEmail.Height + 5
+                            ZIndex: =2
+
+                        LblErrorEmail As label:
+                            Color: =VarTheme.Error
+                            Font: =VarTheme.Font
+                            Height: =29
+                            Live: =Live.Assertive
+                            PaddingBottom: =0
+                            PaddingLeft: =0
+                            PaddingRight: =0
+                            PaddingTop: =0
+                            Text: |-
+                                =If(
+                                    VarEmailValidate = false && ((!IsBlank(Trim(InputEmail.Text)) && !IsMatch(
+                                        InputEmail.Text,
+                                        Match.Email
+                                    )) ),
+                                    "Please enter valid email format.",
+                                    (ChkEmailHide.Value = true && (IsBlank(Trim(InputEmail.Text)) )),
+                                    "Please enter an email"
+                                )
+                            Visible: |-
+                                =VarEmailValidate = false && VarNewAppointmentValidationChk = true && ((!IsBlank(Trim(InputEmail.Text)) && !IsMatch(
+                                    InputEmail.Text,
+                                    Match.Email
+                                ) || (ChkEmailHide.Value = true && (IsBlank(Trim(InputEmail.Text)) ))))
+                            Width: =Parent.Width - 60
+                            X: =16
+                            Y: =InputEmail.Y + InputEmail.Height
+                            ZIndex: =3
+
+                        StarVisible15_2 As label:
+                            Align: =Align.Center
+                            Color: =RGBA(9, 30, 66, 1)
+                            Font: =VarTheme.Font
+                            FontWeight: =FontWeight.Bold
+                            Height: =LblEmail.Height
+                            Size: =16
+                            Text: ="*"
+                            Visible: =ChkEmailHide.Value=true
+                            Width: =30
+                            Wrap: =false
+                            Y: =LblEmail.Y
+                            ZIndex: =4
+
+                    DcNotifPreferance As typedDataCard.blankCard:
+                        BorderStyle: =BorderStyle.Solid
+                        DisplayMode: =DisplayMode.Edit
+                        Fill: =RGBA(0, 0, 0, 0)
+                        Height: =54
+                        Width: =996
+                        X: =0
+                        Y: =5
+                        ZIndex: =1
+
+                        LblNotificationPreferance As label:
+                            Color: =VarTheme.InputTextDark
+                            Font: =VarTheme.Font
+                            FontWeight: =FontWeight.Bold
+                            Height: =50
+                            Size: =20
+                            Text: ="Notification Preferences"
+                            Width: =971
+                            X: =10
+                            ZIndex: =1
+
+                    DcSMSNotification As typedDataCard.comboBoxOptionSetSingleEditCard:
+                        BorderStyle: =BorderStyle.Solid
+                        DataField: ="smvs_smsnotification"
+                        Default: =ThisItem.'SMS Notification'
+                        DisplayMode: =Parent.DisplayMode
+                        DisplayName: =DataSourceInfo([@Contacts],DataSourceInfo.DisplayName,"smvs_smsnotification")
+                        Fill: =RGBA(0, 0, 0, 0)
+                        Height: =50
+                        Required: =false
+                        Update: =If(Text(ChkSMSHide.Value)="true",'Email Notification (Contacts)'.Yes,'Email Notification (Contacts)'.No)
+                        Width: =180
+                        X: =0
+                        Y: =6
+                        ZIndex: =1
+
+                        ChkSMSHide As checkbox:
+                            BorderStyle: =BorderStyle.None
+                            CheckboxBackgroundFill: |-
+                                =//If(chkSendToIIS.Value=true,VarTheme.PrimaryColor,White)
+                                Color.White
+                            Default: |-
+                                =If(
+                                    !IsBlank(gblSelectedPatient) && Text(gblSelectedPatient.'SMS Notification') = "No",
+                                    false,
+                                    true
+                                )
+                            Font: =VarTheme.Font
+                            FontWeight: =FontWeight.Bold
+                            Height: =64
+                            Size: =16
+                            Text: ="Text SMS"
+                            Width: =153
+                            X: =15
+                            ZIndex: =5
+
+                    DcEmailNotification As typedDataCard.comboBoxOptionSetSingleEditCard:
+                        BorderStyle: =BorderStyle.Solid
+                        DataField: ="smvs_receivenotification"
+                        Default: =ThisItem.'Email Notification'
+                        DisplayMode: =Parent.DisplayMode
+                        DisplayName: =DataSourceInfo([@Contacts],DataSourceInfo.DisplayName,"smvs_receivenotification")
+                        Fill: =RGBA(0, 0, 0, 0)
+                        Height: =50
+                        Required: =false
+                        Update: =If(Text(ChkEmailHide.Value)="true",'SMS Notification (Contacts)'.Yes,'SMS Notification (Contacts)'.No)
+                        Width: =150
+                        X: =1
+                        Y: =6
+                        ZIndex: =1
+
+                        ChkEmailHide As checkbox:
+                            BorderStyle: =BorderStyle.None
+                            CheckboxBackgroundFill: |-
+                                =//If(chkSendToIIS.Value=true,VarTheme.PrimaryColor,White)
+                                Color.White
+                            Default: |-
+                                =If(
+                                    (!IsBlank(gblSelectedPatient) && Text(gblSelectedPatient.'Email Notification') = "No") || IsBlank(gblSelectedPatient),
+                                    false,
+                                    true
+                                )
+                            Font: =VarTheme.Font
+                            FontWeight: =FontWeight.Bold
+                            Height: =64
+                            Size: =16
+                            Text: ="Email"
+                            Width: =140
+                            ZIndex: =5
+
+                    DcNotificationPreferance As typedDataCard.blankCard:
+                        BorderStyle: =BorderStyle.Solid
+                        DisplayMode: =DisplayMode.Edit
+                        Fill: =RGBA(0, 0, 0, 0)
+                        Height: =HtmlNotificationPreferance.Height
+                        Width: =Parent.Width
+                        X: =0
+                        Y: =7
+                        ZIndex: =1
+
+                        HtmlNotificationPreferance As htmlViewer:
+                            AutoHeight: =true
+                            Color: =RGBA(0, 82, 204, 1)
+                            Fill: =RGBA(231, 239, 255, 1)
+                            Font: =Font.Lato
+                            Height: =200
+                            HtmlText: |-
+                                ="By checking the boxes, the patient agrees to receive appointment reminders and test results to their email and mobile number provided above.<br><br>
+                                <strong>"&First('App Settings').'Organization Name'&"</strong> adheres to HIPPA standards and would like to communicate with patient via text sms regarding appointment confirmation, reminders, test results. Please note text messaging may not be completely secure and by checking the boxes, patient is consenting to receive messages in this manner."
+                            PaddingBottom: =20
+                            PaddingLeft: =60
+                            PaddingRight: =20
+                            PaddingTop: =20
+                            Size: =16
+                            Width: =928
+                            X: =15
+                            ZIndex: =1
+
+                        ImgNotificationPreferance As image:
+                            Height: =30
+                            Image: |-
+                                ="data:image/svg+xml;utf8, "&EncodeUrl("<svg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'>
+                                <path d='M12.0001 1.99805C17.5238 1.99805 22.0016 6.47589 22.0016 11.9996C22.0016 17.5233 17.5238 22.0011 12.0001 22.0011C6.47638 22.0011 1.99854 17.5233 1.99854 11.9996C1.99854 6.47589 6.47638 1.99805 12.0001 1.99805ZM12.0001 3.49805C7.30481 3.49805 3.49854 7.30432 3.49854 11.9996C3.49854 16.6949 7.30481 20.5011 12.0001 20.5011C16.6954 20.5011 20.5016 16.6949 20.5016 11.9996C20.5016 7.30432 16.6954 3.49805 12.0001 3.49805ZM11.9964 10.4986C12.3761 10.4984 12.6901 10.7803 12.74 11.1464L12.7469 11.2481L12.7505 16.7497C12.7508 17.1639 12.4152 17.5 12.001 17.5002C11.6213 17.5005 11.3073 17.2185 11.2574 16.8525L11.2505 16.7507L11.2469 11.2491C11.2467 10.8349 11.5822 10.4989 11.9964 10.4986ZM12.0005 7.00086C12.5521 7.00086 12.9992 7.44798 12.9992 7.99953C12.9992 8.55107 12.5521 8.99819 12.0005 8.99819C11.449 8.99819 11.0019 8.55107 11.0019 7.99953C11.0019 7.44798 11.449 7.00086 12.0005 7.00086Z' fill='#0052CC'/>
+                                </svg>
+                                ")
+                            Width: =30
+                            X: =27
+                            Y: =20
+                            ZIndex: =2
+
+                    DcRegisteredAddress As typedDataCard.blankCard:
+                        BorderStyle: =BorderStyle.Solid
+                        DisplayMode: =DisplayMode.Edit
+                        Fill: =RGBA(255, 255, 255, 1)
+                        Height: =100
+                        Width: =Parent.Width
+                        X: =0
+                        Y: =8
+                        ZIndex: =1
+
+                        LblRegisteredAddress As label:
+                            Color: =VarTheme.InputTextDark
+                            Font: =VarTheme.Font
+                            FontWeight: =FontWeight.Bold
+                            Height: =50
+                            Size: =20
+                            Text: ="Registered Address"
+                            Width: =971
+                            X: =2
+                            Y: =20
+                            ZIndex: =1
+
+                    DcStreet As typedDataCard.textualEditCard:
+                        BorderStyle: =BorderStyle.Solid
+                        DataField: ="address1_line1"
+                        Default: =ThisItem.Street
+                        DisplayMode: =Parent.DisplayMode
+                        DisplayName: =DataSourceInfo([@Contacts],DataSourceInfo.DisplayName,"address1_line1")
+                        Fill: =RGBA(0, 0, 0, 0)
+                        Height: =110
+                        MaxLength: =DataSourceInfo([@Contacts], DataSourceInfo.MaxLength, "address1_line1")
+                        Required: =false
+                        Update: =InputStreet.Text
+                        Width: =324
+                        X: =0
+                        Y: =9
+                        ZIndex: =1
+
+                        LblStreet As label:
+                            AutoHeight: =true
+                            Color: =RGBA(9, 30, 66, 1)
+                            Font: =VarTheme.Font
+                            FontWeight: =FontWeight.Bold
+                            Height: =34
+                            Size: =16
+                            Text: =Parent.DisplayName
+                            Width: =Parent.Width - 60
+                            Wrap: =false
+                            X: =20
+                            ZIndex: =1
+
+                        InputStreet As text:
+                            BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                            BorderStyle: =BorderStyle.None
+                            BorderThickness: =0
+                            Color: =VarTheme.InputText
+                            Default: =Parent.Default
+                            DelayOutput: =true
+                            DisplayMode: =Parent.DisplayMode
+                            Font: =VarTheme.Font
+                            FontWeight: =FontWeight.Bold
+                            MaxLength: =Parent.MaxLength
+                            PaddingLeft: =5
+                            RadiusBottomLeft: =0
+                            RadiusBottomRight: =0
+                            RadiusTopLeft: =0
+                            RadiusTopRight: =0
+                            Size: =16
+                            Tooltip: =Parent.DisplayName
+                            Width: =Parent.Width - 20
+                            X: =16
+                            Y: =LblStreet.Y + LblStreet.Height + 5
+                            ZIndex: =2
+
+                        LblErrorStreet As label:
+                            Color: =VarTheme.Error
+                            Font: =VarTheme.Font
+                            Height: =29
+                            Live: =Live.Assertive
+                            PaddingBottom: =0
+                            PaddingLeft: =0
+                            PaddingRight: =0
+                            PaddingTop: =0
+                            Text: ="Street cannot be empty"
+                            Visible: =IsBlank(InputStreet) && VarNewAppointmentValidationChk=true
+                            Width: =Parent.Width - 60
+                            X: =16
+                            Y: =InputStreet.Y + InputStreet.Height
+                            ZIndex: =3
+
+                        StarVisible16_2 As label:
+                            Align: =Align.Center
+                            Color: =RGBA(9, 30, 66, 1)
+                            Font: =VarTheme.Font
+                            FontWeight: =FontWeight.Bold
+                            Height: =LblStreet.Height
+                            Size: =16
+                            Text: ="*"
+                            Width: =30
+                            Wrap: =false
+                            Y: =LblStreet.Y
+                            ZIndex: =4
+
+                    "'DcState/Province' As typedDataCard.textualEditCard":
+                        BorderStyle: =BorderStyle.Solid
+                        DataField: ="address1_stateorprovince"
+                        Default: =ThisItem.'State/Province'
+                        DisplayMode: =Parent.DisplayMode
+                        DisplayName: =DataSourceInfo([@Contacts],DataSourceInfo.DisplayName,"address1_stateorprovince")
+                        Fill: =RGBA(0, 0, 0, 0)
+                        Height: =110
+                        MaxLength: =DataSourceInfo([@Contacts], DataSourceInfo.MaxLength, "address1_stateorprovince")
+                        Required: =false
+                        Update: =CmbProvince.Selected.Name
+                        Width: =324
+                        X: =1
+                        Y: =9
+                        ZIndex: =1
+
+                        LblState As label:
+                            AutoHeight: =true
+                            Color: =RGBA(9, 30, 66, 1)
+                            Font: =VarTheme.Font
+                            FontWeight: =FontWeight.Semibold
+                            Height: =34
+                            Size: =16
+                            Text: =Parent.DisplayName
+                            Width: =Parent.Width - 60
+                            Wrap: =false
+                            X: =20
+                            ZIndex: =1
+
+                        "'LblErrorState/Province' As label":
+                            Font: =VarTheme.Font
+                            Height: =29
+                            Live: =Live.Assertive
+                            PaddingBottom: =0
+                            PaddingLeft: =0
+                            PaddingRight: =0
+                            PaddingTop: =0
+                            Text: ="State cannot be empty"
+                            Visible: =IsBlank(CmbProvince.SelectedText.Value) && VarNewAppointmentValidationChk=true
+                            Width: =Parent.Width - 60
+                            X: =2
+                            Y: =CmbProvince.Y + CmbProvince.Height
+                            ZIndex: =3
+
+                        StarVisible18_2 As label:
+                            Align: =Align.Center
+                            Color: =RGBA(9, 30, 66, 1)
+                            Font: =VarTheme.Font
+                            FontWeight: =FontWeight.Semibold
+                            Height: =LblState.Height
+                            Size: =16
+                            Text: ="*"
+                            Width: =30
+                            Wrap: =false
+                            Y: =LblState.Y
+                            ZIndex: =4
+
+                        CmbProvince As dropdown:
+                            AllowEmptySelection: =true
+                            BorderStyle: =BorderStyle.None
+                            BorderThickness: =0
+                            ChevronBackground: =RGBA(255, 255, 255, 1)
+                            ChevronFill: =Color.Black
+                            ChevronHoverBackground: =VarTheme.InputBackground
+                            ChevronHoverFill: =Color.Black
+                            Color: =RGBA(9, 30, 66, 1)
+                            Default: =If(!IsBlank(CmbSiteLocation.Selected.State.Name),CmbSiteLocation.Selected.State.Name,!IsBlank(gblSelectedPatient.'State/Province'),gblSelectedPatient.'State/Province',Blank())
+                            Font: =VarTheme.Font
+                            FontWeight: =FontWeight.Bold
+                            Items: =Sort(Filter(States, true),Name,SortOrder.Ascending)
+                            OnChange: =Reset(CmbCounty)
+                            SelectionColor: =Self.HoverColor
+                            Size: =16
+                            Width: =Parent.Width - 20
+                            X: =16
+                            Y: =LblState.Y + LblState.Height + 5
+                            ZIndex: =5
+
+                    DcCounty As typedDataCard.textualEditCard:
+                        BorderStyle: =BorderStyle.Solid
+                        DataField: ="address1_county"
+                        Default: =ThisItem.County
+                        DisplayMode: =Parent.DisplayMode
+                        DisplayName: =DataSourceInfo([@Contacts],DataSourceInfo.DisplayName,"address1_county")
+                        Fill: =RGBA(0, 0, 0, 0)
+                        Height: =110
+                        MaxLength: =DataSourceInfo([@Contacts], DataSourceInfo.MaxLength, "address1_county")
+                        Required: =false
+                        Update: =CmbCounty.Selected.'County Name'
+                        Width: =324
+                        X: =2
+                        Y: =9
+                        ZIndex: =1
+
+                        LblCounty As label:
+                            AutoHeight: =true
+                            Color: =RGBA(9, 30, 66, 1)
+                            Font: =VarTheme.Font
+                            FontWeight: =FontWeight.Semibold
+                            Height: =34
+                            Size: =16
+                            Text: =Parent.DisplayName
+                            Width: =Parent.Width - 60
+                            Wrap: =false
+                            X: =20
+                            ZIndex: =1
+
+                        LblErrorCounty As label:
+                            Color: =VarTheme.Error
+                            Height: =29
+                            Live: =Live.Assertive
+                            PaddingBottom: =0
+                            PaddingLeft: =0
+                            PaddingRight: =0
+                            PaddingTop: =0
+                            Text: ="County cannot be empty"
+                            Visible: |-
+                                =IsBlank(CmbCounty.SelectedText.Value) && VarNewAppointmentValidationChk=true
+                                //IsBlank(CmbCounty.Selected.'County Name') && VarNewAppointmentValidationChk=true
+                            Width: =Parent.Width - 60
+                            X: =16
+                            Y: =CmbCounty.Y + CmbCounty.Height
+                            ZIndex: =3
+
+                        StarVisible20_2 As label:
+                            Align: =Align.Center
+                            Color: =RGBA(9, 30, 66, 1)
+                            FontWeight: =FontWeight.Semibold
+                            Height: =LblCounty.Height
+                            Size: =16
+                            Text: ="*"
+                            Width: =30
+                            Wrap: =false
+                            Y: =LblCounty.Y
+                            ZIndex: =4
+
+                        CmbCounty As dropdown:
+                            AllowEmptySelection: =true
+                            BorderStyle: =BorderStyle.None
+                            BorderThickness: =0
+                            ChevronBackground: =RGBA(255, 255, 255, 1)
+                            ChevronFill: =Color.Black
+                            ChevronHoverBackground: =VarTheme.InputBackground
+                            ChevronHoverFill: =Color.Black
+                            Color: =RGBA(9, 30, 66, 1)
+                            Default: |-
+                                =If(
+                                    !IsBlank(CmbSiteLocation.Selected.County.Name),
+                                    CmbSiteLocation.Selected.County.Name,
+                                    !IsBlank(gblSelectedPatient.County),
+                                    gblSelectedPatient.County,
+                                    Blank()
+                                )
+                            Font: =VarTheme.Font
+                            FontWeight: =FontWeight.Bold
+                            Items: =Sort(Filter(Counties, 'State Code' = CmbProvince.Selected.Name),Name,SortOrder.Ascending)
+                            Size: =16
+                            Width: =Parent.Width - 20
+                            X: =16
+                            Y: =LblState.Y + LblState.Height + 5
+                            ZIndex: =7
+
+                        ComboBox1 As combobox:
+                            DefaultSelectedItems: =[If(!IsBlank(gblSelectedPatient.County),gblSelectedPatient.County,!IsBlank(CmbSiteLocation.Selected.State.Name),CmbSiteLocation.Selected.County.Name,Blank())]
+                            DisplayFields: =["smvs_name"]
+                            Items: =Filter(Counties, 'State Code' = CmbProvince.Selected.Name)
+                            SearchFields: =["smvs_name"]
+                            SearchItems: =Search(Filter(Counties, 'State Code' = CmbProvince.Selected.Name),ComboBox1.SearchText,"smvs_name")
+                            SelectMultiple: =false
+                            Visible: =false
+                            ZIndex: =8
+
+                    DcCity As typedDataCard.textualEditCard:
+                        BorderStyle: =BorderStyle.Solid
+                        DataField: ="address1_city"
+                        Default: =ThisItem.City
+                        DisplayMode: =Parent.DisplayMode
+                        DisplayName: =DataSourceInfo([@Contacts],DataSourceInfo.DisplayName,"address1_city")
+                        Fill: =RGBA(0, 0, 0, 0)
+                        Height: =110
+                        MaxLength: =DataSourceInfo([@Contacts], DataSourceInfo.MaxLength, "address1_city")
+                        Required: =false
+                        Update: =InputCity.Text
+                        Width: =324
+                        X: =0
+                        Y: =10
+                        ZIndex: =1
+
+                        LblCity As label:
+                            AutoHeight: =true
+                            Color: =RGBA(9, 30, 66, 1)
+                            Font: =VarTheme.Font
+                            FontWeight: =FontWeight.Bold
+                            Height: =34
+                            Size: =16
+                            Text: =Parent.DisplayName
+                            Width: =Parent.Width - 60
+                            Wrap: =false
+                            X: =20
+                            ZIndex: =1
+
+                        InputCity As text:
+                            BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                            BorderStyle: =BorderStyle.None
+                            BorderThickness: =0
+                            Color: =VarTheme.InputText
+                            Default: =Parent.Default
+                            DelayOutput: =true
+                            DisplayMode: =Parent.DisplayMode
+                            Font: =VarTheme.Font
+                            FontWeight: =FontWeight.Bold
+                            MaxLength: =Parent.MaxLength
+                            PaddingLeft: =5
+                            RadiusBottomLeft: =0
+                            RadiusBottomRight: =0
+                            RadiusTopLeft: =0
+                            RadiusTopRight: =0
+                            Size: =16
+                            Tooltip: =Parent.DisplayName
+                            Width: =Parent.Width - 20
+                            X: =16
+                            Y: =LblCity.Y + LblCity.Height + 5
+                            ZIndex: =2
+
+                        LblErrorCity As label:
+                            Color: =VarTheme.Error
+                            Font: =VarTheme.Font
+                            Height: =29
+                            Live: =Live.Assertive
+                            PaddingBottom: =0
+                            PaddingLeft: =0
+                            PaddingRight: =0
+                            PaddingTop: =0
+                            Text: ="City cannot be empty"
+                            Visible: =IsBlank(InputCity) && VarNewAppointmentValidationChk=true
+                            Width: =Parent.Width - 60
+                            X: =16
+                            Y: =InputCity.Y + InputCity.Height
+                            ZIndex: =3
+
+                        StarVisible17_2 As label:
+                            Align: =Align.Center
+                            Color: =RGBA(9, 30, 66, 1)
+                            Font: =VarTheme.Font
+                            FontWeight: =FontWeight.Bold
+                            Height: =LblCity.Height
+                            Size: =16
+                            Text: ="*"
+                            Width: =30
+                            Wrap: =false
+                            Y: =LblCity.Y
+                            ZIndex: =4
+
+                    DcZipCode As typedDataCard.textualEditCard:
+                        BorderStyle: =BorderStyle.Solid
+                        DataField: ="address1_postalcode"
+                        Default: =ThisItem.'Zip Code'
+                        DisplayMode: =Parent.DisplayMode
+                        DisplayName: =DataSourceInfo([@Contacts],DataSourceInfo.DisplayName,"address1_postalcode")
+                        Fill: =RGBA(0, 0, 0, 0)
+                        Height: =110
+                        MaxLength: =DataSourceInfo([@Contacts], DataSourceInfo.MaxLength, "address1_postalcode")
+                        Required: =false
+                        Update: =InputZipCode.Text
+                        Width: =324
+                        X: =1
+                        Y: =10
+                        ZIndex: =1
+
+                        LblZipCode As label:
+                            AutoHeight: =true
+                            Color: =RGBA(9, 30, 66, 1)
+                            Font: =VarTheme.Font
+                            FontWeight: =FontWeight.Bold
+                            Height: =34
+                            Size: =16
+                            Text: =Parent.DisplayName
+                            Width: =Parent.Width - 60
+                            Wrap: =false
+                            X: =20
+                            ZIndex: =1
+
+                        InputZipCode As text:
+                            BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                            BorderStyle: =BorderStyle.None
+                            BorderThickness: =0
+                            Color: =VarTheme.InputText
+                            Default: =Parent.Default
+                            DelayOutput: =true
+                            DisplayMode: =Parent.DisplayMode
+                            Font: =VarTheme.Font
+                            FontWeight: =FontWeight.Bold
+                            MaxLength: =5
+                            PaddingLeft: =5
+                            RadiusBottomLeft: =0
+                            RadiusBottomRight: =0
+                            RadiusTopLeft: =0
+                            RadiusTopRight: =0
+                            Size: =16
+                            Tooltip: =Parent.DisplayName
+                            Width: =Parent.Width - 20
+                            X: =20
+                            Y: =39
+                            ZIndex: =2
+
+                        LblErrorZipCode As label:
+                            Color: =VarTheme.Error
+                            Font: =VarTheme.Font
+                            Height: =29
+                            Live: =Live.Assertive
+                            PaddingBottom: =0
+                            PaddingLeft: =0
+                            PaddingRight: =0
+                            PaddingTop: =0
+                            Text: =If(IsBlank(InputZipCode.Text),"Zip Code cannot be empty.",Len(InputZipCode.Text)<5 || Len(InputZipCode.Text)>5, "Zip code should be 5 digits.")
+                            Visible: =VarNewAppointmentValidationChk=true
+                            Width: =Parent.Width - 60
+                            X: =16
+                            Y: =InputZipCode.Y + InputZipCode.Height
+                            ZIndex: =3
+
+                        StarVisible19_2 As label:
+                            Align: =Align.Center
+                            Color: =RGBA(9, 30, 66, 1)
+                            Font: =VarTheme.Font
+                            FontWeight: =FontWeight.Bold
+                            Height: =LblZipCode.Height
+                            Size: =16
+                            Text: ="*"
+                            Width: =30
+                            Wrap: =false
+                            Y: =LblZipCode.Y
+                            ZIndex: =4
+
+                    DcPhysicianInfo As typedDataCard.blankCard:
+                        BorderStyle: =BorderStyle.Solid
+                        DisplayMode: =DisplayMode.Edit
+                        Fill: =RGBA(255, 255, 255, 1)
+                        Height: =100
+                        Width: =Parent.Width
+                        X: =0
+                        Y: =11
+                        ZIndex: =1
+
+                        LblPhysicianInfo As label:
+                            Color: =VarTheme.InputTextDark
+                            Font: =VarTheme.Font
+                            FontWeight: =FontWeight.Bold
+                            Height: =50
+                            Size: =20
+                            Text: ="Primary care physician information"
+                            Width: =971
+                            X: =2
+                            Y: =20
+                            ZIndex: =1
+
+                    DcPhyisicianName As typedDataCard.textualEditCard:
+                        BorderStyle: =BorderStyle.Solid
+                        DataField: ="smvs_primary_care_physician_name"
+                        Default: =ThisItem.'Primary Care Physician Name'
+                        DisplayMode: =Parent.DisplayMode
+                        DisplayName: =DataSourceInfo([@Contacts],DataSourceInfo.DisplayName,"smvs_primary_care_physician_name")
+                        Fill: =RGBA(0, 0, 0, 0)
+                        Height: =130
+                        MaxLength: =DataSourceInfo([@Contacts], DataSourceInfo.MaxLength, "smvs_primary_care_physician_name")
+                        Required: =false
+                        Update: =DataCardValue53.Text
+                        Width: =332
+                        X: =0
+                        Y: =12
+                        ZIndex: =1
+
+                        DataCardKey64 As label:
+                            AutoHeight: =true
+                            Color: =RGBA(9, 30, 66, 1)
+                            Font: =VarTheme.Font
+                            FontWeight: =FontWeight.Bold
+                            Height: =34
+                            Size: =16
+                            Text: ="Full Name"
+                            Width: =Parent.Width - 60
+                            Wrap: =false
+                            X: =16
+                            Y: =10
+                            ZIndex: =1
+
+                        DataCardValue53 As text:
+                            BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                            BorderStyle: =BorderStyle.None
+                            BorderThickness: =0
+                            Color: =RGBA(9, 30, 66, 1)
+                            Default: =Parent.Default
+                            DelayOutput: =true
+                            DisplayMode: =Parent.DisplayMode
+                            Font: =VarTheme.Font
+                            FontWeight: =FontWeight.Bold
+                            MaxLength: =Parent.MaxLength
+                            PaddingLeft: =5
+                            RadiusBottomLeft: =0
+                            RadiusBottomRight: =0
+                            RadiusTopLeft: =0
+                            RadiusTopRight: =0
+                            Size: =16
+                            Tooltip: =Parent.DisplayName
+                            Width: =Parent.Width - 20
+                            X: =16
+                            Y: =DataCardKey64.Y + DataCardKey64.Height + 5
+                            ZIndex: =2
+
+                        ErrorMessage62 As label:
+                            Color: =VarTheme.Error
+                            Font: =VarTheme.Font
+                            Height: =34
+                            Live: =Live.Assertive
+                            PaddingBottom: =0
+                            PaddingLeft: =0
+                            PaddingRight: =0
+                            PaddingTop: =0
+                            Text: ="Please enter physician full name"
+                            Visible: =IsBlank(DataCardValue53) && VarNewAppointmentValidationChk
+                            Width: =Parent.Width - 60
+                            X: =16
+                            Y: =DataCardValue53.Y + DataCardValue53.Height
+                            ZIndex: =3
+
+                        StarVisible59 As label:
+                            Align: =Align.Center
+                            Color: =RGBA(9, 30, 66, 1)
+                            Font: =VarTheme.Font
+                            Height: =DataCardKey64.Height
+                            Text: ="*"
+                            Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                            Width: =30
+                            Wrap: =false
+                            Y: =DataCardKey64.Y
+                            ZIndex: =4
+
+                    DcPhysicianNumber As typedDataCard.textualEditCard:
+                        BorderStyle: =BorderStyle.Solid
+                        DataField: ="smvs_primary_care_physician_phone_number"
+                        Default: =ThisItem.'Primary Care Physician Phone Number'
+                        DisplayMode: =Parent.DisplayMode
+                        DisplayName: =DataSourceInfo([@Contacts],DataSourceInfo.DisplayName,"smvs_primary_care_physician_phone_number")
+                        Fill: =RGBA(0, 0, 0, 0)
+                        Height: =130
+                        MaxLength: =DataSourceInfo([@Contacts], DataSourceInfo.MaxLength, "smvs_primary_care_physician_phone_number")
+                        Required: =false
+                        Update: =TxtPhysicianPhone.Text
+                        Width: =332
+                        X: =1
+                        Y: =12
+                        ZIndex: =1
+
+                        LblErrorPhysicianNumber As label:
+                            Color: =VarTheme.Error
+                            Font: =VarTheme.Font
+                            Height: =39
+                            Live: =Live.Assertive
+                            PaddingBottom: =0
+                            PaddingLeft: =0
+                            PaddingRight: =0
+                            PaddingTop: =0
+                            Text: =If(IsBlank(TxtPhysicianPhone.Text),"Phone cannot be blank.",Len(TxtPhysicianPhone.Text)<10 || Len(TxtPhysicianPhone.Text)>10 || Not(IsMatch(TxtPhysicianPhone.Text, "\d{10}")), "Phone should be number and 10 digits.")
+                            Visible: |-
+                                =VarNewAppointmentValidationChk && (!IsBlank(TxtPhysicianPhone.Text) || Len(TxtPhysicianPhone.Text) <> 10 || !IsMatch(
+                                    TxtPhysicianPhone.Text,
+                                    "\d{10}")
+                                )
+                            Width: =Parent.Width
+                            X: =16
+                            Y: =TxtPhysicianPhone.Y + TxtPhysicianPhone.Height
+                            ZIndex: =1
+
+                        DataCardKey65 As label:
+                            AutoHeight: =true
+                            Color: =RGBA(9, 30, 66, 1)
+                            Font: =VarTheme.Font
+                            FontWeight: =FontWeight.Bold
+                            Height: =34
+                            Size: =16
+                            Text: ="Phone Number"
+                            Width: =Parent.Width - 60
+                            Wrap: =false
+                            X: =16
+                            Y: =10
+                            ZIndex: =2
+
+                        TxtPhysicianPhone As text:
+                            BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                            BorderStyle: =BorderStyle.None
+                            BorderThickness: =0
+                            Color: =RGBA(9, 30, 66, 1)
+                            Default: =Parent.Default
+                            DelayOutput: =true
+                            DisplayMode: =Parent.DisplayMode
+                            Font: =VarTheme.Font
+                            FontWeight: =FontWeight.Bold
+                            MaxLength: =10
+                            PaddingLeft: =5
+                            RadiusBottomLeft: =0
+                            RadiusBottomRight: =0
+                            RadiusTopLeft: =0
+                            RadiusTopRight: =0
+                            Size: =16
+                            Tooltip: =Parent.DisplayName
+                            Width: =Parent.Width - 20
+                            X: =16
+                            Y: =DataCardKey65.Y + DataCardKey65.Height + 5
+                            ZIndex: =3
+
+                        StarVisible60 As label:
+                            Align: =Align.Center
+                            Color: =RGBA(9, 30, 66, 1)
+                            Font: =VarTheme.Font
+                            Height: =DataCardKey65.Height
+                            Text: ="*"
+                            Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                            Width: =30
+                            Wrap: =false
+                            Y: =DataCardKey65.Y
+                            ZIndex: =5
+
+                    DcContactType As typedDataCard.comboBoxOptionSetSingleEditCard:
+                        BorderStyle: =BorderStyle.Solid
+                        DataField: ="msemr_contacttype"
+                        Default: =ThisItem.'Contact Type'
+                        DisplayMode: =Parent.DisplayMode
+                        DisplayName: =DataSourceInfo([@Contacts],DataSourceInfo.DisplayName,"msemr_contacttype")
+                        Fill: =RGBA(0, 0, 0, 0)
+                        Height: =50
+                        Required: =false
+                        Update: =DataCardValue54.Selected.Value
+                        Visible: =false
+                        Width: =332
+                        X: =2
+                        Y: =12
+                        ZIndex: =1
+
+                        DataCardKey50 As label:
+                            AutoHeight: =true
+                            Height: =34
+                            Text: =Parent.DisplayName
+                            Width: =Parent.Width - 60
+                            Wrap: =false
+                            X: =30
+                            Y: =10
+                            ZIndex: =1
+
+                        DataCardValue54 As combobox:
+                            BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                            DefaultSelectedItems: =['Contact Type (Contacts)'.Patient]
+                            DisplayFields: =["Value"]
+                            DisplayMode: =Parent.DisplayMode
+                            IsSearchable: =false
+                            Items: =Choices('Contact Type (Contacts)')
+                            PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
+                            SearchFields: =["Value"]
+                            SearchItems: =[]
+                            SelectMultiple: =false
+                            Tooltip: =Parent.DisplayName
+                            Width: =Parent.Width - 60
+                            X: =30
+                            Y: =DataCardKey50.Y + DataCardKey50.Height + 5
+                            ZIndex: =2
+
+                        ErrorMessage51 As label:
+                            AutoHeight: =true
+                            Height: =10
+                            Live: =Live.Assertive
+                            PaddingBottom: =0
+                            PaddingLeft: =0
+                            PaddingRight: =0
+                            PaddingTop: =0
+                            Text: =Parent.Error
+                            Visible: =Parent.DisplayMode=DisplayMode.Edit
+                            Width: =Parent.Width - 60
+                            X: =30
+                            Y: =DataCardValue54.Y + DataCardValue54.Height
+                            ZIndex: =3
+
+                        StarVisible51 As label:
+                            Align: =Align.Center
+                            Height: =DataCardKey50.Height
+                            Text: ="*"
+                            Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                            Width: =30
+                            Wrap: =false
+                            Y: =DataCardKey50.Y
+                            ZIndex: =4
+
+        DcPaymentInfoPatientProfile As dataCard.blankCard:
+            BorderColor: =RGBA(0, 0, 0, 1)
+            BorderStyle: =BorderStyle.Solid
+            DisplayMode: =DisplayMode.Edit
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =FrmPatientProfilePayment.Height
+            Visible: =(VarHidePatientVerificationCard=false &&Text(VarPrepaidByOrganization) <> "Yes"  && Text(VarShowPayment)="On" && ((Text(CmbService.Selected.'Collect Insurance')="On" &&(Text(VarIncludeInsurance)<>"No")) || (Text(CmbService.Selected.'Collect Id’s')="On" &&(Text(VarIncludeNoInsurance)<>"No")) || (Text(CmbService.Selected.'Out of Pocket')="On") &&(Text(VarIncludePayAtService)<>"No")))||(Text(LblAgeValidation)="true") && VarTermsAndCondition
+            Width: =998
+            X: =0
+            Y: =1
+            ZIndex: =3
+
+            ConPaymentInfoPatientProfile As groupContainer.manualLayoutContainer:
+                Height: =FrmPatientProfilePayment.Height
+                Width: =Parent.Width
+                ZIndex: =1
+
+                FrmPatientProfilePayment As form:
+                    DataSource: ='Appointments (EMR)'
+                    DefaultMode: =If(VarPatientAppoinmentMode="New",FormMode.New,FormMode.Edit)
+                    Fill: =RGBA(243, 243, 244, 1)
+                    Height: =If(LblAgeValidation.Text = "true" && !IsBlank(DateBirthday.SelectedDate) ,210,0)
+                    Item: |-
+                        =If(
+                            !IsBlank(gblSelectedAppointmentPatient),
+                            LookUp(
+                                'Appointments (EMR)',
+                                Activity = gblSelectedAppointmentPatient.Activity
+                            )
+                        )
+                    Width: =Parent.Width
+                    ZIndex: =1
+
+                    DcGuardianInformationPatientProfile As typedDataCard.blankCard:
+                        BorderStyle: =BorderStyle.Solid
+                        DisplayMode: =DisplayMode.Edit
+                        Fill: =RGBA(255, 255, 255, 1)
+                        Height: =70
+                        Visible: =LblAgeValidation.Text = "true" && !IsBlank(DateBirthday.SelectedDate)
+                        Width: =Parent.Width
+                        X: =0
+                        Y: =0
+                        ZIndex: =1
+
+                        LblGuardianInformationHeaderPatientProfile As label:
+                            Font: =VarTheme.Font
+                            FontWeight: =FontWeight.Bold
+                            Height: =50
+                            Size: =20
+                            Text: ="Guardian Information"
+                            Width: =Parent.Width
+                            Y: =12
+                            ZIndex: =1
+
+                    DcGuardianFirstName As typedDataCard.textualEditCard:
+                        BorderStyle: =BorderStyle.Solid
+                        DataField: ="smvs_guardian_first_name"
+                        Default: =ThisItem.'Guardian First Name'
+                        DisplayMode: =Parent.DisplayMode
+                        DisplayName: =DataSourceInfo([@'Appointments (EMR)'],DataSourceInfo.DisplayName,"smvs_guardian_first_name")
+                        Fill: =RGBA(0, 0, 0, 0)
+                        Height: =130
+                        MaxLength: =DataSourceInfo([@'Appointments (EMR)'], DataSourceInfo.MaxLength, "smvs_guardian_first_name")
+                        Required: =false
+                        Update: =InputGuardianFirstName.Text
+                        Visible: =LblAgeValidation.Text = "true" && !IsBlank(DateBirthday.SelectedDate)
+                        Width: =318
+                        X: =0
+                        Y: =1
+                        ZIndex: =1
+
+                        LblGuardianFirstName As label:
+                            AutoHeight: =true
+                            Color: =RGBA(9, 30, 66, 1)
+                            Font: =VarTheme.Font
+                            FontWeight: =FontWeight.Bold
+                            Height: =34
+                            Size: =16
+                            Text: =Parent.DisplayName
+                            Width: =Parent.Width - 60
+                            Wrap: =false
+                            X: =20
+                            Y: =10
+                            ZIndex: =1
+
+                        InputGuardianFirstName As text:
+                            BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                            BorderStyle: =BorderStyle.None
+                            BorderThickness: =0
+                            Color: =RGBA(9, 30, 66, 1)
+                            Default: =
+                            DelayOutput: =true
+                            DisplayMode: =Parent.DisplayMode
+                            Font: =VarTheme.Font
+                            FontWeight: =FontWeight.Bold
+                            MaxLength: =Parent.MaxLength
+                            PaddingLeft: =5
+                            RadiusBottomLeft: =0
+                            RadiusBottomRight: =0
+                            RadiusTopLeft: =0
+                            RadiusTopRight: =0
+                            Size: =16
+                            Tooltip: =Parent.DisplayName
+                            Width: =Parent.Width - 20
+                            X: =16
+                            Y: =LblGuardianFirstName.Y + LblGuardianFirstName.Height + 5
+                            ZIndex: =2
+
+                        LblErrorGuardianFirstName As label:
+                            Color: =VarTheme.Error
+                            Font: =VarTheme.Font
+                            Height: =29
+                            Live: =Live.Assertive
+                            PaddingBottom: =0
+                            PaddingLeft: =0
+                            PaddingRight: =0
+                            PaddingTop: =0
+                            Text: ="First name cannot be empty"
+                            Visible: =IsBlank(InputGuardianFirstName.Text) && VarNewAppointmentValidationChk=true && LblAgeValidation.Text = "true"
+                            Width: =Parent.Width - 60
+                            X: =16
+                            Y: =InputGuardianFirstName.Y + InputGuardianFirstName.Height
+                            ZIndex: =3
+
+                        StarVisible21_1 As label:
+                            Align: =Align.Center
+                            Color: =RGBA(9, 30, 66, 1)
+                            Font: =VarTheme.Font
+                            FontWeight: =FontWeight.Bold
+                            Height: =LblGuardianFirstName.Height
+                            Size: =16
+                            Text: ="*"
+                            Width: =30
+                            Wrap: =false
+                            Y: =LblGuardianFirstName.Y
+                            ZIndex: =4
+
+                    DcGuardianMiddleName As typedDataCard.textualEditCard:
+                        BorderStyle: =BorderStyle.Solid
+                        DataField: ="smvs_guardian_middle_name"
+                        Default: =ThisItem.'Guardian Middle Name'
+                        DisplayMode: =Parent.DisplayMode
+                        DisplayName: =DataSourceInfo([@'Appointments (EMR)'],DataSourceInfo.DisplayName,"smvs_guardian_middle_name")
+                        Fill: =RGBA(0, 0, 0, 0)
+                        Height: =130
+                        MaxLength: =DataSourceInfo([@'Appointments (EMR)'], DataSourceInfo.MaxLength, "smvs_guardian_middle_name")
+                        Required: =false
+                        Update: =InputGuardianMiddleName.Text
+                        Visible: =LblAgeValidation.Text = "true" && !IsBlank(DateBirthday.SelectedDate)
+                        Width: =318
+                        X: =1
+                        Y: =1
+                        ZIndex: =1
+
+                        LblGuardianMiddleName As label:
+                            AutoHeight: =true
+                            Color: =RGBA(9, 30, 66, 1)
+                            Font: =VarTheme.Font
+                            FontWeight: =FontWeight.Bold
+                            Height: =34
+                            Size: =16
+                            Text: =Parent.DisplayName
+                            Width: =Parent.Width - 60
+                            Wrap: =false
+                            X: =20
+                            Y: =10
+                            ZIndex: =1
+
+                        InputGuardianMiddleName As text:
+                            BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                            BorderStyle: =BorderStyle.None
+                            BorderThickness: =0
+                            Color: =RGBA(9, 30, 66, 1)
+                            Default: =
+                            DelayOutput: =true
+                            DisplayMode: =Parent.DisplayMode
+                            Font: =VarTheme.Font
+                            FontWeight: =FontWeight.Bold
+                            MaxLength: =Parent.MaxLength
+                            PaddingLeft: =5
+                            RadiusBottomLeft: =0
+                            RadiusBottomRight: =0
+                            RadiusTopLeft: =0
+                            RadiusTopRight: =0
+                            Size: =16
+                            Tooltip: =Parent.DisplayName
+                            Width: =Parent.Width - 20
+                            X: =16
+                            Y: =LblGuardianMiddleName.Y + LblGuardianMiddleName.Height + 5
+                            ZIndex: =2
+
+                        LblErrorGuardianMiddleName As label:
+                            AutoHeight: =true
+                            Font: =VarTheme.Font
+                            Height: =10
+                            Live: =Live.Assertive
+                            PaddingBottom: =0
+                            PaddingLeft: =0
+                            PaddingRight: =0
+                            PaddingTop: =0
+                            Text: =Parent.Error
+                            Visible: =Parent.DisplayMode=DisplayMode.Edit
+                            Width: =Parent.Width - 60
+                            X: =30
+                            Y: =InputGuardianMiddleName.Y + InputGuardianMiddleName.Height
+                            ZIndex: =3
+
+                        StarVisible22_1 As label:
+                            Align: =Align.Center
+                            Color: =RGBA(9, 30, 66, 1)
+                            Font: =VarTheme.Font
+                            FontWeight: =FontWeight.Bold
+                            Height: =LblGuardianMiddleName.Height
+                            Size: =16
+                            Text: ="*"
+                            Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                            Width: =30
+                            Wrap: =false
+                            Y: =LblGuardianMiddleName.Y
+                            ZIndex: =4
+
+                    DcGuardianLastName As typedDataCard.textualEditCard:
+                        BorderStyle: =BorderStyle.Solid
+                        DataField: ="smvs_guardian_last_name"
+                        Default: =ThisItem.'Guardian Last Name'
+                        DisplayMode: =Parent.DisplayMode
+                        DisplayName: =DataSourceInfo([@'Appointments (EMR)'],DataSourceInfo.DisplayName,"smvs_guardian_last_name")
+                        Fill: =RGBA(0, 0, 0, 0)
+                        Height: =130
+                        MaxLength: =DataSourceInfo([@'Appointments (EMR)'], DataSourceInfo.MaxLength, "smvs_guardian_last_name")
+                        Required: =false
+                        Update: =InputGuardianLastName.Text
+                        Visible: =LblAgeValidation.Text = "true" && !IsBlank(DateBirthday.SelectedDate)
+                        Width: =318
+                        X: =2
+                        Y: =1
+                        ZIndex: =1
+
+                        LblGuardianLastName As label:
+                            AutoHeight: =true
+                            Color: =RGBA(9, 30, 66, 1)
+                            Font: =VarTheme.Font
+                            FontWeight: =FontWeight.Bold
+                            Height: =34
+                            Size: =16
+                            Text: =Parent.DisplayName
+                            Width: =Parent.Width - 60
+                            Wrap: =false
+                            X: =20
+                            Y: =10
+                            ZIndex: =1
+
+                        InputGuardianLastName As text:
+                            BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                            BorderStyle: =BorderStyle.None
+                            BorderThickness: =0
+                            Color: =RGBA(9, 30, 66, 1)
+                            Default: =
+                            DelayOutput: =true
+                            DisplayMode: =Parent.DisplayMode
+                            Font: =VarTheme.Font
+                            FontWeight: =FontWeight.Bold
+                            MaxLength: =Parent.MaxLength
+                            PaddingLeft: =5
+                            RadiusBottomLeft: =0
+                            RadiusBottomRight: =0
+                            RadiusTopLeft: =0
+                            RadiusTopRight: =0
+                            Size: =16
+                            Tooltip: =Parent.DisplayName
+                            Width: =Parent.Width - 20
+                            X: =16
+                            Y: =LblGuardianLastName.Y + LblGuardianLastName.Height + 5
+                            ZIndex: =2
+
+                        LblErrorGuardianLastName As label:
+                            Color: =VarTheme.Error
+                            Font: =VarTheme.Font
+                            Height: =29
+                            Live: =Live.Assertive
+                            PaddingBottom: =0
+                            PaddingLeft: =0
+                            PaddingRight: =0
+                            PaddingTop: =0
+                            Text: ="Last name cannot be empty"
+                            Visible: =IsBlank(InputGuardianLastName.Text) && VarNewAppointmentValidationChk=true && LblAgeValidation.Text = "true"
+                            Width: =Parent.Width - 60
+                            X: =16
+                            Y: =InputGuardianLastName.Y + InputGuardianLastName.Height
+                            ZIndex: =3
+
+                        StarVisible23_1 As label:
+                            Align: =Align.Center
+                            Color: =RGBA(9, 30, 66, 1)
+                            Font: =VarTheme.Font
+                            FontWeight: =FontWeight.Bold
+                            Height: =LblGuardianLastName.Height
+                            Size: =16
+                            Text: ="*"
+                            Width: =30
+                            Wrap: =false
+                            Y: =LblGuardianLastName.Y
+                            ZIndex: =4
+
+        DcTermsAndConditionPrimary As dataCard.blankCard:
+            BorderColor: =RGBA(0, 0, 0, 1)
+            BorderStyle: =BorderStyle.Solid
+            DisplayMode: =DisplayMode.Edit
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =GalTermsAndCondition.Y+GalTermsAndCondition.Height
+            Visible: =VarTermsAndCondition || IsBlank(VarTermsAndCondition)
+            Width: =998
+            X: =0
+            Y: =3
+            ZIndex: =4
+
+            "GalTermsAndCondition As gallery.'BrowseLayout_Vertical_TwoTextOneImageVariant_ver4.0'":
+                Height: =GalTermsAndCondition.TemplateHeight * CountRows(GalTermsAndCondition.AllItems)
+                Items: |-
+                    =Filter((ForAll(Split(First(Filter(CmbService.Selected.'Localize Website Contents',Language.Code = "en")).'Terms and Conditions Acceptance',"<li>"), {Result: ThisRecord.Value})),!StartsWith(Result,"<ul>") && !StartsWith(Result,"</ul>") )
+                Layout: =Layout.Vertical
+                TemplatePadding: =0
+                TemplateSize: =75
+                Width: =Parent.Width
+                Y: =BtnPrimaryTermsAndCondition.Y+BtnPrimaryTermsAndCondition.Height
+                ZIndex: =1
+
+                RectBorderTermsandCondition As rectangle:
+                    BorderColor: =VarTheme.InputBackground
+                    BorderThickness: =1
+                    DisabledFill: =RGBA(0,0,0,0)
+                    Fill: =RGBA(0,0,0,0)
+                    Height: =Parent.TemplateHeight
+                    HoverFill: =RGBA(0,0,0,0)
+                    OnSelect: =Select(Parent)
+                    PressedFill: =RGBA(0,0,0,0)
+                    Width: =Parent.TemplateWidth-26
+                    ZIndex: =1
+
+                "'HtmlT&S' As htmlViewer":
+                    HtmlText: |-
+                        =If(!IsBlank(VarFactSheetUrl), "<a href="&VarFactSheetUrl&">"&CmbService.Selected.Name&" 
+                        EUA Fact Sheet</a>",CmbService.Selected.Name&" EUA Fact Sheet")
+                    OnSelect: =Select(Parent)
+                    Visible: =false
+                    X: =798
+                    Y: =35
+                    ZIndex: =2
+
+                chkSelectedTermsAndCondition As label:
+                    OnSelect: =Select(Parent)
+                    Text: =If(userSelectedTermsAndCondition=true || ChkTermsAndCondition.Value=true  ,ChkTermsAndCondition.Value,false)
+                    Visible: =false
+                    X: =60
+                    Y: =25
+                    ZIndex: =3
+
+                ChkTermsAndCondition As checkbox:
+                    BorderStyle: =BorderStyle.None
+                    CheckboxBackgroundFill: |-
+                        =//If(ChkTermsAndCondition.Value=true,VarTheme.PrimaryColor,White)
+                        Color.White
+                    CheckmarkFill: =Color.Black
+                    Color: =Color.White
+                    OnSelect: |
+                        =Select(GalTermsAndCondition);
+                        Set(userSelectedTermsAndCondition,true);
+                    Text: =""
+                    Width: =50
+                    X: =20
+                    Y: =12
+                    ZIndex: =4
+
+                HtmlTermsAndCondition As htmlViewer:
+                    AutoHeight: =true
+                    Font: =VarTheme.Font
+                    Height: =50
+                    HtmlText: |
+                        ="<b>"&Substitute(Substitute(Substitute(ThisItem.Result,"</li>",Blank()),"</ul>",Blank()),"{{factsheet}}",'HtmlT&S'.HtmlText)&"</b>"
+                    PaddingBottom: =2
+                    PaddingTop: =9
+                    Size: =16
+                    Width: =828
+                    X: =90
+                    Y: =12
+                    ZIndex: =5
+
+            BtnPrimaryTermsAndCondition As button:
+                Align: =Align.Left
+                BorderColor: =Color.White
+                Color: =RGBA(9, 30, 66, 1)
+                Fill: =Color.White
+                Font: =VarTheme.Font
+                Height: =56
+                HoverColor: =VarTheme.PrimaryColor
+                HoverFill: =Color.White
+                OnSelect: =//Navigate(ScnTermsAndConditions);
+                PressedColor: =VarTheme.PrimaryColor
+                PressedFill: =Color.White
+                Size: =18
+                Text: |-
+                    =If(
+                        LblMultiServiceWebsiteContent,
+                        CmbSubService.Selected.Name & " " & CmbAdditionalSubService.Selected.Name,
+                        CmbSubService.Selected.Name
+                    )
+                Width: =962
+                ZIndex: =2
+
+        DcTermsAndConditionTitlePatientProfile As dataCard.blankCard:
+            BorderColor: =RGBA(0, 0, 0, 1)
+            BorderStyle: =BorderStyle.Solid
+            DisplayMode: =DisplayMode.Edit
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =90
+            Visible: =VarTermsAndCondition || IsBlank(VarTermsAndCondition)
+            Width: =998
+            X: =0
+            Y: =2
+            ZIndex: =5
+
+            BtnTermsAndConditionPatientProfile As button:
+                Align: =Align.Left
+                BorderColor: =Color.White
+                Color: =RGBA(9, 30, 66, 1)
+                Fill: =Color.White
+                Font: =VarTheme.Font
+                Height: =56
+                HoverColor: =VarTheme.PrimaryColor
+                HoverFill: =Color.White
+                OnSelect: =Navigate(ScnTermsAndConditions);
+                PressedColor: =VarTheme.PrimaryColor
+                PressedFill: =Color.White
+                Size: =18
+                Text: ="Terms & Conditions"
+                Width: =304
+                Y: =20
+                ZIndex: =1
+
+        DcSignaturePatient As dataCard.blankCard:
+            BorderColor: =RGBA(0, 0, 0, 1)
+            BorderStyle: =BorderStyle.Solid
+            DisplayMode: =DisplayMode.Edit
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =380
+            Visible: =VarNavigateProfilePatient=false || IsBlank(VarNavigateProfilePatient)
+            Width: =998
+            X: =0
+            Y: =5
+            ZIndex: =6
+
+            InputSignaturePatient As inkControl:
+                BorderColor: =VarTheme.InputTextDark
+                BorderThickness: =1
+                Color: =VarTheme.InputText
+                Fill: =VarTheme.InputBackground
+                Height: =248
+                OnSelect: |-
+                    =Set(VarPenInputData,Self.Image);
+                    UpdateContext({resetPenInput:false});
+                Reset: =resetPenInput
+                ShowControls: =false
+                Width: =698
+                Y: =90
+                ZIndex: =1
+
+            LblSignaturePatient As label:
+                Font: =VarTheme.Font
+                FontWeight: =FontWeight.Bold
+                Height: =52
+                Size: =16
+                Text: ="Patient's Signature"
+                Width: =300
+                ZIndex: =2
+
+            LblErrorSignature As label:
+                Color: =VarTheme.Error
+                Font: =VarTheme.Font
+                Height: =29
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: ="Signature cannot be empty"
+                Visible: =VarNewAppointmentValidationChk=true && VarPenInputData <> InputSignaturePatient.Image
+                Width: =Parent.Width - 60
+                Y: =338
+                ZIndex: =3
+
+            BtnClearSignaturePatient As button:
+                BorderStyle: =BorderStyle.None
+                BorderThickness: =0
+                Fill: =VarTheme.PrimaryColor
+                Font: =VarTheme.Font
+                Height: =62
+                HoverFill: =VarTheme.PrimaryColorDark
+                OnSelect: |-
+                    =UpdateContext({resetPenInput:true});
+                PaddingBottom: =14
+                PaddingTop: =14
+                RadiusBottomLeft: =0
+                RadiusBottomRight: =0
+                RadiusTopLeft: =0
+                RadiusTopRight: =0
+                Size: =16
+                Text: ="Clear Signature"
+                Width: =206
+                X: =732
+                Y: =276
+                ZIndex: =5
+
+            LblSignatureMessagePatient As label:
+                Font: =VarTheme.Font
+                Size: =16
+                Text: ="Please draw your signature below"
+                Width: =790
+                Y: =50
+                ZIndex: =6
+
+        DcPatientConsentPatientProfile As dataCard.blankCard:
+            BorderColor: =RGBA(0, 0, 0, 1)
+            BorderStyle: =BorderStyle.Solid
+            DisplayMode: =DisplayMode.Edit
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =91
+            Width: =998
+            X: =0
+            Y: =8
+            ZIndex: =7
+
+            ChkPatientConsentPatientProfile As checkbox:
+                BorderStyle: =BorderStyle.None
+                CheckboxBackgroundFill: |-
+                    =//If(ChkPatientConsentPatientProfile.Value=true,VarTheme.PrimaryColor,White)
+                    Color.White
+                Color: =Color.White
+                Height: =30
+                OnSelect: =
+                Text: =""
+                Width: =33
+                X: =4
+                Y: =20
+                ZIndex: =1
+
+            HtmlPatientConsentPatientProfile As htmlViewer:
+                Font: =VarTheme.Font
+                Height: =50
+                HtmlText: = "<b>I, " & User().FullName & ", verify on the behalf of the patient</b>"
+                Size: =16
+                Width: =828
+                X: =49
+                Y: =18
+                ZIndex: =2
+
+            LblErrorPatientConsent As label:
+                Color: =VarTheme.Error
+                Font: =VarTheme.Font
+                Height: =29
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: ="Accept the verification of patient"
+                Visible: =ChkPatientConsentPatientProfile.Value =false && VarNewAppointmentValidationChk=true
+                Width: =Parent.Width - 60
+                Y: =54
+                ZIndex: =3
+
+        DcErrorFirstName As dataCard.blankCard:
+            BorderColor: =RGBA(0, 0, 0, 1)
+            BorderStyle: =BorderStyle.Solid
+            DisplayMode: =DisplayMode.Edit
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =40
+            Visible: =IsBlank(InputFirstName.Text) && VarNewAppointmentValidationChk=true
+            Width: =998
+            X: =0
+            Y: =9
+            ZIndex: =8
+
+            LblErrorFirstName_1 As label:
+                Color: =VarTheme.Error
+                Font: =VarTheme.Font
+                Height: =29
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: ="First Name cannot be empty"
+                Visible: =IsBlank(InputFirstName.Text) && VarNewAppointmentValidationChk=true
+                Width: =Parent.Width - 60
+                ZIndex: =1
+
+        DcErrorLastName As dataCard.blankCard:
+            BorderColor: =RGBA(0, 0, 0, 1)
+            BorderStyle: =BorderStyle.Solid
+            DisplayMode: =DisplayMode.Edit
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =40
+            Visible: =IsBlank(InputLastName.Text) && VarNewAppointmentValidationChk=true
+            Width: =998
+            X: =0
+            Y: =10
+            ZIndex: =9
+
+            LblErrorLastName_1 As label:
+                Color: =VarTheme.Error
+                Font: =VarTheme.Font
+                Height: =29
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: ="Last name cannot be empty"
+                Visible: =IsBlank(InputLastName.Text) && VarNewAppointmentValidationChk=true
+                Width: =Parent.Width - 60
+                ZIndex: =1
+
+        DcErrorBirthDate As dataCard.blankCard:
+            BorderColor: =RGBA(0, 0, 0, 1)
+            BorderStyle: =BorderStyle.Solid
+            DisplayMode: =DisplayMode.Edit
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =40
+            Visible: =VarNewAppointmentValidationChk=true && (IsBlank(DateBirthday) || LblMinorAge.Text="true")
+            Width: =998
+            X: =0
+            Y: =11
+            ZIndex: =10
+
+            LblErrorBirthday_1 As label:
+                Color: =VarTheme.Error
+                Font: =VarTheme.Font
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: |-
+                    =If(
+                        !IsBlank(DateBirthday.SelectedDate) && VarNewAppointmentValidationChk = true && 
+                        (Round(
+                            (DateDiff(
+                                Date(
+                                    Year(DateBirthday.SelectedDate),
+                                    Month(DateBirthday.SelectedDate),
+                                    Day(DateBirthday.SelectedDate)
+                                ),
+                                Today(),
+                                "Days"
+                            ) / 365.25),
+                            4
+                        ) < (VarHealthCaresubcategoryInfo).'Minimum Age Limit'
+                        ||
+                        Round(
+                            (DateDiff(
+                                Date(
+                                    Year(DateBirthday.SelectedDate),
+                                    Month(DateBirthday.SelectedDate),
+                                    Day(DateBirthday.SelectedDate)
+                                ),
+                                Today(),
+                                "Days"
+                            ) / 365.25),
+                            4
+                        ) > (VarHealthCaresubcategoryInfo).'Maximum Age Limit'),
+                        VarHealthCaresubcategoryInfo.'Age Limit Validation Info',
+                        "Birthdate format MM/DD/YYYY"
+                    )
+                    /*If(
+                        !IsBlank(DateBirthday.SelectedDate) && VarNewAppointmentValidationChk = true && Text(
+                            If(
+                                Round(
+                                    (DateDiff(
+                                        Date(
+                                            Year(DateBirthday.SelectedDate),
+                                            Month(DateBirthday.SelectedDate),
+                                            Day(DateBirthday.SelectedDate)
+                                        ),
+                                        Today(),
+                                        "Days"
+                                    ) / 365.25),
+                                    4
+                                ) < VarHealthCaresubcategoryInfo.'Minimum Age Limit',
+                                true,
+                                false
+                            )
+                        ),
+                        VarHealthCaresubcategoryInfo.'Age Limit Validation Info',
+                        "Birthdate format MM/DD/YYYY"
+                    )*/
+                Width: =958
+                ZIndex: =1
+
+        DcErrorEthnicity As dataCard.blankCard:
+            BorderColor: =RGBA(0, 0, 0, 1)
+            BorderStyle: =BorderStyle.Solid
+            DisplayMode: =DisplayMode.Edit
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =40
+            Visible: =CmbEthnicity.Selected.Value=Blank() && VarNewAppointmentValidationChk=true
+            Width: =998
+            X: =0
+            Y: =12
+            ZIndex: =11
+
+            LblErrorEthnicity_1 As label:
+                Color: =VarTheme.Error
+                Font: =VarTheme.Font
+                Height: =29
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: ="Ethnicity cannot be empty"
+                Visible: =CmbEthnicity.Selected.Value=Blank() && VarNewAppointmentValidationChk=true
+                Width: =Parent.Width - 60
+                ZIndex: =1
+
+        DcErrorMobilePhone As dataCard.blankCard:
+            BorderColor: =RGBA(0, 0, 0, 1)
+            BorderStyle: =BorderStyle.Solid
+            DisplayMode: =DisplayMode.Edit
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =40
+            Visible: =If(IsBlank(InputMobilePhone.Text) || Len(InputMobilePhone.Text)<10 || Len(InputMobilePhone.Text)>10 || Not(IsMatch(InputMobilePhone.Text, "\d{10}")),true,false)
+            Width: =998
+            X: =0
+            Y: =13
+            ZIndex: =12
+
+            LblErrorMobilePhone_1 As label:
+                Color: =VarTheme.Error
+                Font: =VarTheme.Font
+                Height: =29
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: =If(IsBlank(InputMobilePhone.Text),"Phone cannot be blank.",Len(InputMobilePhone.Text)<10 || Len(InputMobilePhone.Text)>10 || Not(IsMatch(InputMobilePhone.Text, "\d{10}")), "Phone should be number and 10 digits.")
+                Visible: =VarNewAppointmentValidationChk=true
+                Width: =Parent.Width - 60
+                ZIndex: =1
+
+        DcErrorRace As dataCard.blankCard:
+            BorderColor: =RGBA(0, 0, 0, 1)
+            BorderStyle: =BorderStyle.Solid
+            DisplayMode: =DisplayMode.Edit
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =40
+            Visible: =CmbRace.Selected.Value=Blank() && VarNewAppointmentValidationChk=true
+            Width: =998
+            X: =0
+            Y: =14
+            ZIndex: =13
+
+            LblErrorRace_1 As label:
+                Color: =VarTheme.Error
+                Font: =VarTheme.Font
+                Height: =29
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: ="Race cannot be empty"
+                Visible: =CmbRace.Selected.Value=Blank() && VarNewAppointmentValidationChk=true
+                Width: =Parent.Width - 60
+                ZIndex: =1
+
+        DcErrorGender As dataCard.blankCard:
+            BorderColor: =RGBA(0, 0, 0, 1)
+            BorderStyle: =BorderStyle.Solid
+            DisplayMode: =DisplayMode.Edit
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =40
+            Visible: =CmbGender.Selected.Value=Blank() && VarNewAppointmentValidationChk=true
+            Width: =998
+            X: =0
+            Y: =15
+            ZIndex: =14
+
+            LblErrorGender_1 As label:
+                Color: =VarTheme.Error
+                Font: =VarTheme.Font
+                Height: =29
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: ="Gender cannot be empty"
+                Visible: =CmbGender.Selected.Value=Blank() && VarNewAppointmentValidationChk=true
+                Width: =Parent.Width - 60
+                ZIndex: =1
+
+        DcErrorStreet As dataCard.blankCard:
+            BorderColor: =RGBA(0, 0, 0, 1)
+            BorderStyle: =BorderStyle.Solid
+            DisplayMode: =DisplayMode.Edit
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =40
+            Visible: =IsBlank(InputStreet) && VarNewAppointmentValidationChk=true
+            Width: =998
+            X: =0
+            Y: =16
+            ZIndex: =15
+
+            LblErrorStreet_1 As label:
+                Color: =VarTheme.Error
+                Font: =VarTheme.Font
+                Height: =29
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: ="Street cannot be empty"
+                Visible: =IsBlank(InputStreet) && VarNewAppointmentValidationChk=true
+                Width: =Parent.Width - 60
+                ZIndex: =1
+
+        DcErrorProvince As dataCard.blankCard:
+            BorderColor: =RGBA(0, 0, 0, 1)
+            BorderStyle: =BorderStyle.Solid
+            DisplayMode: =DisplayMode.Edit
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =40
+            Visible: =IsBlank(CmbProvince) && VarNewAppointmentValidationChk=true
+            Width: =998
+            X: =0
+            Y: =17
+            ZIndex: =16
+
+            "'LblErrorState/Province_1' As label":
+                Color: =VarTheme.Error
+                Font: =VarTheme.Font
+                Height: =29
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: ="State cannot be empty"
+                Visible: =IsBlank(InputStreet) && VarNewAppointmentValidationChk=true
+                Width: =Parent.Width - 60
+                ZIndex: =1
+
+        DcErrorCounty As dataCard.blankCard:
+            BorderColor: =RGBA(0, 0, 0, 1)
+            BorderStyle: =BorderStyle.Solid
+            DisplayMode: =DisplayMode.Edit
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =40
+            Visible: =If(IsBlank(CmbCounty.SelectedText.Value),true,false)
+            Width: =998
+            X: =0
+            Y: =18
+            ZIndex: =17
+
+            LblErrorCounty_1 As label:
+                Color: =VarTheme.Error
+                Height: =29
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: ="County cannot be empty"
+                Visible: =IsBlank(CmbCounty.Selected.'County Name') && VarNewAppointmentValidationChk=true
+                Width: =Parent.Width - 60
+                ZIndex: =1
+
+        DcErrorCity As dataCard.blankCard:
+            BorderColor: =RGBA(0, 0, 0, 1)
+            BorderStyle: =BorderStyle.Solid
+            DisplayMode: =DisplayMode.Edit
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =40
+            Visible: =IsBlank(InputCity) && VarNewAppointmentValidationChk=true
+            Width: =998
+            X: =0
+            Y: =19
+            ZIndex: =18
+
+            LblErrorCity_1 As label:
+                Color: =VarTheme.Error
+                Font: =VarTheme.Font
+                Height: =29
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: ="City cannot be empty"
+                Visible: =IsBlank(InputCity) && VarNewAppointmentValidationChk=true
+                Width: =Parent.Width - 60
+                ZIndex: =1
+
+        DcErrorZipCode As dataCard.blankCard:
+            BorderColor: =RGBA(0, 0, 0, 1)
+            BorderStyle: =BorderStyle.Solid
+            DisplayMode: =DisplayMode.Edit
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =40
+            Visible: =IsBlank(InputZipCode.Text)
+            Width: =998
+            X: =0
+            Y: =20
+            ZIndex: =19
+
+            LblErrorZipCode_1 As label:
+                Color: =VarTheme.Error
+                Font: =VarTheme.Font
+                Height: =29
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: =If(IsBlank(InputZipCode.Text),"Zip Code cannot be empty.",Len(InputZipCode.Text)<5 || Len(InputZipCode.Text)>5, "Zip code should be 5 digits.")
+                Visible: =VarNewAppointmentValidationChk=true
+                Width: =Parent.Width - 60
+                ZIndex: =1
+
+        "'DcErrorT&S' As dataCard.blankCard":
+            BorderColor: =RGBA(0, 0, 0, 1)
+            BorderStyle: =BorderStyle.Solid
+            DisplayMode: =DisplayMode.Edit
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =40
+            Visible: =Text(acceptedTermsAndCondition) <> "true" && VarNewAppointmentValidationChk
+            Width: =998
+            X: =0
+            Y: =21
+            ZIndex: =20
+
+            LblErrorTermAndCondition As label:
+                Color: =VarTheme.Error
+                Font: =VarTheme.Font
+                Height: =29
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: ="Accept the terms and conditions"
+                Visible: =VarNewAppointmentValidationChk
+                Width: =Parent.Width - 60
+                ZIndex: =1
+
+        DcErrorGuardianFirstName As dataCard.blankCard:
+            BorderColor: =RGBA(0, 0, 0, 1)
+            BorderStyle: =BorderStyle.Solid
+            DisplayMode: =DisplayMode.Edit
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =40
+            Visible: =IsBlank(InputGuardianFirstName.Text) && VarNewAppointmentValidationChk=true && LblAgeValidation.Text = "true" && (VarTermsAndCondition || IsBlank(VarTermsAndCondition))
+            Width: =998
+            X: =0
+            Y: =22
+            ZIndex: =27
+
+            LblErrorGuardianFirstName_1 As label:
+                Color: =VarTheme.Error
+                Font: =VarTheme.Font
+                Height: =29
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: ="Guadian First name cannot be empty"
+                Visible: =IsBlank(InputGuardianFirstName.Text) && VarNewAppointmentValidationChk=true && LblAgeValidation.Text = "true"
+                Width: =Parent.Width - 60
+                ZIndex: =1
+
+        DcErrorGuardianLastName As dataCard.blankCard:
+            BorderColor: =RGBA(0, 0, 0, 1)
+            BorderStyle: =BorderStyle.Solid
+            DisplayMode: =DisplayMode.Edit
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =40
+            Visible: =IsBlank(InputGuardianLastName.Text) && VarNewAppointmentValidationChk=true && LblAgeValidation.Text = "true" && (VarTermsAndCondition || IsBlank(VarTermsAndCondition))
+            Width: =998
+            X: =0
+            Y: =23
+            ZIndex: =28
+
+            LblErrorGuardianLastName_1 As label:
+                Color: =VarTheme.Error
+                Font: =VarTheme.Font
+                Height: =29
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: ="Guardian Last name cannot be empty"
+                Visible: =IsBlank(InputGuardianLastName.Text) && VarNewAppointmentValidationChk=true && LblAgeValidation.Text = "true"
+                Width: =Parent.Width - 60
+                ZIndex: =1
+
+        DcNJIISConsentCheck As dataCard.blankCard:
+            BorderColor: =RGBA(0, 0, 0, 1)
+            BorderStyle: =BorderStyle.None
+            DisplayMode: =DisplayMode.Edit
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =92
+            Visible: =VarIISConsent && (VarNavigateProfilePatient=false || IsBlank(VarNavigateProfilePatient))
+            Width: =998
+            X: =0
+            Y: =6
+            ZIndex: =29
+
+            chkSendToIIS As checkbox:
+                CheckboxBackgroundFill: |-
+                    =//If(chkSendToIIS.Value=true,VarTheme.PrimaryColor,White)
+                    Color.White
+                Default: =true
+                Font: =VarTheme.Font
+                FontWeight: =FontWeight.Bold
+                Height: =64
+                Size: =16
+                Text: ="By checking this box I agree to share my vaccination information with New Jersey Immunization Information System (NJIIS)"
+                Width: =982
+                ZIndex: =1
+
+            Label12 As label:
+                Height: =34
+                Text: =VarIISConsent
+                Visible: =false
+                Width: =196
+                X: =801
+                Y: =30
+                ZIndex: =2
+
+            LblErrorNJIIS_1 As label:
+                Color: =VarTheme.Error
+                Height: =29
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: ="* Accept NJIIS Consent"
+                Visible: |-
+                    =chkSendToIIS.Value =false && VarNewAppointmentValidationChk=true && VarIISConsent
+                    // && VarNavigateProfilePatient=false
+                Width: =Parent.Width - 60
+                Y: =63
+                ZIndex: =3
+
+        DcNJIISConsent As dataCard.blankCard:
+            BorderColor: =RGBA(0, 0, 0, 1)
+            BorderStyle: =BorderStyle.Solid
+            DisplayMode: =DisplayMode.Edit
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =80
+            Visible: =VarIISConsent && (VarNavigateProfilePatient=false || IsBlank(VarNavigateProfilePatient))
+            Width: =998
+            X: =0
+            Y: =7
+            ZIndex: =30
+
+            ConsentComponent_1 As ConsentComponent:
+                ConsentMessage: ="If you are under 7 years old, your vaccine information must be sent to Immunization Information System."
+                Height: =ConsentComponent_1.HeightProperty
+
+        DcNJIISValidation As dataCard.blankCard:
+            BorderColor: =RGBA(0, 0, 0, 1)
+            BorderStyle: =BorderStyle.Solid
+            DisplayMode: =DisplayMode.Edit
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =40
+            Visible: |-
+                =chkSendToIIS.Value =false && VarNewAppointmentValidationChk=true && VarIISConsent
+                //&& VarNavigateProfilePatient=false
+            Width: =998
+            X: =0
+            Y: =24
+            ZIndex: =31
+
+            LblErrorNJIIS As label:
+                Color: =VarTheme.Error
+                Height: =29
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: ="* Accept NJIIS Consent"
+                Width: =Parent.Width - 60
+                ZIndex: =1
+
+        DcConsentedBy As dataCard.blankCard:
+            BorderColor: =RGBA(0, 0, 0, 1)
+            BorderStyle: =BorderStyle.Solid
+            DisplayMode: =DisplayMode.Edit
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =120
+            Visible: =VarNavigateProfilePatient=false || IsBlank(VarNavigateProfilePatient)
+            Width: =Parent.Width
+            X: =0
+            Y: =4
+            ZIndex: =32
+
+            LblConsentedBy As label:
+                AutoHeight: =true
+                Color: =RGBA(9, 30, 66, 1)
+                Font: =VarTheme.Font
+                FontWeight: =FontWeight.Bold
+                Height: =34
+                Size: =16
+                Text: ="* Consented by"
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =1
+                Y: =10
+                ZIndex: =1
+
+            CmbConsentedBy As combobox:
+                BorderColor: =
+                BorderStyle: =BorderStyle.None
+                BorderThickness: =0
+                ChevronBackground: =VarTheme.InputBackground
+                ChevronFill: =Color.Black
+                ChevronHoverBackground: =VarTheme.InputBackground
+                Color: =RGBA(9, 30, 66, 1)
+                DefaultSelectedItems: =[If(LblAgeValidation.Text = "true" && !IsBlank(DateBirthday.SelectedDate),"Guardian","Patient")]
+                DisplayFields: =["Value"]
+                DisplayMode: =Parent.DisplayMode
+                Fill: =VarTheme.InputBackground
+                Font: =VarTheme.Font
+                FontWeight: =FontWeight.Bold
+                IsSearchable: =false
+                Items: |-
+                    =//["Patient","Guardian"]
+                    Choices('Consented By ')
+                PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
+                SearchFields: =["Value"]
+                SearchItems: =[]
+                SelectMultiple: =false
+                Size: =16
+                Tooltip: =
+                Width: =640
+                Y: =LblConsentedBy.Y+LblConsentedBy.Height+10
+                ZIndex: =2
+
+        DcErrorEmail As dataCard.blankCard:
+            BorderColor: =RGBA(0, 0, 0, 1)
+            BorderStyle: =BorderStyle.Solid
+            DisplayMode: =DisplayMode.Edit
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =40
+            Visible: |-
+                =VarEmailValidate = false && VarNewAppointmentValidationChk = true && ((!IsBlank(Trim(InputEmail.Text)) && !IsMatch(
+                    InputEmail.Text,
+                    Match.Email
+                ) || (ChkEmailHide.Value = true && (IsBlank(Trim(InputEmail.Text)) ))))
+            Width: =998
+            X: =0
+            Y: =25
+            ZIndex: =33
+
+            LblErrorEmailValidate As label:
+                Color: =VarTheme.Error
+                Height: =29
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: |-
+                    =If(
+                        VarEmailValidate = false && ((!IsBlank(Trim(InputEmail.Text)) && !IsMatch(
+                            InputEmail.Text,
+                            Match.Email
+                        )) ),
+                        "Please enter valid email format.",
+                        (ChkEmailHide.Value = true && (IsBlank(Trim(InputEmail.Text)) )),
+                        "Please enter an email"
+                    )
+                Visible: |-
+                    =VarEmailValidate = false && VarNewAppointmentValidationChk = true && ((!IsBlank(Trim(InputEmail.Text)) && !IsMatch(
+                        InputEmail.Text,
+                        Match.Email
+                    ) || (ChkEmailHide.Value = true && (IsBlank(Trim(InputEmail.Text)) ))))
+                Width: =Parent.Width - 60
+                ZIndex: =1
+
+        DcTermsAndConditionSecondary As dataCard.blankCard:
+            BorderColor: =RGBA(0, 0, 0, 1)
+            BorderStyle: =BorderStyle.Solid
+            DisplayMode: =DisplayMode.Edit
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =GalTermsAndConditionSecondary.Y+GalTermsAndConditionSecondary.Height
+            Visible: =varAdditionalService && Text(LblMultiServiceWebsiteContent)="false"
+            Width: =998
+            X: =1
+            Y: =3
+            ZIndex: =34
+
+            "GalTermsAndConditionSecondary As gallery.'BrowseLayout_Vertical_TwoTextOneImageVariant_ver4.0'":
+                Height: =GalTermsAndConditionSecondary.TemplateHeight * CountRows(GalTermsAndConditionSecondary.AllItems)
+                Items: |-
+                    =Filter(
+                        (ForAll(
+                            Split(
+                                First(
+                                    Filter(
+                                        CmbAdditionalService.Selected.'Localize Website Contents',
+                                        Language.Code = "en"
+                                    )
+                                ).'Terms and Conditions Acceptance',
+                                "<li>"
+                            ),
+                            {Result: ThisRecord.Value}
+                        )),
+                        !StartsWith(
+                            Result,
+                            "<ul>"
+                        ) && !StartsWith(
+                            Result,
+                            "</ul>"
+                        )
+                    )
+                Layout: =Layout.Vertical
+                TemplatePadding: =0
+                TemplateSize: =75
+                Width: =Parent.Width
+                Y: =BtnSecondaryTermsAndCondition.Y+BtnSecondaryTermsAndCondition.Height
+                ZIndex: =1
+
+                RectBorderTnCSecondary As rectangle:
+                    BorderColor: =VarTheme.InputBackground
+                    BorderThickness: =1
+                    DisabledFill: =RGBA(0,0,0,0)
+                    Fill: =RGBA(0,0,0,0)
+                    Height: =Parent.TemplateHeight
+                    HoverFill: =RGBA(0,0,0,0)
+                    OnSelect: =Select(Parent)
+                    PressedFill: =RGBA(0,0,0,0)
+                    Width: =Parent.TemplateWidth-26
+                    ZIndex: =1
+
+                "'HtmlT&SSecondary' As htmlViewer":
+                    HtmlText: |-
+                        =If(!IsBlank(VarFactSheetUrl), "<a href="&VarFactSheetUrl&">"&CmbService.Selected.Name&" 
+                        EUA Fact Sheet</a>",CmbService.Selected.Name&" EUA Fact Sheet")
+                    OnSelect: =Select(Parent)
+                    Visible: =false
+                    X: =798
+                    Y: =35
+                    ZIndex: =2
+
+                chkSelectedTermsAndConditionSecondary As label:
+                    OnSelect: =Select(Parent)
+                    Text: =If(userSelectedTermsAndCondition=true || ChkTermsAndConditionSecondary.Value=true  ,ChkTermsAndConditionSecondary.Value,false)
+                    Visible: =false
+                    X: =60
+                    Y: =25
+                    ZIndex: =3
+
+                ChkTermsAndConditionSecondary As checkbox:
+                    BorderStyle: =BorderStyle.None
+                    CheckboxBackgroundFill: |-
+                        =//If(ChkTermsAndCondition.Value=true,VarTheme.PrimaryColor,White)
+                        Color.White
+                    CheckmarkFill: =Color.Black
+                    Color: =Color.White
+                    OnSelect: |
+                        =Select(GalTermsAndConditionSecondary);
+                        Set(userSelectedTermsAndCondition,true);
+                    Text: =""
+                    Width: =50
+                    X: =20
+                    Y: =12
+                    ZIndex: =4
+
+                HtmlTermsAndConditionSecondary As htmlViewer:
+                    AutoHeight: =true
+                    Font: =VarTheme.Font
+                    Height: =50
+                    HtmlText: |
+                        ="<b>"&Substitute(Substitute(Substitute(ThisItem.Result,"</li>",Blank()),"</ul>",Blank()),"{{factsheet}}",'HtmlT&SSecondary'.HtmlText)&"</b>"
+                    PaddingBottom: =2
+                    PaddingTop: =9
+                    Size: =16
+                    Width: =828
+                    X: =90
+                    Y: =12
+                    ZIndex: =5
+
+            BtnSecondaryTermsAndCondition As button:
+                Align: =Align.Left
+                BorderColor: =Color.White
+                Color: =RGBA(9, 30, 66, 1)
+                Fill: =Color.White
+                Font: =VarTheme.Font
+                Height: =56
+                HoverColor: =VarTheme.PrimaryColor
+                HoverFill: =Color.White
+                OnSelect: =//Navigate(ScnTermsAndConditions);
+                PressedColor: =VarTheme.PrimaryColor
+                PressedFill: =Color.White
+                Size: =18
+                Text: =CmbAdditionalSubService.Selected.Name
+                Width: =972
+                ZIndex: =2
+
+    ConsentPatientInfoVerify As ConsentComponent:
+        ConsentMessage: ="Please verify the information before continuing."
+        Height: =70
+        Width: =Parent.Width-52
+        X: =26
+        Y: |-
+            =MultiserviceViewComponentViewProfile.Y + MultiserviceViewComponentViewProfile.Height + If(
+                varAdditionalService,
+                24,
+                0
+            )
+        ZIndex: =6
+
+    MultiserviceViewComponentViewProfile As MultiserviceViewComponent:
+        ClearAdditionalService: |-
+            =UpdateContext({locCloseAlert:true});
+            UpdateContext({locadditionalservicetype:2})
+        EditAdditionalService: |-
+            =UpdateContext({locCloseAlert: true});
+            //type 1 = edit, type 2 = remove
+            UpdateContext({locadditionalservicetype: 1});
+        FirstService: =CmbSubService.Selected.Name
+        Height: =If(varAdditionalService,145,0)
+        SecondService: =CmbAdditionalSubService.Selected.Name
+        Visible: =true
+        Width: =Parent.Width-52
+        X: =26
+        Y: =NavigationPatientProfile.Y+NavigationPatientProfile.Height
+        ZIndex: =7
+
+    NavigationPatientProfile As BreadCrumbNavigationComponent:
+        ActiveStageNumber: |-
+            =If(
+                ((VarWalkIn && VarRegimenDose = 'Regimen Dose Options'.'Both Doses') || VarForLater) && VarScreeningQuestionCheck && LblPaymentCheck.Text = "true",
+                3,
+                VarWalkIn && LblPaymentCheck.Text = "true" && VarRegimenDose <> 'Regimen Dose Options'.'Both Doses' && VarScreeningQuestionCheck && varAdditionalService = false,
+                3,
+                VarWalkIn && LblPaymentCheckCombined.Text = "true" && VarRegimenDose <> 'Regimen Dose Options'.'Both Doses' && (VarScreeningQuestionCheck || VarScreeningQuestionCheckSecondary) && varAdditionalService,
+                3,
+                VarWalkIn && LblPaymentCheckCombined.Text = "true" && VarRegimenDose <> 'Regimen Dose Options'.'Both Doses' && (VarScreeningQuestionCheck || VarScreeningQuestionCheckSecondary) && varAdditionalService,
+                3,
+                ((VarWalkIn && VarRegimenDose = 'Regimen Dose Options'.'Both Doses') || VarForLater) && LblPaymentCheck.Text = "false" && VarScreeningQuestionCheck,
+                3,
+                VarWalkIn && LblPaymentCheck.Text = "false" && (VarRegimenDose = 'Regimen Dose Options'.'1st Dose only' || VarRegimenDose = 'Regimen Dose Options'.'2nd Dose only') && VarScreeningQuestionCheck && varAdditionalService = false,
+                3,
+                VarWalkIn && LblPaymentCheckCombined.Text = "false" && (VarRegimenDose = 'Regimen Dose Options'.'1st Dose only' || VarRegimenDose = 'Regimen Dose Options'.'2nd Dose only') && (VarScreeningQuestionCheck || VarScreeningQuestionCheckSecondary) && varAdditionalService,
+                3,
+                ((VarWalkIn && VarRegimenDose = 'Regimen Dose Options'.'Both Doses') || VarForLater) && VarScreeningQuestionCheck = false && LblPaymentCheck.Text = "true",
+                2,
+                VarWalkIn && LblPaymentCheck.Text = "true" && VarRegimenDose <> 'Regimen Dose Options'.'Both Doses' && VarScreeningQuestionCheck = false && varAdditionalService = false,
+                2,
+                VarWalkIn && LblPaymentCheckCombined.Text = "true" && VarRegimenDose <> 'Regimen Dose Options'.'Both Doses' && VarScreeningQuestionCheck = false && VarScreeningQuestionCheckSecondary = false && varAdditionalService,
+                2,
+                ((VarWalkIn && VarRegimenDose = 'Regimen Dose Options'.'Both Doses') || VarForLater) && VarScreeningQuestionCheck = false && LblPaymentCheck.Text = "false",
+                2,
+                VarWalkIn && LblPaymentCheckCombined.Text = "false" && (VarRegimenDose = 'Regimen Dose Options'.'1st Dose only' || VarRegimenDose = 'Regimen Dose Options'.'2nd Dose only') && VarScreeningQuestionCheck = false && VarScreeningQuestionCheckSecondary = false && varAdditionalService,
+                2,
+                VarWalkIn && LblPaymentCheck.Text = "false" && (VarRegimenDose = 'Regimen Dose Options'.'1st Dose only' || VarRegimenDose = 'Regimen Dose Options'.'2nd Dose only') && VarScreeningQuestionCheck = false && varAdditionalService = false,
+                2,
+                3
+            )
+        Height: |-
+            =If(
+                VarForLater || VarWalkIn,
+                140,
+                0
+            )
+        Items: |-
+            =If(
+                ((VarWalkIn && VarRegimenDose = 'Regimen Dose Options'.'Both Doses') || VarForLater) && VarScreeningQuestionCheck && LblPaymentCheck.Text = "true",
+                Table(
+                    {
+                        StageNumber: 1,
+                        Label: "Location & Services"
+                    },
+                    {
+                        StageNumber: 2,
+                        Label: "Screening Questions"
+                    },
+                    {
+                        StageNumber: 3,
+                        Label: "Patient Information"
+                    },
+                    {
+                        StageNumber: 4,
+                        Label: "Payment Information"
+                    },
+                    {
+                        StageNumber: 5,
+                        Label: "Schedule Appointment"
+                    },
+                    {
+                        StageNumber: 6,
+                        Label: "Confirmation"
+                    }
+                ),
+                VarWalkIn && LblPaymentCheck.Text = "true" && VarRegimenDose <> 'Regimen Dose Options'.'Both Doses' && VarScreeningQuestionCheck && varAdditionalService=false,
+                Table(
+                    {
+                        StageNumber: 1,
+                        Label: "Location & Services"
+                    },
+                    {
+                        StageNumber: 2,
+                        Label: "Screening Questions"
+                    },
+                    {
+                        StageNumber: 3,
+                        Label: "Patient Information"
+                    },
+                    {
+                        StageNumber: 4,
+                        Label: "Payment Information"
+                    },
+                    {
+                        StageNumber: 5,
+                        Label: "Confirmation"
+                    }
+                ),
+                    VarWalkIn && LblPaymentCheckCombined.Text="true" && VarRegimenDose <> 'Regimen Dose Options'.'Both Doses' && (VarScreeningQuestionCheck || VarScreeningQuestionCheckSecondary) && varAdditionalService,
+                Table(
+                    {
+                        StageNumber: 1,
+                        Label: "Location & Services"
+                    },
+                    {
+                        StageNumber: 2,
+                        Label: "Screening Questions"
+                    },
+                    {
+                        StageNumber: 3,
+                        Label: "Patient Information"
+                    },
+                    {
+                        StageNumber: 4,
+                        Label: "Payment Information"
+                    },
+                    {
+                        StageNumber: 5,
+                        Label: "Confirmation"
+                    }
+                ),
+                        VarWalkIn && LblPaymentCheckCombined.Text="true" && VarRegimenDose <> 'Regimen Dose Options'.'Both Doses' && (VarScreeningQuestionCheck || VarScreeningQuestionCheckSecondary) && varAdditionalService,
+                Table(
+                    {
+                        StageNumber: 1,
+                        Label: "Location & Services"
+                    },
+                    {
+                        StageNumber: 2,
+                        Label: "Screening Questions"
+                    },
+                    {
+                        StageNumber: 3,
+                        Label: "Patient Information"
+                    },
+                    {
+                        StageNumber: 4,
+                        Label: "Payment Information"
+                    },
+                    {
+                        StageNumber: 5,
+                        Label: "Confirmation"
+                    }
+                ),
+                ((VarWalkIn  && VarRegimenDose = 'Regimen Dose Options'.'Both Doses') || VarForLater) && LblPaymentCheck.Text = "false" && VarScreeningQuestionCheck,
+                Table(
+                    {
+                        StageNumber: 1,
+                        Label: "Location & Services"
+                    },
+                    {
+                        StageNumber: 2,
+                        Label: "Screening Questions"
+                    },
+                    {
+                        StageNumber: 3,
+                        Label: "Patient Information"
+                    },
+                    {
+                        StageNumber: 4,
+                        Label: "Schedule Appointment"
+                    },
+                    {
+                        StageNumber: 5,
+                        Label: "Confirmation"
+                    }
+                ),
+                VarWalkIn && LblPaymentCheck.Text = "false" && (VarRegimenDose = 'Regimen Dose Options'.'1st Dose only' || VarRegimenDose = 'Regimen Dose Options'.'2nd Dose only') && VarScreeningQuestionCheck && varAdditionalService=false,
+                Table(
+                    {
+                        StageNumber: 1,
+                        Label: "Location & Services"
+                    },
+                    {
+                        StageNumber: 2,
+                        Label: "Screening Questions"
+                    },
+                    {
+                        StageNumber: 3,
+                        Label: "Patient Information"
+                    },
+                    {
+                        StageNumber: 4,
+                        Label: "Confirmation"
+                    }
+                ),
+                 VarWalkIn && LblPaymentCheckCombined.Text="false" && (VarRegimenDose = 'Regimen Dose Options'.'1st Dose only' || VarRegimenDose = 'Regimen Dose Options'.'2nd Dose only') &&(VarScreeningQuestionCheck || VarScreeningQuestionCheckSecondary) && varAdditionalService,
+                Table(
+                    {
+                        StageNumber: 1,
+                        Label: "Location & Services"
+                    },
+                    {
+                        StageNumber: 2,
+                        Label: "Screening Questions"
+                    },
+                    {
+                        StageNumber: 3,
+                        Label: "Patient Information"
+                    },
+                    {
+                        StageNumber: 4,
+                        Label: "Confirmation"
+                    }
+                ),
+                ((VarWalkIn && VarRegimenDose = 'Regimen Dose Options'.'Both Doses') || VarForLater) && VarScreeningQuestionCheck = false && LblPaymentCheck.Text = "true",
+                Table(
+                    {
+                        StageNumber: 1,
+                        Label: "Location & Services"
+                    },
+            
+                    {
+                        StageNumber: 2,
+                        Label: "Patient Information"
+                    },
+                    {
+                        StageNumber: 3,
+                        Label: "Payment Information"
+                    },
+                    {
+                        StageNumber: 4,
+                        Label: "Schedule Appointment"
+                    },
+                    {
+                        StageNumber: 5,
+                        Label: "Confirmation"
+                    }
+                ),
+                VarWalkIn && LblPaymentCheck.Text = "true" && VarRegimenDose <> 'Regimen Dose Options'.'Both Doses' && VarScreeningQuestionCheck = false && varAdditionalService=false,
+                Table(
+                    {
+                        StageNumber: 1,
+                        Label: "Location & Services"
+                    },
+                    {
+                        StageNumber: 2,
+                        Label: "Patient Information"
+                    },
+                    {
+                        StageNumber: 3,
+                        Label: "Payment Information"
+                    },
+                    {
+                        StageNumber: 4,
+                        Label: "Confirmation"
+                    }
+                ),
+                    VarWalkIn && LblPaymentCheckCombined.Text="true" && VarRegimenDose <> 'Regimen Dose Options'.'Both Doses' && VarScreeningQuestionCheck = false &&VarScreeningQuestionCheckSecondary=false && varAdditionalService,
+                Table(
+                    {
+                        StageNumber: 1,
+                        Label: "Location & Services"
+                    },
+                    {
+                        StageNumber: 2,
+                        Label: "Patient Information"
+                    },
+                    {
+                        StageNumber: 3,
+                        Label: "Payment Information"
+                    },
+                    {
+                        StageNumber: 4,
+                        Label: "Confirmation"
+                    }
+                ),
+                ((VarWalkIn && VarRegimenDose = 'Regimen Dose Options'.'Both Doses') || VarForLater) && VarScreeningQuestionCheck = false && LblPaymentCheck.Text = "false",
+                Table(
+                    {
+                        StageNumber: 1,
+                        Label: "Location & Services"
+                    },
+                    {
+                        StageNumber: 2,
+                        Label: "Patient Information"
+                    },
+                    {
+                        StageNumber: 3,
+                        Label: "Schedule Appointment"
+                    },
+                    {
+                        StageNumber: 4,
+                        Label: "Confirmation"
+                    }
+                ),
+                VarWalkIn && LblPaymentCheckCombined.Text="false" && (VarRegimenDose = 'Regimen Dose Options'.'1st Dose only' || VarRegimenDose = 'Regimen Dose Options'.'2nd Dose only') && VarScreeningQuestionCheck = false && VarScreeningQuestionCheckSecondary=false && varAdditionalService,
+                Table(
+                    {
+                        StageNumber: 1,
+                        Label: "Location & Services"
+                    },
+                    {
+                        StageNumber: 2,
+                        Label: "Patient Information"
+                    },
+                    {
+                        StageNumber: 3,
+                        Label: "Confirmation"
+                    }
+                ), 
+                VarWalkIn && LblPaymentCheck.Text = "false" && (VarRegimenDose = 'Regimen Dose Options'.'1st Dose only' || VarRegimenDose = 'Regimen Dose Options'.'2nd Dose only') && VarScreeningQuestionCheck = false && varAdditionalService=false,
+                Table(
+                    {
+                        StageNumber: 1,
+                        Label: "Location & Services"
+                    },
+                    {
+                        StageNumber: 2,
+                        Label: "Patient Information"
+                    },
+                    {
+                        StageNumber: 3,
+                        Label: "Confirmation"
+                    }
+                ),
+                Table(
+                    {
+                        StageNumber: 1,
+                        Label: "Location & Services"
+                    },
+                    {
+                        StageNumber: 2,
+                        Label: "Screening Questions"
+                    },
+                    {
+                        StageNumber: 3,
+                        Label: "Patient Information"
+                    },
+                    {
+                        StageNumber: 4,
+                        Label: "Payment Information"
+                    },
+                    {
+                        StageNumber: 5,
+                        Label: "Schedule Appointment"
+                    },
+                    {
+                        StageNumber: 6,
+                        Label: "Confirmation"
+                    }
+                )
+            )
+        Visible: =VarForLater || VarWalkIn
+        Width: =Parent.Width
+        Y: =ConPatientProfileHeader.Y+ConPatientProfileHeader.Height
+        ZIndex: =8
+
+    ConPatientProfileHeader As groupContainer.manualLayoutContainer:
+        Height: =VarTheme.HeaderSize
+        Width: =Parent.Width
+        ZIndex: =9
+
+        ImgPatientInfoBack As image:
+            Height: =40
+            Image: |-
+                ="data:image/svg+xml;utf8, "&EncodeUrl("<svg width='28' height='28' viewBox='0 0 28 28' fill='none' xmlns='http://www.w3.org/2000/svg'> <path d='M14 28C10.287 28 6.72602 26.525 4.10051 23.8995C1.475 21.274 3.04044e-06 17.713 3.20274e-06 14C3.36504e-06 10.287 1.475 6.72601 4.10051 4.1005C6.72602 1.475 10.287 -7.74261e-07 14 -6.11959e-07C17.713 -4.49658e-07 21.274 1.475 23.8995 4.10051C26.525 6.72601 28 10.287 28 14C28 17.713 26.525 21.274 23.8995 23.8995C21.274 26.525 17.713 28 14 28ZM20.125 14.875C20.3571 14.875 20.5796 14.7828 20.7437 14.6187C20.9078 14.4546 21 14.2321 21 14C21 13.7679 20.9078 13.5454 20.7437 13.3813C20.5796 13.2172 20.3571 13.125 20.125 13.125L9.98725 13.125L13.7445 9.3695C13.9088 9.2052 14.0011 8.98236 14.0011 8.75C14.0011 8.51764 13.9088 8.2948 13.7445 8.1305C13.5802 7.9662 13.3574 7.87389 13.125 7.87389C12.8926 7.87389 12.6698 7.9662 12.5055 8.1305L7.2555 13.3805C7.17402 13.4618 7.10937 13.5583 7.06526 13.6646C7.02114 13.7709 6.99844 13.8849 6.99844 14C6.99844 14.1151 7.02114 14.2291 7.06526 14.3354C7.10937 14.4417 7.17402 14.5382 7.2555 14.6195L12.5055 19.8695C12.6698 20.0338 12.8926 20.1261 13.125 20.1261C13.3574 20.1261 13.5802 20.0338 13.7445 19.8695C13.9088 19.7052 14.0011 19.4824 14.0011 19.25C14.0011 19.0176 13.9088 18.7948 13.7445 18.6305L9.98725 14.875L20.125 14.875Z' fill='#0052CC'/> </svg> ")
+            OnSelect: |
+                =If(
+                    VarNavigateProfilePatient,
+                    Navigate(ScnPatientAppointment),
+                    (varAdditionalService=false && VarScreeningQuestionCheck) || (varAdditionalService && (VarScreeningQuestionCheck || VarScreeningQuestionCheckSecondary)),
+                    Navigate(ScnQuestions),
+                    Navigate(ScnLocation)
+                );
+                Reset(GalEligibilityMain);
+                Reset(GalScreeningMain);
+                Set(
+                    VarTermsAndCondition,
+                    true
+                );
+                Set(
+                    VarNavigateProfilePatient,
+                    false
+                );
+                Set(
+                    VarNewAppointmentValidationChk,
+                    false
+                );
+            Width: =40
+            X: =40
+            Y: =40
+            ZIndex: =1
+
+        LblPatientInformation As label:
+            Font: =VarTheme.Font
+            FontWeight: =FontWeight.Bold
+            PaddingLeft: =30
+            Size: =24
+            Text: ="Patient Information"
+            Width: =500
+            X: =86
+            Y: =40
+            ZIndex: =2
+
+    ConMultiServiceAlertPatientProfile As groupContainer.manualLayoutContainer:
+        Fill: =RGBA(0, 0, 0, 0.8)
+        Height: =Parent.Height
+        Visible: =locCloseAlert
+        Width: =Parent.Width
+        ZIndex: =10
+
+        MultiserviceAlertComponentScreening_1 As MultiserviceAlertBoxComponent:
+            ActionButtonText: |-
+                =If(locadditionalservicetype=1,
+                "Yes, edit",
+                locadditionalservicetype=2,
+                "Yes, remove"
+                )
+            CloseAlert: |-
+                =UpdateContext({locCloseAlert: false});
+            EditOrRemove: |
+                =If(
+                    locadditionalservicetype = 1,
+                    Navigate(ScnLocation),
+                    locadditionalservicetype = 2,
+                    Set(
+                        varAdditionalService,
+                        false
+                    );
+                    Reset(CmbAdditionalServiceType);
+                    Reset(CmbAdditionalService);
+                    Reset(CmbAdditionalSubService);
+                    Clear(ColSecondaryServiceScreening);
+                    Clear(ColSecondaryServiceScreeningList);
+                    Clear(ColSecondaryServiceEligibility);
+                    Clear(ColSecondaryServiceEligibilityList);
+                    Clear(ColSecondaryInsuracnceData);
+                    Clear(ColSecondaryInsuranceValue);
+                    Navigate(ScnLocation);
+                    
+                );
+                UpdateContext({locCloseAlert: false});
+            TitleDescription: |-
+                =
+                
+                If(locadditionalservicetype=1,
+                "Are you sure want to edit the selected service(s).",
+                locadditionalservicetype=2,
+                "Are you sure want to remove the additional service."
+                )
+            TitleHeader: |-
+                =If(locadditionalservicetype=1,
+                "Edit Service?",
+                locadditionalservicetype=2,
+                "Remove Service?"
+                )
+            X: =247
+            Y: =545
+
